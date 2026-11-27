@@ -1,0 +1,5065 @@
+{
+ "source": "curriculum/source/master-roadmap.docx",
+ "books": [
+  {
+   "prefix": "A1",
+   "id": "algebra-1",
+   "title": "Algebra I — Algebraic Foundations and Problem Solving",
+   "file": "curriculum/books/algebra-1/README.md",
+   "chapters": [
+    {
+     "id": "A1.1",
+     "title": "Expressions, Identities and Factoring",
+     "file": "curriculum/books/algebra-1/A1.01-expressions-identities-and-factoring.md",
+     "sections": [
+      {
+       "id": "A1.1.1",
+       "title": "Algebraic notation and structure"
+      },
+      {
+       "id": "A1.1.2",
+       "title": "Distributive law and identities"
+      },
+      {
+       "id": "A1.1.3",
+       "title": "Factoring and common structure"
+      },
+      {
+       "id": "A1.1.4",
+       "title": "Fractions and domain restrictions"
+      },
+      {
+       "id": "A1.1.5",
+       "title": "Choosing equivalent forms"
+      },
+      {
+       "id": "A1.1.6",
+       "title": "Arithmetic fluency and exact computation"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": true,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A1.2",
+     "title": "Linear Equations and Mathematical Modeling",
+     "file": "curriculum/books/algebra-1/A1.02-linear-equations-and-mathematical-modeling.md",
+     "sections": [
+      {
+       "id": "A1.2.1",
+       "title": "Equivalent equations"
+      },
+      {
+       "id": "A1.2.2",
+       "title": "From verbal comparisons to equations"
+      },
+      {
+       "id": "A1.2.3",
+       "title": "Systems of linear equations"
+      },
+      {
+       "id": "A1.2.4",
+       "title": "Modeling under constraints"
+      },
+      {
+       "id": "A1.2.5",
+       "title": "Linear constraints and feasibility"
+      },
+      {
+       "id": "A1.2.6",
+       "title": "Three-variable systems, consistency and efficient elimination"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "A1.3",
+     "title": "Proportionality, Rates and Quantitative Models",
+     "file": "curriculum/books/algebra-1/A1.03-proportionality-rates-and-quantitative-models.md",
+     "sections": [
+      {
+       "id": "A1.3.1",
+       "title": "Direct, inverse and joint variation"
+      },
+      {
+       "id": "A1.3.2",
+       "title": "Rates, work and relative motion"
+      },
+      {
+       "id": "A1.3.3",
+       "title": "Mixtures, ratios and weighted averages"
+      },
+      {
+       "id": "A1.3.4",
+       "title": "Units, estimation and errors"
+      },
+      {
+       "id": "A1.3.5",
+       "title": "Percent change, compound growth and scale"
+      },
+      {
+       "id": "A1.3.6",
+       "title": "Rate models: stages, currents and moving reference frames"
+      },
+      {
+       "id": "A1.3.7",
+       "title": "Money, allocation and everyday quantitative constraints"
+      },
+      {
+       "id": "A1.3.8",
+       "title": "Rounding, clock angles and elapsed time"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": [
+      1
+     ]
+    },
+    {
+     "id": "A1.4",
+     "title": "Exponents, Roots and Exact Arithmetic",
+     "file": "curriculum/books/algebra-1/A1.04-exponents-roots-and-exact-arithmetic.md",
+     "sections": [
+      {
+       "id": "A1.4.1",
+       "title": "Integer exponent laws"
+      },
+      {
+       "id": "A1.4.2",
+       "title": "Radicals and fractional powers"
+      },
+      {
+       "id": "A1.4.3",
+       "title": "Rationalizing and conjugates"
+      },
+      {
+       "id": "A1.4.4",
+       "title": "Exact comparison and estimation"
+      },
+      {
+       "id": "A1.4.5",
+       "title": "Equations with powers and radicals"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A1.5",
+     "title": "Quadratic Equations",
+     "file": "curriculum/books/algebra-1/A1.05-quadratic-equations.md",
+     "sections": [
+      {
+       "id": "A1.5.1",
+       "title": "Solving by factoring"
+      },
+      {
+       "id": "A1.5.2",
+       "title": "Completing the square"
+      },
+      {
+       "id": "A1.5.3",
+       "title": "Discriminant and real roots"
+      },
+      {
+       "id": "A1.5.4",
+       "title": "Vieta’s formulas"
+      },
+      {
+       "id": "A1.5.5",
+       "title": "Modeling and root selection"
+      },
+      {
+       "id": "A1.5.6",
+       "title": "Root relationships before root calculation"
+      },
+      {
+       "id": "A1.5.7",
+       "title": "Complex roots as an early algebraic bridge"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "A1.6",
+     "title": "Functions, Graphs and Coordinate Interpretation",
+     "file": "curriculum/books/algebra-1/A1.06-functions-graphs-and-coordinate-interpretation.md",
+     "sections": [
+      {
+       "id": "A1.6.1",
+       "title": "Function notation and evaluation"
+      },
+      {
+       "id": "A1.6.2",
+       "title": "Linear and quadratic graphs"
+      },
+      {
+       "id": "A1.6.3",
+       "title": "Graph transformations"
+      },
+      {
+       "id": "A1.6.4",
+       "title": "Domain, range and intersections"
+      },
+      {
+       "id": "A1.6.5",
+       "title": "From tables to transformations"
+      },
+      {
+       "id": "A1.6.6",
+       "title": "Average rate of change, intercepts and graph-based feasibility"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "A1.7",
+     "title": "Rational Expressions and Rational Equations",
+     "file": "curriculum/books/algebra-1/A1.07-rational-expressions-and-rational-equations.md",
+     "sections": [
+      {
+       "id": "A1.7.1",
+       "title": "Algebraic fractions and common denominators"
+      },
+      {
+       "id": "A1.7.2",
+       "title": "Complex fractions and reciprocal substitutions"
+      },
+      {
+       "id": "A1.7.3",
+       "title": "Solving rational equations"
+      },
+      {
+       "id": "A1.7.4",
+       "title": "Reciprocal graphs and asymptotes"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A1.8",
+     "title": "Inequalities, Absolute Value and Bounds",
+     "file": "curriculum/books/algebra-1/A1.08-inequalities-absolute-value-and-bounds.md",
+     "sections": [
+      {
+       "id": "A1.8.1",
+       "title": "Order-preserving operations"
+      },
+      {
+       "id": "A1.8.2",
+       "title": "Sign analysis for products and quotients"
+      },
+      {
+       "id": "A1.8.3",
+       "title": "Absolute value as distance"
+      },
+      {
+       "id": "A1.8.4",
+       "title": "Squares and elementary bounds"
+      },
+      {
+       "id": "A1.8.5",
+       "title": "Piecewise feasibility and endpoint checks"
+      },
+      {
+       "id": "A1.8.6",
+       "title": "Two-variable inequalities and feasible regions"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "A1.9",
+     "title": "Sequences, Series and Patterns",
+     "file": "curriculum/books/algebra-1/A1.09-sequences-series-and-patterns.md",
+     "sections": [
+      {
+       "id": "A1.9.1",
+       "title": "Arithmetic sequences"
+      },
+      {
+       "id": "A1.9.2",
+       "title": "Geometric sequences"
+      },
+      {
+       "id": "A1.9.3",
+       "title": "Telescoping and finite differences"
+      },
+      {
+       "id": "A1.9.4",
+       "title": "Recursive definitions and cycles"
+      },
+      {
+       "id": "A1.9.5",
+       "title": "Finite versus infinite sums"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A1.10",
+     "title": "Polynomial Structure and Algebraic Synthesis",
+     "file": "curriculum/books/algebra-1/A1.10-polynomial-structure-and-algebraic-synthesis.md",
+     "sections": [
+      {
+       "id": "A1.10.1",
+       "title": "Polynomial arithmetic and degree"
+      },
+      {
+       "id": "A1.10.2",
+       "title": "Factor and remainder theorems"
+      },
+      {
+       "id": "A1.10.3",
+       "title": "Substitution and symmetric expressions"
+      },
+      {
+       "id": "A1.10.4",
+       "title": "Choosing a representation"
+      },
+      {
+       "id": "A1.10.5",
+       "title": "Polynomial long division and reverse reconstruction"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    }
+   ]
+  },
+  {
+   "prefix": "A2",
+   "id": "algebra-2",
+   "title": "Algebra II — Advanced Algebra and Precalculus",
+   "file": "curriculum/books/algebra-2/README.md",
+   "chapters": [
+    {
+     "id": "A2.1",
+     "title": "Sets and Mappings",
+     "file": "curriculum/books/algebra-2/A2.01-sets-and-mappings.md",
+     "sections": [
+      {
+       "id": "A2.1.1",
+       "title": "Definition and properties of sets"
+      },
+      {
+       "id": "A2.1.2",
+       "title": "Representations of sets"
+      },
+      {
+       "id": "A2.1.3",
+       "title": "Relationships in sets"
+      },
+      {
+       "id": "A2.1.4",
+       "title": "Intersection, union and complement"
+      },
+      {
+       "id": "A2.1.5",
+       "title": "Mappings"
+      },
+      {
+       "id": "A2.1.6",
+       "title": "Functions"
+      },
+      {
+       "id": "A2.1.7",
+       "title": "Extension — Russell’s paradox"
+      }
+     ],
+     "basis": "Year 2 L1",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 1",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.2",
+     "title": "Power and Exponential Functions",
+     "file": "curriculum/books/algebra-2/A2.02-power-and-exponential-functions.md",
+     "sections": [
+      {
+       "id": "A2.2.1",
+       "title": "Definition of power functions"
+      },
+      {
+       "id": "A2.2.2",
+       "title": "Properties and graphs of power functions"
+      },
+      {
+       "id": "A2.2.3",
+       "title": "Power comparison"
+      },
+      {
+       "id": "A2.2.4",
+       "title": "Properties of exponents"
+      },
+      {
+       "id": "A2.2.5",
+       "title": "Definition of exponential functions"
+      },
+      {
+       "id": "A2.2.6",
+       "title": "Properties and graphs of exponential functions"
+      }
+     ],
+     "basis": "Year 2 L2",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 2",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.3",
+     "title": "Logarithms and Logarithmic Functions I",
+     "file": "curriculum/books/algebra-2/A2.03-logarithms-and-logarithmic-functions-i.md",
+     "sections": [
+      {
+       "id": "A2.3.1",
+       "title": "Definition of logarithms"
+      },
+      {
+       "id": "A2.3.2",
+       "title": "One-to-one correspondence"
+      },
+      {
+       "id": "A2.3.3",
+       "title": "Properties and operations of logarithms"
+      },
+      {
+       "id": "A2.3.4",
+       "title": "Change-of-base formula"
+      }
+     ],
+     "basis": "Year 2 L3",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 3",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.4",
+     "title": "Logarithms and Logarithmic Functions II",
+     "file": "curriculum/books/algebra-2/A2.04-logarithms-and-logarithmic-functions-ii.md",
+     "sections": [
+      {
+       "id": "A2.4.1",
+       "title": "Definition of logarithmic functions"
+      },
+      {
+       "id": "A2.4.2",
+       "title": "Graphs and properties of logarithmic functions"
+      },
+      {
+       "id": "A2.4.3",
+       "title": "Applications — advanced logarithmic equations and inequalities"
+      },
+      {
+       "id": "A2.4.4",
+       "title": "Logarithms, integer powers and digit counts"
+      }
+     ],
+     "basis": "Year 2 L4",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 4",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.5",
+     "title": "Odd, Even and Periodic Functions",
+     "file": "curriculum/books/algebra-2/A2.05-odd-even-and-periodic-functions.md",
+     "sections": [
+      {
+       "id": "A2.5.1",
+       "title": "Increasing and decreasing functions"
+      },
+      {
+       "id": "A2.5.2",
+       "title": "Odd and even functions"
+      },
+      {
+       "id": "A2.5.3",
+       "title": "Decomposition into odd and even components"
+      },
+      {
+       "id": "A2.5.4",
+       "title": "Generalized symmetry"
+      },
+      {
+       "id": "A2.5.5",
+       "title": "Definition of periodic functions"
+      },
+      {
+       "id": "A2.5.6",
+       "title": "Common periodic relations"
+      }
+     ],
+     "basis": "Year 2 L5",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 5",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.6",
+     "title": "Advanced Quadratic Functions",
+     "file": "curriculum/books/algebra-2/A2.06-advanced-quadratic-functions.md",
+     "sections": [
+      {
+       "id": "A2.6.1",
+       "title": "Forms of quadratic functions"
+      },
+      {
+       "id": "A2.6.2",
+       "title": "Properties of quadratic functions"
+      },
+      {
+       "id": "A2.6.3",
+       "title": "Integer quadratic equation problems"
+      },
+      {
+       "id": "A2.6.4",
+       "title": "General quadratic equation proofs"
+      }
+     ],
+     "basis": "Year 2 L6",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 6",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.7",
+     "title": "Special Functions",
+     "file": "curriculum/books/algebra-2/A2.07-special-functions.md",
+     "sections": [
+      {
+       "id": "A2.7.1",
+       "title": "Piecewise functions"
+      },
+      {
+       "id": "A2.7.2",
+       "title": "Absolute-value functions"
+      },
+      {
+       "id": "A2.7.3",
+       "title": "Definition of floor and ceiling functions"
+      },
+      {
+       "id": "A2.7.4",
+       "title": "Properties of floor and ceiling functions"
+      },
+      {
+       "id": "A2.7.5",
+       "title": "Graphs of floor and ceiling functions"
+      },
+      {
+       "id": "A2.7.6",
+       "title": "Applications — maximum and minimum functions"
+      }
+     ],
+     "basis": "Year 2 L7",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 7",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.8",
+     "title": "Composite and Inverse Functions",
+     "file": "curriculum/books/algebra-2/A2.08-composite-and-inverse-functions.md",
+     "sections": [
+      {
+       "id": "A2.8.1",
+       "title": "Definition of composite functions"
+      },
+      {
+       "id": "A2.8.2",
+       "title": "Properties of composite functions"
+      },
+      {
+       "id": "A2.8.3",
+       "title": "Definition of inverse functions"
+      },
+      {
+       "id": "A2.8.4",
+       "title": "Properties of inverse functions"
+      }
+     ],
+     "basis": "Year 2 L8",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 8",
+     "teachingSequence": true,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.9",
+     "title": "Functional Equations and Mathematical Induction",
+     "file": "curriculum/books/algebra-2/A2.09-functional-equations-and-mathematical-induction.md",
+     "sections": [
+      {
+       "id": "A2.9.1",
+       "title": "Direct proof, converse and counterexample"
+      },
+      {
+       "id": "A2.9.2",
+       "title": "Induction and strong induction"
+      },
+      {
+       "id": "A2.9.3",
+       "title": "Elementary functional equations"
+      },
+      {
+       "id": "A2.9.4",
+       "title": "Functional symmetry and shift equations"
+      },
+      {
+       "id": "A2.9.5",
+       "title": "Composition, inverses and functional constraints"
+      },
+      {
+       "id": "A2.9.6",
+       "title": "Quantifiers, counterexamples and proof of equivalence"
+      },
+      {
+       "id": "A2.9.7",
+       "title": "Defined operations, identities and algebraic structure"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.10",
+     "title": "Recursive Sequences",
+     "file": "curriculum/books/algebra-2/A2.10-recursive-sequences.md",
+     "sections": [
+      {
+       "id": "A2.10.1",
+       "title": "Recursive sequences and telescoping"
+      },
+      {
+       "id": "A2.10.2",
+       "title": "First-order linear recurrences with constant coefficients"
+      },
+      {
+       "id": "A2.10.3",
+       "title": "First-order nonhomogeneous recurrence relations"
+      },
+      {
+       "id": "A2.10.4",
+       "title": "Second-order linear recurrences"
+      },
+      {
+       "id": "A2.10.5",
+       "title": "Fixed-point methods — extension"
+      },
+      {
+       "id": "A2.10.6",
+       "title": "Applications — recursive modeling"
+      },
+      {
+       "id": "A2.10.7",
+       "title": "Convergence of recurrences and stable fixed points"
+      },
+      {
+       "id": "A2.10.8",
+       "title": "Infinite nested radicals and continued substitutions"
+      }
+     ],
+     "basis": "Year 2 L9",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 9",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.11",
+     "title": "Inequality of Arithmetic and Geometric Means",
+     "file": "curriculum/books/algebra-2/A2.11-inequality-of-arithmetic-and-geometric-means.md",
+     "sections": [
+      {
+       "id": "A2.11.1",
+       "title": "Definition and properties of AM–GM"
+      },
+      {
+       "id": "A2.11.2",
+       "title": "Mean inequality chain"
+      },
+      {
+       "id": "A2.11.3",
+       "title": "Applications — optimization"
+      },
+      {
+       "id": "A2.11.4",
+       "title": "Applications — advanced inequality proofs"
+      }
+     ],
+     "basis": "Year 2 L10",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 10",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.12",
+     "title": "Cauchy–Schwarz, Weighted Means and Optimization",
+     "file": "curriculum/books/algebra-2/A2.12-cauchy-schwarz-weighted-means-and-optimization.md",
+     "sections": [
+      {
+       "id": "A2.12.1",
+       "title": "Cauchy–Schwarz from squares"
+      },
+      {
+       "id": "A2.12.2",
+       "title": "Engel form and reciprocal sums"
+      },
+      {
+       "id": "A2.12.3",
+       "title": "Weighted AM–GM and power means"
+      },
+      {
+       "id": "A2.12.4",
+       "title": "Rearrangement and ordered products"
+      },
+      {
+       "id": "A2.12.5",
+       "title": "Choosing between bounds"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.13",
+     "title": "Advanced Polynomials and Symmetric Expressions",
+     "file": "curriculum/books/algebra-2/A2.13-advanced-polynomials-and-symmetric-expressions.md",
+     "sections": [
+      {
+       "id": "A2.13.1",
+       "title": "Higher-degree Vieta and power sums"
+      },
+      {
+       "id": "A2.13.2",
+       "title": "Root transformations"
+      },
+      {
+       "id": "A2.13.3",
+       "title": "Polynomial interpolation and identities"
+      },
+      {
+       "id": "A2.13.4",
+       "title": "Factorization and integer-root constraints"
+      },
+      {
+       "id": "A2.13.5",
+       "title": "Interpolation, multivariable structure and root feasibility"
+      },
+      {
+       "id": "A2.13.6",
+       "title": "Root multiplicities, sign charts and polynomial shape"
+      },
+      {
+       "id": "A2.13.7",
+       "title": "Special factorization and radical structure"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": [
+      2
+     ]
+    },
+    {
+     "id": "A2.14",
+     "title": "Rational Functions, Partial Fractions and Asymptotic Behavior",
+     "file": "curriculum/books/algebra-2/A2.14-rational-functions-partial-fractions-and-asymptotic-behavior.md",
+     "sections": [
+      {
+       "id": "A2.14.1",
+       "title": "Domain, holes, zeros and poles"
+      },
+      {
+       "id": "A2.14.2",
+       "title": "Polynomial division and asymptotes"
+      },
+      {
+       "id": "A2.14.3",
+       "title": "Partial fractions with distinct linear factors"
+      },
+      {
+       "id": "A2.14.4",
+       "title": "Repeated and irreducible factors"
+      },
+      {
+       "id": "A2.14.5",
+       "title": "Rational equations and parameter analysis"
+      },
+      {
+       "id": "A2.14.6",
+       "title": "Applications to sums and recurrences"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.15",
+     "title": "Introduction to Trigonometry",
+     "file": "curriculum/books/algebra-2/A2.15-introduction-to-trigonometry.md",
+     "sections": [
+      {
+       "id": "A2.15.1",
+       "title": "Definition of acute-angle trigonometry"
+      },
+      {
+       "id": "A2.15.2",
+       "title": "Trigonometric values of special angles"
+      },
+      {
+       "id": "A2.15.3",
+       "title": "Ranges of acute-angle trigonometry"
+      },
+      {
+       "id": "A2.15.4",
+       "title": "Relationships between trigonometric functions"
+      },
+      {
+       "id": "A2.15.5",
+       "title": "Solving right triangles"
+      },
+      {
+       "id": "A2.15.6",
+       "title": "Applications — geometric modeling"
+      }
+     ],
+     "basis": "Year 2 L20",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 20",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.16",
+     "title": "Trigonometric Identities I",
+     "file": "curriculum/books/algebra-2/A2.16-trigonometric-identities-i.md",
+     "sections": [
+      {
+       "id": "A2.16.1",
+       "title": "Definition of angles"
+      },
+      {
+       "id": "A2.16.2",
+       "title": "Definition of trigonometric functions"
+      },
+      {
+       "id": "A2.16.3",
+       "title": "Basic trigonometric identities"
+      },
+      {
+       "id": "A2.16.4",
+       "title": "Sum and difference identities for sine"
+      },
+      {
+       "id": "A2.16.5",
+       "title": "Sum and difference identities for cosine"
+      },
+      {
+       "id": "A2.16.6",
+       "title": "Sum and difference identities for tangent"
+      },
+      {
+       "id": "A2.16.7",
+       "title": "Applications — combining trigonometric functions"
+      },
+      {
+       "id": "A2.16.8",
+       "title": "Applications — systems of trigonometric equations"
+      },
+      {
+       "id": "A2.16.9",
+       "title": "Extension — trigonometric inequalities and optimization"
+      }
+     ],
+     "basis": "Year 2 L21",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 21",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.17",
+     "title": "Trigonometric Identities II",
+     "file": "curriculum/books/algebra-2/A2.17-trigonometric-identities-ii.md",
+     "sections": [
+      {
+       "id": "A2.17.1",
+       "title": "Double-angle formulae"
+      },
+      {
+       "id": "A2.17.2",
+       "title": "Half-angle formulae"
+      },
+      {
+       "id": "A2.17.3",
+       "title": "Triple-angle formulae"
+      },
+      {
+       "id": "A2.17.4",
+       "title": "Power-reducing formulae"
+      },
+      {
+       "id": "A2.17.5",
+       "title": "Sum-to-product and product-to-sum identities"
+      },
+      {
+       "id": "A2.17.6",
+       "title": "Auxiliary angle formulae"
+      },
+      {
+       "id": "A2.17.7",
+       "title": "Applications — trigonometric summations and telescoping"
+      }
+     ],
+     "basis": "Year 2 L22",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 22",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.18",
+     "title": "Trigonometric Functions, Graphs and Equations",
+     "file": "curriculum/books/algebra-2/A2.18-trigonometric-functions-graphs-and-equations.md",
+     "sections": [
+      {
+       "id": "A2.18.1",
+       "title": "Sine, cosine and tangent graphs"
+      },
+      {
+       "id": "A2.18.2",
+       "title": "Amplitude, phase and frequency"
+      },
+      {
+       "id": "A2.18.3",
+       "title": "Graphical solutions and periodic intersections"
+      },
+      {
+       "id": "A2.18.4",
+       "title": "Trigonometric optimization and modeling"
+      },
+      {
+       "id": "A2.18.5",
+       "title": "Graph transformations and periodic modeling"
+      },
+      {
+       "id": "A2.18.6",
+       "title": "Reciprocal trigonometric graphs and asymptotes"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.19",
+     "title": "Inverse Trigonometric Functions and Trigonometric Equations",
+     "file": "curriculum/books/algebra-2/A2.19-inverse-trigonometric-functions-and-trigonometric-equations.md",
+     "sections": [
+      {
+       "id": "A2.19.1",
+       "title": "Principal branches and graphs"
+      },
+      {
+       "id": "A2.19.2",
+       "title": "Compositions and inverse identities"
+      },
+      {
+       "id": "A2.19.3",
+       "title": "Complete solutions of elementary equations"
+      },
+      {
+       "id": "A2.19.4",
+       "title": "Algebraic transformations and multi-angle equations"
+      },
+      {
+       "id": "A2.19.5",
+       "title": "Inverse trig in geometry and modeling"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.20",
+     "title": "Complex Numbers and Roots of Unity",
+     "file": "curriculum/books/algebra-2/A2.20-complex-numbers-and-roots-of-unity.md",
+     "sections": [
+      {
+       "id": "A2.20.1",
+       "title": "Algebra and conjugation"
+      },
+      {
+       "id": "A2.20.2",
+       "title": "Complex plane and polar form"
+      },
+      {
+       "id": "A2.20.3",
+       "title": "De Moivre’s theorem and roots"
+      },
+      {
+       "id": "A2.20.4",
+       "title": "Roots of unity and cancellation"
+      },
+      {
+       "id": "A2.20.5",
+       "title": "Exponential notation and complex roots"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.21",
+     "title": "Matrices, Linear Systems and Linear Transformations",
+     "file": "curriculum/books/algebra-2/A2.21-matrices-linear-systems-and-linear-transformations.md",
+     "sections": [
+      {
+       "id": "A2.21.1",
+       "title": "Matrices and multiplication"
+      },
+      {
+       "id": "A2.21.2",
+       "title": "Determinants and geometric meaning"
+      },
+      {
+       "id": "A2.21.3",
+       "title": "Inverse matrices and solving systems"
+      },
+      {
+       "id": "A2.21.4",
+       "title": "Rotations, reflections, scaling and composition"
+      },
+      {
+       "id": "A2.21.5",
+       "title": "Matrix powers and recurrence states"
+      },
+      {
+       "id": "A2.21.6",
+       "title": "Gaussian elimination, rank and linear-system classification"
+      },
+      {
+       "id": "A2.21.7",
+       "title": "Determinant computation and change of coordinates"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 2,
+     "auditRefinements": []
+    },
+    {
+     "id": "A2.22",
+     "title": "Limits, Continuity and Convergence (Optional Precalculus Enrichment)",
+     "file": "curriculum/books/algebra-2/A2.22-limits-continuity-and-convergence.md",
+     "sections": [
+      {
+       "id": "A2.22.1",
+       "title": "Intuitive limits and one-sided behavior"
+      },
+      {
+       "id": "A2.22.2",
+       "title": "Algebraic limit techniques and restrictions"
+      },
+      {
+       "id": "A2.22.3",
+       "title": "Continuity, intermediate values and root existence"
+      },
+      {
+       "id": "A2.22.4",
+       "title": "Sequence convergence and infinite geometric series"
+      },
+      {
+       "id": "A2.22.5",
+       "title": "Bounds, squeeze reasoning and the number e"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": true,
+     "label": "PROPOSED CHAPTER · OPTIONAL ENRICHMENT",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    }
+   ]
+  },
+  {
+   "prefix": "A3",
+   "id": "algebra-3",
+   "title": "Algebra III — Advanced Algebraic Problem Solving",
+   "file": "curriculum/books/algebra-3/README.md",
+   "chapters": [
+    {
+     "id": "A3.1",
+     "title": "Strategic Substitutions and Hidden Variables",
+     "file": "curriculum/books/algebra-3/A3.01-strategic-substitutions-and-hidden-variables.md",
+     "sections": [
+      {
+       "id": "A3.1.1",
+       "title": "Reciprocal expressions and invariant combinations"
+      },
+      {
+       "id": "A3.1.2",
+       "title": "Nested radicals and conjugate substitutions"
+      },
+      {
+       "id": "A3.1.3",
+       "title": "Homogeneity, scaling and ratios"
+      },
+      {
+       "id": "A3.1.4",
+       "title": "Substitutions that linearize nonlinear equations"
+      },
+      {
+       "id": "A3.1.5",
+       "title": "Reversibility and economical elimination"
+      },
+      {
+       "id": "A3.1.6",
+       "title": "Engineered factorizations and substitutions"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": true,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A3.2",
+     "title": "Advanced Systems of Equations",
+     "file": "curriculum/books/algebra-3/A3.02-advanced-systems-of-equations.md",
+     "sections": [
+      {
+       "id": "A3.2.1",
+       "title": "Symmetric systems and elementary symmetric variables"
+      },
+      {
+       "id": "A3.2.2",
+       "title": "Cyclic systems and subtraction"
+      },
+      {
+       "id": "A3.2.3",
+       "title": "Rational and exponential systems"
+      },
+      {
+       "id": "A3.2.4",
+       "title": "Elimination, resultants and intersections"
+      },
+      {
+       "id": "A3.2.5",
+       "title": "Constraints and target quantities"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A3.3",
+     "title": "Advanced Polynomial Structure and Root Problems",
+     "file": "curriculum/books/algebra-3/A3.03-advanced-polynomial-structure-and-root-problems.md",
+     "sections": [
+      {
+       "id": "A3.3.1",
+       "title": "Newton sums and transformed roots"
+      },
+      {
+       "id": "A3.3.2",
+       "title": "Root geometry and discriminants"
+      },
+      {
+       "id": "A3.3.3",
+       "title": "Interpolation and finite differences"
+      },
+      {
+       "id": "A3.3.4",
+       "title": "Polynomial divisibility and remainders"
+      },
+      {
+       "id": "A3.3.5",
+       "title": "Functional polynomial identities"
+      },
+      {
+       "id": "A3.3.6",
+       "title": "Rational and algebraic root transformations"
+      },
+      {
+       "id": "A3.3.7",
+       "title": "Root-location and intersection-count problems"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": [
+      2
+     ]
+    },
+    {
+     "id": "A3.4",
+     "title": "Advanced Inequalities and Constrained Optimization",
+     "file": "curriculum/books/algebra-3/A3.04-advanced-inequalities-and-constrained-optimization.md",
+     "sections": [
+      {
+       "id": "A3.4.1",
+       "title": "Choosing equality cases before choosing a bound"
+      },
+      {
+       "id": "A3.4.2",
+       "title": "Weighted inequalities and supporting bounds"
+      },
+      {
+       "id": "A3.4.3",
+       "title": "Rearrangement, Chebyshev and ordering"
+      },
+      {
+       "id": "A3.4.4",
+       "title": "Symmetric constraints and reduction to two variables"
+      },
+      {
+       "id": "A3.4.5",
+       "title": "Discriminant, range and feasibility methods"
+      },
+      {
+       "id": "A3.4.6",
+       "title": "Discrete and piecewise optimization"
+      },
+      {
+       "id": "A3.4.7",
+       "title": "Symmetric inequalities and equality-driven reduction"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A3.5",
+     "title": "Functional Equations, Iteration and Hidden Symmetry",
+     "file": "curriculum/books/algebra-3/A3.05-functional-equations-iteration-and-hidden-symmetry.md",
+     "sections": [
+      {
+       "id": "A3.5.1",
+       "title": "Strategic substitution and special values"
+      },
+      {
+       "id": "A3.5.2",
+       "title": "Injectivity, surjectivity and cancellation"
+      },
+      {
+       "id": "A3.5.3",
+       "title": "Iteration and fractional-linear maps"
+      },
+      {
+       "id": "A3.5.4",
+       "title": "Shift relations, periodicity and finite differences"
+      },
+      {
+       "id": "A3.5.5",
+       "title": "Functional modeling and piecewise constraints"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A3.6",
+     "title": "Advanced Recurrences and Discrete Dynamics",
+     "file": "curriculum/books/algebra-3/A3.06-advanced-recurrences-and-discrete-dynamics.md",
+     "sections": [
+      {
+       "id": "A3.6.1",
+       "title": "Normalization of variable-coefficient recurrences"
+      },
+      {
+       "id": "A3.6.2",
+       "title": "Higher-order recurrences and repeated roots"
+      },
+      {
+       "id": "A3.6.3",
+       "title": "Nonlinear recurrences via substitutions"
+      },
+      {
+       "id": "A3.6.4",
+       "title": "Periods, state vectors and modular recurrences"
+      },
+      {
+       "id": "A3.6.5",
+       "title": "Generating functions and recurrence comparison"
+      },
+      {
+       "id": "A3.6.6",
+       "title": "Convergence, cycling and hidden recurrence states"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A3.7",
+     "title": "Advanced Summation, Products and Series",
+     "file": "curriculum/books/algebra-3/A3.07-advanced-summation-products-and-series.md",
+     "sections": [
+      {
+       "id": "A3.7.1",
+       "title": "Telescoping through differences and products"
+      },
+      {
+       "id": "A3.7.2",
+       "title": "Finite differences and sums of powers"
+      },
+      {
+       "id": "A3.7.3",
+       "title": "Rearranging double sums and convolution"
+      },
+      {
+       "id": "A3.7.4",
+       "title": "Arithmetic–geometric and infinite geometric series"
+      },
+      {
+       "id": "A3.7.5",
+       "title": "Alternating sums, symmetry and roots-of-unity filters"
+      },
+      {
+       "id": "A3.7.6",
+       "title": "Harmonic sequences, weighted sums and infinite products"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "A3.8",
+     "title": "Advanced Trigonometric Algebra",
+     "file": "curriculum/books/algebra-3/A3.08-advanced-trigonometric-algebra.md",
+     "sections": [
+      {
+       "id": "A3.8.1",
+       "title": "Trigonometric polynomial substitutions"
+      },
+      {
+       "id": "A3.8.2",
+       "title": "Equations with multiple frequencies and branch control"
+      },
+      {
+       "id": "A3.8.3",
+       "title": "Tangent half-angle and rational parameterization"
+      },
+      {
+       "id": "A3.8.4",
+       "title": "Products and sums of evenly spaced angles"
+      },
+      {
+       "id": "A3.8.5",
+       "title": "Trigonometric inequalities and geometric parameters"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A3.9",
+     "title": "Advanced Complex Numbers and Roots of Unity",
+     "file": "curriculum/books/algebra-3/A3.09-advanced-complex-numbers-and-roots-of-unity.md",
+     "sections": [
+      {
+       "id": "A3.9.1",
+       "title": "Polynomial roots and conjugate structure"
+      },
+      {
+       "id": "A3.9.2",
+       "title": "Roots of unity and geometric sums"
+      },
+      {
+       "id": "A3.9.3",
+       "title": "Roots-of-unity filters and coefficient problems"
+      },
+      {
+       "id": "A3.9.4",
+       "title": "Complex equations and loci"
+      },
+      {
+       "id": "A3.9.5",
+       "title": "Complex and matrix methods for repeated transformations"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "A3.10",
+     "title": "Algebraic Synthesis: Late AIME and Beyond",
+     "file": "curriculum/books/algebra-3/A3.10-algebraic-synthesis-late-aime-and-beyond.md",
+     "sections": [
+      {
+       "id": "A3.10.1",
+       "title": "Reverse engineering from the requested quantity"
+      },
+      {
+       "id": "A3.10.2",
+       "title": "Multi-technique investigations"
+      },
+      {
+       "id": "A3.10.3",
+       "title": "Exact-answer verification and error recovery"
+      },
+      {
+       "id": "A3.10.4",
+       "title": "Problem selection, time and transfer"
+      },
+      {
+       "id": "A3.10.5",
+       "title": "Unlabeled algebra-to-counting and algebra-to-geometry transfer"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    }
+   ]
+  },
+  {
+   "prefix": "G1",
+   "id": "geometry-1",
+   "title": "Geometry I — Euclidean Foundations and Visual Reasoning",
+   "file": "curriculum/books/geometry-1/README.md",
+   "chapters": [
+    {
+     "id": "G1.1",
+     "title": "Angles, Lines and Geometric Argument",
+     "file": "curriculum/books/geometry-1/G1.01-angles-lines-and-geometric-argument.md",
+     "sections": [
+      {
+       "id": "G1.1.1",
+       "title": "Points, segments, rays and angles"
+      },
+      {
+       "id": "G1.1.2",
+       "title": "Parallel lines and angle chasing"
+      },
+      {
+       "id": "G1.1.3",
+       "title": "Perpendiculars and bisectors"
+      },
+      {
+       "id": "G1.1.4",
+       "title": "Elementary proof structure"
+      },
+      {
+       "id": "G1.1.5",
+       "title": "Angle chasing as an equation system"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G1.2",
+     "title": "Triangle Congruence and Isosceles Structure",
+     "file": "curriculum/books/geometry-1/G1.02-triangle-congruence-and-isosceles-structure.md",
+     "sections": [
+      {
+       "id": "G1.2.1",
+       "title": "Triangle existence and classification"
+      },
+      {
+       "id": "G1.2.2",
+       "title": "Congruence criteria"
+      },
+      {
+       "id": "G1.2.3",
+       "title": "Isosceles and equilateral triangles"
+      },
+      {
+       "id": "G1.2.4",
+       "title": "Auxiliary constructions"
+      },
+      {
+       "id": "G1.2.5",
+       "title": "Congruence in constructions"
+      },
+      {
+       "id": "G1.2.6",
+       "title": "Hidden isosceles triangles and angle constraints"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": true,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G1.3",
+     "title": "Similarity, Ratios and Parallel Lines",
+     "file": "curriculum/books/geometry-1/G1.03-similarity-ratios-and-parallel-lines.md",
+     "sections": [
+      {
+       "id": "G1.3.1",
+       "title": "Triangle similarity"
+      },
+      {
+       "id": "G1.3.2",
+       "title": "Parallel-line proportionality"
+      },
+      {
+       "id": "G1.3.3",
+       "title": "Scale and area"
+      },
+      {
+       "id": "G1.3.4",
+       "title": "Angle bisectors and ratio reasoning"
+      },
+      {
+       "id": "G1.3.5",
+       "title": "Similarity as an invariant ratio"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G1.4",
+     "title": "Right Triangles and Special Lengths",
+     "file": "curriculum/books/geometry-1/G1.04-right-triangles-and-special-lengths.md",
+     "sections": [
+      {
+       "id": "G1.4.1",
+       "title": "Pythagorean theorem and converse"
+      },
+      {
+       "id": "G1.4.2",
+       "title": "Pythagorean triples and special triangles"
+      },
+      {
+       "id": "G1.4.3",
+       "title": "Altitudes in right triangles"
+      },
+      {
+       "id": "G1.4.4",
+       "title": "Right-triangle ratio preview"
+      },
+      {
+       "id": "G1.4.5",
+       "title": "Pythagorean structure in composite figures"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G1.5",
+     "title": "Area, Quadrilaterals and Decomposition",
+     "file": "curriculum/books/geometry-1/G1.05-area-quadrilaterals-and-decomposition.md",
+     "sections": [
+      {
+       "id": "G1.5.1",
+       "title": "Triangle area and shared heights"
+      },
+      {
+       "id": "G1.5.2",
+       "title": "Parallelograms and special quadrilaterals"
+      },
+      {
+       "id": "G1.5.3",
+       "title": "Trapezoids and polygonal area"
+      },
+      {
+       "id": "G1.5.4",
+       "title": "Medians and area partition"
+      },
+      {
+       "id": "G1.5.5",
+       "title": "Area ratios and decomposition"
+      },
+      {
+       "id": "G1.5.6",
+       "title": "Composite regions and circular cutouts"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G1.6",
+     "title": "Triangle Centers, Incircles and Circumcircles",
+     "file": "curriculum/books/geometry-1/G1.06-triangle-centers-incircles-and-circumcircles.md",
+     "sections": [
+      {
+       "id": "G1.6.1",
+       "title": "Perpendicular bisectors and circumcenter"
+      },
+      {
+       "id": "G1.6.2",
+       "title": "Angle bisectors, incenter and incircle"
+      },
+      {
+       "id": "G1.6.3",
+       "title": "Medians and centroid"
+      },
+      {
+       "id": "G1.6.4",
+       "title": "Altitudes and orthocenter"
+      },
+      {
+       "id": "G1.6.5",
+       "title": "Heron’s formula and triangle area synthesis"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G1.7",
+     "title": "Polygons and Elementary Circle Geometry",
+     "file": "curriculum/books/geometry-1/G1.07-polygons-and-elementary-circle-geometry.md",
+     "sections": [
+      {
+       "id": "G1.7.1",
+       "title": "Polygon angles and regularity"
+      },
+      {
+       "id": "G1.7.2",
+       "title": "Radius, chord and tangent"
+      },
+      {
+       "id": "G1.7.3",
+       "title": "Arcs, sectors and circular area"
+      },
+      {
+       "id": "G1.7.4",
+       "title": "Inscribed angles and basic cyclicity"
+      },
+      {
+       "id": "G1.7.5",
+       "title": "Circle angles and arcs"
+      },
+      {
+       "id": "G1.7.6",
+       "title": "Tangential quadrilaterals and equal tangent lengths"
+      },
+      {
+       "id": "G1.7.7",
+       "title": "Rolling circles, belts and tangent arcs"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "G1.8",
+     "title": "Coordinate Geometry and Rigid Transformations",
+     "file": "curriculum/books/geometry-1/G1.08-coordinate-geometry-and-rigid-transformations.md",
+     "sections": [
+      {
+       "id": "G1.8.1",
+       "title": "Coordinates, midpoint and distance"
+      },
+      {
+       "id": "G1.8.2",
+       "title": "Slopes and equations of lines"
+      },
+      {
+       "id": "G1.8.3",
+       "title": "Translations, reflections and rotations"
+      },
+      {
+       "id": "G1.8.4",
+       "title": "Coordinate area and method selection"
+      },
+      {
+       "id": "G1.8.5",
+       "title": "Coordinates and area"
+      },
+      {
+       "id": "G1.8.6",
+       "title": "Lattice polygons, shoelace and boundary points"
+      },
+      {
+       "id": "G1.8.7",
+       "title": "Paper folding and reflection geometry"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "G1.9",
+     "title": "Solid Geometry and Integrated Foundations",
+     "file": "curriculum/books/geometry-1/G1.09-solid-geometry-and-integrated-foundations.md",
+     "sections": [
+      {
+       "id": "G1.9.1",
+       "title": "Prisms, cylinders and surface area"
+      },
+      {
+       "id": "G1.9.2",
+       "title": "Pyramids, cones and spheres"
+      },
+      {
+       "id": "G1.9.3",
+       "title": "Spatial right triangles"
+      },
+      {
+       "id": "G1.9.4",
+       "title": "Mixed geometric investigations"
+      },
+      {
+       "id": "G1.9.5",
+       "title": "Scale and dimensional reasoning"
+      },
+      {
+       "id": "G1.9.6",
+       "title": "Regular polyhedra, nets and surface shortest paths"
+      },
+      {
+       "id": "G1.9.7",
+       "title": "Unit-cube arrangements, views and exposed surface"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    }
+   ]
+  },
+  {
+   "prefix": "G2",
+   "id": "geometry-2",
+   "title": "Geometry II — Circle Geometry, Triangle Methods and Analytic Geometry",
+   "file": "curriculum/books/geometry-2/README.md",
+   "chapters": [
+    {
+     "id": "G2.1",
+     "title": "Polygons",
+     "file": "curriculum/books/geometry-2/G2.01-polygons.md",
+     "sections": [
+      {
+       "id": "G2.1.1",
+       "title": "Definition and properties of regular polygons"
+      },
+      {
+       "id": "G2.1.2",
+       "title": "Interior, exterior and central angles"
+      },
+      {
+       "id": "G2.1.3",
+       "title": "Regular hexagons"
+      },
+      {
+       "id": "G2.1.4",
+       "title": "Bird-head model and area ratios"
+      },
+      {
+       "id": "G2.1.5",
+       "title": "Regular dodecagons"
+      },
+      {
+       "id": "G2.1.6",
+       "title": "Regular octagons"
+      },
+      {
+       "id": "G2.1.7",
+       "title": "Advanced polygon configurations"
+      },
+      {
+       "id": "G2.1.8",
+       "title": "Geometric incidence, dissections and region counts"
+      }
+     ],
+     "basis": "Year 2 L11",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 11",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G2.2",
+     "title": "Power of a Point Theorem",
+     "file": "curriculum/books/geometry-2/G2.02-power-of-a-point-theorem.md",
+     "sections": [
+      {
+       "id": "G2.2.1",
+       "title": "Review — central and inscribed angles"
+      },
+      {
+       "id": "G2.2.2",
+       "title": "Intersecting chords theorem"
+      },
+      {
+       "id": "G2.2.3",
+       "title": "Tangent–secant theorem"
+      },
+      {
+       "id": "G2.2.4",
+       "title": "Intersecting secants theorem"
+      },
+      {
+       "id": "G2.2.5",
+       "title": "Power of a fixed point"
+      },
+      {
+       "id": "G2.2.6",
+       "title": "Advanced applications"
+      }
+     ],
+     "basis": "Year 2 L12",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 12",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G2.3",
+     "title": "Cyclic Quadrilaterals I",
+     "file": "curriculum/books/geometry-2/G2.03-cyclic-quadrilaterals-i.md",
+     "sections": [
+      {
+       "id": "G2.3.1",
+       "title": "Concyclic points"
+      },
+      {
+       "id": "G2.3.2",
+       "title": "Definition and properties of cyclic quadrilaterals"
+      },
+      {
+       "id": "G2.3.3",
+       "title": "Determination of cyclic quadrilaterals"
+      },
+      {
+       "id": "G2.3.4",
+       "title": "Applications — angle chasing and geometric proofs"
+      }
+     ],
+     "basis": "Year 2 L13",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 13",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G2.4",
+     "title": "Cyclic Quadrilaterals II",
+     "file": "curriculum/books/geometry-2/G2.04-cyclic-quadrilaterals-ii.md",
+     "sections": [
+      {
+       "id": "G2.4.1",
+       "title": "Review and strategic selection of cyclicity criteria"
+      },
+      {
+       "id": "G2.4.2",
+       "title": "Tangent–chord theorem"
+      },
+      {
+       "id": "G2.4.3",
+       "title": "Perpendicular chords and arc relationships"
+      },
+      {
+       "id": "G2.4.4",
+       "title": "Converse of power of a point"
+      },
+      {
+       "id": "G2.4.5",
+       "title": "Comprehensive geometry proofs"
+      }
+     ],
+     "basis": "Year 2 L14",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 14",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G2.5",
+     "title": "Ptolemy’s Theorem and Stewart’s Theorem",
+     "file": "curriculum/books/geometry-2/G2.05-ptolemys-theorem-and-stewarts-theorem.md",
+     "sections": [
+      {
+       "id": "G2.5.1",
+       "title": "Ptolemy’s theorem"
+      },
+      {
+       "id": "G2.5.2",
+       "title": "Generalized Ptolemy inequality"
+      },
+      {
+       "id": "G2.5.3",
+       "title": "Converse of Ptolemy’s theorem"
+      },
+      {
+       "id": "G2.5.4",
+       "title": "Advanced applications of Ptolemy’s theorem"
+      },
+      {
+       "id": "G2.5.5",
+       "title": "Stewart’s theorem"
+      },
+      {
+       "id": "G2.5.6",
+       "title": "Cyclic, tangential and bicentric quadrilaterals"
+      }
+     ],
+     "basis": "Year 2 L15",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 15",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "G2.6",
+     "title": "Equations of Straight Lines and Circles",
+     "file": "curriculum/books/geometry-2/G2.06-equations-of-straight-lines-and-circles.md",
+     "sections": [
+      {
+       "id": "G2.6.1",
+       "title": "Positional relationship of two lines"
+      },
+      {
+       "id": "G2.6.2",
+       "title": "Distance formulas"
+      },
+      {
+       "id": "G2.6.3",
+       "title": "Symmetry"
+      },
+      {
+       "id": "G2.6.4",
+       "title": "Equation of a circle"
+      },
+      {
+       "id": "G2.6.5",
+       "title": "Positional relationship between a circle and a point"
+      },
+      {
+       "id": "G2.6.6",
+       "title": "Positional relationship between a circle and a line"
+      },
+      {
+       "id": "G2.6.7",
+       "title": "Applications — two circles"
+      },
+      {
+       "id": "G2.6.8",
+       "title": "Applications — loci and trajectory curves"
+      },
+      {
+       "id": "G2.6.9",
+       "title": "Applications — optimization"
+      },
+      {
+       "id": "G2.6.10",
+       "title": "Common tangents and three-circle configurations"
+      }
+     ],
+     "basis": "Year 2 L16",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 16",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G2.7",
+     "title": "Law of Sines and Law of Cosines",
+     "file": "curriculum/books/geometry-2/G2.07-law-of-sines-and-law-of-cosines.md",
+     "sections": [
+      {
+       "id": "G2.7.1",
+       "title": "Triangle notation, data and solvability"
+      },
+      {
+       "id": "G2.7.2",
+       "title": "Sine area formula and its geometric proof"
+      },
+      {
+       "id": "G2.7.3",
+       "title": "Law of Sines (LOS): derivation and direct applications"
+      },
+      {
+       "id": "G2.7.4",
+       "title": "Extended sine law and circumradius"
+      },
+      {
+       "id": "G2.7.5",
+       "title": "Law of Cosines (LOC): derivation and direct applications"
+      },
+      {
+       "id": "G2.7.6",
+       "title": "The SSA ambiguous case and inverse trigonometric reasoning"
+      },
+      {
+       "id": "G2.7.7",
+       "title": "Heron’s formula and radius relations"
+      },
+      {
+       "id": "G2.7.8",
+       "title": "Medians, angle bisectors, cevians and quadrilaterals"
+      },
+      {
+       "id": "G2.7.9",
+       "title": "Multitriangle modeling and choosing the right law"
+      },
+      {
+       "id": "G2.7.10",
+       "title": "Trigonometric geometry proofs and extremal problems"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": true,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G2.8",
+     "title": "Triangle Centers, Cevians and Concurrency",
+     "file": "curriculum/books/geometry-2/G2.08-triangle-centers-cevians-and-concurrency.md",
+     "sections": [
+      {
+       "id": "G2.8.1",
+       "title": "Circumcenter, incenter, centroid and orthocenter"
+      },
+      {
+       "id": "G2.8.2",
+       "title": "Internal/external angle bisectors and mass points"
+      },
+      {
+       "id": "G2.8.3",
+       "title": "Ceva and Menelaus"
+      },
+      {
+       "id": "G2.8.4",
+       "title": "Metric cevian applications"
+      },
+      {
+       "id": "G2.8.5",
+       "title": "Concurrency, collinearity and area methods"
+      },
+      {
+       "id": "G2.8.6",
+       "title": "Euler line, excenters and radius relations"
+      },
+      {
+       "id": "G2.8.7",
+       "title": "Distance-to-sides invariants and directional projections"
+      },
+      {
+       "id": "G2.8.8",
+       "title": "Angle-bisector metrics, symmedians and conjugate directions"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "G2.9",
+     "title": "Conic Sections and Algebraic Loci",
+     "file": "curriculum/books/geometry-2/G2.09-conic-sections-and-algebraic-loci.md",
+     "sections": [
+      {
+       "id": "G2.9.1",
+       "title": "Parabolas as focus–directrix loci"
+      },
+      {
+       "id": "G2.9.2",
+       "title": "Ellipses and constant distance sums"
+      },
+      {
+       "id": "G2.9.3",
+       "title": "Hyperbolas and constant distance differences"
+      },
+      {
+       "id": "G2.9.4",
+       "title": "Completing the square and classifying conics"
+      },
+      {
+       "id": "G2.9.5",
+       "title": "Intersections, tangency and constrained extrema"
+      },
+      {
+       "id": "G2.9.6",
+       "title": "Focal and reflective properties (extension)"
+      },
+      {
+       "id": "G2.9.7",
+       "title": "Rotated conics and mixed quadratic terms"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": [
+      3
+     ]
+    },
+    {
+     "id": "G2.10",
+     "title": "Parametric Equations and Curves",
+     "file": "curriculum/books/geometry-2/G2.10-parametric-equations-and-curves.md",
+     "sections": [
+      {
+       "id": "G2.10.1",
+       "title": "Parametric representation and elimination"
+      },
+      {
+       "id": "G2.10.2",
+       "title": "Parametric lines and segments"
+      },
+      {
+       "id": "G2.10.3",
+       "title": "Trigonometric parameterizations"
+      },
+      {
+       "id": "G2.10.4",
+       "title": "Elimination, restrictions and tracing"
+      },
+      {
+       "id": "G2.10.5",
+       "title": "Motion and trajectory problems"
+      },
+      {
+       "id": "G2.10.6",
+       "title": "Parametric curve families and envelopes"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "G2.11",
+     "title": "Polar Coordinates and Polar Graphs",
+     "file": "curriculum/books/geometry-2/G2.11-polar-coordinates-and-polar-graphs.md",
+     "sections": [
+      {
+       "id": "G2.11.1",
+       "title": "Polar coordinates and equivalent representations"
+      },
+      {
+       "id": "G2.11.2",
+       "title": "Polar equations of lines and circles"
+      },
+      {
+       "id": "G2.11.3",
+       "title": "Graphing polar curves and symmetry"
+      },
+      {
+       "id": "G2.11.4",
+       "title": "Polar intersections and metric applications"
+      },
+      {
+       "id": "G2.11.5",
+       "title": "Polar conics and focus-based equations"
+      },
+      {
+       "id": "G2.11.6",
+       "title": "Radial distance, sectors and geometric interpretation"
+      },
+      {
+       "id": "G2.11.7",
+       "title": "Cylindrical and spherical coordinates (extension)"
+      },
+      {
+       "id": "G2.11.8",
+       "title": "Polar metric formulas and exact region reasoning"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "G2.12",
+     "title": "Geometric Transformations and Similarity Maps",
+     "file": "curriculum/books/geometry-2/G2.12-geometric-transformations-and-similarity-maps.md",
+     "sections": [
+      {
+       "id": "G2.12.1",
+       "title": "Similarity transformations and homothety"
+      },
+      {
+       "id": "G2.12.2",
+       "title": "Translations and rotations"
+      },
+      {
+       "id": "G2.12.3",
+       "title": "Reflections and shortest paths"
+      },
+      {
+       "id": "G2.12.4",
+       "title": "Compositions, symmetries and fixed points"
+      },
+      {
+       "id": "G2.12.5",
+       "title": "Scale, areas and centers of similarity"
+      },
+      {
+       "id": "G2.12.6",
+       "title": "Geometric constructions as executable reasoning"
+      },
+      {
+       "id": "G2.12.7",
+       "title": "Rolling and folding as transformations"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": [
+      4
+     ]
+    },
+    {
+     "id": "G2.13",
+     "title": "Vectors, Dot Products and Analytic Geometry",
+     "file": "curriculum/books/geometry-2/G2.13-vectors-dot-products-and-analytic-geometry.md",
+     "sections": [
+      {
+       "id": "G2.13.1",
+       "title": "Vector representation and linear combinations"
+      },
+      {
+       "id": "G2.13.2",
+       "title": "Dot product, orthogonality and angles"
+      },
+      {
+       "id": "G2.13.3",
+       "title": "Projections and distances"
+      },
+      {
+       "id": "G2.13.4",
+       "title": "Determinants, oriented area and collinearity"
+      },
+      {
+       "id": "G2.13.5",
+       "title": "Vector proofs and strategic origins"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G2.14",
+     "title": "Three-Dimensional Analytic Geometry and Advanced Solids",
+     "file": "curriculum/books/geometry-2/G2.14-three-dimensional-analytic-geometry-and-advanced-solids.md",
+     "sections": [
+      {
+       "id": "G2.14.1",
+       "title": "Lines and planes in space"
+      },
+      {
+       "id": "G2.14.2",
+       "title": "Cross product and triple product"
+      },
+      {
+       "id": "G2.14.3",
+       "title": "Angles, projections and shortest distances"
+      },
+      {
+       "id": "G2.14.4",
+       "title": "Cross-sections and nets"
+      },
+      {
+       "id": "G2.14.5",
+       "title": "Similar solids, frustums and inscribed spheres"
+      },
+      {
+       "id": "G2.14.6",
+       "title": "Three-dimensional matrices (extension)"
+      },
+      {
+       "id": "G2.14.7",
+       "title": "Spatial coordinates, sections of spheres and curved surfaces"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": [
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "prefix": "G3",
+   "id": "geometry-3",
+   "title": "Geometry III — Advanced Geometric Problem Solving",
+   "file": "curriculum/books/geometry-3/README.md",
+   "chapters": [
+    {
+     "id": "G3.1",
+     "title": "Auxiliary Constructions and Strategic Angle Chasing",
+     "file": "curriculum/books/geometry-3/G3.01-auxiliary-constructions-and-strategic-angle-chasing.md",
+     "sections": [
+      {
+       "id": "G3.1.1",
+       "title": "Directed angles and robust configuration reasoning"
+      },
+      {
+       "id": "G3.1.2",
+       "title": "Constructing equal triangles and similar triangles"
+      },
+      {
+       "id": "G3.1.3",
+       "title": "Creating hidden circles"
+      },
+      {
+       "id": "G3.1.4",
+       "title": "Auxiliary equilateral and isosceles triangles"
+      },
+      {
+       "id": "G3.1.5",
+       "title": "Choosing a solution route"
+      },
+      {
+       "id": "G3.1.6",
+       "title": "Configuration repair and geometric inequalities"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "G3.2",
+     "title": "Advanced Triangle Configurations and Metric Relations",
+     "file": "curriculum/books/geometry-3/G3.02-advanced-triangle-configurations-and-metric-relations.md",
+     "sections": [
+      {
+       "id": "G3.2.1",
+       "title": "Cevian networks and signed ratios"
+      },
+      {
+       "id": "G3.2.2",
+       "title": "Incenter, circumcenter and excenter geometry"
+      },
+      {
+       "id": "G3.2.3",
+       "title": "Orthocenter, nine-point circle and pedal figures"
+      },
+      {
+       "id": "G3.2.4",
+       "title": "Apollonius circles and ratio constraints"
+      },
+      {
+       "id": "G3.2.5",
+       "title": "Special metric identities and extremal configurations"
+      },
+      {
+       "id": "G3.2.6",
+       "title": "Choosing a directional or cevian representation"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G3.3",
+     "title": "Advanced Circle Configurations and Radical Axes",
+     "file": "curriculum/books/geometry-3/G3.03-advanced-circle-configurations-and-radical-axes.md",
+     "sections": [
+      {
+       "id": "G3.3.1",
+       "title": "Common chords and radical axes"
+      },
+      {
+       "id": "G3.3.2",
+       "title": "Radical center and coaxial systems"
+      },
+      {
+       "id": "G3.3.3",
+       "title": "Tangent circles and common tangents"
+      },
+      {
+       "id": "G3.3.4",
+       "title": "Advanced power and Ptolemy combinations"
+      },
+      {
+       "id": "G3.3.5",
+       "title": "Tangency and circle packing extensions"
+      },
+      {
+       "id": "G3.3.6",
+       "title": "Finding a common-tangent construction"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": true,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G3.4",
+     "title": "Spiral Similarity, Rotations and Homothety",
+     "file": "curriculum/books/geometry-3/G3.04-spiral-similarity-rotations-and-homothety.md",
+     "sections": [
+      {
+       "id": "G3.4.1",
+       "title": "Rotations and equal-length constructions"
+      },
+      {
+       "id": "G3.4.2",
+       "title": "Homothety and tangent circles"
+      },
+      {
+       "id": "G3.4.3",
+       "title": "Spiral similarity centers"
+      },
+      {
+       "id": "G3.4.4",
+       "title": "Composition of transformations"
+      },
+      {
+       "id": "G3.4.5",
+       "title": "Mixed geometry applications"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": [
+      4
+     ]
+    },
+    {
+     "id": "G3.5",
+     "title": "Advanced Trigonometric Geometry",
+     "file": "curriculum/books/geometry-3/G3.05-advanced-trigonometric-geometry.md",
+     "sections": [
+      {
+       "id": "G3.5.1",
+       "title": "Sine-law networks and common scale factors"
+      },
+      {
+       "id": "G3.5.2",
+       "title": "Cosine-law elimination and cevian problems"
+      },
+      {
+       "id": "G3.5.3",
+       "title": "Trigonometric Ceva and Menelaus"
+      },
+      {
+       "id": "G3.5.4",
+       "title": "Triangle area, radius and constrained optimization"
+      },
+      {
+       "id": "G3.5.5",
+       "title": "Trigonometric polygon geometry"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G3.6",
+     "title": "Advanced Coordinate Geometry, Loci and Conics",
+     "file": "curriculum/books/geometry-3/G3.06-advanced-coordinate-geometry-loci-and-conics.md",
+     "sections": [
+      {
+       "id": "G3.6.1",
+       "title": "Strategic coordinate placement"
+      },
+      {
+       "id": "G3.6.2",
+       "title": "Intersections and tangency as discriminants"
+      },
+      {
+       "id": "G3.6.3",
+       "title": "Loci, envelopes and inverse constraints"
+      },
+      {
+       "id": "G3.6.4",
+       "title": "Conics and focus-based optimization"
+      },
+      {
+       "id": "G3.6.5",
+       "title": "Polar and parametric problem solving"
+      },
+      {
+       "id": "G3.6.6",
+       "title": "Intersections of transformed curves and uniqueness of family members"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": [
+      3
+     ]
+    },
+    {
+     "id": "G3.7",
+     "title": "Vector, Barycentric and Complex Geometry",
+     "file": "curriculum/books/geometry-3/G3.07-vector-barycentric-and-complex-geometry.md",
+     "sections": [
+      {
+       "id": "G3.7.1",
+       "title": "Dot products and vector constraints"
+      },
+      {
+       "id": "G3.7.2",
+       "title": "Affine and barycentric coordinates"
+      },
+      {
+       "id": "G3.7.3",
+       "title": "Complex representation of circles and lines"
+      },
+      {
+       "id": "G3.7.4",
+       "title": "Complex rotations and geometric sums"
+      },
+      {
+       "id": "G3.7.5",
+       "title": "Selecting the representation and verifying results"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G3.8",
+     "title": "Inversion and Selected Advanced Circle Transformations",
+     "file": "curriculum/books/geometry-3/G3.08-inversion-and-selected-advanced-circle-transformations.md",
+     "sections": [
+      {
+       "id": "G3.8.1",
+       "title": "Definition, reciprocal distances and angle behavior"
+      },
+      {
+       "id": "G3.8.2",
+       "title": "Images of lines and circles"
+      },
+      {
+       "id": "G3.8.3",
+       "title": "Transforming tangent configurations"
+      },
+      {
+       "id": "G3.8.4",
+       "title": "Combining inversion with power and homothety"
+      },
+      {
+       "id": "G3.8.5",
+       "title": "Transfer and limits"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "G3.9",
+     "title": "Advanced Solid Geometry and Spatial Reasoning",
+     "file": "curriculum/books/geometry-3/G3.09-advanced-solid-geometry-and-spatial-reasoning.md",
+     "sections": [
+      {
+       "id": "G3.9.1",
+       "title": "Cross-sections and projected configurations"
+      },
+      {
+       "id": "G3.9.2",
+       "title": "Spatial angles and shortest distances"
+      },
+      {
+       "id": "G3.9.3",
+       "title": "Inscribed and circumscribed solids"
+      },
+      {
+       "id": "G3.9.4",
+       "title": "Tetrahedral volumes and determinant methods"
+      },
+      {
+       "id": "G3.9.5",
+       "title": "Surface paths, unfoldings and optimization"
+      },
+      {
+       "id": "G3.9.6",
+       "title": "Volume by slicing, packing and spatial feasibility"
+      },
+      {
+       "id": "G3.9.7",
+       "title": "Spatial volume from pairwise metrics and Gram determinants"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": [
+      5
+     ]
+    },
+    {
+     "id": "G3.10",
+     "title": "Geometric Synthesis: Late AIME and Beyond",
+     "file": "curriculum/books/geometry-3/G3.10-geometric-synthesis-late-aime-and-beyond.md",
+     "sections": [
+      {
+       "id": "G3.10.1",
+       "title": "Reading the diagram and planning backward"
+      },
+      {
+       "id": "G3.10.2",
+       "title": "Multi-stage metric problems"
+      },
+      {
+       "id": "G3.10.3",
+       "title": "Competing representations and method recovery"
+      },
+      {
+       "id": "G3.10.4",
+       "title": "Timed mixed practice and validation"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    }
+   ]
+  },
+  {
+   "prefix": "N1",
+   "id": "number-theory-1",
+   "title": "Number Theory I — Integers, Divisibility and Remainders",
+   "file": "curriculum/books/number-theory-1/README.md",
+   "chapters": [
+    {
+     "id": "N1.1",
+     "title": "Integers, Divisibility and Parity",
+     "file": "curriculum/books/number-theory-1/N1.01-integers-divisibility-and-parity.md",
+     "sections": [
+      {
+       "id": "N1.1.1",
+       "title": "Divisibility and multiples"
+      },
+      {
+       "id": "N1.1.2",
+       "title": "Parity and residue classes"
+      },
+      {
+       "id": "N1.1.3",
+       "title": "Divisibility tests"
+      },
+      {
+       "id": "N1.1.4",
+       "title": "Counting multiples"
+      },
+      {
+       "id": "N1.1.5",
+       "title": "Divisibility as an equation"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N1.2",
+     "title": "Primes and Unique Factorization",
+     "file": "curriculum/books/number-theory-1/N1.02-primes-and-unique-factorization.md",
+     "sections": [
+      {
+       "id": "N1.2.1",
+       "title": "Prime and composite integers"
+      },
+      {
+       "id": "N1.2.2",
+       "title": "Fundamental theorem of arithmetic"
+      },
+      {
+       "id": "N1.2.3",
+       "title": "Powers and perfect powers"
+      },
+      {
+       "id": "N1.2.4",
+       "title": "Prime-based reasoning"
+      },
+      {
+       "id": "N1.2.5",
+       "title": "Prime factorization as a representation"
+      },
+      {
+       "id": "N1.2.6",
+       "title": "Primality tests and structural compositeness"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N1.3",
+     "title": "Greatest Common Divisors and Least Common Multiples",
+     "file": "curriculum/books/number-theory-1/N1.03-greatest-common-divisors-and-least-common-multiples.md",
+     "sections": [
+      {
+       "id": "N1.3.1",
+       "title": "GCD and LCM from factorizations"
+      },
+      {
+       "id": "N1.3.2",
+       "title": "Euclidean algorithm"
+      },
+      {
+       "id": "N1.3.3",
+       "title": "Bézout and Euclid’s lemma"
+      },
+      {
+       "id": "N1.3.4",
+       "title": "Coprimality and fraction reduction"
+      },
+      {
+       "id": "N1.3.5",
+       "title": "Euclidean algorithm and linear combinations"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N1.4",
+     "title": "Divisors, Factorials and Prime Exponents",
+     "file": "curriculum/books/number-theory-1/N1.04-divisors-factorials-and-prime-exponents.md",
+     "sections": [
+      {
+       "id": "N1.4.1",
+       "title": "Divisor counting"
+      },
+      {
+       "id": "N1.4.2",
+       "title": "Sum and product of divisors"
+      },
+      {
+       "id": "N1.4.3",
+       "title": "Factorial prime exponents"
+      },
+      {
+       "id": "N1.4.4",
+       "title": "Comparing integer structures"
+      },
+      {
+       "id": "N1.4.5",
+       "title": "Divisor counting and factorials"
+      },
+      {
+       "id": "N1.4.6",
+       "title": "Factor tuples and multiplicative distributions"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": true,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N1.5",
+     "title": "Digits, Bases and Rational Representations",
+     "file": "curriculum/books/number-theory-1/N1.05-digits-bases-and-rational-representations.md",
+     "sections": [
+      {
+       "id": "N1.5.1",
+       "title": "Positional notation and base conversion"
+      },
+      {
+       "id": "N1.5.2",
+       "title": "Digit sums and reversal"
+      },
+      {
+       "id": "N1.5.3",
+       "title": "Fractions and repeating decimals"
+      },
+      {
+       "id": "N1.5.4",
+       "title": "Restricted digit problems"
+      },
+      {
+       "id": "N1.5.5",
+       "title": "Representing decimals as fractions"
+      },
+      {
+       "id": "N1.5.6",
+       "title": "Digital roots, alternating sums and arithmetic calendars"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "N1.6",
+     "title": "Integer Parts, Rationality and Exact Number Sense",
+     "file": "curriculum/books/number-theory-1/N1.06-integer-parts-rationality-and-exact-number-sense.md",
+     "sections": [
+      {
+       "id": "N1.6.1",
+       "title": "Quotient–remainder and floor"
+      },
+      {
+       "id": "N1.6.2",
+       "title": "Rational versus irrational numbers"
+      },
+      {
+       "id": "N1.6.3",
+       "title": "Base arithmetic and carries"
+      },
+      {
+       "id": "N1.6.4",
+       "title": "Exact bounds and rounding"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N1.7",
+     "title": "Modular Arithmetic and Linear Congruences",
+     "file": "curriculum/books/number-theory-1/N1.07-modular-arithmetic-and-linear-congruences.md",
+     "sections": [
+      {
+       "id": "N1.7.1",
+       "title": "Definition and arithmetic"
+      },
+      {
+       "id": "N1.7.2",
+       "title": "Powers and residue patterns"
+      },
+      {
+       "id": "N1.7.3",
+       "title": "Linear congruences and cancellation"
+      },
+      {
+       "id": "N1.7.4",
+       "title": "Squares and modular obstructions"
+      },
+      {
+       "id": "N1.7.5",
+       "title": "Residue cycles and units digits"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N1.8",
+     "title": "Elementary Diophantine Equations",
+     "file": "curriculum/books/number-theory-1/N1.08-elementary-diophantine-equations.md",
+     "sections": [
+      {
+       "id": "N1.8.1",
+       "title": "Linear Diophantine equations"
+      },
+      {
+       "id": "N1.8.2",
+       "title": "Factorization method"
+      },
+      {
+       "id": "N1.8.3",
+       "title": "Bounds and finite search"
+      },
+      {
+       "id": "N1.8.4",
+       "title": "Pythagorean triples"
+      },
+      {
+       "id": "N1.8.5",
+       "title": "Integer solutions and parameter bounds"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N1.9",
+     "title": "Integrated Integer Problem Solving",
+     "file": "curriculum/books/number-theory-1/N1.09-integrated-integer-problem-solving.md",
+     "sections": [
+      {
+       "id": "N1.9.1",
+       "title": "Method selection"
+      },
+      {
+       "id": "N1.9.2",
+       "title": "Necessary and sufficient conditions"
+      },
+      {
+       "id": "N1.9.3",
+       "title": "Multiple conditions and casework"
+      },
+      {
+       "id": "N1.9.4",
+       "title": "Proof and generalization"
+      },
+      {
+       "id": "N1.9.5",
+       "title": "Mixed integer investigation"
+      },
+      {
+       "id": "N1.9.6",
+       "title": "Figurate numbers and exact integer bounds"
+      },
+      {
+       "id": "N1.9.7",
+       "title": "Squares and powers between exact bounds"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    }
+   ]
+  },
+  {
+   "prefix": "N2",
+   "id": "number-theory-2",
+   "title": "Number Theory II — Congruences, Arithmetic Functions and Integer Equations",
+   "file": "curriculum/books/number-theory-2/README.md",
+   "chapters": [
+    {
+     "id": "N2.1",
+     "title": "Modular Inverses and the Chinese Remainder Theorem",
+     "file": "curriculum/books/number-theory-2/N2.01-modular-inverses-and-the-chinese-remainder-theorem.md",
+     "sections": [
+      {
+       "id": "N2.1.1",
+       "title": "Units and modular inverses"
+      },
+      {
+       "id": "N2.1.2",
+       "title": "General linear congruences"
+      },
+      {
+       "id": "N2.1.3",
+       "title": "Chinese remainder theorem"
+      },
+      {
+       "id": "N2.1.4",
+       "title": "Noncoprime moduli"
+      },
+      {
+       "id": "N2.1.5",
+       "title": "A complete CRT construction"
+      },
+      {
+       "id": "N2.1.6",
+       "title": "Polynomial congruences and idempotents by prime powers"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": [
+      6
+     ]
+    },
+    {
+     "id": "N2.2",
+     "title": "Modular Powers, Orders and Periodicity",
+     "file": "curriculum/books/number-theory-2/N2.02-modular-powers-orders-and-periodicity.md",
+     "sections": [
+      {
+       "id": "N2.2.1",
+       "title": "Repeated squaring"
+      },
+      {
+       "id": "N2.2.2",
+       "title": "Fermat’s little theorem"
+      },
+      {
+       "id": "N2.2.3",
+       "title": "Multiplicative order"
+      },
+      {
+       "id": "N2.2.4",
+       "title": "Nonunit powers and CRT"
+      },
+      {
+       "id": "N2.2.5",
+       "title": "Fermat and Euler as period bounds"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N2.3",
+     "title": "Wilson’s Theorem, Residue Products and Primitive Roots",
+     "file": "curriculum/books/number-theory-2/N2.03-wilsons-theorem-residue-products-and-primitive-roots.md",
+     "sections": [
+      {
+       "id": "N2.3.1",
+       "title": "Inverse pairing and Wilson’s theorem"
+      },
+      {
+       "id": "N2.3.2",
+       "title": "Orders and subgroup structure"
+      },
+      {
+       "id": "N2.3.3",
+       "title": "Primitive roots (intermediate extension)"
+      },
+      {
+       "id": "N2.3.4",
+       "title": "Discrete logarithms and congruence solving"
+      },
+      {
+       "id": "N2.3.5",
+       "title": "Residue products and application selection"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N2.4",
+     "title": "Euler’s Totient Function and Arithmetic Functions",
+     "file": "curriculum/books/number-theory-2/N2.04-eulers-totient-function-and-arithmetic-functions.md",
+     "sections": [
+      {
+       "id": "N2.4.1",
+       "title": "Totient and coprime counts"
+      },
+      {
+       "id": "N2.4.2",
+       "title": "Multiplicative arithmetic functions"
+      },
+      {
+       "id": "N2.4.3",
+       "title": "Euler’s theorem and orders"
+      },
+      {
+       "id": "N2.4.4",
+       "title": "Totient identities and inverse questions"
+      },
+      {
+       "id": "N2.4.5",
+       "title": "Totient as a counting and modular bridge"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N2.5",
+     "title": "Valuations, Factorials and Divisibility of Expressions",
+     "file": "curriculum/books/number-theory-2/N2.05-valuations-factorials-and-divisibility-of-expressions.md",
+     "sections": [
+      {
+       "id": "N2.5.1",
+       "title": "The p-adic valuation"
+      },
+      {
+       "id": "N2.5.2",
+       "title": "Legendre’s formula and digit sums"
+      },
+      {
+       "id": "N2.5.3",
+       "title": "Binomial coefficient divisibility"
+      },
+      {
+       "id": "N2.5.4",
+       "title": "Structured differences of powers"
+      },
+      {
+       "id": "N2.5.5",
+       "title": "Prime valuations in a factorial ratio"
+      },
+      {
+       "id": "N2.5.6",
+       "title": "Binomial coefficients modulo primes"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": true,
+     "secondPass": 0,
+     "auditRefinements": [
+      7
+     ]
+    },
+    {
+     "id": "N2.6",
+     "title": "Quadratic Residues and Modular Obstructions",
+     "file": "curriculum/books/number-theory-2/N2.06-quadratic-residues-and-modular-obstructions.md",
+     "sections": [
+      {
+       "id": "N2.6.1",
+       "title": "Square residue tables"
+      },
+      {
+       "id": "N2.6.2",
+       "title": "Quadratic congruences"
+      },
+      {
+       "id": "N2.6.3",
+       "title": "Powers and residue criteria"
+      },
+      {
+       "id": "N2.6.4",
+       "title": "Combining moduli"
+      },
+      {
+       "id": "N2.6.5",
+       "title": "Modular squares and simultaneous restrictions"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N2.7",
+     "title": "Sums of Squares and Integer Quadratic Forms",
+     "file": "curriculum/books/number-theory-2/N2.07-sums-of-squares-and-integer-quadratic-forms.md",
+     "sections": [
+      {
+       "id": "N2.7.1",
+       "title": "Square tests and difference of squares"
+      },
+      {
+       "id": "N2.7.2",
+       "title": "Sum of two squares and multiplication identity"
+      },
+      {
+       "id": "N2.7.3",
+       "title": "Sum-of-two-squares criterion"
+      },
+      {
+       "id": "N2.7.4",
+       "title": "Pythagorean triples and rational circle points"
+      },
+      {
+       "id": "N2.7.5",
+       "title": "Quadratic integer equations and modular bounds"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N2.8",
+     "title": "Advanced Diophantine Equations and Bounds",
+     "file": "curriculum/books/number-theory-2/N2.08-advanced-diophantine-equations-and-bounds.md",
+     "sections": [
+      {
+       "id": "N2.8.1",
+       "title": "Product and reciprocal equations"
+      },
+      {
+       "id": "N2.8.2",
+       "title": "Linear constraints and coin problems"
+      },
+      {
+       "id": "N2.8.3",
+       "title": "Quadratic forms and Pell-type equations"
+      },
+      {
+       "id": "N2.8.4",
+       "title": "Extremal bounds and finite enumeration"
+      },
+      {
+       "id": "N2.8.5",
+       "title": "Reversible Diophantine transformations"
+      },
+      {
+       "id": "N2.8.6",
+       "title": "Unit fractions and divisor parameterization"
+      },
+      {
+       "id": "N2.8.7",
+       "title": "Exponential Diophantine constraints"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "N2.9",
+     "title": "Rational Approximation, Continued Fractions and Pell Equations",
+     "file": "curriculum/books/number-theory-2/N2.09-rational-approximation-continued-fractions-and-pell-equations.md",
+     "sections": [
+      {
+       "id": "N2.9.1",
+       "title": "Rational approximation and Farey neighbors"
+      },
+      {
+       "id": "N2.9.2",
+       "title": "Continued fractions and Euclidean algorithm"
+      },
+      {
+       "id": "N2.9.3",
+       "title": "Irrational continued fractions and approximation"
+      },
+      {
+       "id": "N2.9.4",
+       "title": "Pell equations and solution generation"
+      },
+      {
+       "id": "N2.9.5",
+       "title": "Applications to integer constraints"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N2.10",
+     "title": "Periodic Decimals, Bases and Residue Structure",
+     "file": "curriculum/books/number-theory-2/N2.10-periodic-decimals-bases-and-residue-structure.md",
+     "sections": [
+      {
+       "id": "N2.10.1",
+       "title": "Decimal periods and orders"
+      },
+      {
+       "id": "N2.10.2",
+       "title": "Base-dependent divisibility"
+      },
+      {
+       "id": "N2.10.3",
+       "title": "Carry and digit constraints"
+      },
+      {
+       "id": "N2.10.4",
+       "title": "Repeating strings and cyclic transformations"
+      },
+      {
+       "id": "N2.10.5",
+       "title": "Periods in arbitrary bases"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N2.11",
+     "title": "Number-Theoretic Synthesis",
+     "file": "curriculum/books/number-theory-2/N2.11-number-theoretic-synthesis.md",
+     "sections": [
+      {
+       "id": "N2.11.1",
+       "title": "Counting under arithmetic restrictions"
+      },
+      {
+       "id": "N2.11.2",
+       "title": "Constructing integer examples"
+      },
+      {
+       "id": "N2.11.3",
+       "title": "Combining valuations and congruences"
+      },
+      {
+       "id": "N2.11.4",
+       "title": "Mixed proof and exact-answer problems"
+      },
+      {
+       "id": "N2.11.5",
+       "title": "Intermediate number-theory investigation"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    }
+   ]
+  },
+  {
+   "prefix": "N3",
+   "id": "number-theory-3",
+   "title": "Number Theory III — Advanced Number-Theoretic Problem Solving",
+   "file": "curriculum/books/number-theory-3/README.md",
+   "chapters": [
+    {
+     "id": "N3.1",
+     "title": "Strategic Modular Arithmetic and Simultaneous Constraints",
+     "file": "curriculum/books/number-theory-3/N3.01-strategic-modular-arithmetic-and-simultaneous-constraints.md",
+     "sections": [
+      {
+       "id": "N3.1.1",
+       "title": "Choosing informative moduli"
+      },
+      {
+       "id": "N3.1.2",
+       "title": "Noncoprime CRT and reconstruction"
+      },
+      {
+       "id": "N3.1.3",
+       "title": "Congruences with unknown moduli or divisors"
+      },
+      {
+       "id": "N3.1.4",
+       "title": "Modular equations with nonunits"
+      },
+      {
+       "id": "N3.1.5",
+       "title": "Reconstruction with interval constraints"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": [
+      6
+     ]
+    },
+    {
+     "id": "N3.2",
+     "title": "Orders, Power Towers and Periodic Residues",
+     "file": "curriculum/books/number-theory-3/N3.02-orders-power-towers-and-periodic-residues.md",
+     "sections": [
+      {
+       "id": "N3.2.1",
+       "title": "Exact orders and factor tests"
+      },
+      {
+       "id": "N3.2.2",
+       "title": "Power towers and recursive exponent reduction"
+      },
+      {
+       "id": "N3.2.3",
+       "title": "Cycles of sequences and rational decimals"
+      },
+      {
+       "id": "N3.2.4",
+       "title": "Primitive roots and modular power equations"
+      },
+      {
+       "id": "N3.2.5",
+       "title": "Modular products and factorials"
+      },
+      {
+       "id": "N3.2.6",
+       "title": "Carmichael periods and efficient nonunit exponent towers (extension)"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "N3.3",
+     "title": "Prime Valuations, Factorials and Exponent Lifting",
+     "file": "curriculum/books/number-theory-3/N3.03-prime-valuations-factorials-and-exponent-lifting.md",
+     "sections": [
+      {
+       "id": "N3.3.1",
+       "title": "Valuation algebra and cancellation"
+      },
+      {
+       "id": "N3.3.2",
+       "title": "Legendre, trailing zeros and binomial valuations"
+      },
+      {
+       "id": "N3.3.3",
+       "title": "Lifting the exponent (LTE)"
+      },
+      {
+       "id": "N3.3.4",
+       "title": "GCD identities and prime divisors of powers"
+      },
+      {
+       "id": "N3.3.5",
+       "title": "Optimization with prime exponents"
+      },
+      {
+       "id": "N3.3.6",
+       "title": "Lifting power residues and counting fibers"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "N3.4",
+     "title": "Arithmetic Functions, Divisor Sums and Multiplicative Structure",
+     "file": "curriculum/books/number-theory-3/N3.04-arithmetic-functions-divisor-sums-and-multiplicative-structure.md",
+     "sections": [
+      {
+       "id": "N3.4.1",
+       "title": "Multiplicative functions and prime-power tables"
+      },
+      {
+       "id": "N3.4.2",
+       "title": "Divisor products and weighted divisor sums"
+      },
+      {
+       "id": "N3.4.3",
+       "title": "Counting coprime integers in intervals"
+      },
+      {
+       "id": "N3.4.4",
+       "title": "Möbius inversion and gcd classification (extension)"
+      },
+      {
+       "id": "N3.4.5",
+       "title": "Extremal divisor-function problems"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": [
+      6
+     ]
+    },
+    {
+     "id": "N3.5",
+     "title": "Quadratic Residues and Modular Solvability",
+     "file": "curriculum/books/number-theory-3/N3.05-quadratic-residues-and-modular-solvability.md",
+     "sections": [
+      {
+       "id": "N3.5.1",
+       "title": "Square residues and Euler’s criterion"
+      },
+      {
+       "id": "N3.5.2",
+       "title": "Completing squares modulo integers"
+      },
+      {
+       "id": "N3.5.3",
+       "title": "Lifting roots to prime powers"
+      },
+      {
+       "id": "N3.5.4",
+       "title": "Legendre symbols and selected reciprocity tools"
+      },
+      {
+       "id": "N3.5.5",
+       "title": "Modular obstructions with bounds"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N3.6",
+     "title": "Advanced Diophantine Equations and Integer Bounds",
+     "file": "curriculum/books/number-theory-3/N3.06-advanced-diophantine-equations-and-integer-bounds.md",
+     "sections": [
+      {
+       "id": "N3.6.1",
+       "title": "Linear families and constrained solutions"
+      },
+      {
+       "id": "N3.6.2",
+       "title": "Factorization and divisor classification"
+      },
+      {
+       "id": "N3.6.3",
+       "title": "Quadratic forms and Pythagorean triples"
+      },
+      {
+       "id": "N3.6.4",
+       "title": "Bounding, descent and finite search"
+      },
+      {
+       "id": "N3.6.5",
+       "title": "Frobenius-type problems and integer feasibility"
+      },
+      {
+       "id": "N3.6.6",
+       "title": "Exponential constraints as a sequence of filters"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": true,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N3.7",
+     "title": "Pell Equations, Norms and Structured Integer Sequences",
+     "file": "curriculum/books/number-theory-3/N3.07-pell-equations-norms-and-structured-integer-sequences.md",
+     "sections": [
+      {
+       "id": "N3.7.1",
+       "title": "Norm-preserving multiplication"
+      },
+      {
+       "id": "N3.7.2",
+       "title": "Continued fractions and completeness"
+      },
+      {
+       "id": "N3.7.3",
+       "title": "Generalized and negative Pell equations"
+      },
+      {
+       "id": "N3.7.4",
+       "title": "Integer recurrences and divisibility patterns"
+      },
+      {
+       "id": "N3.7.5",
+       "title": "Approximation as an integer tool"
+      },
+      {
+       "id": "N3.7.6",
+       "title": "Fibonacci divisibility and companion recurrences"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "N3.8",
+     "title": "Advanced Digits, Bases and Carry Problems",
+     "file": "curriculum/books/number-theory-3/N3.08-advanced-digits-bases-and-carry-problems.md",
+     "sections": [
+      {
+       "id": "N3.8.1",
+       "title": "Positional constraints and carry bounds"
+      },
+      {
+       "id": "N3.8.2",
+       "title": "Carries as hidden variables"
+      },
+      {
+       "id": "N3.8.3",
+       "title": "Digit sums and modular invariants"
+      },
+      {
+       "id": "N3.8.4",
+       "title": "Repeating blocks, decimals and orders"
+      },
+      {
+       "id": "N3.8.5",
+       "title": "Digit counting with arithmetic restrictions"
+      },
+      {
+       "id": "N3.8.6",
+       "title": "Unknown bases, coprimality and extremal prime-factor constraints"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "N3.9",
+     "title": "Advanced Integer Extremes, Floors and Mixed Number Theory",
+     "file": "curriculum/books/number-theory-3/N3.09-advanced-integer-extremes-floors-and-mixed-number-theory.md",
+     "sections": [
+      {
+       "id": "N3.9.1",
+       "title": "Floor sums and lattice counts"
+      },
+      {
+       "id": "N3.9.2",
+       "title": "Fraction and denominator constraints"
+      },
+      {
+       "id": "N3.9.3",
+       "title": "Discrete optimization and extremal integers"
+      },
+      {
+       "id": "N3.9.4",
+       "title": "Integer existence and construction"
+      },
+      {
+       "id": "N3.9.5",
+       "title": "Integrated late-AIME problem laboratory"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    }
+   ]
+  },
+  {
+   "prefix": "C1",
+   "id": "combinatorics-1",
+   "title": "Combinatorics & Probability I — Counting Models and Finite Probability",
+   "file": "curriculum/books/combinatorics-1/README.md",
+   "chapters": [
+    {
+     "id": "C1.1",
+     "title": "Counting Objects, Sets and Cases",
+     "file": "curriculum/books/combinatorics-1/C1.01-counting-objects-sets-and-cases.md",
+     "sections": [
+      {
+       "id": "C1.1.1",
+       "title": "Sets, lists and ordered tuples"
+      },
+      {
+       "id": "C1.1.2",
+       "title": "Systematic enumeration"
+      },
+      {
+       "id": "C1.1.3",
+       "title": "Addition principle and disjoint cases"
+      },
+      {
+       "id": "C1.1.4",
+       "title": "Multiplication principle"
+      },
+      {
+       "id": "C1.1.5",
+       "title": "Addition versus multiplication"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C1.2",
+     "title": "Permutations and Combinations",
+     "file": "curriculum/books/combinatorics-1/C1.02-permutations-and-combinations.md",
+     "sections": [
+      {
+       "id": "C1.2.1",
+       "title": "Permutations of distinct objects"
+      },
+      {
+       "id": "C1.2.2",
+       "title": "Combinations and uniform overcounting"
+      },
+      {
+       "id": "C1.2.3",
+       "title": "Repeated objects"
+      },
+      {
+       "id": "C1.2.4",
+       "title": "Selection with restrictions"
+      },
+      {
+       "id": "C1.2.5",
+       "title": "Why division corrects order"
+      },
+      {
+       "id": "C1.2.6",
+       "title": "Pairings and perfect matchings"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": true,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C1.3",
+     "title": "Restricted Arrangements and Distributions",
+     "file": "curriculum/books/combinatorics-1/C1.03-restricted-arrangements-and-distributions.md",
+     "sections": [
+      {
+       "id": "C1.3.1",
+       "title": "Blocks and gaps"
+      },
+      {
+       "id": "C1.3.2",
+       "title": "Circular arrangements"
+      },
+      {
+       "id": "C1.3.3",
+       "title": "Stars and bars"
+      },
+      {
+       "id": "C1.3.4",
+       "title": "Complementary counting and elementary overlaps"
+      },
+      {
+       "id": "C1.3.5",
+       "title": "Choosing a counting model under mixed restrictions"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C1.4",
+     "title": "Binomial Coefficients and Combinatorial Identities",
+     "file": "curriculum/books/combinatorics-1/C1.04-binomial-coefficients-and-combinatorial-identities.md",
+     "sections": [
+      {
+       "id": "C1.4.1",
+       "title": "Pascal’s identity and triangle"
+      },
+      {
+       "id": "C1.4.2",
+       "title": "Binomial theorem"
+      },
+      {
+       "id": "C1.4.3",
+       "title": "Subsets and weighted counting"
+      },
+      {
+       "id": "C1.4.4",
+       "title": "Double counting and bijections (introduction)"
+      },
+      {
+       "id": "C1.4.5",
+       "title": "Coefficient identities through two representations"
+      },
+      {
+       "id": "C1.4.6",
+       "title": "Binomial coefficients, multinomial choices and coefficient extraction"
+      },
+      {
+       "id": "C1.4.7",
+       "title": "Hockey-stick identity and coefficient interpretation"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "C1.5",
+     "title": "Finite Probability and Conditional Events",
+     "file": "curriculum/books/combinatorics-1/C1.05-finite-probability-and-conditional-events.md",
+     "sections": [
+      {
+       "id": "C1.5.1",
+       "title": "Outcomes, events and uniform models"
+      },
+      {
+       "id": "C1.5.2",
+       "title": "Union and complement of events"
+      },
+      {
+       "id": "C1.5.3",
+       "title": "Conditional probability"
+      },
+      {
+       "id": "C1.5.4",
+       "title": "Independence versus disjointness"
+      },
+      {
+       "id": "C1.5.5",
+       "title": "Sample spaces and independence"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C1.6",
+     "title": "Statistics, Weighted Averages and Geometric Probability",
+     "file": "curriculum/books/combinatorics-1/C1.06-statistics-weighted-averages-and-geometric-probability.md",
+     "sections": [
+      {
+       "id": "C1.6.1",
+       "title": "Data summaries and weighted means"
+      },
+      {
+       "id": "C1.6.2",
+       "title": "Spread and transformations of data"
+      },
+      {
+       "id": "C1.6.3",
+       "title": "Uniform length and area probability"
+      },
+      {
+       "id": "C1.6.4",
+       "title": "Independent continuous choices and regions"
+      },
+      {
+       "id": "C1.6.5",
+       "title": "Reading data displays and reconstructing statistics"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C1.7",
+     "title": "Expected Value and Simple Distributions",
+     "file": "curriculum/books/combinatorics-1/C1.07-expected-value-and-simple-distributions.md",
+     "sections": [
+      {
+       "id": "C1.7.1",
+       "title": "Random variables and distributions"
+      },
+      {
+       "id": "C1.7.2",
+       "title": "Expected value"
+      },
+      {
+       "id": "C1.7.3",
+       "title": "Indicators and linearity"
+      },
+      {
+       "id": "C1.7.4",
+       "title": "Binomial and geometric models (preview)"
+      },
+      {
+       "id": "C1.7.5",
+       "title": "Expected value versus most likely result"
+      },
+      {
+       "id": "C1.7.6",
+       "title": "Bernoulli trials, geometric waits and exact probabilities"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "C1.8",
+     "title": "Paths, Recursion and Discrete Models",
+     "file": "curriculum/books/combinatorics-1/C1.08-paths-recursion-and-discrete-models.md",
+     "sections": [
+      {
+       "id": "C1.8.1",
+       "title": "Shortest lattice paths"
+      },
+      {
+       "id": "C1.8.2",
+       "title": "First/last-step recursion"
+      },
+      {
+       "id": "C1.8.3",
+       "title": "Graphs and elementary walks"
+      },
+      {
+       "id": "C1.8.4",
+       "title": "States and small examples"
+      },
+      {
+       "id": "C1.8.5",
+       "title": "Paths and empty configurations"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C1.9",
+     "title": "Integrated Counting and Probability",
+     "file": "curriculum/books/combinatorics-1/C1.09-integrated-counting-and-probability.md",
+     "sections": [
+      {
+       "id": "C1.9.1",
+       "title": "Diagnose the counting object"
+      },
+      {
+       "id": "C1.9.2",
+       "title": "Direct versus complementary counting"
+      },
+      {
+       "id": "C1.9.3",
+       "title": "Probability through multiple methods"
+      },
+      {
+       "id": "C1.9.4",
+       "title": "Proof and error analysis"
+      },
+      {
+       "id": "C1.9.5",
+       "title": "Mixed problem-solving laboratory"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C1.10",
+     "title": "Elementary Logic, Deduction and Constraints",
+     "file": "curriculum/books/combinatorics-1/C1.10-elementary-logic-deduction-and-constraints.md",
+     "sections": [
+      {
+       "id": "C1.10.1",
+       "title": "Statements, implications and counterexamples"
+      },
+      {
+       "id": "C1.10.2",
+       "title": "Truth-tellers, liars and consistency"
+      },
+      {
+       "id": "C1.10.3",
+       "title": "Orderings, matching and assignment grids"
+      },
+      {
+       "id": "C1.10.4",
+       "title": "Constraint propagation, casework and completeness"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": true,
+     "secondPass": 0,
+     "auditRefinements": []
+    }
+   ]
+  },
+  {
+   "prefix": "C2",
+   "id": "combinatorics-2",
+   "title": "Combinatorics & Probability II — Enumeration, Recurrences and Advanced Probability",
+   "file": "curriculum/books/combinatorics-2/README.md",
+   "chapters": [
+    {
+     "id": "C2.1",
+     "title": "Enumeration Basics",
+     "file": "curriculum/books/combinatorics-2/C2.01-enumeration-basics.md",
+     "sections": [
+      {
+       "id": "C2.1.1",
+       "title": "Lexicographic ordering"
+      },
+      {
+       "id": "C2.1.2",
+       "title": "Tree diagrams"
+      },
+      {
+       "id": "C2.1.3",
+       "title": "Counting figures"
+      },
+      {
+       "id": "C2.1.4",
+       "title": "Advanced casework and enumeration"
+      },
+      {
+       "id": "C2.1.5",
+       "title": "Digit occurrence counts and position weights"
+      }
+     ],
+     "basis": "Year 2 L17",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 17",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C2.2",
+     "title": "Principle of Inclusion and Exclusion",
+     "file": "curriculum/books/combinatorics-2/C2.02-principle-of-inclusion-and-exclusion.md",
+     "sections": [
+      {
+       "id": "C2.2.1",
+       "title": "Two-set inclusion–exclusion"
+      },
+      {
+       "id": "C2.2.2",
+       "title": "Three-set inclusion–exclusion"
+      },
+      {
+       "id": "C2.2.3",
+       "title": "Generalized inclusion–exclusion and complementary counting"
+      },
+      {
+       "id": "C2.2.4",
+       "title": "Applications to divisibility and prime numbers"
+      },
+      {
+       "id": "C2.2.5",
+       "title": "Euler’s totient function"
+      },
+      {
+       "id": "C2.2.6",
+       "title": "Derangements and restricted permutations"
+      }
+     ],
+     "basis": "Year 2 L18",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 18",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C2.3",
+     "title": "Bijections, Double Counting and Binomial Structure",
+     "file": "curriculum/books/combinatorics-2/C2.03-bijections-double-counting-and-binomial-structure.md",
+     "sections": [
+      {
+       "id": "C2.3.1",
+       "title": "Bijections and inverse constructions"
+      },
+      {
+       "id": "C2.3.2",
+       "title": "Double counting incidences"
+      },
+      {
+       "id": "C2.3.3",
+       "title": "Binomial identities and convolution"
+      },
+      {
+       "id": "C2.3.4",
+       "title": "Symmetry and orbit counting (introduction)"
+      },
+      {
+       "id": "C2.3.5",
+       "title": "Marking an object and its feature"
+      },
+      {
+       "id": "C2.3.6",
+       "title": "Permutation cycles and order"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C2.4",
+     "title": "Pigeonhole, Extremal Reasoning and Constructive Proof",
+     "file": "curriculum/books/combinatorics-2/C2.04-pigeonhole-extremal-reasoning-and-constructive-proof.md",
+     "sections": [
+      {
+       "id": "C2.4.1",
+       "title": "Ordinary and generalized pigeonhole"
+      },
+      {
+       "id": "C2.4.2",
+       "title": "Partial sums and zero-sum subsequences"
+      },
+      {
+       "id": "C2.4.3",
+       "title": "Extremal principle and minimal counterexamples"
+      },
+      {
+       "id": "C2.4.4",
+       "title": "Invariants and monovariants"
+      },
+      {
+       "id": "C2.4.5",
+       "title": "Constructive proof and sharpness"
+      },
+      {
+       "id": "C2.4.6",
+       "title": "Bounds, constructions and attainable equality"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C2.5",
+     "title": "Counting with Recurrence Relations",
+     "file": "curriculum/books/combinatorics-2/C2.05-counting-with-recurrence-relations.md",
+     "sections": [
+      {
+       "id": "C2.5.1",
+       "title": "Classic recursive counting problems — tiling"
+      },
+      {
+       "id": "C2.5.2",
+       "title": "Recursive coloring problems"
+      },
+      {
+       "id": "C2.5.3",
+       "title": "Recursive counting with graphs and diagrams"
+      },
+      {
+       "id": "C2.5.4",
+       "title": "Lattice paths and restricted sequences"
+      },
+      {
+       "id": "C2.5.5",
+       "title": "Creative recursive counting and probability"
+      },
+      {
+       "id": "C2.5.6",
+       "title": "Derangements using recurrence relations"
+      },
+      {
+       "id": "C2.5.7",
+       "title": "Runs, switches and adjacency statistics"
+      }
+     ],
+     "basis": "Year 2 L19",
+     "optional": false,
+     "label": "YEAR 2 ANCHOR · Original Lesson 19",
+     "teachingSequence": true,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C2.6",
+     "title": "Restricted Distributions, Lattice Paths and Catalan Structure",
+     "file": "curriculum/books/combinatorics-2/C2.06-restricted-distributions-lattice-paths-and-catalan-structure.md",
+     "sections": [
+      {
+       "id": "C2.6.1",
+       "title": "Bounded stars and bars"
+      },
+      {
+       "id": "C2.6.2",
+       "title": "Constrained paths and forbidden regions"
+      },
+      {
+       "id": "C2.6.3",
+       "title": "Catalan numbers"
+      },
+      {
+       "id": "C2.6.4",
+       "title": "Multinomial and distribution identities"
+      },
+      {
+       "id": "C2.6.5",
+       "title": "Catalan counts and boundary shifts"
+      },
+      {
+       "id": "C2.6.6",
+       "title": "Ballot paths, reflections and boundary conventions"
+      },
+      {
+       "id": "C2.6.7",
+       "title": "Set partitions and occupancy structures"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "C2.7",
+     "title": "Generating Functions for Counting and Recurrences",
+     "file": "curriculum/books/combinatorics-2/C2.07-generating-functions-for-counting-and-recurrences.md",
+     "sections": [
+      {
+       "id": "C2.7.1",
+       "title": "Coefficient encoding"
+      },
+      {
+       "id": "C2.7.2",
+       "title": "Product rule and convolution"
+      },
+      {
+       "id": "C2.7.3",
+       "title": "Recurrences and rational functions"
+      },
+      {
+       "id": "C2.7.4",
+       "title": "Restricted selections and partitions"
+      },
+      {
+       "id": "C2.7.5",
+       "title": "Coefficient transformations and binomial identities"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C2.8",
+     "title": "Conditional Probability and Probability Distributions",
+     "file": "curriculum/books/combinatorics-2/C2.08-conditional-probability-and-probability-distributions.md",
+     "sections": [
+      {
+       "id": "C2.8.1",
+       "title": "Total probability and Bayes’ theorem"
+      },
+      {
+       "id": "C2.8.2",
+       "title": "Binomial and hypergeometric distributions"
+      },
+      {
+       "id": "C2.8.3",
+       "title": "Conditional counting and symmetry"
+      },
+      {
+       "id": "C2.8.4",
+       "title": "Geometric probability and continuous models"
+      },
+      {
+       "id": "C2.8.5",
+       "title": "Inference from repeated or partial observations"
+      },
+      {
+       "id": "C2.8.6",
+       "title": "Geometric and negative-binomial distributions"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "C2.9",
+     "title": "Expectations, Indicators and Random Processes",
+     "file": "curriculum/books/combinatorics-2/C2.09-expectations-indicators-and-random-processes.md",
+     "sections": [
+      {
+       "id": "C2.9.1",
+       "title": "Linearity and indicator variables"
+      },
+      {
+       "id": "C2.9.2",
+       "title": "Waiting times and first-step analysis"
+      },
+      {
+       "id": "C2.9.3",
+       "title": "Finite-state probability recurrences"
+      },
+      {
+       "id": "C2.9.4",
+       "title": "Variance and dependence (extension)"
+      },
+      {
+       "id": "C2.9.5",
+       "title": "First-step equations and constructive expectation"
+      },
+      {
+       "id": "C2.9.6",
+       "title": "Conditional expectation and the law of total expectation"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "C2.10",
+     "title": "Graph Theory and Discrete Networks",
+     "file": "curriculum/books/combinatorics-2/C2.10-graph-theory-and-discrete-networks.md",
+     "sections": [
+      {
+       "id": "C2.10.1",
+       "title": "Graphs, degrees and the handshaking lemma"
+      },
+      {
+       "id": "C2.10.2",
+       "title": "Paths, cycles and connectivity"
+      },
+      {
+       "id": "C2.10.3",
+       "title": "Trees and spanning trees"
+      },
+      {
+       "id": "C2.10.4",
+       "title": "Bipartite graphs, coloring and matchings"
+      },
+      {
+       "id": "C2.10.5",
+       "title": "Planar graphs and Euler characteristic"
+      },
+      {
+       "id": "C2.10.6",
+       "title": "Walk counting and state transitions"
+      },
+      {
+       "id": "C2.10.7",
+       "title": "Euler trails, Hamilton cycles and graph construction"
+      },
+      {
+       "id": "C2.10.8",
+       "title": "Tournaments, brackets and degree constraints"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "C2.11",
+     "title": "Combinatorial Reasoning and Synthesis",
+     "file": "curriculum/books/combinatorics-2/C2.11-combinatorial-reasoning-and-synthesis.md",
+     "sections": [
+      {
+       "id": "C2.11.1",
+       "title": "Pigeonhole and existence"
+      },
+      {
+       "id": "C2.11.2",
+       "title": "Invariants and parity"
+      },
+      {
+       "id": "C2.11.3",
+       "title": "Mixed counting and probability"
+      },
+      {
+       "id": "C2.11.4",
+       "title": "Proof and counterexample"
+      },
+      {
+       "id": "C2.11.5",
+       "title": "Intermediate mixed counting laboratory"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    }
+   ]
+  },
+  {
+   "prefix": "C3",
+   "id": "combinatorics-3",
+   "title": "Combinatorics & Probability III — Advanced Combinatorial Problem Solving",
+   "file": "curriculum/books/combinatorics-3/README.md",
+   "chapters": [
+    {
+     "id": "C3.1",
+     "title": "Advanced Enumeration and Multi-Constraint Casework",
+     "file": "curriculum/books/combinatorics-3/C3.01-advanced-enumeration-and-multi-constraint-casework.md",
+     "sections": [
+      {
+       "id": "C3.1.1",
+       "title": "Choosing the counted object and canonical form"
+      },
+      {
+       "id": "C3.1.2",
+       "title": "Layered casework and conditional choices"
+      },
+      {
+       "id": "C3.1.3",
+       "title": "Counting via complement and forbidden structures"
+      },
+      {
+       "id": "C3.1.4",
+       "title": "Digit DP and prefix constraints"
+      },
+      {
+       "id": "C3.1.5",
+       "title": "Geometric enumeration and symmetry"
+      },
+      {
+       "id": "C3.1.6",
+       "title": "Canonical representatives and row/column constraint grids"
+      },
+      {
+       "id": "C3.1.7",
+       "title": "Perfect matchings under multiple restrictions"
+      },
+      {
+       "id": "C3.1.8",
+       "title": "Constraint propagation and forced entries"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": []
+    },
+    {
+     "id": "C3.2",
+     "title": "Advanced Inclusion–Exclusion and Restricted Permutations",
+     "file": "curriculum/books/combinatorics-3/C3.02-advanced-inclusion-exclusion-and-restricted-permutations.md",
+     "sections": [
+      {
+       "id": "C3.2.1",
+       "title": "Generalized inclusion–exclusion and exact multiplicity"
+      },
+      {
+       "id": "C3.2.2",
+       "title": "Surjections and occupied boxes"
+      },
+      {
+       "id": "C3.2.3",
+       "title": "Derangements and fixed-point distributions"
+      },
+      {
+       "id": "C3.2.4",
+       "title": "Rook-polynomial method (extension)"
+      },
+      {
+       "id": "C3.2.5",
+       "title": "Hybrid counting with intersections and symmetry"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C3.3",
+     "title": "Bijections, Double Counting and Combinatorial Identities",
+     "file": "curriculum/books/combinatorics-3/C3.03-bijections-double-counting-and-combinatorial-identities.md",
+     "sections": [
+      {
+       "id": "C3.3.1",
+       "title": "Constructing and verifying bijections"
+      },
+      {
+       "id": "C3.3.2",
+       "title": "Double counting incidences"
+      },
+      {
+       "id": "C3.3.3",
+       "title": "Binomial and multinomial identities"
+      },
+      {
+       "id": "C3.3.4",
+       "title": "Reflection principle and ballot problems"
+      },
+      {
+       "id": "C3.3.5",
+       "title": "Combinatorial transformations in hard problems"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C3.4",
+     "title": "Restricted Distributions, Partitions and Lattice Paths",
+     "file": "curriculum/books/combinatorics-3/C3.04-restricted-distributions-partitions-and-lattice-paths.md",
+     "sections": [
+      {
+       "id": "C3.4.1",
+       "title": "Bounded and heterogeneous stars-and-bars"
+      },
+      {
+       "id": "C3.4.2",
+       "title": "Partitions and distinct or unordered parts"
+      },
+      {
+       "id": "C3.4.3",
+       "title": "Lattice paths with multiple boundaries"
+      },
+      {
+       "id": "C3.4.4",
+       "title": "Nonadjacent selections and circular restrictions"
+      },
+      {
+       "id": "C3.4.5",
+       "title": "Counting integer solutions with weighted sums"
+      },
+      {
+       "id": "C3.4.6",
+       "title": "Unlabeled occupancy with unequal constraints"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C3.5",
+     "title": "Advanced Recurrences, State Models and Transfer Matrices",
+     "file": "curriculum/books/combinatorics-3/C3.05-advanced-recurrences-state-models-and-transfer-matrices.md",
+     "sections": [
+      {
+       "id": "C3.5.1",
+       "title": "State sufficiency and transition construction"
+      },
+      {
+       "id": "C3.5.2",
+       "title": "Coupled recurrences and initial conditions"
+      },
+      {
+       "id": "C3.5.3",
+       "title": "Circular boundary conditions and periodic structures"
+      },
+      {
+       "id": "C3.5.4",
+       "title": "Transfer matrices and symmetry reduction"
+      },
+      {
+       "id": "C3.5.5",
+       "title": "Multi-statistic states and resource constraints"
+      },
+      {
+       "id": "C3.5.6",
+       "title": "Residue-state and carrying models across subjects"
+      },
+      {
+       "id": "C3.5.7",
+       "title": "Exact pattern counts and overlapping runs"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 1,
+     "auditRefinements": [
+      8
+     ]
+    },
+    {
+     "id": "C3.6",
+     "title": "Advanced Generating Functions and Coefficient Methods",
+     "file": "curriculum/books/combinatorics-3/C3.06-advanced-generating-functions-and-coefficient-methods.md",
+     "sections": [
+      {
+       "id": "C3.6.1",
+       "title": "Coefficient extraction and product design"
+      },
+      {
+       "id": "C3.6.2",
+       "title": "Rational generating functions and partial fractions"
+      },
+      {
+       "id": "C3.6.3",
+       "title": "Partition identities and product transformations"
+      },
+      {
+       "id": "C3.6.4",
+       "title": "Roots-of-unity filters and modular statistics"
+      },
+      {
+       "id": "C3.6.5",
+       "title": "Catalan and recursive generating functions (extension)"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": [
+      7
+     ]
+    },
+    {
+     "id": "C3.7",
+     "title": "Symmetry, Burnside’s Lemma and Counting up to Equivalence",
+     "file": "curriculum/books/combinatorics-3/C3.07-symmetry-burnsides-lemma-and-counting-up-to-equivalence.md",
+     "sections": [
+      {
+       "id": "C3.7.1",
+       "title": "Orbits, stabilizers and constant multiplicity"
+      },
+      {
+       "id": "C3.7.2",
+       "title": "Burnside’s lemma by double counting"
+      },
+      {
+       "id": "C3.7.3",
+       "title": "Reflections and dihedral symmetries"
+      },
+      {
+       "id": "C3.7.4",
+       "title": "Grid and polyhedral symmetries"
+      },
+      {
+       "id": "C3.7.5",
+       "title": "Symmetry with adjacency restrictions"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C3.8",
+     "title": "Advanced Graph-Based Counting and Discrete Structures",
+     "file": "curriculum/books/combinatorics-3/C3.08-advanced-graph-based-counting-and-discrete-structures.md",
+     "sections": [
+      {
+       "id": "C3.8.1",
+       "title": "Graph walk counts and adjacency structure"
+      },
+      {
+       "id": "C3.8.2",
+       "title": "Matchings and assignment constraints"
+      },
+      {
+       "id": "C3.8.3",
+       "title": "Trees, spanning structures and Prüfer codes"
+      },
+      {
+       "id": "C3.8.4",
+       "title": "Graph coloring and planar reasoning"
+      },
+      {
+       "id": "C3.8.5",
+       "title": "Invariants, extremal thresholds and games"
+      },
+      {
+       "id": "C3.8.6",
+       "title": "Tournament feasibility and bracket structure"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": [
+      8
+     ]
+    },
+    {
+     "id": "C3.9",
+     "title": "Advanced Conditional Probability and Distributions",
+     "file": "curriculum/books/combinatorics-3/C3.09-advanced-conditional-probability-and-distributions.md",
+     "sections": [
+      {
+       "id": "C3.9.1",
+       "title": "Conditional samples and Bayesian reasoning"
+      },
+      {
+       "id": "C3.9.2",
+       "title": "Hypergeometric, binomial and multinomial models"
+      },
+      {
+       "id": "C3.9.3",
+       "title": "Order statistics and symmetry of random ranks"
+      },
+      {
+       "id": "C3.9.4",
+       "title": "Geometric probability and area models"
+      },
+      {
+       "id": "C3.9.5",
+       "title": "Probability via complement, inclusion–exclusion and state recursion"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    },
+    {
+     "id": "C3.10",
+     "title": "Advanced Expectation, Random Processes and Games",
+     "file": "curriculum/books/combinatorics-3/C3.10-advanced-expectation-random-processes-and-games.md",
+     "sections": [
+      {
+       "id": "C3.10.1",
+       "title": "Linearity and indicator random variables"
+      },
+      {
+       "id": "C3.10.2",
+       "title": "Variance, covariance and second moments"
+      },
+      {
+       "id": "C3.10.3",
+       "title": "First-step expectation and absorbing states"
+      },
+      {
+       "id": "C3.10.4",
+       "title": "Hitting probabilities, random walks and gambler’s ruin"
+      },
+      {
+       "id": "C3.10.5",
+       "title": "Game strategies, minimax and optimal stopping"
+      },
+      {
+       "id": "C3.10.6",
+       "title": "Integrated probability challenge laboratory"
+      },
+      {
+       "id": "C3.10.7",
+       "title": "Expected geometric configurations and random intersections"
+      },
+      {
+       "id": "C3.10.8",
+       "title": "Absorbing Markov models and finite-state expected time"
+      },
+      {
+       "id": "C3.10.9",
+       "title": "Information-dependent probability and decision policies"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": true,
+     "secondPass": 2,
+     "auditRefinements": []
+    },
+    {
+     "id": "C3.11",
+     "title": "Combinatorial Synthesis: Late AIME and Beyond",
+     "file": "curriculum/books/combinatorics-3/C3.11-combinatorial-synthesis-late-aime-and-beyond.md",
+     "sections": [
+      {
+       "id": "C3.11.1",
+       "title": "Model selection before formula selection"
+      },
+      {
+       "id": "C3.11.2",
+       "title": "Multi-constraint transfer problems"
+      },
+      {
+       "id": "C3.11.3",
+       "title": "Exact computation and independent checks"
+      },
+      {
+       "id": "C3.11.4",
+       "title": "Advanced contest practice and reflection"
+      }
+     ],
+     "basis": "Proposed",
+     "optional": false,
+     "label": "PROPOSED CHAPTER",
+     "teachingSequence": false,
+     "secondPass": 0,
+     "auditRefinements": []
+    }
+   ]
+  }
+ ]
+}
