@@ -204,7 +204,7 @@ A, B, C, D = pt(P, u1, 4), pt(P, u1, 9), pt(P, u2, 3), pt(P, u2, 12)
 assert all(on_circle(c, R, X_) for X_ in (A, B, C, D))
 f = Fig("two-secants-example", "Two secants from P: PA = 4, AB = 5 and PC = 3",
         "The lengths that multiply are measured from $P$: $PA\\cdot PB=4\\cdot 9$ and $PC\\cdot PD=3\\cdot PD$.",
-        (-0.8, 13.8, -7.4, 6.6))
+        (-0.8, c[0] + R + 0.5, c[1] - R - 0.5, c[1] + R + 0.6))
 f.circle(c, R); f.seg(P, B); f.seg(P, D)
 f.length(P, A, "4", 1); f.length(A, B, "5", -1); f.length(P, C, "3", -1); f.length(C, D, "?", -1)
 f.point(P, "P", at=180); f.point(A, "A", c); f.point(B, "B", c); f.point(C, "C", c); f.point(D, "D", c)

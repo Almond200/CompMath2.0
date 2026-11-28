@@ -2,6 +2,12 @@
 
 **2026-11-28**
 
+- **New curriculum: G2.2 follow-up.**
+  - The summary and the two problem sets are numbered on after the last section (G2.2.7 Summary and next steps, G2.2.8 Review Problems, G2.2.9 Challenge Problems).
+  - Theorems, corollaries and definitions are cited by name ("the tangent–secant theorem"), with the number on hover. The name is a link only at its first mention on a page, on the statement's own page and the next two; after that it is plain text.
+  - Fix bold run-ins that contain math ("__The distances from $P$.__" showed its underscores).
+  - Recorded in AUTHORING-STANDARD §1, §7 and §8.
+
 - **New curriculum: G2.2 sets the series standard.** At the owner's request, the preview is rebuilt on the live textbook interface: the chapter rail, header bars, phone navigation row, lesson typography, problem boxes and page footer. Solutions can be hidden again, and the choice is remembered. The chapter is revised to new conventions, recorded in `curriculum/AUTHORING-STANDARD.md` §7–§10 for every later chapter:
   - one vocabulary of labels (Example, Checkpoint, Guided Practice, Practice Problem, Review Problem, Challenge Problem), numbered through the chapter, with contest sources shown apart from the label;
   - numbered theorems, corollaries and definitions with explicit conditions;

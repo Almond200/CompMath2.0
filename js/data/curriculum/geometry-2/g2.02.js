@@ -98,7 +98,7 @@ The angles at $P$ are vertical angles: $\angle APC=\angle DPB$. Next, $\angle CA
 
 $$\begin{gathered}\frac{PA}{PD}=\frac{PC}{PB},\\ \text{so}\quad PA\cdot PB=PC\cdot PD.\end{gathered}$$
 
-:::theorem thm-chords | Intersecting chords
+:::theorem thm-chords | Intersecting chords | intersecting chords theorem
 If chords $AB$ and $CD$ of a circle meet at a point $P$ inside the circle, then $PA\cdot PB=PC\cdot PD$.
 :::
 
@@ -120,11 +120,11 @@ The two lengths that multiply are the two pieces of the same chord, both measure
 
 The example shows something the theorem alone did not say: the common product can be computed from the circle's radius and the distance $OP$ alone.
 
-:::corollary cor-inside | The product from the center
+:::corollary cor-inside | Chord products from the center | chord-product formula
 If $P$ is at distance $d$ from the center of a circle of radius $r$, with $d<r$, then every chord $AB$ through $P$ has $PA\cdot PB=r^2-d^2$.
 :::
 
-Indeed, the diameter through $P$ is a chord through $P$, cut into $r-d$ and $r+d$, and by {{ref:thm-chords}} every chord through $P$ has the same product, $(r-d)(r+d)$. In the opening, $5^2-2^2=21$. This number becomes the subject of Section G2.2.5.
+Indeed, the diameter through $P$ is a chord through $P$, cut into $r-d$ and $r+d$, and by the {{ref:thm-chords}} every chord through $P$ has the same product, $(r-d)(r+d)$. In the opening, $5^2-2^2=21$. This number becomes the subject of Section G2.2.5.
 
 {{item:c-shortest}}
 
@@ -159,21 +159,21 @@ $$\begin{aligned}PA\cdot PB&=(OP^2-OM^2)\\&\qquad-(r^2-OM^2)\\&=OP^2-r^2.\end{al
 
 The distance $OM$, the only quantity that depends on the direction of the secant, has cancelled. So every secant through $P$ has the same product $OP^2-r^2$. For the tangent, the radius $OT$ is perpendicular to $PT$ (G1.7.2), so by Pythagoras $PT^2=OP^2-r^2$ as well.
 
-:::theorem thm-tangent | Tangent–secant
+:::theorem thm-tangent | Tangent–secant | tangent–secant theorem
 Let $P$ be a point outside a circle with center $O$ and radius $r$. If a secant through $P$ meets the circle at $A$ and $B$, and $PT$ is tangent to the circle at $T$, then
 $$PA\cdot PB=PT^2=OP^2-r^2.$$
 :::
 
 {{item:ch-outside}}
 
-The same computation works when $P$ is inside the circle. There $P$ lies between $A$ and $B$, the pieces are $MA-PM$ and $MA+PM$, and the product is $MA^2-PM^2=r^2-OP^2$. This is a second proof of {{ref:cor-inside}}. (Chapter G2.4 gives a proof of the tangent–secant theorem by similar triangles, using the tangent–chord angle.)
+The same computation works when $P$ is inside the circle. There $P$ lies between $A$ and $B$, the pieces are $MA-PM$ and $MA+PM$, and the product is $MA^2-PM^2=r^2-OP^2$. This is a second proof of the {{ref:cor-inside}}. (Chapter G2.4 gives a proof of the tangent–secant theorem by similar triangles, using the tangent–chord angle.)
 
 {{item:p-ahsme56}}
 
 {{item:p-amc20b10}}`
     },
     "G2.2.4": {
-      body: String.raw`Two secants from the same outside point need no new work: each has product $PT^2$ by {{ref:thm-tangent}}, so if one meets the circle at $A$ and $B$ and the other at $C$ and $D$,
+      body: String.raw`Two secants from the same outside point need no new work: each has product $PT^2$ by the {{ref:thm-tangent}}, so if one meets the circle at $A$ and $B$ and the other at $C$ and $D$,
 
 $$PA\cdot PB=PT^2=PC\cdot PD.$$
 
@@ -185,7 +185,7 @@ Let the secants be $PAB$ and $PCD$, with $A$ and $C$ the nearer points ({{ref:fi
 
 $$\begin{gathered}\frac{PA}{PC}=\frac{PD}{PB},\\ \text{so}\quad PA\cdot PB=PC\cdot PD.\end{gathered}$$
 
-:::theorem thm-secants | Intersecting secants
+:::theorem thm-secants | Intersecting secants | intersecting secants theorem
 If two secants from a point $P$ outside a circle meet it at $A$ and $B$ and at $C$ and $D$, then $PA\cdot PB=PC\cdot PD$.
 :::
 
@@ -208,7 +208,7 @@ In every case so far the rule reads the same way: along a line through $P$, mult
 
 The three lines are one expression, $OP^2-r^2$, up to sign. This suggests giving that number its own name.
 
-:::definition def-power | Power of a point
+:::definition def-power | Power of a point | definition of power
 The __power__ of a point $P$ with respect to a circle with center $O$ and radius $r$ is
 $$\operatorname{pow}(P)=OP^2-r^2.$$
 :::
@@ -221,14 +221,14 @@ The power is negative when $P$ is inside the circle, zero when $P$ is on it, and
 
 The sign of the power is not decoration. It records which side of $P$ the two intersection points lie on: from an inside point, $A$ and $B$ are on opposite sides of $P$; from an outside point, on the same side. A signed product keeps that information.
 
-:::definition def-signed | Signed product
+:::definition def-signed | Signed product | signed product
 Let $A$ and $B$ be points on a line through $P$. Their __signed product__ from $P$ is
 $$\overrightarrow{PA}\cdot\overrightarrow{PB}=\begin{cases}PA\cdot PB&\text{if }A\text{ and }B\text{ are on the same side of }P,\\-PA\cdot PB&\text{if they are on opposite sides,}\\0&\text{if }A=P\text{ or }B=P.\end{cases}$$
 :::
 
 Two points about notation. First, $PA$ always means an ordinary length, which is never negative; a sign appears only in the signed product, never in a length. Second, the arrows are deliberate: when vectors arrive later, $\overrightarrow{PA}\cdot\overrightarrow{PB}$ is exactly their dot product. We do not write $\overline{PA}$ for a signed length, as some books do, because contest problems use $\overline{PA}$ for the segment itself.
 
-:::theorem thm-power | Power of a point
+:::theorem thm-power | Power of a point | power of a point theorem
 Let $P$ be any point and let a line through $P$ meet a circle at $A$ and $B$ (with $A=B$ if the line is tangent). Then
 $$\overrightarrow{PA}\cdot\overrightarrow{PB}=\operatorname{pow}(P),\qquad\text{so}\qquad PA\cdot PB=\lvert\operatorname{pow}(P)\rvert.$$
 :::
@@ -291,7 +291,7 @@ Power gives one equation per point. A problem can still have more unknowns than 
   close: {
     body: String.raw`### What this chapter established
 
-A point $P$ and a circle determine one number, the power $\operatorname{pow}(P)=OP^2-r^2$ ({{ref:def-power}}). For every line through $P$ that meets the circle at $A$ and $B$, the signed product $\overrightarrow{PA}\cdot\overrightarrow{PB}$ equals the power, so the product $PA\cdot PB$ of the distances from $P$ equals $\lvert\operatorname{pow}(P)\rvert$; for a tangent it is $PT^2$ ({{ref:thm-power}}). You have seen two proofs. Similar triangles built from inscribed angles explain why two lines through $P$ share the product ({{ref:thm-chords}}, {{ref:thm-secants}}). The perpendicular from the center explains why its value is $OP^2-r^2$, whatever the line ({{ref:thm-tangent}}).
+A point $P$ and a circle determine one number, the power $\operatorname{pow}(P)=OP^2-r^2$. For every line through $P$ that meets the circle at $A$ and $B$, the signed product $\overrightarrow{PA}\cdot\overrightarrow{PB}$ equals the power, so the product $PA\cdot PB$ of the distances from $P$ equals $\lvert\operatorname{pow}(P)\rvert$; for a tangent it is $PT^2$. You have seen two proofs. Similar triangles built from inscribed angles explain why two lines through $P$ share the product: the intersecting chords and intersecting secants theorems. The perpendicular from the center explains why its value is $OP^2-r^2$, whatever the line: the tangent–secant theorem.
 
 ### Signals to look for
 
@@ -354,7 +354,7 @@ Short reference versions of this chapter's results: [[power-of-a-point]] (the th
       kind: "example",
       title: "Every chord through one point",
       problem: String.raw`A circle has radius $13$, and $P$ is a point at distance $5$ from the center $O$. What is the product of the two pieces of any chord through $P$, and how short can such a chord be?`,
-      solution: String.raw`__Choosing an approach.__ {{ref:thm-chords}} says every chord through $P$ has the same product, so compute it on the most convenient chord: the diameter through $P$, whose pieces can be read off from the radius and $OP$.
+      solution: String.raw`__Choosing an approach.__ The {{ref:thm-chords}} says every chord through $P$ has the same product, so compute it on the most convenient chord: the diameter through $P$, whose pieces can be read off from the radius and $OP$.
 
 {{fig:diameter-point}}
 
@@ -368,7 +368,7 @@ __A check by another route.__ Half of $GH$ is a leg of the right triangle with h
       kind: "checkpoint",
       q: String.raw`A circle has radius $10$ and $P$ is at distance $6$ from its center. Find the length of the shortest chord through $P$.`,
       answer: "16",
-      solution: String.raw`By {{ref:cor-inside}} the common product is $10^2-6^2=64$. The shortest chord has equal pieces, $8$ and $8$, so its length is $16$.`
+      solution: String.raw`By the {{ref:cor-inside}} the common product is $10^2-6^2=64$. The shortest chord has equal pieces, $8$ and $8$, so its length is $16$.`
     },
     "p-hmmt07": {
       kind: "practice", slug: "2007-hmmt-february-geometry-2",
@@ -383,7 +383,7 @@ __A check by another route.__ Half of $GH$ is a leg of the right triangle with h
     },
     "ch-outside": {
       kind: "checkpoint",
-      q: String.raw`Which step of the proof of {{ref:thm-tangent}} uses the fact that $P$ is outside the circle?`,
+      q: String.raw`Which step of the proof of the {{ref:thm-tangent}} uses the fact that $P$ is outside the circle?`,
       choices: [String.raw`$PM^2=OP^2-OM^2$, from triangle $OMP$`, String.raw`$PA=PM-MA$ and $PB=PM+MA$`, String.raw`$MA^2=r^2-OM^2$, from triangle $OMA$`, String.raw`No step: the proof is the same for any $P$`],
       answer: "B",
       solution: String.raw`Only the position of $A$ between $P$ and $M$ depends on $P$ being outside. The two Pythagorean steps hold for any point $P$ on the line. When $P$ is inside, $P$ lies between $A$ and $B$, the pieces become $MA-PM$ and $MA+PM$, and the same computation gives $r^2-OP^2$, as the next paragraph shows.`
@@ -391,7 +391,7 @@ __A check by another route.__ Half of $GH$ is a leg of the right triangle with h
     "p-ahsme56": {
       kind: "example", slug: "1956-ahsme-14",
       title: "A tangent and a secant from one point",
-      solution: String.raw`__What signals the method.__ One point, $P$, has a tangent and a secant through it, and the unknown is a distance from $P$ along the secant: {{ref:thm-tangent}} applies directly.
+      solution: String.raw`__What signals the method.__ One point, $P$, has a tangent and a secant through it, and the unknown is a distance from $P$ along the secant: the {{ref:thm-tangent}} applies directly.
 
 {{fig:tangent-secant-example}}
 
@@ -405,7 +405,7 @@ A length is positive, so $x=10$: $PB=10$, choice (B). The rejected root $-30$ is
     },
     "p-amc20b10": {
       kind: "guided", slug: "2020-amc-12b-10",
-      setup: String.raw`__The idea.__ $A$ lies outside the circle $\omega$, and line $AM$ is a secant through $A$: it meets $\omega$ at $P$ and at $M$. So {{ref:thm-tangent}} gives $AP\cdot AM=AN^2$, where $AN$ is the tangent from $A$.
+      setup: String.raw`__The idea.__ $A$ lies outside the circle $\omega$, and line $AM$ is a secant through $A$: it meets $\omega$ at $P$ and at $M$. So the {{ref:thm-tangent}} gives $AP\cdot AM=AN^2$, where $AN$ is the tangent from $A$.
 
 {{fig:square-incircle}}
 
@@ -422,9 +422,9 @@ __Your step.__ Finish the computation of $AP$.`,
       problem: String.raw`From an outside point $P$, one secant meets a circle at $A$ and $B$ with $PA=4$ and $AB=5$. A second secant meets it at $C$ and $D$, with $C$ nearer to $P$, and $PC=3$. Find $CD$.`,
       solution: String.raw`{{fig:two-secants-example}}
 
-__The distances from $P$.__ {{ref:thm-secants}} multiplies distances from $P$, so first convert the given chord into one: $PB=PA+AB=4+5=9$. The common product is $PA\cdot PB=36$. Then $PD=36/3=12$ and $CD=PD-PC=9$.
+__The distances from $P$.__ The {{ref:thm-secants}} multiplies distances from $P$, so first convert the given chord into one: $PB=PA+AB=4+5=9$. The common product is $PA\cdot PB=36$. Then $PD=36/3=12$ and $CD=PD-PC=9$.
 
-__The mistake.__ It is tempting to multiply the outside piece by the chord, writing $PA\cdot AB=PC\cdot CD$, that is, $4\cdot5=3\cdot CD$. That gives $CD=\tfrac{20}{3}$, a plausible-looking but wrong answer. The chord $AB$ is not a distance from $P$. The proof of {{ref:thm-tangent}} shows why only $PA\cdot PB$ is constant: it equals $PM^2-MA^2$, and nothing like that holds for $PA\cdot AB$. Concretely, as a secant turns toward the tangent, its chord shrinks to $0$ while $PA$ stays positive, so $PA\cdot AB$ goes to $0$, whereas $PA\cdot PB$ stays at $PT^2$.`
+__The mistake.__ It is tempting to multiply the outside piece by the chord, writing $PA\cdot AB=PC\cdot CD$, that is, $4\cdot5=3\cdot CD$. That gives $CD=\tfrac{20}{3}$, a plausible-looking but wrong answer. The chord $AB$ is not a distance from $P$. The proof of the {{ref:thm-tangent}} shows why only $PA\cdot PB$ is constant: it equals $PM^2-MA^2$, and nothing like that holds for $PA\cdot AB$. Concretely, as a secant turns toward the tangent, its chord shrinks to $0$ while $PA$ stays positive, so $PA\cdot AB$ goes to $0$, whereas $PA\cdot PB$ stays at $PT^2$.`
     },
     "c-secants": {
       kind: "checkpoint",
@@ -475,7 +475,7 @@ __What to notice.__ $OE$ cancelled. The value $BE=2\sqrt5$ in the problem never 
 
 {{fig:perpendicular-diameters}}
 
-__The power of $E$.__ $E$ is inside the circle on chord $DF$, so $DE\cdot EF=r^2-x^2$ by {{ref:cor-inside}}, that is, $r^2-x^2=6\cdot2=12$.
+__The power of $E$.__ $E$ is inside the circle on chord $DF$, so $DE\cdot EF=r^2-x^2$ by the {{ref:cor-inside}}, that is, $r^2-x^2=6\cdot2=12$.
 
 __A right triangle.__ $CD\perp AB$, so triangle $DOE$ has a right angle at $O$, and $DE^2=OD^2+OE^2$, that is, $r^2+x^2=36$.
 
@@ -490,7 +490,7 @@ Adding the two equations gives $2r^2=48$, so $r^2=24$ and the area is $24\pi$, c
 
 __Naming the unknowns.__ $P$ and $Q$ are inside the circle (they lie on chords), so the order along the line is $X,P,Q,Y$. Let $XP=x$ and $QY=y$. Then $PY=27+y$ and $QX=27+x$. On the chords, $PB=11-6=5$ and $QD=19-7=12$.
 
-__The two equations.__ By {{ref:thm-chords}} at each point,
+__The two equations.__ By the {{ref:thm-chords}} at each point,
 
 $$\begin{aligned}\text{at }P:&\quad x(27+y)=6\cdot5=30,\\ \text{at }Q:&\quad y(27+x)=7\cdot12=84.\end{aligned}$$
 
@@ -501,7 +501,7 @@ __Checking.__ $1\cdot30=30$ and $3\cdot28=84$. Both equations hold, and the posi
     "p-amc13": {
       kind: "practice", slug: "2013-amc-10a-23",
       answer: "61", prompt: String.raw`Enter $BC$.`,
-      solution: String.raw`__The hidden power.__ The circle has center $A$ and radius $AB=86$. The point $C$ has $CA=97>86$, so it is outside, with power $97^2-86^2=(97-86)(97+86)=11\cdot183=2013$. Line $CB$ meets the circle at $X$ and $B$, so by {{ref:thm-power}}
+      solution: String.raw`__The hidden power.__ The circle has center $A$ and radius $AB=86$. The point $C$ has $CA=97>86$, so it is outside, with power $97^2-86^2=(97-86)(97+86)=11\cdot183=2013$. Line $CB$ meets the circle at $X$ and $B$, so by the {{ref:thm-power}}
 
 $$CX\cdot CB=2013.$$
 
@@ -519,7 +519,7 @@ __Using the triangle.__ The triangle inequality requires $97-86<BC<97+86$, that 
 
 {{fig:hidden-tangent}}
 
-__The computation.__ By {{ref:thm-tangent}}, $AC^2=AD\cdot AB$. Here $AB=\sqrt{6^2+8^2}=10$, so $36=10\,AD$ and $AD=\tfrac{18}{5}$.
+__The computation.__ By the {{ref:thm-tangent}}, $AC^2=AD\cdot AB$. Here $AB=\sqrt{6^2+8^2}=10$, so $36=10\,AD$ and $AD=\tfrac{18}{5}$.
 
 __A check by another route.__ $\angle BDC$ is an angle in a semicircle, so $CD\perp AB$: $D$ is the foot of the altitude from $C$. The altitude-to-hypotenuse relation $AC^2=AD\cdot AB$ (G1.4.3) is the same equation, so the two methods agree. Power of a point explains why that familiar relation holds.`
     },
@@ -582,7 +582,7 @@ __What would finish it.__ One more independent fact: the radius, or the distance
 
 __The point and its two lines.__ $F$ is inside the circle, on chord $CD$ and on the vertical chord $GK$ through $F$. On $CD$ (from $x=-1$ to $x=1$), $F$ cuts the chord into $FD=1+\tfrac s2$ and $FC=1-\tfrac s2$. The vertical chord is symmetric about the horizontal diameter $y=0$, so it runs from $G$ at $y=-1-s$ up to $K$ at $y=1+s$: from $F$ the pieces are $FG=s$ and $FK=2+s$.
 
-__The equation.__ By {{ref:thm-chords}} at $F$, $s(2+s)=\left(1+\tfrac s2\right)\left(1-\tfrac s2\right)=1-\tfrac{s^2}{4}$, so $\tfrac54s^2+2s-1=0$, that is, $5s^2+8s-4=(5s-2)(s+2)=0$, and $s=\tfrac25$.
+__The equation.__ By the {{ref:thm-chords}} at $F$, $s(2+s)=\left(1+\tfrac s2\right)\left(1-\tfrac s2\right)=1-\tfrac{s^2}{4}$, so $\tfrac54s^2+2s-1=0$, that is, $5s^2+8s-4=(5s-2)(s+2)=0$, and $s=\tfrac25$.
 
 __The answer.__ The area ratio is $\dfrac{s^2}{2^2}=\dfrac{4/25}{4}=\dfrac1{25}$, so $m=1$, $n=25$ and $10n+m=251$. Check: $G=(\tfrac15,-\tfrac75)$ has $\tfrac1{25}+\tfrac{49}{25}=2$, so it is on the circle.`
     },
@@ -595,7 +595,7 @@ __What the midpoint gives.__ Let $O$ be the center of $\Omega$. The perpendicula
 
 {{fig:two-circles-chord}}
 
-__The power of $B$ with respect to $\Omega$.__ $B$ is inside $\Omega$, so by {{ref:cor-inside}} $BA\cdot BD=123^2-OB^2=123^2-122^2=245$. But $BA\cdot BD=k\cdot5k=5k^2$, so $k^2=49$, $k=7$ and the chord is $6k=42$.
+__The power of $B$ with respect to $\Omega$.__ $B$ is inside $\Omega$, so by the {{ref:cor-inside}} $BA\cdot BD=123^2-OB^2=123^2-122^2=245$. But $BA\cdot BD=k\cdot5k=5k^2$, so $k^2=49$, $k=7$ and the chord is $6k=42$.
 
 __Checking the configuration.__ With $k=7$, $C$ is the chord's midpoint, so $OC^2=123^2-21^2=14688$, and $OB^2=OC^2+CB^2=14688+14^2=14884=122^2$. Consistent. (In the excluded case $C=O$, the same ratio conditions give the diameter $246$.)`
     },
@@ -608,7 +608,7 @@ __The center.__ The center of the circle through $A$, $D$, $H$ and $G$ is on the
 
 {{fig:rectangles-circle}}
 
-__Two lines through $E$.__ The $x$-axis meets the circle at $D$ and at $D'$, the reflection of $D$ in the line $x=e+92$, namely $(2e+184,0)$. From $E$ these are at distances $e$ and $e+184$, on opposite sides. The vertical line $x=e$ meets the circle at $H=(e,-17)$ and at $H'$, the reflection of $H$ in the line $y=8$, namely $(e,33)$. From $E$ these are at distances $17$ and $33$, again on opposite sides. So $E$ is inside the circle, and {{ref:thm-chords}} at $E$ gives
+__Two lines through $E$.__ The $x$-axis meets the circle at $D$ and at $D'$, the reflection of $D$ in the line $x=e+92$, namely $(2e+184,0)$. From $E$ these are at distances $e$ and $e+184$, on opposite sides. The vertical line $x=e$ meets the circle at $H=(e,-17)$ and at $H'$, the reflection of $H$ in the line $y=8$, namely $(e,33)$. From $E$ these are at distances $17$ and $33$, again on opposite sides. So $E$ is inside the circle, and the {{ref:thm-chords}} at $E$ gives
 
 $$\begin{gathered}e(e+184)=17\cdot33=561,\\ e^2+184e-561=(e-3)(e+187)=0.\end{gathered}$$
 

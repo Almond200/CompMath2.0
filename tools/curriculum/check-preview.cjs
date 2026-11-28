@@ -37,7 +37,7 @@ const fail = m => { fails.push(m); console.log("FAIL", m); };
       await pg.evaluate(() => window.renderMathInElement && document.querySelectorAll(".cp-sol").forEach(e => window.renderMathInElement(e, { delimiters: [{ left: "$$", right: "$$", display: true }, { left: "$", right: "$", display: false }], throwOnError: false })));
       const r = await pg.evaluate(() => ({
         katex: document.querySelectorAll(".cp-root .katex-error").length,
-        raw: [...document.querySelectorAll(".cp-root .lp-body p, .cp-root .lp-body li, .cp-root h1, .cp-root figcaption, .cp-root .cp-table td")].filter(e => /\$|\{\{|\[\[/.test(e.textContent)).map(e => e.textContent.slice(0, 50)),
+        raw: [...document.querySelectorAll(".cp-root .lp-body p, .cp-root .lp-body li, .cp-root h1, .cp-root figcaption, .cp-root .cp-table td")].filter(e => /\$|\{\{|\[\[|__/.test(e.textContent)).map(e => e.textContent.slice(0, 50)),
         overflow: document.documentElement.scrollWidth > window.innerWidth + 1,
         missing: [...document.querySelectorAll(".cp-root .prob-note")].filter(e => /Missing|\[[a-z]/.test(e.textContent)).length,
         hidden: [...document.querySelectorAll("[data-cp-statement]")].filter(e => e.hidden).length,
@@ -118,8 +118,9 @@ const fail = m => { fails.push(m); console.log("FAIL", m); };
   await pick("ch-rotate", "B"); c = await cstate("ch-rotate");
   if (!/lc-right/.test(c.cls) || c.sol || c.right.join() !== "B" || c.wrong.length) fail("the right choice is not marked: " + JSON.stringify(c));
   // A cross-reference names its target and opens its page.
-  const ref = await pg.evaluate(() => [...document.querySelectorAll(".cp-ref")].map(a => a.textContent));
-  if (!ref.some(t => /^Theorem 2\.\d+$/.test(t))) fail("no theorem cross-reference on G2.2.2: " + JSON.stringify(ref));
+  // A statement is cited by its name, with its number as the link's title.
+  const ref = await pg.evaluate(() => [...document.querySelectorAll(".cp-ref[title]")].map(a => [a.textContent, a.title]));
+  if (!ref.some(([t, n]) => t === "intersecting chords theorem" && /^Theorem 2\.\d+$/.test(n))) fail("no named theorem reference on G2.2.2: " + JSON.stringify(ref));
   await go("#/preview/geometry-2/g2.2");
   const read = await pg.evaluate(() => document.querySelectorAll(".lb-chapter-page .cp-read").length);
   if (read < 1) fail("the chapter's contents shows no read marks");

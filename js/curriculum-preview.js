@@ -17,7 +17,8 @@
 (function (root) {
   "use strict";
   const STORE = "mq-learn2";
-  let kit = null, chapter = null, chapterKey = null, bound = false, labels = {}, pageOfRef = {}, book = null, chap = null;
+  let curPage = "", linkedHere = new Set();
+  let kit = null, chapter = null, chapterKey = null, bound = false, labels = {}, pageOfRef = {}, names = {}, book = null, chap = null;
 
   // ---------- storage: one key, never overwritten if it cannot be read ----------
   let prog = null, progOk = true;
@@ -50,8 +51,10 @@
       const s = ch.sections[+page - 1];
       return s && data.sections[s.id] ? { code: s.id, title: s.title, body: data.sections[s.id].body } : null;
     }
-    if (page === "close") return { code: "", title: "Summary and next steps", body: data.close.body };
-    if (page === "review" || page === "challenge") return data[page] ? { code: "", title: data[page].title, items: data[page].items } : null;
+    // The close and the two problem sets follow the last section, numbered on from it (owner, 2026-11-28).
+    const after = k => `${ch.id}.${ch.sections.length + k}`;
+    if (page === "close") return { code: after(1), title: "Summary and next steps", body: data.close.body };
+    if (page === "review" || page === "challenge") return data[page] ? { code: after(page === "review" ? 2 : 3), title: data[page].title, items: data[page].items } : null;
     return null;
   }
 
@@ -59,16 +62,19 @@
   const KIND = { checkpoint: "Checkpoint", example: "Example", guided: "Guided Practice", practice: "Practice Problem", review: "Review Problem", challenge: "Challenge Problem" };
   const STATEMENT = { theorem: "Theorem", corollary: "Corollary", definition: "Definition", lemma: "Lemma" };
   function buildLabels(b, ch, data) {
-    labels = {}; pageOfRef = {};
+    labels = {}; pageOfRef = {}; names = {};
     const n = chapterNum(ch), count = {};
     const next = kind => (count[kind] = (count[kind] || 0) + 1);
     const visit = (src, page) => {
-      const re = /\{\{item:([\w-]+)\}\}|\{\{fig:([\w-]+)\}\}|^:::(theorem|corollary|definition|lemma)\s+([\w-]+)/gm;
+      const re = /\{\{item:([\w-]+)\}\}|\{\{fig:([\w-]+)\}\}|^:::(theorem|corollary|definition|lemma)\s+([\w-]+)\s*(?:\|([^|\n]*))?(?:\|([^\n]*))?/gm;
       let m;
       while ((m = re.exec(String(src || "")))) {
         if (m[1]) item(m[1], page, null);
         else if (m[2]) { if (!labels["fig:" + m[2]]) { labels["fig:" + m[2]] = `Figure ${n}.${next("fig")}`; pageOfRef["fig:" + m[2]] = page; } }
-        else { labels[m[4]] = `${STATEMENT[m[3]]} ${n}.${next("statement")}`; pageOfRef[m[4]] = page; }
+        else {
+          labels[m[4]] = `${STATEMENT[m[3]]} ${n}.${next("statement")}`; pageOfRef[m[4]] = page;
+          names[m[4]] = (m[6] || m[5] || "").trim() || labels[m[4]];
+        }
       }
     };
     const item = (id, page, set) => {
@@ -89,7 +95,19 @@
     const label = labels[id];
     if (!label) return `[${esc(id)}]`;
     const anchor = "cp-" + id.replace(/^fig:/, "fig-");
-    return `<a class="cp-ref" href="${hashFor(book, chap, pageOfRef[id])}" data-cp-anchor="${anchor}">${esc(label)}</a>`;
+    // A theorem, corollary, lemma or definition is cited by its name, with its number on hover;
+    // items and figures by their label.
+    const named = names[id];
+    // A statement's name is a link only while the result is new (owner, 2026-11-28): at its first
+    // mention on a page, on the statement's own page and the next two. After that the reader has
+    // used it enough, and the name is plain text.
+    if (named) {
+      const order = pagesOf(chap), at = order.indexOf(curPage), home = order.indexOf(pageOfRef[id]);
+      const fresh = isSection(curPage) || curPage === "" ? at - home <= 2 : false;
+      if (!fresh || linkedHere.has(id)) return `<span class="cp-name">${inline(named)}</span>`;
+      linkedHere.add(id);
+    }
+    return `<a class="cp-ref" href="${hashFor(book, chap, pageOfRef[id])}" data-cp-anchor="${anchor}"${named ? ` title="${esc(label)}"` : ""}>${named ? inline(named) : esc(label)}</a>`;
   }
 
   // ---------- text ----------
@@ -97,11 +115,12 @@
   // Bold (__text__), card links, cross-references and section links apply outside math only.
   function inline(src) {
     // Inline math keeps the punctuation that follows it on the same line.
-    const glued = esc(src).replace(/(\$[^$]+\$)([.,;:!?)]+)/g, (m, math, punct) => `\u0001${math}${punct}\u0002`);
+    // Bold may contain math ("__The power of $E$.__"), so it is converted before the text is split on math.
+    const glued = esc(src).replace(/__([\s\S]+?)__/g, "<strong>$1</strong>")
+      .replace(/(\$[^$]+\$)([.,;:!?)]+)/g, (m, math, punct) => `\u0001${math}${punct}\u0002`);
     return glued.split(/(\$\$[\s\S]*?\$\$|\$[^$]+\$)/).map((part, i) => {
       if (i % 2) return part;
       return part
-        .replace(/__([^_]+)__/g, "<strong>$1</strong>")
         .replace(/\{\{ref:([\w:-]+)\}\}/g, (m, id) => refHtml(id))
         .replace(/\[\[([a-z0-9-]+)\]\]/g, (m, id) => {
           const name = kit && kit.cardName(id);
@@ -132,7 +151,7 @@
         else cur.push(line);
         continue;
       }
-      const m = t.match(/^:::(theorem|corollary|definition|lemma|recall)\b\s*([\w-]*)\s*(?:\|\s*(.*))?$/);
+      const m = t.match(/^:::(theorem|corollary|definition|lemma|recall)\b\s*([\w-]*)\s*(?:\|\s*([^|]*?))?\s*(?:\|.*)?$/);
       if (m) { flush(); fence = { kind: m[1], id: m[2], title: m[3] || "" }; continue; }
       if (!t) flush(); else cur.push(line);
     }
@@ -360,6 +379,7 @@
     const info = pageInfo(chapter, chap, page);
     if (!info) { location.replace(hashFor(book, chap, "")); return; }
     if (chapter) buildLabels(book, chap, chapter);
+    curPage = page; linkedHere = new Set();
     $content.innerHTML = shellHtml(book, chap, page, mainHtml(book, chap, page, info));
     const art = $content.querySelector(".cp-root");
     kit.wireRail(art);
