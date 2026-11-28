@@ -1,6 +1,6 @@
 // Browser checks for the new curriculum's preview (curriculum/PREVIEW-PLAN.md §5).
 //   CHROME=/path/to/chromium COMPMATH_URL=http://localhost:8765 node tools/curriculum/check-preview.cjs [shotsDir]
-// 1. Every page of G2.2 at 1280 and 375 px, light and dark: no KaTeX errors, no raw "$", no
+// 1. Every page of every written chapter at 1280 and 375 px, light and dark: no KaTeX errors, no raw "$", no
 //    horizontal overflow, no page or console errors, every figure and archive statement present.
 // 2. Checkpoints and problems: wrong and right answers, the solution only
 //    after an attempt, persistence across reload, and no write to the live textbooks' "mq-learn".
@@ -13,23 +13,30 @@ const BASE = process.env.COMPMATH_URL || "http://localhost:8765";
 const SHOTS = process.argv[2] || null;
 // The chapter's pages come from the specification's section list (js/data/curriculum/shelf.js).
 global.window = {}; require("../../js/data/curriculum/shelf.js");
-const G22 = window.MATH_CURRICULUM_SHELF.books.find(b => b.id === "geometry-2").chapters.find(c => c.id === "G2.2");
-const PAGES = ["", ...G22.sections.map((_, i) => "/" + (i + 1)), "/close", "/review", "/challenge"];
-// AUTHORING-STANDARD §7: the only instructional labels, numbered by chapter.
-const LABEL = /^(?:(?:Example|Checkpoint|Practice Problem|Review Problem|Challenge Problem|Theorem|Corollary|Lemma|Definition|Figure) 2\.\d+\.?|Recall)$/;
+const SHELF = window.MATH_CURRICULUM_SHELF;
+const CHAPTERS = SHELF.written.map(key => {
+  const [bookId, chId] = key.split("/"), ch = SHELF.books.find(b => b.id === bookId).chapters.find(c => c.id === chId);
+  const base = `#/preview/${bookId}/${chId.toLowerCase()}`, n = chId.split(".")[1];
+  return { chId, n, pages: ["", ...ch.sections.map((_, i) => "/" + (i + 1)), "/close", "/review", "/challenge"].map(x => base + x),
+    // AUTHORING-STANDARD §7: the only instructional labels, numbered by chapter.
+    label: new RegExp(`^(?:(?:Example|Checkpoint|Practice Problem|Review Problem|Challenge Problem|Theorem|Corollary|Lemma|Definition|Figure) ${n}\\.\\d+\\.?|Recall)$`) };
+});
+const ONLY = process.env.CHAPTERS ? process.env.CHAPTERS.split(",") : null;   // e.g. CHAPTERS=G2.3,G2.4 to check some chapters only
+const RUN = CHAPTERS.filter(c => !ONLY || ONLY.includes(c.chId));
+const PAGES = [["#/preview", null], ...RUN.flatMap(c => c.pages.map(p => [p, c]))];
 const fails = [];
 const fail = m => { fails.push(m); console.log("FAIL", m); };
 
 (async () => {
   const browser = await chromium.launch(process.env.CHROME ? { executablePath: process.env.CHROME } : {});
   // ---------- 1. rendering ----------
-  const seen = {};
+  const seen = {};   // "G2.3|Example 3.1" -> pages
   for (const width of [1280, 375]) for (const theme of ["light", "dark"]) {
     const ctx = await browser.newContext({ viewport: { width, height: 900 } });
     await ctx.addInitScript(t => { try { localStorage.setItem("theme", t); } catch (e) {} }, theme);
     const pg = await ctx.newPage(); const errs = [];
     pg.on("pageerror", e => errs.push(e.message)); pg.on("console", m => { if (m.type() === "error") errs.push(m.text()); });
-    for (const p of ["#/preview", ...PAGES.map(x => "#/preview/geometry-2/g2.2" + x)]) {
+    for (const [p, chap] of PAGES) {
       await pg.goto(BASE + "/" + p); await pg.waitForSelector(".cp-root", { timeout: 20000 });
       await pg.waitForFunction(() => [...document.querySelectorAll("[data-cp-statement]")].every(e => !e.hidden), null, { timeout: 15000 }).catch(() => {});
       // Open every solution so that the figures and math inside them are checked too.
@@ -47,10 +54,10 @@ const fail = m => { fails.push(m); console.log("FAIL", m); };
       const tag = `${width}/${theme} ${p}`;
       if (r.katex) fail(`${tag}: ${r.katex} KaTeX errors`);
       if (r.raw.length) fail(`${tag}: unrendered markup ${JSON.stringify(r.raw.slice(0, 3))}`);
-      const bad = r.labels.filter(l => !LABEL.test(l));
+      const bad = chap ? r.labels.filter(l => !chap.label.test(l)) : [];
       if (bad.length) fail(`${tag}: labels outside the standard vocabulary ${JSON.stringify(bad)}`);
       if (width === 375 && r.smallest < 11) fail(`${tag}: a figure label renders ${r.smallest.toFixed(1)} px tall on a phone`);
-      if (p !== "#/preview") for (const l of r.labels) { if (l !== "Recall") { (seen[l] ||= new Set()).add(p); } }
+      if (chap) for (const l of r.labels) { if (l !== "Recall") { (seen[chap.chId + "|" + l] ||= new Set()).add(p); } }
       if (r.overflow) fail(`${tag}: horizontal overflow`);
       if (r.missing) fail(`${tag}: ${r.missing} missing figures or items`);
       if (r.hidden) fail(`${tag}: ${r.hidden} archive statements did not load`);
@@ -62,12 +69,16 @@ const fail = m => { fails.push(m); console.log("FAIL", m); };
   }
   // Every label is used on one page only: numbering is unique through the chapter.
   for (const [l, pages] of Object.entries(seen)) if (pages.size > 1) fail(`label ${l} appears on ${[...pages].join(", ")}`);
-  // AUTHORING-STANDARD §11: G2.2 meets the practice ranges (15-20, 12-18, 5-8).
-  const count = kind => Object.keys(seen).filter(l => l.startsWith(kind + " ")).length;
-  const ranges = { "Practice Problem": [15, 20], "Review Problem": [12, 18], "Challenge Problem": [5, 8] };
-  for (const [kind, [lo, hi]] of Object.entries(ranges)) if (count(kind) < lo || count(kind) > hi) fail(`${count(kind)} ${kind}s, outside ${lo}-${hi}`);
-  console.log(`rendering checked: 2 widths x 2 themes x ${PAGES.length + 1} pages; ${Object.keys(seen).length} distinct labels; ` +
-    Object.keys(ranges).map(k => `${count(k)} ${k}s`).join(", ") + `, ${count("Example")} Examples, ${count("Checkpoint")} Checkpoints`);
+  // Each chapter's counts (AUTHORING-STANDARD §11 gives the ranges; a chapter outside them says why in its packet).
+  // G2.2, the approved prototype, is held to its ranges.
+  for (const c of RUN) {
+    const count = kind => Object.keys(seen).filter(l => l.startsWith(c.chId + "|" + kind + " ")).length;
+    const kinds = ["Example", "Checkpoint", "Practice Problem", "Review Problem", "Challenge Problem"];
+    if (c.chId === "G2.2") { const ranges = { "Practice Problem": [15, 20], "Review Problem": [12, 18], "Challenge Problem": [5, 8] };
+      for (const [kind, [lo, hi]] of Object.entries(ranges)) if (count(kind) < lo || count(kind) > hi) fail(`G2.2: ${count(kind)} ${kind}s, outside ${lo}-${hi}`); }
+    console.log(`${c.chId}: ${c.pages.length} pages; ` + kinds.map(k => `${count(k)} ${k}s`).join(", "));
+  }
+  console.log(`rendering checked: 2 widths x 2 themes x ${PAGES.length} pages`);
 
   // ---------- 2. interactions, persistence and isolation ----------
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, acceptDownloads: true });

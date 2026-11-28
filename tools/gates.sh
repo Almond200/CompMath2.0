@@ -21,4 +21,13 @@ python3 tools/check-diagrams.py > /tmp/gate-diag.txt || { tail -20 /tmp/gate-dia
 python3 tools/check-statements.py > /tmp/gate-stmt.txt || { tail -20 /tmp/gate-stmt.txt; exit 1; }   # not piped: a pipe would hide its exit code
 tail -2 /tmp/gate-stmt.txt && ./tools/check-lab.sh > /dev/null
 $JSC tools/validate-problem-db.js > /tmp/gate-db.txt 2>&1; tail -2 /tmp/gate-db.txt | cut -c1-300; grep -q '^OK' /tmp/gate-db.txt || { grep -i violation /tmp/gate-db.txt | head; exit 1; }
+# The new curriculum (curriculum/, js/data/curriculum/): specification, shelf, figures, chapter data and
+# the independent verification of every answer. The browser check is tools/curriculum/check-preview.cjs.
+python3 tools/curriculum/check-spec.py > /tmp/gate-cspec.txt || { grep -v NOTE /tmp/gate-cspec.txt | tail; exit 1; }
+python3 tools/curriculum/build-curriculum.py --check --allow-edits > /tmp/gate-cbuild.txt || { tail /tmp/gate-cbuild.txt; exit 1; }
+python3 tools/curriculum/build-shelf.py --check || exit 1
+for f in tools/curriculum/figures/g*.py; do python3 "$f" --check > /tmp/gate-cfig.txt || { echo "$f"; cat /tmp/gate-cfig.txt; exit 1; }; done
+node tools/curriculum/check-chapters.cjs > /tmp/gate-chapters.txt || { cat /tmp/gate-chapters.txt; exit 1; }
+for f in tools/curriculum/verify/g*.py; do python3 "$f" > /tmp/gate-cverify.txt 2>&1 || { echo "$f"; tail -15 /tmp/gate-cverify.txt; exit 1; }; done
+tail -1 /tmp/gate-chapters.txt
 echo ALL GATES PASSED
