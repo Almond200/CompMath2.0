@@ -361,10 +361,20 @@
     }
     return best;
   }
+  // How much a miss on a problem says about one of its cards, from 0 to 1. The app sets it from the
+  // problem data (setCardWeight): a card that is the problem's main idea, or whose home topic is one of
+  // the problem's own topics, counts fully; a supporting card cited by many problems (the Pythagorean
+  // theorem, casework) counts for less, because missing a problem that merely uses it says little
+  // about it. Without a setter every card counts fully.
+  let cardWeight = () => 1;
+  function setCardWeight(fn) { cardWeight = typeof fn === 'function' ? fn : () => 1; }
   function studyTargets(problem, includeCards = true) {
-    const topics = [...new Set(problem.tree)].map(id => ({kind:'topic', id}));
+    const topics = [...new Set(problem.tree)].map(id => ({kind:'topic', id, weight:1}));
     const cards = includeCards ? [...new Set([problem.main, ...(problem.formulas || [])])].filter(Boolean) : [];
-    return [...topics, ...cards.map(id => ({kind:'card', id}))];
+    return [...topics, ...cards.map(id => {
+      const w = Number(cardWeight(id, problem));
+      return {kind:'card', id, weight: Number.isFinite(w) ? Math.min(1, Math.max(0, w)) : 1};
+    })];
   }
   function studyEvidence(event, includePracticeSkips = true) {
     if (event.outcome === 'incorrect') return 1;
@@ -392,7 +402,7 @@
       const age = Math.max(0, now - e.at) / DAY;
       const weight = 0.5 ** (age / 30);
       const evidence = studyEvidence(e,includePracticeSkips);
-      for (const target of studyTargets(p,includeCards)) {
+      for (const {weight: specificity, ...target} of studyTargets(p,includeCards)) {
         const key = target.kind + ':' + target.id;
         if (!rows.has(key)) rows.set(key, {...target, attempts:0, misses:0, recentAttempts:0,
           recentMisses:0, recentStruggles:0, examples:[]});
@@ -401,7 +411,7 @@
         row.recentAttempts += weight;
         if (!evidence) continue;
         if (e.outcome === 'incorrect') row.misses++;
-        row.recentMisses += weight * evidence * (1 + mistakeBoost(e.mistakes));
+        row.recentMisses += weight * evidence * specificity * (1 + mistakeBoost(e.mistakes));
         if (age <= 45) row.recentStruggles++;
         row.missedSlug ||= e.item;
         if (row.examples.length < 3) row.examples.push(e);
@@ -434,7 +444,7 @@
     }
     return selected;
   }
-  const api = { KEY, PLACEMENT_SIZE, SUBJECT_PROVISIONAL, PACES, LENGTHS, canonical, read, merge, change, saveDraft, start, remaining, remainingMs, roundComplete, submissionAt, openRound, placementIndex, placementStats, placementLength, advancePlacement, checkRoundAnswer, submitRound, placeAnswer, finishProblem, problemMinutes, ratings, targetRating, suggestedSubject, choose, recommendations, studyTargets, studyEvidence, studyRecommendations };
+  const api = { KEY, PLACEMENT_SIZE, SUBJECT_PROVISIONAL, PACES, LENGTHS, canonical, read, merge, change, saveDraft, start, remaining, remainingMs, roundComplete, submissionAt, openRound, placementIndex, placementStats, placementLength, advancePlacement, checkRoundAnswer, submitRound, placeAnswer, finishProblem, problemMinutes, ratings, targetRating, suggestedSubject, choose, recommendations, studyTargets, studyEvidence, studyRecommendations, setCardWeight };
   if (typeof module !== 'undefined') module.exports = api;
   else root.Arena = api;
 })(typeof window === 'undefined' ? globalThis : window);

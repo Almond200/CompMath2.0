@@ -74,13 +74,17 @@
     return record(source, "exposure", slug, "opened", "problem", "opened:" + canonicalProblem(slug));
   }
   const finishedAt = set => set.finishedAt ?? set.updated ?? set.created ?? null;
+  // A Practice problem's position in its set is its review page (#/practice/set/<id>/review/<n>),
+  // and setKind says whether it came from a mock contest or a card or topic set: Arena's study
+  // recommendations include either only when the learner opts in (Settings, Practice).
   function practiceProblemEvents(set, practice) {
     const at = finishedAt(set);
-    return set.slugs.map(slug => {
+    return set.slugs.map((slug, index) => {
       const outcome = practice.result(set, slug).toLowerCase().replaceAll(" ", "-");
       return { id: "practice:" + set.id + ":" + slug, source: "practice",
         type: set.answers[slug] && outcome !== "voided" ? "attempt" : "exposure",
-        kind: "problem", item: slug, at, outcome, session: set.id };
+        kind: "problem", item: slug, at, outcome, session: set.id, reviewNumber: index + 1,
+        setKind: set.kind === "mock" ? "mock" : "set" };
     });
   }
   async function practiceReviewHistory(setId, { storage = root.localStorage, practice = root.PracticeSessions, canonical = canonicalProblem } = {}) {
@@ -92,13 +96,15 @@
       return { ...event, canonicalId: canonical(event.item), ...(mistakes?.length ? { mistakes } : {}) };
     });
   }
-  async function history({ storage = root.localStorage, arenaState, kind, practice = root.PracticeSessions, arena = root.Arena, canonical = canonicalProblem } = {}) {
+  // practiceMistakes: attach the mistakes marked in Practice reviews to Practice problems. Only
+  // Arena's study recommendations ask for them, and only when the learner opts in (Settings).
+  async function history({ storage = root.localStorage, arenaState, kind, practice = root.PracticeSessions, arena = root.Arena, canonical = canonicalProblem, practiceMistakes = false } = {}) {
     let events = [], marks = [], sets = [];
     if (root.StudyStorage?.enabled) {
       [events, marks] = await Promise.all([root.StudyStorage.readActivity(kind),
         kind === "problem" ? root.StudyStorage.readActivity("mistake") : []]);
     } else try { events = entries(readStored(storage)); } catch (error) {}
-    const mistakes = new Map([...events, ...marks].filter(event => event.type === "mistake" && event.source === "arena")
+    const mistakes = new Map([...events, ...marks].filter(event => event.type === "mistake" && (event.source === "arena" || event.source === "practice"))
       .map(event => [event.id, event.outcome]));
     events = events.filter(event => event.type !== "mistake");
     try { if (practice) sets = practice.read(storage); } catch (error) {}
@@ -106,7 +112,10 @@
       if (set.status !== "finished") continue;
       events.push({ id: "practice:" + set.id, source: "practice", type: "completion",
         kind: "set", item: set.id, at: finishedAt(set), outcome: set.timedOut ? "timed-out" : "submitted" });
-      events.push(...practiceProblemEvents(set, practice));
+      events.push(...practiceProblemEvents(set, practice).map(event => {
+        const reasons = practiceMistakes && canMarkMistake(event.outcome) && mistakeReasons(mistakes.get(mistakeId("practice", set.id, event.item)));
+        return reasons?.length ? { ...event, mistakes: reasons } : event;
+      }));
     }
     if (arena) {
       const state = arenaState ?? await arena.read(root.StudyStorage?.enabled ? undefined : storage);
