@@ -2,6 +2,8 @@
 
 **2026-11-28**
 
+- **Arena: common supporting cards no longer crowd What to study.** A missed problem's cards are weighted by how much the miss says about them: the problem's main idea, or a card whose home topic is one of the problem's own topics, counts fully; any other card counts less the more problems cite it (full weight up to 40 citing problems, then the square root, with a floor of 0.2). The Pythagorean theorem (777 problems) now counts 0.23 per miss when it is only a supporting step, so two such misses rank it below the topics actually missed; repeated misses can still bring it forward. Topics are unchanged. Tested in `tests/arena.cjs`.
+
 - **Settings: Practice in Arena recommendations.** Two Practice settings, both off by default so Practice stays separate: Mock contests in Arena recommendations, and Practice sets in Arena recommendations. When on, finished sets of that kind, and the mistakes marked in their review, add to Arena's What to study (and its homepage preview), with links to the Practice review; the descriptions and the Mark your mistake note say so and that the setting can be turned off in Settings. Rated-set topic targeting still uses Arena results only.
 
 **2026-11-27**

@@ -6266,6 +6266,25 @@
   // Which results feed Arena's study recommendations: always Arena's own; Practice results only
   // when the learner opts in for that kind of set (Settings, Practice; off by default).
   const practiceFeedsArena = set => !!set && (isMock(set) ? state.mockStudy === "on" : state.setStudy === "on");
+  // Study recommendations weigh each card a missed problem cites by how much the miss says about it
+  // (js/arena.js, setCardWeight). The problem's main idea, or a card whose home topic is one of the
+  // problem's own topics (or under one), counts fully. Any other card is a supporting step, and the
+  // more problems cite it the less a miss says: full weight up to 40 citing problems, then falling as
+  // the square root, to 0.23 for the Pythagorean theorem (777) and a floor of 0.2. Repeated misses still
+  // bring a common card forward; one or two misses no longer put it above the problems' real topics.
+  let CARD_CITATIONS = null;
+  function studyCardWeight(id, p) {
+    if (!p || p.main === id) return 1;
+    const home = window.MATH_TOPIC_HOMES?.[id];
+    if (home && (p.tree || []).some(t => t === home || t.startsWith(home + "."))) return 1;
+    if (!CARD_CITATIONS || CARD_CITATIONS.size === 0) {
+      CARD_CITATIONS = new Map();
+      for (const q of PROBLEM_DB) for (const c of new Set([q.main, ...(q.formulas || [])])) if (c) CARD_CITATIONS.set(c, (CARD_CITATIONS.get(c) || 0) + 1);
+    }
+    const uses = CARD_CITATIONS.get(id) || 1;
+    return Math.max(0.2, Math.min(1, Math.sqrt(40 / uses)));
+  }
+  window.Arena.setCardWeight(studyCardWeight);
   function studyEventIncluded(event) {
     if (event.source === "arena") return !!(event.session && event.reviewNumber);
     if (event.source !== "practice" || !event.session || !event.reviewNumber) return false;

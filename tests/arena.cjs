@@ -285,6 +285,17 @@ async function checkHistory() {
   const seasoned = [...experienced,...Array.from({length:20},(_,i) => candidate('earlier-' + i,'correct',20))];
   assert.deepEqual(A.studyRecommendations([...seasoned,...withSupport],lookup,nowForStudy).map(row => row.id), ranked.map(row => row.id),
     'adding experience past the threshold does not tighten recommendations further');
+  // A supporting card cited across many problems (weight below 1) ranks under the topics actually
+  // missed, and needs more misses than they do; a fully weighted card is unchanged.
+  const twoMisses = [candidate('shared-x'),candidate('shared-y')];
+  const unweighted = A.studyRecommendations(twoMisses,lookup,nowForStudy);
+  assert.equal(unweighted[0].id,'shared-card','without weights the shared card leads');
+  A.setCardWeight(id => id === 'shared-card' ? 0.23 : 1);
+  const weighted = A.studyRecommendations(twoMisses,lookup,nowForStudy);
+  assert.deepEqual(weighted.map(row => row.kind),['topic','topic','card'],'a common supporting card ranks below the missed topics');
+  assert(weighted[2].recentMisses < weighted[0].recentMisses / 2,'its evidence is scaled by its weight');
+  A.setCardWeight(null);
+  assert.equal(A.studyRecommendations(twoMisses,lookup,nowForStudy)[0].id,'shared-card','clearing the weight restores full weight');
   const ordinary = A.recommendations([candidate('new-a')],lookup,nowForStudy)[0].recentMisses;
   const marked = A.recommendations([candidate('new-a','incorrect',0,['starting'])],lookup,nowForStudy)[0].recentMisses;
   const combined = A.recommendations([candidate('new-a','incorrect',0,['starting','carelessness'])],lookup,nowForStudy)[0].recentMisses;
