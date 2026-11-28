@@ -8,26 +8,13 @@
 
 The aim is genuine teaching resources, not explanatory encyclopedias (spec/overview.md, spec/authoring-standards.md).
 
-## Current state (updated 2026-11-27)
+## Current state (updated 2026-11-28)
 
-- **Decided:** the owner settled D1–D12 (REVIEW-NOTES.md §3).
-  - Qualified IDs (`geometry-2/G2.7.4`).
-  - Claude is the sole author and implementer, in `js/data/curriculum/`; Codex keeps the problem database and may review later.
-  - A separate preview route.
-  - The new teaching standard, with no hints.
-  - No Core/Core II labels.
-  - A2.22 deferred.
-  - Generated notes.
-  - Olympiad books unchanged for now.
-- **Done:**
-  - The specification's inconsistencies are resolved under change control (CR-1 to CR-9).
-  - The final authoring standard (AUTHORING-STANDARD.md).
-  - The spec checker, `tools/curriculum/check-spec.py`, passes; the import check `build-curriculum.py --check --allow-edits` also passes.
-  - Five Phase 1 packets (`packets/`). G2.2 is complete, with a verified problem selection and its links into G2.3–G2.6 and G3.3; the other four are drafts with verified selections.
-  - The minimal preview plan (PREVIEW-PLAN.md).
-  - The note on the Year 2 PDFs (YEAR2-SOURCES.md). All 22 lessons were received; they are not committed, and their structure is used only as a guide.
-- **Branch:** `claude/textbook-redesign`, synced with `main`. Changes go to the owner as pull requests that are not merged. Nothing outside `curriculum/` and `tools/curriculum/` is changed yet; the live app is untouched.
-- **Next action:** write the G2.2 manuscript from its packet and render it in the preview (PREVIEW-PLAN.md §6), then stop for the owner's review in the app. No other chapter is written before that review.
+- **Done:** Phase 1 planning (PR #474, merged). **G2.2 Power of a Point is written and implemented** in the preview: opening, six sections, close, six Review and three Challenge Problems, 21 figures, every answer independently verified. On 2026-11-28 it was revised to the series conventions in AUTHORING-STANDARD §7–§10 (labels and numbering, statements and notation, figures, instructional variety), and the preview now uses the live textbook interface. Its practice was then expanded (20 Practice, 15 Review, 7 Challenge Problems; §11), and Guided Practice was removed from the series. The preview route is live on this branch and kept out of normal navigation, search and recommendations.
+- **How to read it:** open `#/preview/geometry-2/g2.2` on the branch's deployment or a local server (`python3 -m http.server 8765`, then `http://localhost:8765/#/preview/geometry-2/g2.2`).
+- **Checks:** `tools/curriculum/check-spec.py`, `build-curriculum.py --check --allow-edits`, `build-shelf.py --check`, `figures/g2_02.py --check`, `verify/g2_02.py` and the browser checks `check-preview.cjs`; the repository gates pass.
+- **Branch:** `claude/textbook-redesign`; the G2.2 pull request is open and not merged.
+- **Next action:** wait for the owner's review of G2.2 in the app. **No other chapter is written until then** (owner, 2026-11-28). After the review: apply any further feedback to the standard and to G2.2, then the other four pilots (A2.8, C2.5, N2.1, A3.3), written to §7–§10 from the start.
 
 ## Layout
 

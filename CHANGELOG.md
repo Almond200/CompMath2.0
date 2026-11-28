@@ -2,6 +2,31 @@
 
 **2026-11-28**
 
+- **New curriculum: G2.2 practice expanded.**
+  - **Practice:** 20 Practice Problems across the sections (was 3), 15 mixed Review Problems (was 6) and 7 Challenge Problems (was 3), mostly from the archive. They include contrasting, reverse, conceptual, hidden-construction and combination problems. Every answer is recomputed independently, with letter answers checked against the live keys.
+  - **Guided Practice removed:** the 2020 AMC 12B 10 item is now a full Example followed by an independent problem.
+  - **New standard sections:** AUTHORING-STANDARD §11 sets the practice philosophy and ranges. §9 now reuses existing contest diagrams and draws new figures only where they add teaching value; nine new solution figures follow it, and one redrawn contest diagram was removed.
+  - **Checks:** the spec checker now records all 75 placements and accepts the summary and problem-set page numbers. The browser check enforces the practice ranges and accepts multiple-choice letter answers.
+  - **Disputed key:** one live answer key is disputed (`2026-hmmt-february-geometry-4`; QUESTIONS.md).
+
+- **New curriculum: G2.2 follow-up.**
+  - The summary and the two problem sets are numbered on after the last section (G2.2.7 Summary and next steps, G2.2.8 Review Problems, G2.2.9 Challenge Problems).
+  - Theorems, corollaries and definitions are cited by name ("the tangent–secant theorem"), with the number on hover. The name is a link only at its first mention on a page, on the statement's own page and the next two; after that it is plain text.
+  - Fix bold run-ins that contain math ("__The distances from $P$.__" showed its underscores).
+  - Recorded in AUTHORING-STANDARD §1, §7 and §8.
+
+- **New curriculum: G2.2 sets the series standard.** At the owner's request, the preview is rebuilt on the live textbook interface: the chapter rail, header bars, phone navigation row, lesson typography, problem boxes and page footer. Solutions can be hidden again, and the choice is remembered. The chapter is revised to new conventions, recorded in `curriculum/AUTHORING-STANDARD.md` §7–§10 for every later chapter:
+  - one vocabulary of labels (Example, Checkpoint, Guided Practice, Practice Problem, Review Problem, Challenge Problem), numbered through the chapter, with contest sources shown apart from the label;
+  - numbered theorems, corollaries and definitions with explicit conditions;
+  - a defined signed product in place of an undefined $\overline{PA}$;
+  - discovery-first and conceptual (multiple-choice) checkpoints;
+  - one answer and solution wording everywhere;
+  - a figure standard, with automatic label placement that refuses overlaps (`tools/curriculum/figures/figlib.py`). There are now 21 figures, including the inscribed-angle proof and figures for the worked examples and challenge solutions.
+
+  The chapter's pages now come from the specification's section list. No other chapter is started.
+
+- **New curriculum preview.** Write G2.2, Power of a Point, the first chapter of the new textbooks: an opening, six sections, a close, Review and Challenge Problems, eleven figures drawn from exact coordinates, and checkpoints that check typed answers. Add the separate preview route `#/preview`, its renderer and its own progress store (`mq-learn2`, carried by Export and Import). The live textbooks, cards, Practice, Arena, search and recommendations are unchanged.
+
 - **Arena: common supporting cards no longer crowd What to study.** A missed problem's cards are weighted by how much the miss says about them: the problem's main idea, or a card whose home topic is one of the problem's own topics, counts fully; any other card counts less the more problems cite it (full weight up to 40 citing problems, then the square root, with a floor of 0.2). The Pythagorean theorem (777 problems) now counts 0.23 per miss when it is only a supporting step, so two such misses rank it below the topics actually missed; repeated misses can still bring it forward. Topics are unchanged. Tested in `tests/arena.cjs`.
 
 - **Settings: Practice in Arena recommendations.** Two Practice settings, both off by default so Practice stays separate: Mock contests in Arena recommendations, and Practice sets in Arena recommendations. When on, finished sets of that kind, and the mistakes marked in their review, add to Arena's What to study (and its homepage preview), with links to the Practice review; the descriptions and the Mark your mistake note say so and that the setting can be turned off in Settings. Rated-set topic targeting still uses Arena results only.
