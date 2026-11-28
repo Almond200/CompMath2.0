@@ -2,6 +2,8 @@
 
 **2026-11-28**
 
+- **New curriculum figures: no empty bands or clipped circles.** The figure library sized every figure from a hand-set box and never trimmed it, so loose boxes showed as blank bands (2013 AMC 10A 23's solution figure had a large one), and tight boxes shaved circles at the edge. Figures are now trimmed to their drawing and shown at natural size. A drawing that reaches the edge fails the build unless the crop is declared. Three boxes were fixed. Recorded in AUTHORING-STANDARD §9.
+
 - **New curriculum: G2.2 practice expanded.**
   - **Practice:** 20 Practice Problems across the sections (was 3), 15 mixed Review Problems (was 6) and 7 Challenge Problems (was 3), mostly from the archive. They include contrasting, reverse, conceptual, hidden-construction and combination problems. Every answer is recomputed independently, with letter answers checked against the live keys.
   - **Guided Practice removed:** the 2020 AMC 12B 10 item is now a full Example followed by an independent problem.

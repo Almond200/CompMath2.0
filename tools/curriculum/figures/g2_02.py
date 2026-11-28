@@ -258,7 +258,7 @@ A, B = pt(P, U1, 6), pt(P, U1, -5); C, D = pt(Q, U2, 7), pt(Q, U2, -12)
 assert all(on_circle(c, R, Z) for Z in (X_, Y, A, B, C, D))
 f = Fig("two-points", "Line XY crosses chord AB at P and chord CD at Q",
         "Each of $P$ and $Q$ gives one equation: $XP\\cdot PY=PA\\cdot PB$ and $XQ\\cdot QY=QC\\cdot QD$.",
-        (-1.8, 32.8, -26.0, 8.0))
+        (-3.4, 34.4, -28.0, 10.0))
 f.circle(c, R); f.seg(X_, Y, "key"); f.seg(A, B); f.seg(C, D)
 f.point(X_, "X", at=160); f.point(Y, "Y", at=20); f.point(P, "P", at=-30); f.point(Q, "Q", at=-150)
 for Z, n in ((A, "A"), (B, "B"), (C, "C"), (D, "D")): f.point(Z, n, c)
@@ -271,7 +271,7 @@ Bp = (0, 0); Cp = (61, 0); x = (86 ** 2 - 97 ** 2 + 61 ** 2) / (2 * 61); Ap = (x
 assert close(dist(Ap, Xp), 86, 1e-9) and close(dist(Ap, Cp), 97, 1e-9)
 f = Fig("hidden-circle", "The circle centered A through B meets line BC again at X; C is outside it",
         "Dashed: $AX=86$, a second radius. The power of $C$ is $CA^2-AB^2=CX\\cdot CB$.",
-        (-60, 150, -92, 178))
+        (-80, 112, -14, 180))
 f.circle(Ap, 86); f.seg(Bp, Cp, "key"); f.seg(Ap, Bp); f.seg(Ap, Cp); f.seg(Ap, Xp, "aux")
 f.point(Ap, "A", at=90); f.point(Bp, "B", at=200); f.point(Cp, "C", at=-20); f.point(Xp, "X", at=-90)
 f.length(Ap, Bp, "86", -1); f.length(Ap, Cp, "97", 1); f.length(Cp, Xp, "33", 1); f.length(Xp, Bp, "28", 1)
@@ -291,7 +291,7 @@ keep(f)
 # ---------------------------------------------------------------- close
 f = Fig("converse", "Segments AB and CD crossing at P with PA times PB equal to PC times PD, and no circle drawn",
         "Equal products, no circle drawn. Chapter G2.3 proves that one always exists.",
-        (-5.2, 4.6, -3.6, 3.9))
+        (-5.4, 4.8, -4.4, 4.2))
 P = (0, 0); A = (-4.2, 1.2); B = (3.5, -1.0); C = (-1.2, 3.0); D = (1.0, -2.5)
 D = mul(unit(D), dist(P, A) * dist(P, B) / dist(P, C))
 assert close(dist(P, A) * dist(P, B), dist(P, C) * dist(P, D))
@@ -324,7 +324,7 @@ A, B, C, D = (h, 21), (h, 14), (h, 0), (h, -21); w = mul(B, 0.5)
 assert close(dist(O, B), 122) and on_circle(w, 61, O) and on_circle(w, 61, B) and on_circle(w, 61, C)
 f = Fig("two-circles-chord", "The chord AD of the large circle, cut by the small circle at B and C",
         "Parts of $\\Omega$ (radius $123$, center $O$) and of $\\omega$ (radius $61$, through $O$). $OC\\perp AD$, so $OB$ is a diameter of $\\omega$.",
-        (-8, 131, -44, 44), width=460)
+        (-8, 131, -44, 44), width=460, crop=True)
 f.circle(O, 123); f.circle(w, 61); f.seg(A, D, "key"); f.seg(O, C, "aux"); f.seg(O, B, "aux"); f.right(C, O, D, 9)
 f.point(O, "O", at=180); f.point(A, "A", at=0); f.point(B, "B", at=0); f.point(C, "C", at=0); f.point(D, "D", at=0)
 f.length(A, B, "k", 1, True); f.length(B, C, "2k", 1, True); f.length(C, D, "3k", 1, True)
