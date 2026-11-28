@@ -2,6 +2,20 @@
 
 **2026-11-28**
 
+- **PUMaC audit (2017).** Audit the 2017 papers, revise 62 Elo estimates, fix the cubic parity count, and document the ambiguity and proof corrections beside the official solutions (Codex PR #481).
+
+- **PUMaC audit (2016).** Audit the 2016 PUMaC papers, revise 61 Elo estimates, and document the dependence and official-proof issues in Practice and Arena review (Codex PR #481).
+
+- **PUMaC audit (2015).** Audit the 2015 PUMaC papers, revise 60 Elo estimates, correct the tournament grading, and display the answer and proof clarifications beside the official PDFs (Codex PR #481).
+
+- **PUMaC audit (2014).** Audit the 2014 PUMaC papers, revise 63 Elo estimates, accept the visible-permutation reading, use self-check for the arrival-time problem, and correct the Egyptian-fraction construction in both review screens (Codex PR #480).
+
+- **PUMaC audit (2013).** Audit the 2013 PUMaC papers, revise 62 Elo estimates, accept both cycle-count conventions, and explain the underdetermined series and sphere problems beside their official solutions (Codex PR #479).
+
+- **PUMaC audit (2012).** Audit the 2012 PUMaC papers. Revise 63 Elo estimates, fix the trapezoid answer, accept the alternate integer-triangle interpretation, use self-check for the conditional-score problem, and display official-solution notes in Practice and Arena (Codex PR #478).
+
+- **PUMaC audit (2011).** Audit the 2011 PUMaC papers. Revise 62 Elo estimates, exclude two inconsistent or unbounded questions from scoring, and add notes beside the official solutions (Codex PR #478).
+
 - **New curriculum figures: no empty bands or clipped circles.** The figure library sized every figure from a hand-set box and never trimmed it, so loose boxes showed as blank bands (2013 AMC 10A 23's solution figure had a large one), and tight boxes shaved circles at the edge. Figures are now trimmed to their drawing and shown at natural size. A drawing that reaches the edge fails the build unless the crop is declared. Three boxes were fixed. Recorded in AUTHORING-STANDARD §9.
 
 - **New curriculum: G2.2 practice expanded.**
@@ -34,6 +48,12 @@
 - **Settings: Practice in Arena recommendations.** Two Practice settings, both off by default so Practice stays separate: Mock contests in Arena recommendations, and Practice sets in Arena recommendations. When on, finished sets of that kind, and the mistakes marked in their review, add to Arena's What to study (and its homepage preview), with links to the Practice review; the descriptions and the Mark your mistake note say so and that the setting can be turned off in Settings. Rated-set topic targeting still uses Arena results only.
 
 **2026-11-27**
+
+- **PUMaC audit (2010).** Audit the 2010 PUMaC papers. Revise 63 Elo estimates, update grading for the walk and point-source problems, and mark the missing existence hypothesis in Algebra A #8 for self-check (Codex PR #475).
+
+- **PUMaC audit (2009).** Audit the 2009 PUMaC papers. Revise 60 Elo estimates, correct two keys shared by Divisions A and B, and accept the conventional count of symmetries including the identity (Codex PR #473).
+
+- **PUMaC audit (2008).** Audit the 2008 PUMaC papers. Revise 74 Elo estimates, correct the positive-coefficient key in both divisions, accept alternate geometry readings, and document proof and domain issues beside the official PDFs (Codex PR #472).
 
 - **BMT audit complete.** Solve all 30 questions from the 2025 papers and revise 26 Elo estimates; add three official-link notes and switch 2025 Algebra #10 to self-check while the repeated-entry case is open. This completes all 370 indexed BMT questions (Codex PR #469).
 

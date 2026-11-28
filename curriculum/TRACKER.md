@@ -106,7 +106,7 @@ A chapter can hold S2 and still be at S0 for the rest of its sections; the Notes
 | ID | Chapter | Basis | Sections | Stage | Notes |
 |---|---|---|---:|---|---|
 | [G2.1](books/geometry-2/G2.01-polygons.md) | Polygons | Year 2 L11 | 8 | S0 |  |
-| [G2.2](books/geometry-2/G2.02-power-of-a-point-theorem.md) | Power of a Point Theorem | Year 2 L12 | 6 | S4 | Next pilot (roadmap Stage 2); [Packet](packets/G2.2.md) ready for review (2026-11-27); manuscript and preview written 2026-11-28; editorial revision to AUTHORING-STANDARD §7–§10 the same day (packet §10); practice expanded to 20 Practice, 15 Review and 7 Challenge Problems, Guided Practice removed (§11; packet §11); awaiting the owner's review |
+| [G2.2](books/geometry-2/G2.02-power-of-a-point-theorem.md) | Power of a Point Theorem | Year 2 L12 | 6 | S5 | **Approved by the owner as the textbook prototype (2026-11-28; PRs #476, #482).** [Packet](packets/G2.2.md); 8 Examples, 14 Checkpoints, 20 Practice, 15 Review, 7 Challenge Problems; 60 values verified. Frozen except for genuine mathematical or technical defects. |
 | [G2.3](books/geometry-2/G2.03-cyclic-quadrilaterals-i.md) | Cyclic Quadrilaterals I | Year 2 L13 | 4 | S0 |  |
 | [G2.4](books/geometry-2/G2.04-cyclic-quadrilaterals-ii.md) | Cyclic Quadrilaterals II | Year 2 L14 | 5 | S0 |  |
 | [G2.5](books/geometry-2/G2.05-ptolemys-theorem-and-stewarts-theorem.md) | Ptolemy’s Theorem and Stewart’s Theorem | Year 2 L15 | 6 | S0 | 1 second-pass extension |
