@@ -46059,516 +46059,516 @@
       "Find minimum representable amounts in all residue classes of one denomination and read the largest unattainable amount; the two-denomination closed formula does not apply directly. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
     ],
     "2012 PUMaC Division A Algebra, Problem 1": [
-      1950,
-      "Solve the positive fixed points of an infinite radical and a periodic continued fraction, then use monotonicity and the strict threshold. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1550,
+      "Reviewed against the printed paper. Solve the two fixed-point equations. Comparing the two values at 42 and 43 resolves the threshold."
     ],
     "2012 PUMaC Division A Algebra, Problem 2": [
-      1780,
-      "Combine cyclic rational terms over a common denominator and recognize the negative product of their differences. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1360,
+      "Reviewed against the printed paper. Both expressions have denominator xyz. Their numerators are opposite Vandermonde products."
     ],
     "2012 PUMaC Division A Algebra, Problem 3": [
-      1850,
-      "Write a rational series term as a two-step difference of reciprocal squares and keep the uncancelled boundary terms. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1470,
+      "Reviewed against the printed paper. Write the summand as one quarter of the difference of two reciprocal squares, two indices apart."
     ],
     "2012 PUMaC Division A Algebra, Problem 4": [
-      1950,
-      "Use the parity of two polynomial values at consecutive integers to exclude every integer root. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1300,
+      "Reviewed against the printed paper. Every integer is congruent to 0 or 1 modulo 2. Both corresponding polynomial values are odd."
     ],
     "2012 PUMaC Division A Algebra, Problem 5": [
-      2750,
-      "Reduce a power polynomial in the cyclotomic quotient ring and identify its two valid exponent classes modulo six. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1790,
+      "Reviewed against the printed paper. Reduce each power by the quadratic relation in x squared and compare its exponent modulo six."
     ],
     "2012 PUMaC Division A Algebra, Problem 6": [
-      2520,
-      "Identify a ternary digit-sum recurrence and count bounded digit strings with the specified sum, including leading-zero padding. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2140,
+      "Reviewed against the printed paper. Recognize ternary digit sums and count the strings below the given ternary upper bound."
     ],
     "2012 PUMaC Division A Algebra, Problem 7": [
-      2400,
-      "Prove the exact alternating quadratic formula of a rounded-square-root recurrence and reduce the requested term modulo ten thousand. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1840,
+      "Reviewed against the printed paper. Prove two adjacent closed forms by trapping the square root between consecutive half-integers."
     ],
     "2012 PUMaC Division A Algebra, Problem 8": [
-      3180,
-      "Expand each shifted floor in binary digits and cancel the entire parameter dependence in a long sum. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2040,
+      "Reviewed against the printed paper. Each shifted floor records an omitted low bit. The identity for the sum of ordinary floors leaves the leading bit."
     ],
     "2012 PUMaC Division B Algebra, Problem 1": [
-      1270,
-      "Compare the two-adic and five-adic factorial valuations to rule out every later odd last nonzero digit. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1150,
+      "Reviewed against the printed paper. After removing paired factors of 2 and 5, every factorial from 2 onward still has a factor of 2."
     ],
     "2012 PUMaC Division B Algebra, Problem 2": [
-      1380,
-      "Find a six-term zero-sum period of a signed recurrence and evaluate the remaining terms. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      920,
+      "Reviewed against the printed paper. The sequence has period six and zero block sum."
     ],
     "2012 PUMaC Division B Algebra, Problem 3": [
-      1720,
-      "Use the sum and product of two real cube roots to derive a cubic for their sum and select its unique real root. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1280,
+      "Reviewed against the printed paper. Cube the conjugate pair 2 plus or minus the square root of 3."
     ],
     "2012 PUMaC Division B Algebra, Problem 4": [
-      1780,
-      "Combine cyclic rational terms over a common denominator and recognize the negative product of their differences. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1360,
+      "Reviewed against the printed paper. Both expressions have denominator xyz. Their numerators are opposite Vandermonde products."
     ],
     "2012 PUMaC Division B Algebra, Problem 5": [
-      2150,
-      "Separate a cubic floor sequence at the point where consecutive increments exceed one and count its initial consecutive output range. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1640,
+      "Reviewed against the printed paper. The cubic first differences cross the denominator once. The corresponding floors start with every integer up to the threshold."
     ],
     "2012 PUMaC Division B Algebra, Problem 6": [
-      1850,
-      "Write a rational series term as a two-step difference of reciprocal squares and keep the uncancelled boundary terms. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1470,
+      "Reviewed against the printed paper. Write the summand as one quarter of the difference of two reciprocal squares, two indices apart."
     ],
     "2012 PUMaC Division B Algebra, Problem 7": [
-      1950,
-      "Use the parity of two polynomial values at consecutive integers to exclude every integer root. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1300,
+      "Reviewed against the printed paper. Every integer is congruent to 0 or 1 modulo 2. Both corresponding polynomial values are odd."
     ],
     "2012 PUMaC Division B Algebra, Problem 8": [
-      2400,
-      "Prove the exact alternating quadratic formula of a rounded-square-root recurrence and reduce the requested term modulo ten thousand. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1840,
+      "Reviewed against the printed paper. Prove two adjacent closed forms by trapping the square root between consecutive half-integers."
     ],
     "2012 PUMaC Division A Combinatorics, Problem 1": [
-      1490,
-      "Count three-element subsets of a mixed-parity interval with an even total. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1250,
+      "Reviewed against the printed paper. Count triples with zero or two odd entries."
     ],
     "2012 PUMaC Division A Combinatorics, Problem 2": [
-      1920,
-      "Recognize allowed adjacent tuple permutations as a complete bipartite graph and count its Hamiltonian orders. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1580,
+      "Reviewed against the printed paper. Permutations that share a position are separated by a transposition. Arrange the two parity classes alternately."
     ],
     "2012 PUMaC Division A Combinatorics, Problem 3": [
-      1820,
-      "Condition jointly on the two die identities and their labelled outcomes to recover the posterior chance of reusing the die. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1460,
+      "Reviewed against the printed paper. The equally likely dice-choice cases give favorable ordered-outcome counts 4, 6, 6, 4."
     ],
     "2012 PUMaC Division A Combinatorics, Problem 4": [
-      2300,
-      "Choose strictly increasing coordinate lists and pair them in order, then sum over list lengths by Vandermonde. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1660,
+      "Reviewed against the printed paper. Positive slope orders both coordinates strictly. Choose the two coordinate sets independently and pair them in sorted order."
     ],
     "2012 PUMaC Division A Combinatorics, Problem 5": [
-      2350,
-      "Track the target person by position and sum the geometric waiting times for its successive one-position advances. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1800,
+      "Reviewed against the printed paper. The target moves only one step toward the front at a time. Add four geometric waiting times."
     ],
     "2012 PUMaC Division A Combinatorics, Problem 6": [
-      2450,
-      "Count binary face colorings of a pentagonal bipyramid modulo its ten proper rotations. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2020,
+      "Reviewed against the printed paper. The ten rotations have three face-cycle patterns. Apply Burnside's lemma."
     ],
     "2012 PUMaC Division A Combinatorics, Problem 7": [
-      3450,
-      "Count Hamiltonian grading orders on a three-row cyclic strip and reduce the resulting recurrence modulo one hundred; an independent frontier degree/connectivity count verifies the total. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2810,
+      "Reviewed against the printed paper. Partition a path into blocks bounded by single-crossing cuts. Each block forces a change of row, giving a simple matrix power."
     ],
     "2012 PUMaC Division A Combinatorics, Problem 8": [
-      3360,
-      "Translate two simultaneous student movements into conjugation and count the resulting two-four-cycle class; direct simulation of every initial order verifies the count. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2240,
+      "Reviewed against the printed paper. The two moves conjugate a fixed permutation with two four-cycles. Count its conjugacy class."
     ],
     "2012 PUMaC Division B Combinatorics, Problem 1": [
       1520,
       "Average the point weights over a uniform two-subset of correct answers; equal individual success probabilities alone do not imply that conditional model. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
     ],
     "2012 PUMaC Division B Combinatorics, Problem 2": [
-      1490,
-      "Count three-element subsets of a mixed-parity interval with an even total. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1250,
+      "Reviewed against the printed paper. Count triples with zero or two odd entries."
     ],
     "2012 PUMaC Division B Combinatorics, Problem 3": [
-      1920,
-      "Recognize allowed adjacent tuple permutations as a complete bipartite graph and count its Hamiltonian orders. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1580,
+      "Reviewed against the printed paper. Permutations that share a position are separated by a transposition. Arrange the two parity classes alternately."
     ],
     "2012 PUMaC Division B Combinatorics, Problem 4": [
-      1780,
-      "Count subsets by their size and largest allowed element, then sum the binomial counts with a boundary correction. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1450,
+      "Reviewed against the printed paper. Condition on the size of the subset and apply the hockey-stick identity."
     ],
     "2012 PUMaC Division B Combinatorics, Problem 5": [
-      1820,
-      "Condition jointly on the two die identities and their labelled outcomes to recover the posterior chance of reusing the die. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1460,
+      "Reviewed against the printed paper. The equally likely dice-choice cases give favorable ordered-outcome counts 4, 6, 6, 4."
     ],
     "2012 PUMaC Division B Combinatorics, Problem 6": [
-      2300,
-      "Choose strictly increasing coordinate lists and pair them in order, then sum over list lengths by Vandermonde. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1660,
+      "Reviewed against the printed paper. Positive slope orders both coordinates strictly. Choose the two coordinate sets independently and pair them in sorted order."
     ],
     "2012 PUMaC Division B Combinatorics, Problem 7": [
-      2350,
-      "Track the target person by position and sum the geometric waiting times for its successive one-position advances. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1800,
+      "Reviewed against the printed paper. The target moves only one step toward the front at a time. Add four geometric waiting times."
     ],
     "2012 PUMaC Division B Combinatorics, Problem 8": [
-      3450,
-      "Count Hamiltonian grading orders on a three-row cyclic strip and reduce the resulting recurrence modulo one hundred; an independent frontier degree/connectivity count verifies the total. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2810,
+      "Reviewed against the printed paper. Partition a path into blocks bounded by single-crossing cuts. Each block forces a change of row, giving a simple matrix power."
     ],
     "2012 PUMaC Division A Geometry, Problem 1": [
-      2350,
-      "Verify the common-tangent rectangle around three touching disks and its exact area; a separate support-line optimization agrees, while independent global optimality remains a recorded proof gap. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2650,
+      "Reviewed against the printed paper. The rectangle construction is direct, but establishing optimality requires a global argument over quadrilaterals."
     ],
     "2012 PUMaC Division A Geometry, Problem 2": [
-      2020,
-      "Find the common chord and its distance from the second center, then compute the exact triangle area. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1400,
+      "Reviewed against the printed paper. The common chord is perpendicular to the line of centers. A difference of squared distances gives the chord height."
     ],
     "2012 PUMaC Division A Geometry, Problem 3": [
-      2600,
-      "Use the symmetric pursuit velocity to obtain proportional radial decay, then solve the exponential area ratio; the continuous proportional-rate model has no dedicated existing card. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1930,
+      "Reviewed against the printed paper. By symmetry the radial velocity is proportional to the radius. The area decays exponentially at twice the radial rate."
     ],
     "2012 PUMaC Division A Geometry, Problem 4": [
-      2250,
-      "Use a centered inscribed square to fix the foci at side midpoints, then recover the full minor-axis square from the focal-distance sum. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1820,
+      "Reviewed against the printed paper. The inscribed square is centered and aligned with the ellipse. Its side lines locate the foci and a vertex gives the focal-distance sum."
     ],
     "2012 PUMaC Division A Geometry, Problem 5": [
-      2680,
-      "For the nontrivial point on the side, prove the two circumcircles have equal radii and convert their center separation to the common external tangent length. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1670,
+      "Reviewed against the printed paper. The two equal circumradii and the shared chord make the center separation a short right-triangle calculation."
     ],
     "2012 PUMaC Division A Geometry, Problem 6": [
-      3450,
-      "Unfold triangular billiards, classify route midpoints by lattice congruence classes and fold them back, checking valid first-hit witnesses for every physical midpoint. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2720,
+      "Reviewed against the printed paper. Unfold the billiard path to a triangular lattice. Reduce midpoint coordinates modulo the reflection periods and verify attainability."
     ],
     "2012 PUMaC Division A Geometry, Problem 7": [
-      3080,
-      "Find a cyclic equatorial area and radius, recover the perpendicular diagonal from the bipyramid volume and sum the eight equal slant edges. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2200,
+      "Reviewed against the printed paper. The cyclic base has area 234 and circumradius 25/2. The given volume and Pythagorean theorem determine the remaining edges."
     ],
     "2012 PUMaC Division A Geometry, Problem 8": [
-      3270,
-      "Pair half-angle cotangents of opposite cyclic angles, then recover the remaining sine ratio from the side-length data. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1840,
+      "Reviewed against the printed paper. Supplementary angles simplify the cotangents. Two area decompositions give the ratio of the remaining sines."
     ],
     "2012 PUMaC Division B Geometry, Problem 1": [
-      1490,
-      "Convert the filter-paper sector circumference to the cone radius and recover its axial-section apex angle. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1210,
+      "Reviewed against the printed paper. The cone opening uses half the circle's perimeter. Its radius is half the slant length."
     ],
     "2012 PUMaC Division B Geometry, Problem 2": [
-      1780,
-      "Relate a corner-rotated rectangle sweep to the quarter-disk of its diagonal and recover the missing side. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1530,
+      "Reviewed against the printed paper. At each distance from the pivot, rotation adds one quarter circle to the angular interval."
     ],
     "2012 PUMaC Division B Geometry, Problem 3": [
-      1820,
-      "Compare the circumradius and apothem of two similar midpoint dodecagons and square the exact half-angle ratio. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1360,
+      "Reviewed against the printed paper. The new circumradius equals the old apothem, so the area ratio is the square of cosine fifteen degrees."
     ],
     "2012 PUMaC Division B Geometry, Problem 4": [
-      2350,
-      "Verify the common-tangent rectangle around three touching disks and its exact area; a separate support-line optimization agrees, while independent global optimality remains a recorded proof gap. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2650,
+      "Reviewed against the printed paper. The rectangle construction is direct, but establishing optimality requires a global argument over quadrilaterals."
     ],
     "2012 PUMaC Division B Geometry, Problem 5": [
-      2020,
-      "Find the common chord and its distance from the second center, then compute the exact triangle area. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1400,
+      "Reviewed against the printed paper. The common chord is perpendicular to the line of centers. A difference of squared distances gives the chord height."
     ],
     "2012 PUMaC Division B Geometry, Problem 6": [
-      2250,
-      "Use a centered inscribed square to fix the foci at side midpoints, then recover the full minor-axis square from the focal-distance sum. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1820,
+      "Reviewed against the printed paper. The inscribed square is centered and aligned with the ellipse. Its side lines locate the foci and a vertex gives the focal-distance sum."
     ],
     "2012 PUMaC Division B Geometry, Problem 7": [
-      3650,
-      "Encode shared great-circle intersections as cyclic arrival phases, optimize the minimum pairwise phase gap and exhibit a collision-free periodic schedule at the bound. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2540,
+      "Reviewed against the printed paper. Compare arrival times modulo the full period. The three constrained gaps have a sum congruent to plus or minus a quarter period."
     ],
     "2012 PUMaC Division B Geometry, Problem 8": [
-      2250,
-      "Identify an isosceles trapezoid from its cyclic side data and recover its circumradius through a diagonal and an included angle. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1570,
+      "Reviewed against the printed paper. The quadrilateral is an isosceles trapezoid. Compute one diagonal and apply the extended sine law."
     ],
     "2012 PUMaC Division A Number Theory, Problem 1": [
-      1490,
-      "Solve two candy-remainder congruences and choose the first representative above the stated threshold. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1280,
+      "Reviewed against the printed paper. Two neighboring moduli reduce the candy count to a single residue modulo their product."
     ],
     "2012 PUMaC Division A Number Theory, Problem 2": [
-      2050,
-      "Force four positive squares to be even modulo eight and descend until the only possible four-term sum is four ones. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1510,
+      "Reviewed against the printed paper. Modulo four and eight, a sum divisible by eight forces all four bases even. Repeated division leaves four ones."
     ],
     "2012 PUMaC Division A Number Theory, Problem 3": [
-      2300,
-      "Track the finite last-two-digit states of a branching power tower and prove the residue set stabilizes. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1560,
+      "Reviewed against the printed paper. All tower exponents are odd. The top two bases already determine one of three possible residues modulo one hundred."
     ],
     "2012 PUMaC Division A Number Theory, Problem 4": [
-      2820,
-      "Use low moduli to bound one exponent and consecutive-square gaps to classify the remaining exponential-square equations. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1860,
+      "Reviewed against the printed paper. Modulo four and eight remove most cases, and two differences of squares handle the exceptions."
     ],
     "2012 PUMaC Division A Number Theory, Problem 5": [
-      3450,
-      "Characterize leading digits by fractional logarithms, exclude powers of ten and use irrational-rotation density; explicit convergent-based exponents verify every remaining integer. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2300,
+      "Reviewed against the printed paper. Leading digits correspond to an interval for fractional logarithms. Irrational rotations are dense and only powers of ten have rational logarithm."
     ],
     "2012 PUMaC Division A Number Theory, Problem 6": [
-      3500,
-      "Apply lifting the exponent to successive power-tower differences and propagate the exact valuation from its initial two-step case. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2060,
+      "Reviewed against the printed paper. Lifting the exponent gives one additional factor of 2011 at each step."
     ],
     "2012 PUMaC Division A Number Theory, Problem 7": [
-      2900,
-      "Combine a fourth-power equation and a fifth-power equation, bound all positive variables and use modular square restrictions to classify the finite solution set. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1830,
+      "Reviewed against the printed paper. Factor the quartic as two quadratic forms. The divisor pairs fix the two variables and the remaining fifth power."
     ],
     "2012 PUMaC Division A Number Theory, Problem 8": [
-      3800,
-      "Force a cyclotomic divisor of a prime-power remainder and use order and low-modulus contradictions to exclude larger exponents; the source incorrectly restricts a required prime power to a prime, though the maximum remains correct. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2810,
+      "Reviewed against the printed paper. A factor forced by the two-adic valuation of n plus one constrains the order of the prime divisor. Modulo four and eight exclude all large n."
     ],
     "2012 PUMaC Division B Number Theory, Problem 1": [
-      1650,
-      "Interpret a positional square in its base and use the permitted real third side to enumerate every valid pair of integer leg lengths. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1220,
+      "Reviewed against the printed paper. The base-b expression is a perfect square immediately. An extra finite check covers the integer-triangle reading."
     ],
     "2012 PUMaC Division B Number Theory, Problem 2": [
-      2250,
-      "Enumerate multiplicative partitions of the prescribed divisor count and minimize the corresponding prime-exponent assignments under a fixed required divisor. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1590,
+      "Reviewed against the printed paper. Enumerate the multiplicative partitions of the divisor count and place the largest exponent on 2."
     ],
     "2012 PUMaC Division B Number Theory, Problem 3": [
-      1880,
-      "Pair divisors of a perfect square around its square root and subtract the divisors of the smaller power. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1420,
+      "Reviewed against the printed paper. Pair divisors around the square root, then subtract the proper divisors of the square root."
     ],
     "2012 PUMaC Division B Number Theory, Problem 4": [
-      1490,
-      "Solve two candy-remainder congruences and choose the first representative above the stated threshold. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1280,
+      "Reviewed against the printed paper. Two neighboring moduli reduce the candy count to a single residue modulo their product."
     ],
     "2012 PUMaC Division B Number Theory, Problem 5": [
-      2050,
-      "Force four positive squares to be even modulo eight and descend until the only possible four-term sum is four ones. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1510,
+      "Reviewed against the printed paper. Modulo four and eight, a sum divisible by eight forces all four bases even. Repeated division leaves four ones."
     ],
     "2012 PUMaC Division B Number Theory, Problem 6": [
-      2020,
-      "Reduce gcds of neighboring quadratic values to small linear expressions and evaluate the three exact factors. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1520,
+      "Reviewed against the printed paper. Taking the difference and clearing a factor of four reduces each gcd to a gcd with 5."
     ],
     "2012 PUMaC Division B Number Theory, Problem 7": [
-      2820,
-      "Use low moduli to bound one exponent and consecutive-square gaps to classify the remaining exponential-square equations. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1860,
+      "Reviewed against the printed paper. Modulo four and eight remove most cases, and two differences of squares handle the exceptions."
     ],
     "2012 PUMaC Division B Number Theory, Problem 8": [
-      3500,
-      "Apply lifting the exponent to successive power-tower differences and propagate the exact valuation from its initial two-step case. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2060,
+      "Reviewed against the printed paper. Lifting the exponent gives one additional factor of 2011 at each step."
     ],
     "2011 PUMaC Division A Algebra, Problem 1": [
-      2100,
-      "Use the first two root power sums to bound two possible integer roots and classify their multiplicities before evaluating the sextic. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1690,
+      "Reviewed against the printed paper. The first two power sums and parity force the multiplicities. Three of each root then gives a short quadratic."
     ],
     "2011 PUMaC Division A Algebra, Problem 2": [
-      2100,
-      "Take prime valuations of a multiplicative two-index recurrence to obtain an additive Pascal recurrence and compute the requested exact exponent. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1740,
+      "Reviewed against the printed paper. Take powers of two through the multiplicative recursion. Three boundary terms contribute through Pascal path counts."
     ],
     "2011 PUMaC Division A Algebra, Problem 3": [
-      2200,
-      "Classify stopping cycles of an integer machine and compare the first-repeat length from every allowed initial state. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1930,
+      "Reviewed against the printed paper. Compress every odd step with the following halving. The descent leaves two cycles and an exhaustive finite comparison gives a unique start."
     ],
     "2011 PUMaC Division A Algebra, Problem 4": [
-      2600,
-      "Apply Vieta with roots reused as coefficients, split off the zero branch and bound the nonzero product sharply with an attaining real triple. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2000,
+      "Reviewed against the printed paper. The reused root and coefficient force the product of the other two roots to be minus one. This immediately bounds the third root above by one."
     ],
     "2011 PUMaC Division A Algebra, Problem 5": [
-      2750,
-      "Generate the six fractional-linear compositions of two involutions and use their orders to bound a real orbit, accounting for the initial point in the count. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2080,
+      "Reviewed against the printed paper. The two fractional-linear involutions permute zero, one, and infinity. This limits their iteration orders to three."
     ],
     "2011 PUMaC Division A Algebra, Problem 6": [
-      2250,
-      "Take first differences of a second-order recurrence, sum the resulting affine geometric progression and rigorously bound the remaining rounding error. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1680,
+      "Reviewed against the printed paper. Take first differences, solve a geometric recurrence, and bound the small tail before rounding."
     ],
     "2011 PUMaC Division A Algebra, Problem 7": [
-      3450,
-      "Determine which permutations preserve every rational relation among sixth roots of unity and verify the two surviving conjugation maps. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2350,
+      "Reviewed against the printed paper. A primitive sixth root and its quadratic relation determine every other root. Only identity and conjugation work."
     ],
     "2011 PUMaC Division A Algebra, Problem 8": [
-      4000,
-      "Exploit the given uniqueness of a root-of-unity interpolation polynomial, force its coefficients to unit signs and read the target from its reduced square convolution. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      3150,
+      "Reviewed against the printed paper. Construct the unique polynomial from the quadratic character modulo eleven. Orthogonality proves its squares and the paired coefficients are immediate."
     ],
     "2011 PUMaC Division B Algebra, Problem 1": [
-      1300,
-      "Recognize the denominator as the middle input and evaluate two nested range-to-median operations. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      880,
+      "Reviewed against the printed paper. Evaluate the two inner operations and take the outer range over the middle entry."
     ],
     "2011 PUMaC Division B Algebra, Problem 2": [
-      1680,
-      "Compute symmetric eighth powers by repeated squaring of root power sums and take the final absolute value. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1290,
+      "Reviewed against the printed paper. Square one complex root three times and double its real part, then take the absolute value."
     ],
     "2011 PUMaC Division B Algebra, Problem 3": [
-      1850,
-      "Factor a cubic into a linear factor and an always-positive quadratic, then classify its distinct prime outputs. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1260,
+      "Reviewed against the printed paper. Factor out x minus one. For a positive prime output, one of two positive factors must be one."
     ],
     "2011 PUMaC Division B Algebra, Problem 4": [
       2300,
       "Compare the specified nested tail at z and iz; the resulting relation forces incompatible values of f at zero, so the stated function does not exist despite the intended fixed-point answer. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
     ],
     "2011 PUMaC Division B Algebra, Problem 5": [
-      2100,
-      "Use the first two root power sums to bound two possible integer roots and classify their multiplicities before evaluating the sextic. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1690,
+      "Reviewed against the printed paper. The first two power sums and parity force the multiplicities. Three of each root then gives a short quadratic."
     ],
     "2011 PUMaC Division B Algebra, Problem 6": [
-      2200,
-      "Classify stopping cycles of an integer machine and compare the first-repeat length from every allowed initial state. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1930,
+      "Reviewed against the printed paper. Compress every odd step with the following halving. The descent leaves two cycles and an exhaustive finite comparison gives a unique start."
     ],
     "2011 PUMaC Division B Algebra, Problem 7": [
-      2250,
-      "Take first differences of a second-order recurrence, sum the resulting affine geometric progression and rigorously bound the remaining rounding error. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1680,
+      "Reviewed against the printed paper. Take first differences, solve a geometric recurrence, and bound the small tail before rounding."
     ],
     "2011 PUMaC Division B Algebra, Problem 8": [
-      3450,
-      "Determine which permutations preserve every rational relation among sixth roots of unity and verify the two surviving conjugation maps. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2350,
+      "Reviewed against the printed paper. A primitive sixth root and its quadratic relation determine every other root. Only identity and conjugation work."
     ],
     "2011 PUMaC Division A Combinatorics, Problem 1": [
-      1780,
-      "Track the distinct output values of a two-digit plus three-digit sum, using the fixed digit sum to avoid counting repeated representations. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1350,
+      "Reviewed against the printed paper. The digit sum is fixed, so the outcome is determined by the hundreds digit and the sum of the two tens digits."
     ],
     "2011 PUMaC Division A Combinatorics, Problem 2": [
-      2300,
-      "Count distinct board colorings admitting a black-white domino tiling rather than counting colored tilings multiple times. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1840,
+      "Reviewed against the printed paper. Parse the board uniquely into complementary columns or pairs of opposite monochromatic columns."
     ],
     "2011 PUMaC Division A Combinatorics, Problem 3": [
-      2050,
-      "Condition on relative square sides and measure the adjacent-side unit-square region outside a quadrant. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1610,
+      "Reviewed against the printed paper. Condition on whether the two sides coincide, meet, or are opposite. The only nontrivial area is a quarter-disk."
     ],
     "2011 PUMaC Division A Combinatorics, Problem 4": [
-      2200,
-      "Count actual four-bishop square subsets and exclude every placement with three or more on a common diagonal. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1800,
+      "Reviewed against the printed paper. The bad configurations for different diagonals are disjoint, so subtract a short count by diagonal length."
     ],
     "2011 PUMaC Division A Combinatorics, Problem 5": [
-      2900,
-      "Average the length of the initial consecutive monotone permutation run through its tail probabilities and telescope the finite factorial sum. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2130,
+      "Reviewed against the printed paper. Summing length-tail probabilities leaves six short ordered-run counts."
     ],
     "2011 PUMaC Division A Combinatorics, Problem 6": [
-      2520,
-      "Count a bounded inventory of power-of-two weights through a factored generating function or a binary inventory bijection. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1740,
+      "Reviewed against the printed paper. Split each multiplicity into two binary digits and count the range of one of the resulting integers."
     ],
     "2011 PUMaC Division A Combinatorics, Problem 7": [
-      3270,
-      "Reflect fixed-endpoint audience walks at adjacent height barriers to isolate the exact maximum, then compute the two-adic valuation of the resulting binomial difference. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2490,
+      "Reviewed against the printed paper. Reflect at consecutive upper barriers and subtract. The height constraint rules out an empty audience automatically."
     ],
     "2011 PUMaC Division A Combinatorics, Problem 8": [
-      3800,
-      "Reduce unique-route networks to trees, maximize five-vertex paths by a leaf redistribution bound and check the global optimum through a complete rooted depth-profile dynamic program. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      3220,
+      "Reviewed against the printed paper. Cloning leaves reduces an extremal tree to depth two about its center. Then balancing the counts on its branches gives a short maximization."
     ],
     "2011 PUMaC Division B Combinatorics, Problem 1": [
-      1350,
-      "Subtract adjacent-vowel arrangements from all permutations of five distinct letters. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      990,
+      "Reviewed against the printed paper. Subtract the arrangements with the two vowels bound into one block."
     ],
     "2011 PUMaC Division B Combinatorics, Problem 2": [
-      1780,
-      "Track the distinct output values of a two-digit plus three-digit sum, using the fixed digit sum to avoid counting repeated representations. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1350,
+      "Reviewed against the printed paper. The digit sum is fixed, so the outcome is determined by the hundreds digit and the sum of the two tens digits."
     ],
     "2011 PUMaC Division B Combinatorics, Problem 3": [
-      2300,
-      "Count distinct board colorings admitting a black-white domino tiling rather than counting colored tilings multiple times. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1840,
+      "Reviewed against the printed paper. Parse the board uniquely into complementary columns or pairs of opposite monochromatic columns."
     ],
     "2011 PUMaC Division B Combinatorics, Problem 4": [
-      2750,
-      "Determine bounded multiplicative maps from their prime images, enforce all injectivity collisions and count the two free images. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2070,
+      "Reviewed against the printed paper. The images of two and three fix seven values, subject to a short injectivity check. Choose the images of five and seven freely afterward."
     ],
     "2011 PUMaC Division B Combinatorics, Problem 5": [
-      2050,
-      "Condition on relative square sides and measure the adjacent-side unit-square region outside a quadrant. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1610,
+      "Reviewed against the printed paper. Condition on whether the two sides coincide, meet, or are opposite. The only nontrivial area is a quarter-disk."
     ],
     "2011 PUMaC Division B Combinatorics, Problem 6": [
-      2200,
-      "Count actual four-bishop square subsets and exclude every placement with three or more on a common diagonal. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1800,
+      "Reviewed against the printed paper. The bad configurations for different diagonals are disjoint, so subtract a short count by diagonal length."
     ],
     "2011 PUMaC Division B Combinatorics, Problem 7": [
-      2520,
-      "Count a bounded inventory of power-of-two weights through a factored generating function or a binary inventory bijection. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1740,
+      "Reviewed against the printed paper. Split each multiplicity into two binary digits and count the range of one of the resulting integers."
     ],
     "2011 PUMaC Division B Combinatorics, Problem 8": [
-      3270,
-      "Reflect fixed-endpoint audience walks at adjacent height barriers to isolate the exact maximum, then compute the two-adic valuation of the resulting binomial difference. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2490,
+      "Reviewed against the printed paper. Reflect at consecutive upper barriers and subtract. The height constraint rules out an empty audience automatically."
     ],
     "2011 PUMaC Division A Geometry, Problem 1": [
-      1780,
-      "Find the arc followed by the larger center and add its swept circular strip to the initial disk before multiplying by the log length. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1660,
+      "Reviewed against the printed paper. The center traces a one-hundred-twenty-degree arc. Its swept cross-section is an annular sector and two semicircular caps."
     ],
     "2011 PUMaC Division A Geometry, Problem 2": [
-      2200,
-      "Translate the preserved fold distances to both hinge endpoints into spatial distance equations and locate the common point projection. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1710,
+      "Reviewed against the printed paper. Use the three distances preserved by the folds. The two equal corner distances enforce the midpoint symmetry."
     ],
     "2011 PUMaC Division A Geometry, Problem 3": [
-      2400,
-      "Combine equal tangent lengths with a second equal-distance circle to convert the external tangent angles into the requested inscribed angle. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2040,
+      "Reviewed against the printed paper. The tangent angles give the chord slopes and the horizontal coordinate of the exterior point. This identifies the crossing with the second chord."
     ],
     "2011 PUMaC Division A Geometry, Problem 4": [
-      2520,
-      "Use the incenter and the circle through two vertices to find congruent right triangles and the equal initial side segment. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1860,
+      "Reviewed against the printed paper. The opposite excenter lies on the same circle as the incenter and two vertices. Its power identity gives the second intersection."
     ],
     "2011 PUMaC Division A Geometry, Problem 5": [
-      2200,
-      "Replace the variable two-segment sum by a fixed vector displacement and identify an attaining straight-line configuration. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1610,
+      "Reviewed against the printed paper. The two distances on the parallel lines reduce to a symmetric convex function with a midpoint minimizer."
     ],
     "2011 PUMaC Division A Geometry, Problem 6": [
-      2820,
-      "Show that the chord midpoint moves on a concentric circular arc, calculate its radius and verify that the nearest point to the fixed endpoint is attained. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2300,
+      "Reviewed against the printed paper. The two chord directions show that both second intersections rotate through the same angle. This also locates the attainable closest point."
     ],
     "2011 PUMaC Division A Geometry, Problem 7": [
-      3270,
-      "Extend the external angle bisectors to the excenter, compare similar cyclic triangles and convert the remaining area ratio through the exradius. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2210,
+      "Reviewed against the printed paper. Compute both external bisector projections as vectors and take the area determinant."
     ],
     "2011 PUMaC Division A Geometry, Problem 8": [
-      3500,
-      "Reflect the inner triangle to build a tangential isosceles trapezoid, identify its incenter and compare its incircle with the smaller angle-circle by homothety. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2360,
+      "Reviewed against the printed paper. The center divides the opposite side by the bisector theorem. Coordinate distances then give the two lengths directly."
     ],
     "2011 PUMaC Division B Geometry, Problem 1": [
-      1410,
-      "Extend the altitude and use the resulting isosceles triangle to transfer the given angles. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1290,
+      "Reviewed against the printed paper. The equal distances from B fix the horizontal and vertical projections. A half-angle identity gives the desired angle."
     ],
     "2011 PUMaC Division B Geometry, Problem 2": [
-      1780,
-      "Find the arc followed by the larger center and add its swept circular strip to the initial disk before multiplying by the log length. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1660,
+      "Reviewed against the printed paper. The center traces a one-hundred-twenty-degree arc. Its swept cross-section is an annular sector and two semicircular caps."
     ],
     "2011 PUMaC Division B Geometry, Problem 3": [
-      1680,
-      "Use the intersecting trapezoid cevians and parallel bases to determine the final side ratio. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1430,
+      "Reviewed against the printed paper. An affine coordinate model of the trapezoid preserves the relevant division ratio."
     ],
     "2011 PUMaC Division B Geometry, Problem 4": [
-      1880,
-      "Subtract squared chord-endpoint distances to obtain a family of parallel lines and maximize its parameter at a tangent support line. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1300,
+      "Reviewed against the printed paper. The difference of squared distances is linear. Its unique maximum on the circle occurs in the chord direction."
     ],
     "2011 PUMaC Division B Geometry, Problem 5": [
       2050,
       "Check internal as well as external tangency: four distinct circles can share a single tangent point with the fourth radius arbitrarily large, so the printed maximum does not exist. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
     ],
     "2011 PUMaC Division B Geometry, Problem 6": [
-      2200,
-      "Translate the preserved fold distances to both hinge endpoints into spatial distance equations and locate the common point projection. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1710,
+      "Reviewed against the printed paper. Use the three distances preserved by the folds. The two equal corner distances enforce the midpoint symmetry."
     ],
     "2011 PUMaC Division B Geometry, Problem 7": [
-      2200,
-      "Replace the variable two-segment sum by a fixed vector displacement and identify an attaining straight-line configuration. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1610,
+      "Reviewed against the printed paper. The two distances on the parallel lines reduce to a symmetric convex function with a midpoint minimizer."
     ],
     "2011 PUMaC Division B Geometry, Problem 8": [
-      2820,
-      "Show that the chord midpoint moves on a concentric circular arc, calculate its radius and verify that the nearest point to the fixed endpoint is attained. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2300,
+      "Reviewed against the printed paper. The two chord directions show that both second intersections rotate through the same angle. This also locates the attainable closest point."
     ],
     "2011 PUMaC Division A Number Theory, Problem 1": [
-      1880,
-      "Write the divisor sum as a product of two geometric factors and classify the bounded prime exponents. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1400,
+      "Reviewed against the printed paper. Factor the divisor sum and check the short list of powers of two minus one that can divide it."
     ],
     "2011 PUMaC Division A Number Theory, Problem 2": [
-      1750,
-      "Eliminate the least common multiple to force three times a square, then construct an integer partner achieving the largest allowed value. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1300,
+      "Reviewed against the printed paper. The lcm and gcd product identity reduces the equation to three times a square, and every such square is attained."
     ],
     "2011 PUMaC Division A Number Theory, Problem 3": [
-      2020,
-      "Tabulate the full six-term power cycle modulo the fixed prime and restrict the exponent to a prime in its only admissible congruence class. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1520,
+      "Reviewed against the printed paper. The two bases are consecutive powers of seven in a group of order six. A quadratic congruence leaves one possible prime."
     ],
     "2011 PUMaC Division A Number Theory, Problem 4": [
-      2300,
-      "Bound the least of the three positive variables, factor the remaining two-variable equation and count all distinct ordered permutations. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1790,
+      "Reviewed against the printed paper. Order the variables, bound the smallest to one or two, and factor the two remaining equations."
     ],
     "2011 PUMaC Division A Number Theory, Problem 5": [
-      2750,
-      "Expand the divisor-count coefficients as a double sum, justify the positive-term rearrangement and square the supplied reciprocal-square sum. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1890,
+      "Reviewed against the printed paper. Each divisor pair contributes one term to the square of the supplied zeta sum."
     ],
     "2011 PUMaC Division A Number Theory, Problem 6": [
-      2990,
-      "Find the first modulus with a missing sum of a cube and a fourth power and verify complete residue coverage for every smaller modulus. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2090,
+      "Reviewed against the printed paper. Check the prime powers below thirteen by explicit residues, then use CRT for the other smaller moduli."
     ],
     "2011 PUMaC Division A Number Theory, Problem 7": [
-      3360,
-      "Identify Fibonacci doubling identities in the nonlinear recurrence, reduce the exponential index by the actual modular period and combine the residues. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2510,
+      "Reviewed against the printed paper. Encode the pair in a quadratic ring. Squaring doubles a Fibonacci index, and the modulus has a short period."
     ],
     "2011 PUMaC Division A Number Theory, Problem 8": [
-      3750,
-      "Convert consecutive cubes to a Pell equation, use the required congruence to force an even unit power and reduce every possible index to a fixed difference-of-squares factorization. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2840,
+      "Reviewed against the printed paper. The cubic sum is a triangular square, giving Pell. The parity condition forces a Pell square and leaves a fixed difference of squares."
     ],
     "2011 PUMaC Division B Number Theory, Problem 1": [
-      1300,
-      "Recognize the integer as a difference of cubes and factor it completely to isolate the largest prime. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1050,
+      "Reviewed against the printed paper. Factor the given number as a difference of cubes and factor the remaining small terms."
     ],
     "2011 PUMaC Division B Number Theory, Problem 2": [
-      1720,
-      "Convert the robots bases to decimal constraints, use the square residues modulo five to bound the factorial and check the remaining bases. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1480,
+      "Reviewed against the printed paper. Read both base labels in the speaker's base. A square residue condition modulo five rules out large factorials."
     ],
     "2011 PUMaC Division B Number Theory, Problem 3": [
-      1880,
-      "Write the divisor sum as a product of two geometric factors and classify the bounded prime exponents. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1400,
+      "Reviewed against the printed paper. Factor the divisor sum and check the short list of powers of two minus one that can divide it."
     ],
     "2011 PUMaC Division B Number Theory, Problem 4": [
-      1750,
-      "Eliminate the least common multiple to force three times a square, then construct an integer partner achieving the largest allowed value. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1300,
+      "Reviewed against the printed paper. The lcm and gcd product identity reduces the equation to three times a square, and every such square is attained."
     ],
     "2011 PUMaC Division B Number Theory, Problem 5": [
-      2020,
-      "Tabulate the full six-term power cycle modulo the fixed prime and restrict the exponent to a prime in its only admissible congruence class. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1520,
+      "Reviewed against the printed paper. The two bases are consecutive powers of seven in a group of order six. A quadratic congruence leaves one possible prime."
     ],
     "2011 PUMaC Division B Number Theory, Problem 6": [
-      2300,
-      "Bound the least of the three positive variables, factor the remaining two-variable equation and count all distinct ordered permutations. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1790,
+      "Reviewed against the printed paper. Order the variables, bound the smallest to one or two, and factor the two remaining equations."
     ],
     "2011 PUMaC Division B Number Theory, Problem 7": [
-      2680,
-      "Turn a consecutive sum of cubes into a negative Pell equation and list every solution within the given bound. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      2220,
+      "Reviewed against the printed paper. The triangular-square identity turns the condition into negative Pell. Its first four positive terms stay below the bound."
     ],
     "2011 PUMaC Division B Number Theory, Problem 8": [
-      2750,
-      "Expand the divisor-count coefficients as a double sum, justify the positive-term rearrangement and square the supplied reciprocal-square sum. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
+      1890,
+      "Reviewed against the printed paper. Each divisor pair contributes one term to the square of the supplied zeta sum."
     ],
     "2010 PUMaC Division A Algebra, Problem 1": [
       770,
