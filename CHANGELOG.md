@@ -2,6 +2,16 @@
 
 **2026-11-28**
 
+- **New curriculum: G2.2 sets the series standard.** At the owner's request, the preview is rebuilt on the live textbook interface: the chapter rail, header bars, phone navigation row, lesson typography, problem boxes and page footer. Solutions can be hidden again, and the choice is remembered. The chapter is revised to new conventions, recorded in `curriculum/AUTHORING-STANDARD.md` §7–§10 for every later chapter:
+  - one vocabulary of labels (Example, Checkpoint, Guided Practice, Practice Problem, Review Problem, Challenge Problem), numbered through the chapter, with contest sources shown apart from the label;
+  - numbered theorems, corollaries and definitions with explicit conditions;
+  - a defined signed product in place of an undefined $\overline{PA}$;
+  - discovery-first and conceptual (multiple-choice) checkpoints;
+  - one answer and solution wording everywhere;
+  - a figure standard, with automatic label placement that refuses overlaps (`tools/curriculum/figures/figlib.py`). There are now 21 figures, including the inscribed-angle proof and figures for the worked examples and challenge solutions.
+
+  The chapter's pages now come from the specification's section list. No other chapter is started.
+
 - **New curriculum preview.** Write G2.2, Power of a Point, the first chapter of the new textbooks: an opening, six sections, a close, Review and Challenge Problems, eleven figures drawn from exact coordinates, and checkpoints that check typed answers. Add the separate preview route `#/preview`, its renderer and its own progress store (`mq-learn2`, carried by Export and Import). The live textbooks, cards, Practice, Arena, search and recommendations are unchanged.
 
 **2026-11-27**

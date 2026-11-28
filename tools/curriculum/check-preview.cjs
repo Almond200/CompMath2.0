@@ -11,13 +11,19 @@ const { chromium } = require("playwright");
 const fs = require("fs");
 const BASE = process.env.COMPMATH_URL || "http://localhost:8765";
 const SHOTS = process.argv[2] || null;
-const PAGES = ["", "/1", "/2", "/3", "/4", "/5", "/6", "/close", "/review", "/challenge"];
+// The chapter's pages come from the specification's section list (js/data/curriculum/shelf.js).
+global.window = {}; require("../../js/data/curriculum/shelf.js");
+const G22 = window.MATH_CURRICULUM_SHELF.books.find(b => b.id === "geometry-2").chapters.find(c => c.id === "G2.2");
+const PAGES = ["", ...G22.sections.map((_, i) => "/" + (i + 1)), "/close", "/review", "/challenge"];
+// AUTHORING-STANDARD §7: the only instructional labels, numbered by chapter.
+const LABEL = /^(?:(?:Example|Checkpoint|Guided Practice|Practice Problem|Review Problem|Challenge Problem|Theorem|Corollary|Lemma|Definition|Figure) 2\.\d+\.?|Recall)$/;
 const fails = [];
 const fail = m => { fails.push(m); console.log("FAIL", m); };
 
 (async () => {
   const browser = await chromium.launch(process.env.CHROME ? { executablePath: process.env.CHROME } : {});
   // ---------- 1. rendering ----------
+  const seen = {};
   for (const width of [1280, 375]) for (const theme of ["light", "dark"]) {
     const ctx = await browser.newContext({ viewport: { width, height: 900 } });
     await ctx.addInitScript(t => { try { localStorage.setItem("theme", t); } catch (e) {} }, theme);
@@ -25,19 +31,26 @@ const fail = m => { fails.push(m); console.log("FAIL", m); };
     pg.on("pageerror", e => errs.push(e.message)); pg.on("console", m => { if (m.type() === "error") errs.push(m.text()); });
     for (const p of ["#/preview", ...PAGES.map(x => "#/preview/geometry-2/g2.2" + x)]) {
       await pg.goto(BASE + "/" + p); await pg.waitForSelector(".cp-root", { timeout: 20000 });
-      await pg.waitForFunction(() => [...document.querySelectorAll(".cp-statement")].every(e => !e.hidden), null, { timeout: 15000 }).catch(() => {});
+      await pg.waitForFunction(() => [...document.querySelectorAll("[data-cp-statement]")].every(e => !e.hidden), null, { timeout: 15000 }).catch(() => {});
+      // Open every solution so that the figures and math inside them are checked too.
+      await pg.evaluate(() => document.querySelectorAll(".cp-sol").forEach(e => { e.hidden = false; }));
+      await pg.evaluate(() => window.renderMathInElement && document.querySelectorAll(".cp-sol").forEach(e => window.renderMathInElement(e, { delimiters: [{ left: "$$", right: "$$", display: true }, { left: "$", right: "$", display: false }], throwOnError: false })));
       const r = await pg.evaluate(() => ({
         katex: document.querySelectorAll(".cp-root .katex-error").length,
-        raw: [...document.querySelectorAll(".cp-root .cp-text p, .cp-root .cp-text li, .cp-root h1")].filter(e => /\$/.test(e.textContent)).length,
+        raw: [...document.querySelectorAll(".cp-root .lp-body p, .cp-root .lp-body li, .cp-root h1, .cp-root figcaption, .cp-root .cp-table td")].filter(e => /\$|\{\{|\[\[/.test(e.textContent)).map(e => e.textContent.slice(0, 50)),
         overflow: document.documentElement.scrollWidth > window.innerWidth + 1,
-        missing: [...document.querySelectorAll(".cp-root .cp-soon")].filter(e => /Missing/.test(e.textContent)).length,
-        hidden: [...document.querySelectorAll(".cp-statement")].filter(e => e.hidden).length,
-        theme: document.documentElement.dataset.theme || "",
-        figs: document.querySelectorAll(".cp-fig svg").length,
+        missing: [...document.querySelectorAll(".cp-root .prob-note")].filter(e => /Missing|\[[a-z]/.test(e.textContent)).length,
+        hidden: [...document.querySelectorAll("[data-cp-statement]")].filter(e => e.hidden).length,
+        labels: [...document.querySelectorAll(".cp-root .cp-k, .cp-root .lp-prob-n, .cp-root .cp-stmt-k, .cp-root .cp-fig-n")].map(e => e.textContent.trim()),
+        smallest: Math.min(Infinity, ...[...document.querySelectorAll(".cp-fig svg text")].map(t => t.getBoundingClientRect().height).filter(h => h > 0)),
         wide: [...document.querySelectorAll(".cp-display")].filter(e => e.scrollWidth > e.clientWidth + 1).map(e => e.textContent.slice(0, 40)) }));
       const tag = `${width}/${theme} ${p}`;
       if (r.katex) fail(`${tag}: ${r.katex} KaTeX errors`);
-      if (r.raw) fail(`${tag}: ${r.raw} blocks show a raw $`);
+      if (r.raw.length) fail(`${tag}: unrendered markup ${JSON.stringify(r.raw.slice(0, 3))}`);
+      const bad = r.labels.filter(l => !LABEL.test(l));
+      if (bad.length) fail(`${tag}: labels outside the standard vocabulary ${JSON.stringify(bad)}`);
+      if (width === 375 && r.smallest < 11) fail(`${tag}: a figure label renders ${r.smallest.toFixed(1)} px tall on a phone`);
+      if (p !== "#/preview") for (const l of r.labels) { if (l !== "Recall") { (seen[l] ||= new Set()).add(p); } }
       if (r.overflow) fail(`${tag}: horizontal overflow`);
       if (r.missing) fail(`${tag}: ${r.missing} missing figures or items`);
       if (r.hidden) fail(`${tag}: ${r.hidden} archive statements did not load`);
@@ -47,7 +60,9 @@ const fail = m => { fails.push(m); console.log("FAIL", m); };
     if (errs.length) fail(`${width}/${theme}: page errors ${JSON.stringify(errs.slice(0, 3))}`);
     await ctx.close();
   }
-  console.log("rendering checked: 2 widths x 2 themes x 11 pages");
+  // Every label is used on one page only: numbering is unique through the chapter.
+  for (const [l, pages] of Object.entries(seen)) if (pages.size > 1) fail(`label ${l} appears on ${[...pages].join(", ")}`);
+  console.log(`rendering checked: 2 widths x 2 themes x ${PAGES.length + 1} pages; ${Object.keys(seen).length} distinct labels`);
 
   // ---------- 2. interactions, persistence and isolation ----------
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, acceptDownloads: true });
@@ -66,29 +81,48 @@ const fail = m => { fails.push(m); console.log("FAIL", m); };
   let s = await state("c-basic");
   if (!s.solHidden || !s.showDisabled) fail("the explanation is available before any attempt");
   await answer("c-basic", "7"); s = await state("c-basic");
-  if (!/is-wrong/.test(s.cls) || !s.solHidden || s.showDisabled) fail("a wrong answer is not marked, or the explanation opened by itself: " + JSON.stringify(s));
+  if (!/lc-wrong/.test(s.cls) || !s.solHidden || s.showDisabled) fail("a wrong answer is not marked, or the explanation opened by itself: " + JSON.stringify(s));
   await answer("c-basic", "8"); s = await state("c-basic");
-  if (!/is-right/.test(s.cls) || s.solHidden) fail("a right answer is not marked or its explanation is hidden: " + JSON.stringify(s));
+  if (!/lc-right/.test(s.cls) || s.solHidden) fail("a right answer is not marked or its explanation is hidden: " + JSON.stringify(s));
   await answer("p-hmmt07", "2"); s = await state("p-hmmt07");
-  if (!/is-right/.test(s.cls) || s.solHidden) fail("the archive problem's answer is not accepted: " + JSON.stringify(s));
+  if (!/lc-right/.test(s.cls) || s.solHidden) fail("the archive problem's answer is not accepted: " + JSON.stringify(s));
   await go("#/preview/geometry-2/g2.2/3");
   await answer("p-amc20b10", "√5/10"); s = await state("p-amc20b10");
-  if (!/is-right/.test(s.cls)) fail("the partly worked example rejects √5/10");
+  if (!/lc-right/.test(s.cls)) fail("the partly worked example rejects √5/10");
   await go("#/preview/geometry-2/g2.2/review");
   await answer("r6", "4sqrt(2)"); s = await state("r6");
-  if (!/is-right/.test(s.cls)) fail("review problem 6 rejects 4sqrt(2)");
+  if (!/lc-right/.test(s.cls)) fail("review problem 6 rejects 4sqrt(2)");
   await pg.click('[data-cp-show="r1"]').catch(() => {});
   if (!(await state("r1")).solHidden) fail("a solution opened without an attempt");
   await go("#/preview/geometry-2/g2.2/2");
   s = await state("c-basic");
-  if (s.value !== "8" || !/is-right/.test(s.cls) || s.solHidden) fail("progress did not persist across reload: " + JSON.stringify(s));
+  if (s.value !== "8" || !/lc-right/.test(s.cls) || s.solHidden) fail("progress did not persist across reload: " + JSON.stringify(s));
   const stored = JSON.parse(await pg.evaluate(() => localStorage.getItem("mq-learn2")));
   if (!stored.checks["geometry-2/G2.2#c-basic"] || stored.checks["geometry-2/G2.2#c-basic"].ok !== true) fail("mq-learn2 lacks the checkpoint result");
   if (!stored.read["geometry-2/G2.2/2"]) fail("mq-learn2 lacks the page-read record");
   const legacyAfter = await pg.evaluate(() => localStorage.getItem("mq-learn"));
   if (legacyAfter !== legacyBefore) fail("the preview wrote to the live textbooks' mq-learn");
-  const tocRead = await pg.evaluate(() => [...document.querySelectorAll(".cp-toc .cp-done")].length);
-  if (tocRead < 1) fail("the chapter contents shows no read marks");
+  // A shown solution can be hidden again, and stays hidden after a reload.
+  await pg.click('[data-cp-show="c-basic"]'); s = await state("c-basic");
+  if (!s.solHidden || await pg.textContent('[data-cp-show="c-basic"]') !== "Show Solution") fail("Hide Solution did not hide the solution");
+  await go("#/preview/geometry-2/g2.2/2"); s = await state("c-basic");
+  if (!s.solHidden) fail("a hidden solution reopened after reload");
+  await pg.click('[data-cp-show="c-basic"]'); s = await state("c-basic");
+  if (s.solHidden || await pg.textContent('[data-cp-show="c-basic"]') !== "Hide Solution") fail("Show Solution did not reopen the solution");
+  // A conceptual checkpoint: a wrong choice is marked, the right one opens the solution.
+  const pick = async (id, L) => { await pg.click(`[data-cp-pick="${id}"][data-choice="${L}"]`); await pg.waitForTimeout(200); };
+  const cstate = id => pg.evaluate(id => ({ cls: document.querySelector(`[data-cp-result="${id}"]`).className, sol: document.querySelector(`[data-cp-sol="${id}"]`).hidden,
+    wrong: [...document.querySelectorAll(`[data-cp-pick="${id}"].is-wrong`)].map(b => b.dataset.choice), right: [...document.querySelectorAll(`[data-cp-pick="${id}"].is-right`)].map(b => b.dataset.choice) }), id);
+  await pick("ch-rotate", "A"); let c = await cstate("ch-rotate");
+  if (!/lc-wrong/.test(c.cls) || !c.sol || c.wrong.join() !== "A") fail("a wrong choice is not marked: " + JSON.stringify(c));
+  await pick("ch-rotate", "B"); c = await cstate("ch-rotate");
+  if (!/lc-right/.test(c.cls) || c.sol || c.right.join() !== "B" || c.wrong.length) fail("the right choice is not marked: " + JSON.stringify(c));
+  // A cross-reference names its target and opens its page.
+  const ref = await pg.evaluate(() => [...document.querySelectorAll(".cp-ref")].map(a => a.textContent));
+  if (!ref.some(t => /^Theorem 2\.\d+$/.test(t))) fail("no theorem cross-reference on G2.2.2: " + JSON.stringify(ref));
+  await go("#/preview/geometry-2/g2.2");
+  const read = await pg.evaluate(() => document.querySelectorAll(".lb-chapter-page .cp-read").length);
+  if (read < 1) fail("the chapter's contents shows no read marks");
   console.log("interactions, persistence and isolation checked");
 
   // ---------- 3. export and import ----------

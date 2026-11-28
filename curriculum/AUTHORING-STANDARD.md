@@ -21,12 +21,12 @@ Chapter introductions and summaries are never numbered, so concept IDs never shi
 
 Each section has a single purpose recorded in its packet: a new idea, an extension, a contrast, a synthesis, or an independent application (D11). A section that consolidates earlier ones does not repeat their definitions or derivations; it cites them and does new work with them.
 
-A new-idea section usually moves through these stages. They are a progression, not visible headings; never label them with generic names such as "Exploration", "Warm-up" or "Concept 1" (owner, 2026-11-27).
+A new-idea section usually moves through these stages. They are a progression, not visible headings; never label them with generic names such as "Exploration", "Warm-up" or "Concept 1" (owner, 2026-11-27). The labels that do appear are the fixed vocabulary of §7.
 
 1. **Ask.** Start from a concrete question or a small case the learner can try. Let a prediction or a first attempt happen before anything is revealed.
 2. **Develop.** Find the idea from the case: a table, a diagram, a construction or a computation that exposes the pattern. Give the reason the pattern must hold, then state the result with all of its conditions. Derive it; never assert a result the chapter uses without proof or a precise citation.
 3. **Show it working.** At least two worked examples with different structures. Each says *why* this approach was chosen and what in the problem signalled it, and at least one shows a natural alternative and why it is longer or fails.
-4. **Fade.** A partly worked example (the setup is given, the learner finishes it), then a close independent problem. This replaces hints: the product has no hint buttons and no hint text (standing preference; D4).
+4. **Fade.** A Guided Practice problem (the setup is given, the learner finishes it), then a close Practice Problem. This replaces hints: the product has no hint buttons and no hint text (standing preference; D4).
 5. **Contrast.** A nearby problem where the method fails or needs a new condition, and what changed.
 6. **Check.** Short checkpoints that test the definition, the hypotheses and the edge cases, answered before any worked solution is visible.
 
@@ -38,7 +38,7 @@ A new-idea section usually moves through these stages. They are a progression, n
 
 - **Placement (D6).** Each contest problem has one primary placement in the new shelf, recorded by its canonical identity (`js/data/problems/problem-aliases.json`; AMC 10/12 twins and the other recorded duplicates count once, and known unrecorded duplicates such as PUMaC A/B twins are named in the packet). A Volume III transfer placement of the same problem is allowed only with a written justification. Independent-transfer and delayed-revisit tasks prefer fresh problems.
 - **Cards (D6).** Each reference card has one primary teaching placement in the new shelf. Later chapters may revisit it only to teach a new capability, and say which.
-- **Roles.** Every problem in a packet has a role: motivating, direct check, worked, partly worked, independent, contrast, transfer, or delayed revisit, and a placement (section, Review, Challenge or Mixed).
+- **Roles.** Every problem in a packet has a role: motivating, direct check, worked, partly worked, independent, contrast, transfer, or delayed revisit, and a placement (section, Review, Challenge or Mixed). In the chapter, roles become the labels of §7: a worked problem is an Example, a partly worked one is Guided Practice, an independent, direct-check or transfer problem is a Practice Problem (or a Checkpoint when it is short and part of the narrative), and a motivating problem is usually a Checkpoint.
 - **Verification.** Every placed problem's answer is recomputed independently of its stored strategy before it is placed; the packet records the check. A problem whose statement is not shown in the app is placed only with its source link.
 - **Own problems.** Our own problems fill roles the archive cannot (motivating questions, checkpoints, contrasts). They are written fresh: never adapted from the Think Academy materials or any other copyrighted source.
 
@@ -57,3 +57,69 @@ The specification is the canonical plan. The Think Academy Year 2 lessons (suppl
 ## 6. Acceptance
 
 A chapter reaches S5 in TRACKER.md only when: every section's purpose in the packet is met; the prerequisite check passes (no later concept is required without a bridge or an optional label); every number and answer is verified; it reads sequentially as a student without opening a card; and the acceptance gates in `spec/teaching-pilots.md` §6 (prerequisite check, first-step diagnostic, faded guidance, misconception contrast, exact-answer verification, delayed transfer) are satisfied.
+
+## 7. Naming and numbering (owner, 2026-11-28)
+
+These rules are implemented once, in `js/curriculum-preview.js`, so every chapter follows them without restating them. A chapter's data names each item's *kind*; it never writes a label or a number.
+
+**One vocabulary.** Every instructional element is exactly one of these, and the label is the same in every chapter of every book:
+
+| Label | What it is | How it looks |
+|---|---|---|
+| Example | A problem solved in full in the text, ours or from a contest. It shows how the method is found, not only executed. | A subheading with its number and a short descriptive title, the problem on a soft tint, then the solution as running prose. |
+| Checkpoint | A short question inside the narrative, answered before reading on: computational or conceptual. | The question with a faint rule in the book's colour at its left, then the answer row or the choices. |
+| Guided Practice | A problem whose setup the text gives; the learner finishes it. (Replaces "partly worked example", "Finish this one".) | The books' problem box: the statement, the given setup, the step asked for, the answer row. |
+| Practice Problem | A problem the learner solves alone, placed in a section. (Replaces "Try it", "Problem".) | The books' problem box. |
+| Review Problem | One of the chapter's Review Problems set. | The problem box, on the Review Problems page. |
+| Challenge Problem | One of the chapter's Challenge Problems set. | The problem box, on the Challenge Problems page. |
+
+Never use "Try it", "Finish this one", "Worked example", "Exercise", "Exploration" or any other label for these roles. A worked contest problem is an Example; a contest problem the learner solves is a Practice Problem.
+
+**Numbering.** Each kind is numbered through the whole chapter, in reading order, as *chapter.n*: "Example 2.4" is the fourth example of chapter 2 (G2.2), wherever it falls. Figures are numbered the same way ("Figure 2.7"). Theorems, corollaries, lemmas and definitions share one counter ("Theorem 2.1", "Corollary 2.2", "Definition 2.5"), so a reader can find "2.5" by scanning in order. Review and Challenge Problems are numbered the same way ("Review Problem 2.3"). Numbers are assigned by the renderer; inserting an item renumbers the rest, and prose never hard-codes a number: it cites with `{{ref:id}}`.
+
+**Contest attribution is separate from the label.** The label says what the item is for; the source says where it comes from. A contest problem shows its source (for example "2020 AMC 12B, Problem 12", linked to its problem page) beside the label, never inside it, and its statement keeps the archive's credit line.
+
+**Answers and solutions, the same words everywhere.** A typed answer has one field and a **Check** button; a conceptual checkpoint has lettered choices, and choosing one checks it. Feedback is "**Correct.**" or "**Not correct yet.** Check your work and try again, or show the solution." The solution is always called the solution: **Show Solution** (available after the first attempt) and **Hide Solution**; it opens under a hairline headed "Solution:", opens by itself after a correct answer, and remembers whether it was hidden. An Example's solution is always visible. There are no hints.
+
+**References.** Within a chapter: "Section G2.2.3" (linked), "Theorem 2.1", "Example 2.4", "Figure 2.7", "Checkpoint 2.9", each through `{{ref:id}}`. Across chapters: a concept by its ID in parentheses, "(G1.7.4)", or a chapter as "Chapter G2.4". Never "Section 3", "the example above" or "the second checkpoint below".
+
+## 8. Mathematical presentation (owner, 2026-11-28)
+
+**Statements.** A result the chapter proves and later relies on is a numbered *Theorem*, *Corollary* or *Lemma*; a term later work depends on gets a numbered *Definition*. Each is set as a statement block: a rule in the book's colour and a light tint, the label and a short name in parentheses ("Theorem 2.3 (Tangent–secant)"), then the statement. A result from an earlier chapter that the section needs is a *Recall* block, unnumbered, with its ID ("Recall: Inscribed angle theorem (G1.7.4)"). Nothing else is boxed: an observation, a remark, a step of a proof or a useful formula stays in the prose, and an important formula on its own line is display math, not a box.
+
+**Conditions are part of the statement.** Every statement names its objects and all its hypotheses ("Let $P$ be a point outside a circle with center $O$ and radius $r$…"); a case the statement excludes is said, not implied. A proof says where each hypothesis is used, and a conceptual checkpoint may ask exactly that.
+
+**Order.** A statement comes after the reasoning that discovers it, or immediately before its proof, never before the question it answers. Every statement is proved in the chapter or cited precisely.
+
+**Definitions in prose.** A new term is in bold at its defining use. A formal Definition block is used only for a notion that later results are stated in terms of.
+
+**Notation.**
+- $PA$ is always an ordinary length, never negative. A sign appears only through an explicitly defined signed quantity, introduced in a Definition. G2.2 uses the signed product $\overrightarrow{PA}\cdot\overrightarrow{PB}$ (Definition 2.6), which later becomes the dot product.
+- Do not write $\overline{PA}$ for a directed length: contest statements in the same chapters use $\overline{PA}$ for the segment.
+- Angles are $ngle ABC$ with the vertex in the middle; an angle's measure is in degrees unless radians are stated. Similar triangles are written with corresponding vertices in the same order, and the correspondence is stated ($A\leftrightarrow D$).
+- Long display equations are broken with `aligned` or `gathered` so that no display is wider than a 375 px phone (checked by `check-preview.cjs`).
+
+**Worked solutions.** A solution is prose, in short paragraphs. Its stages may open with a bold run-in phrase that says what the stage does ("**The equation.**", "**Checking the configuration.**"), chosen for that problem, not a fixed template. Each Example says what in the problem signalled the method; at least one Example in a section shows an alternative route or a tempting error. Every answer is checked: by substitution, by a second route, or by confirming that the configuration exists and that rejected roots are inadmissible.
+
+**Tables** present data the reader compares, with a header row; they are never used for layout.
+
+## 9. Figures (owner, 2026-11-28)
+
+Figures are generated by a per-chapter script (`tools/curriculum/figures/<chapter>.py`) using the shared library `tools/curriculum/figures/figlib.py`. Its docstring is the technical reference; the rules are these.
+
+1. **Computed, not sketched.** Every point is computed from the problem's data, and the script asserts the relation the figure illustrates (equal products, tangency, concyclicity) before writing it. A figure whose true proportions make it unreadable may change the proportions while keeping the configuration exact; its caption then begins "Not to scale".
+2. **Roles.** *Given* elements (what the statement says) are solid, in the text's colour. *Auxiliary* constructions (a radius, a perpendicular, a diameter drawn for a proof) are dashed and muted. The *key* relationship the figure is about is in the book's colour and heavier; its partner (the second of two similar triangles, a second line) is in the second colour. Fills shade the two partners. A figure has at most these two accent colours.
+3. **Labels.** Every point the text or the solution names is labelled, with the same letter; every length the text uses is labelled at its segment (upright numerals, or an italic variable); every angle the text uses is marked and labelled. Nothing is labelled that the text does not use. Labels are never placed by hand: the library tries positions until a label is clear of every other label, dot, line and arc and inside the drawing, and a figure that cannot place a label fails to build.
+4. **Marks.** Equal angles carry the same number of arcs (and the same colour); a right angle is a small square; equal lengths carry the same number of ticks.
+5. **Readable on a phone.** At most 460 units wide, point labels at 24 units and lengths at 20, so on a 375 px phone a point label is about 17 px; `check-preview.cjs` fails a page whose smallest figure label renders below 11 px.
+6. **Captions and numbers.** Each figure is numbered ("Figure 2.7") and the text cites it by number. The caption says what is shown and what each style means when it matters ("Dashed: the radius $OT$"); it may state the relation, but never the answer to a problem that has not been solved yet.
+7. **Where figures go.** A figure accompanies every proof that uses a configuration, every Example whose solution names points or lengths not in the statement, and every Challenge solution that introduces auxiliary points. A figure that would reveal an answer goes inside the solution, not before the problem.
+
+## 10. Instructional variety (owner, 2026-11-28)
+
+The stages of §2 are a toolbox, not a template. A section uses those its purpose needs, in the order the mathematics suggests; two sections of a chapter should rarely have the same shape.
+
+- **Discovery before statement.** Where the learner can find a relationship from data, give the data and a Checkpoint that asks for it before the text states it (G2.2's opening table asks for the product before revealing $21$; G2.2.3 asks for the tangent length before the proof).
+- **Conceptual checkpoints.** Each chapter mixes computational checkpoints with conceptual ones: which quantity is invariant, which hypothesis a proof step uses, what a sign means, whether the data determine the answer. Conceptual checkpoints use lettered choices whose wrong options are real misconceptions.
+- **Recognition.** Examples are chosen and written to teach when a method applies (the signal in the problem), not only how to run it; Practice Problems near the end of a chapter do not say which section they belong to.
+

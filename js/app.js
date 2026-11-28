@@ -12060,7 +12060,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
     problem: slug => { const p = PROBLEM_BY_SLUG[slug]; return p ? { slug: p.slug, ref: p.ref, short: refShort(p.ref), hasStatement: hasProblemStatement(p), url: p.url || null } : null; },
     fillStatement: (slug, el) => { const p = PROBLEM_BY_SLUG[slug]; if (p && hasProblemStatement(p)) showStatement(p, el, false, false); },
     cardName: id => BY_ID[id] ? BY_ID[id].formula.name : null,
-    storageFailed: () => storageFailed()
+    storageFailed: () => storageFailed(),
+    // The live book view's own pieces, so a preview page looks and moves like a textbook page.
+    icon: name => uiIcon(name),
+    chevron: dir => stepChevron(dir),
+    wireRail: el => wireLearnRail(el)
   });
 
   function render() {

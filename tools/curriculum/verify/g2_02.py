@@ -21,10 +21,26 @@ def pos_roots(expr, var):
 
 # Opening: radius 5, OP = 2: every chord product is 21; a piece of 4.2 pairs with 5, and that chord exists.
 assert 5**2 - 2**2 == 21 and Fr(21) / Fr(42, 10) == 5 and 2*math.sqrt(21) <= 4.2 + 5 <= 10
+# The opening table: chords through P = (2, 0) in the circle x^2 + y^2 = 25, at the four directions
+# with cos = 1, 0.625, 0.3125, 0; the pieces are the two roots' absolute values.
+for c_, pieces in ((1, (3, 7)), (sp.Rational(5, 8), (sp.Rational(7, 2), 6)), (sp.Rational(5, 16), (4, sp.Rational(21, 4))), (0, (sp.sqrt(21), sp.sqrt(21)))):
+    u_ = sp.Matrix([c_, sp.sqrt(1 - c_**2)]); P_ = sp.Matrix([2, 0])
+    roots = sp.solve((P_ + t*u_).dot(P_ + t*u_) - 25, t)
+    got = sorted([sp.nsimplify(abs(z)) for z in roots], key=float)
+    assert [sp.simplify(g - w) for g, w in zip(got, sorted(pieces, key=float))] == [0, 0], (c_, got)
+    assert sp.simplify(got[0]*got[1] - 21) == 0
+V["open-product"] = 21
 V["open-predict"] = 5
 V["c-central"] = 55                       # 110/2
 V["c-other-arc"] = (360 - 110) // 2       # 125
 V["c-basic"] = Fr(4*6, 3)                 # 8
+# Conceptual checkpoints (letters). ch-rotate: only PC*PD = PA*PB is fixed; the opening table has
+# chords of different lengths through one point, so CD and PC + PD vary, and PA*PC varies with PC.
+assert len({10, 9.5, 9.25, round(2*math.sqrt(21), 6)}) == 4; V["ch-rotate"] = "B"
+# ch-outside: the Pythagorean steps hold for any P on the line; only A between P and M uses "outside".
+V["ch-outside"] = "B"
+# ch-sign: OP^2 = 25 - 16 = 9, inside; distance sqrt(41) would give +16.
+assert 5**2 - 16 == 9 and 41 - 25 == 16; V["ch-sign"] = "A"
 # Worked example: radius 13, OP = 5; shortest chord 24 (equal pieces, perpendicular to OP).
 assert (13+5)*(13-5) == 144 and 2*math.sqrt(13**2 - 5**2) == 24
 V["c-shortest"] = 2*sp.sqrt(10**2 - 6**2)  # 16
@@ -113,7 +129,7 @@ assert sp.Matrix([[a*a + b*b, a, b, 1] for a, b in pts]).det() == 0; V["ch3"] = 
 js = subprocess.run(["node", "-e", """
 global.window = {}; require('./js/data/curriculum/geometry-2/g2.02.js'); global.window.LearnAnswer = require('./js/learn-answer.js');
 const c = window.MATH_CURRICULUM['geometry-2/G2.2'];
-const out = {}; for (const [id, it] of Object.entries(c.items)) out[id] = { type: it.type, answer: it.answer || null, slug: it.slug || null };
+const out = {}; for (const [id, it] of Object.entries(c.items)) out[id] = { kind: it.kind, choices: !!it.choices, answer: it.answer || null, slug: it.slug || null };
 console.log(JSON.stringify(out));"""], cwd=ROOT, capture_output=True, text=True, check=True)
 items = json.loads(js.stdout)
 keys = {}
@@ -133,6 +149,9 @@ def same(a, b):
 for iid, it in items.items():
     if it["answer"] is None: continue
     if iid not in V: errors.append(f"{iid}: no independent verification"); continue
+    if it["choices"]:
+        if it["answer"] != V[iid]: errors.append(f"{iid}: chapter choice {it['answer']} != verified {V[iid]}")
+        continue
     if not same(it["answer"], sp.N(V[iid], 15)): errors.append(f"{iid}: chapter answer {it['answer']} != verified {V[iid]}")
 for iid, it in items.items():
     if it["slug"]:

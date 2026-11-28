@@ -10,11 +10,11 @@ The aim is genuine teaching resources, not explanatory encyclopedias (spec/overv
 
 ## Current state (updated 2026-11-28)
 
-- **Done:** Phase 1 planning (PR #474, merged). **G2.2 Power of a Point is written and implemented** in the preview: opening, six sections, close, six Review and three Challenge Problems, eleven figures, every answer independently verified. The preview route is live on this branch and kept out of normal navigation, search and recommendations.
+- **Done:** Phase 1 planning (PR #474, merged). **G2.2 Power of a Point is written and implemented** in the preview: opening, six sections, close, six Review and three Challenge Problems, 21 figures, every answer independently verified. On 2026-11-28 it was revised to the series conventions in AUTHORING-STANDARD §7–§10 (labels and numbering, statements and notation, figures, instructional variety), and the preview now uses the live textbook interface. The preview route is live on this branch and kept out of normal navigation, search and recommendations.
 - **How to read it:** open `#/preview/geometry-2/g2.2` on the branch's deployment or a local server (`python3 -m http.server 8765`, then `http://localhost:8765/#/preview/geometry-2/g2.2`).
 - **Checks:** `tools/curriculum/check-spec.py`, `build-curriculum.py --check --allow-edits`, `build-shelf.py --check`, `figures/g2_02.py --check`, `verify/g2_02.py` and the browser checks `check-preview.cjs`; the repository gates pass.
 - **Branch:** `claude/textbook-redesign`; the G2.2 pull request is open and not merged.
-- **Next action:** wait for the owner's review of G2.2 in the app. **No other chapter is written until then** (owner, 2026-11-28). After the review: revise the standard and the renderer from the feedback, then the other four pilots (A2.8, C2.5, N2.1, A3.3).
+- **Next action:** wait for the owner's review of G2.2 in the app. **No other chapter is written until then** (owner, 2026-11-28). After the review: apply any further feedback to the standard and to G2.2, then the other four pilots (A2.8, C2.5, N2.1, A3.3), written to §7–§10 from the start.
 
 ## Layout
 

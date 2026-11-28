@@ -1,90 +1,128 @@
 /* The new curriculum's preview pages (curriculum/PREVIEW-PLAN.md). Loaded only with a #/preview
-   address, by js/curriculum-preview.js. Every rule is scoped under .cp-root so nothing here can
-   reach the live app. Colours come from the theme's variables, so light and dark both follow. */
-.cp-root { max-width: 760px; margin: 0 auto; padding: 4px 0 64px; color: var(--text); }
-.cp-banner { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 13px; color: var(--text-dim);
-  border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; margin: 6px 0 18px; background: var(--bg-panel); }
-.cp-banner strong { color: var(--space, var(--accent)); }
-.cp-banner a { color: var(--accent); text-decoration: none; font-weight: 600; }
-.cp-crumbs { font-size: 13px; color: var(--text-dim); margin: 0 0 6px; }
-.cp-crumbs a { color: var(--accent); text-decoration: none; }
-.cp-root h1 { font-size: calc(30px * var(--tx, 1)); line-height: 1.2; margin: 4px 0 6px; letter-spacing: -0.01em; }
-.cp-sub { color: var(--text-dim); margin: 0 0 18px; font-size: 15px; }
-.cp-code { color: var(--text-dim); font-weight: 600; margin-right: 8px; }
+   address, by js/curriculum-preview.js. The pages use the live books' own markup and styles
+   (.bk-view, .bk-rail, .bk-bars, .lp-body, .lp-prob, .lp-sol, .lc-result); this file adds only
+   what those cannot show (curriculum/AUTHORING-STANDARD.md §7–§9): the four subjects' book
+   colours, the preview note, numbered statements, a checkpoint's faint rule and answer row, the
+   choices of a conceptual checkpoint, an example's given problem, tables, and the figures. Every
+   rule is scoped under .cp-root so nothing here reaches the live app. */
 
-/* Reading */
-.cp-text { font-size: calc(16.5px * var(--tx, 1)); line-height: 1.75; }
-.cp-text p { margin: 0 0 14px; }
-.cp-text h3 { font-size: calc(19px * var(--tx, 1)); margin: 30px 0 10px; letter-spacing: -0.005em; }
-.cp-text ul { margin: 0 0 14px; padding-left: 22px; }
-.cp-text li { margin: 0 0 6px; }
-.cp-text a { color: var(--accent); }
-.cp-nw { white-space: nowrap; }
-.cp-display { margin: 6px 0 16px; overflow-x: auto; overflow-y: hidden; padding: 2px 0; }
+/* The four subjects take the colours of the matching live books. */
+.cp-root.cp-algebra { --bk-a: #e0566a; --bk-b: #8f1f33; }
+.cp-root.cp-number-theory { --bk-a: #d6a021; --bk-b: #7a5508; }
+.cp-root.cp-combinatorics { --bk-a: #2f9e8f; --bk-b: #145249; }
+.cp-root.cp-geometry { --bk-a: #6c6fd8; --bk-b: #2f3187; }
+.cp-root { --cp-second: #c8711f; }
+:root[data-theme="dark"] .cp-root { --cp-second: #f0a35e; }
+
+/* No cover in the header bars: the new books have none yet. */
+.cp-root .cp-bars { grid-template-columns: minmax(0, 1fr); }
+.cp-note { margin: 0 0 14px; font-size: 13px; line-height: 1.5; color: var(--text-faint); }
+.cp-note a, .cp-root .cp-ref { color: var(--accent); text-decoration: none; font-weight: 600; }
+.cp-note a:hover, .cp-root .cp-ref:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Running text: inline math keeps its trailing punctuation; a wide display scrolls by itself. */
+.cp-root .cp-nw { white-space: nowrap; }
+.cp-root .cp-display { margin: 6px 0 16px; overflow-x: auto; overflow-y: hidden; padding: 2px 0; }
+/* Lists are plain bullets and numbers, as in a printed book. */
+.cp-list { margin: 0 0 14px; padding-left: 22px; }
+.cp-list li { margin: 0 0 6px; font-size: calc(15.5px * var(--tx)); line-height: 1.75; color: var(--text); }
+.cp-list li::marker { color: var(--bk-ink); }
+.cp-prob .cp-list li { font-size: calc(15px * var(--tx)); }
+
+/* Statements: a theorem, corollary, lemma or definition is recognisable at a glance by a rule in
+   the book's colour and a light tint, not a bordered box; a recalled result uses a neutral rule. */
+.cp-stmt { margin: 18px 0 20px; padding: 10px 16px 2px; border-left: 3px solid var(--bk-ink); border-radius: 0 10px 10px 0;
+  background: color-mix(in srgb, var(--bk-a) 7%, transparent); }
+.cp-stmt-recall { border-left-color: var(--border); background: var(--bg-panel); }
+.cp-root .lp-body .cp-stmt-h { margin: 0 0 4px; }
+.cp-stmt-k { color: var(--bk-ink); font-weight: 750; }
+.cp-stmt-recall .cp-stmt-k { color: var(--text-dim); }
+.cp-stmt-t { font-weight: 650; }
+.cp-stmt .cp-display { margin: 4px 0 10px; }
+
+/* A checkpoint: its label, the question, a faint rule at its left in the book's colour, and the
+   answer row or the choices. */
+.cp-try { margin: 20px 0 24px; padding: 2px 0 2px 16px; border-left: 2px solid color-mix(in srgb, var(--bk-ink) 45%, transparent); }
+.cp-root .lp-body .cp-try-h { margin: 0 0 2px; }
+.cp-k { color: var(--bk-ink); font-weight: 750; }
+
+/* An example: a subheading with its number, the problem on a soft tint, then the solution. */
+.cp-ex { margin: 10px 0 22px; }
+.cp-root .lp-body .cp-ex-h { margin-top: 28px; }
+.cp-ex-h .cp-k { margin-right: 4px; }
+.cp-root .lp-body .cp-from { margin: -2px 0 8px; font-size: 13.5px; }
+.cp-given { margin: 6px 0 12px; padding: 10px 14px 1px; border-radius: 10px; background: var(--bg-panel); }
+.cp-given:empty { display: none; }
+.cp-given .prob-st { margin: 0 0 10px; }
+.cp-given .prob-statement { background: none; border: none; padding: 0; border-radius: 0; }
+.cp-ex .lp-sol-title { margin-top: 4px; }
+
+/* A problem box: its label at the left, the contest source apart from it at the right. */
+.cp-prob-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; }
+.cp-src { font-size: 13.5px; font-weight: 500; color: var(--text-dim); }
+.cp-prob-head .cp-src { margin-left: auto; }
+.cp-root .lp-prob-head .cp-src a { color: var(--text-dim); }
+.cp-root .lp-prob-head .cp-src a:hover { color: var(--bk-ink); }
+.cp-root .lp-body .cp-prob { margin: 20px 0 22px; }
+.cp-root .lp-body .cp-prob p { font-size: calc(15px * var(--tx)); }
+.cp-root .lp-body .lp-sol-title { font-size: calc(15px * var(--tx)); }
+.cp-setup { margin: 4px 0 6px; padding-left: 12px; border-left: 2px solid var(--border); }
+.cp-root .lp-body .cp-prompt { margin: 8px 0 2px; font-weight: 600; }
+
+/* Answering: one row for a typed answer, a list for choices; the same feedback and the same
+   Show Solution / Hide Solution everywhere. */
+.cp-work { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 10px 0 4px; }
+.cp-input { flex: 0 1 240px; min-width: 0; box-sizing: border-box; font: inherit; font-size: 14.5px; line-height: 1.5; padding: 7px 10px;
+  border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); }
+.cp-input:focus { outline: none; border-color: var(--bk-ink); }
+.cp-btns { display: inline-flex; gap: 8px; }
+.cp-root .cp-btns .hp-btn, .cp-root .cp-work-choice .hp-btn { padding: 8px 14px; }
+:root[data-theme] .cp-root .cp-go { background: color-mix(in srgb, var(--bk-a) 72%, var(--bk-b)); color: #fff; }
+.cp-show:disabled { cursor: not-allowed; opacity: 0.45; }
+.cp-choices { display: grid; gap: 6px; margin: 10px 0 4px; }
+.cp-choice { display: flex; align-items: baseline; gap: 10px; width: 100%; text-align: left; font: inherit; font-size: calc(15px * var(--tx));
+  line-height: 1.5; padding: 8px 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); color: var(--text); cursor: pointer; }
+.cp-choice:hover { border-color: var(--bk-ink); background: var(--bk-soft); }
+.cp-choice-l { flex: none; font-weight: 750; color: var(--bk-ink); }
+.cp-choice.is-right { border-color: var(--bk-ink); background: var(--bk-soft); }
+.cp-choice.is-wrong { border-color: var(--c-patterns); background: var(--cs-patterns); }
+.cp-work-choice { margin-top: 6px; }
+.cp-root .lc-result { margin: 8px 0 0; }
+.cp-root .lc-right strong { color: var(--bk-ink); }
+.cp-root .lc-right { background: var(--bk-soft); }
+.cp-root .cp-sol { margin-top: 12px; }
+
+/* Tables */
+.cp-table-wrap { display: block; max-width: 100%; margin: 8px 0 18px; overflow-x: auto; }
+.cp-table { border-collapse: collapse; font-size: calc(14.5px * var(--tx)); line-height: 1.5; min-width: 100%; }
+.cp-table th, .cp-table td { padding: 7px 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+.cp-table thead th { font-weight: 700; color: var(--text-dim); font-size: calc(13px * var(--tx)); background: var(--bg-panel); }
+.cp-table tbody th { font-weight: 650; }
+.cp-root .lp-main, .cp-root .lp-body { min-width: 0; }
+
+/* Figures (AUTHORING-STANDARD §9): given in the text's colour, auxiliary dashed and muted, the key
+   relationship in the book's colour and its partner in the second colour. */
 .cp-fig { margin: 18px 0 20px; text-align: center; }
-.cp-fig svg { width: 100%; max-width: 560px; height: auto; color: var(--text); }
-.cp-fig figcaption { font-size: 14px; line-height: 1.5; color: var(--text-dim); margin: 6px auto 0; max-width: 560px; }
+.cp-fig svg { width: 100%; max-width: 460px; height: auto; color: var(--text); }
+.cp-fig figcaption { font-size: 14px; line-height: 1.55; color: var(--text-dim); margin: 6px auto 0; max-width: 520px; text-align: left; }
+.cp-fig-n { font-weight: 700; color: var(--text); }
 .cp-fig svg text { paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
-.cp-fig .fa { stroke: var(--accent); }
-.cp-fig .ff { fill: var(--accent); fill-opacity: .13; }
-.cp-fig .ff2 { fill: var(--level-aime, #f08c4e); fill-opacity: .16; }
+.cp-root .cp-fig .fa { stroke: var(--bk-ink); }
+.cp-root .cp-fig .fb { stroke: var(--cp-second); }
+.cp-root .cp-fig .fx { opacity: 0.62; }
+.cp-root .cp-fig .ff { fill: var(--bk-a); fill-opacity: .15; }
+.cp-root .cp-fig .ff2 { fill: var(--cp-second); fill-opacity: .17; }
+.cp-prob .cp-fig svg text, .cp-given .cp-fig svg text { stroke: var(--bg-card); }
 
-/* Boxes: worked examples, problems, checkpoints */
-.cp-box { border: 1px solid var(--border); border-radius: var(--radius, 12px); padding: 14px 16px 6px; margin: 18px 0 22px; background: var(--bg-card); }
-.cp-box-h { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; margin: 0 0 10px; }
-.cp-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--space, var(--accent)); }
-.cp-box-title { font-weight: 700; font-size: calc(16px * var(--tx, 1)); }
-.cp-box-src { font-size: 13px; color: var(--text-dim); }
-.cp-box-src a { color: var(--accent); text-decoration: none; }
-.cp-check { border-left: 3px solid var(--space, var(--accent)); }
-.cp-q { margin: 0 0 10px; }
-.cp-answer { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 4px 0 12px; }
-.cp-answer input { flex: 1 1 180px; min-width: 0; max-width: 280px; font: inherit; font-size: 15px; padding: 7px 10px; border-radius: 8px;
-  border: 1px solid var(--accent); background: var(--bg); color: var(--text); }
-.cp-answer input:focus { outline: none; box-shadow: none; border-color: var(--accent); }
-.cp-btn { font: inherit; font-size: 13px; font-weight: 700; padding: 7px 13px; border-radius: 9px; cursor: pointer;
-  background: var(--space, var(--accent)); color: #fff; border: 1px solid transparent; }
-.cp-btn:disabled { opacity: .5; cursor: default; }
-.cp-btn-soft { background: var(--bg-panel); color: var(--text); border: 1px solid var(--border); }
-.cp-btn-soft:not(:disabled):hover { border-color: var(--accent); color: var(--accent); }
-:root[data-theme="dark"] .cp-btn:not(.cp-btn-soft) { color: #0d1a07; }
-.cp-result { margin: 0 0 12px; padding: 9px 12px; border-radius: 9px; font-size: 15px; }
-.cp-result.is-right { background: color-mix(in srgb, #3aa66b 14%, transparent); }
-.cp-result.is-wrong { background: color-mix(in srgb, #d6604d 14%, transparent); }
-.cp-sol { border-top: 1px solid var(--border); margin-top: 6px; padding-top: 12px; }
-.cp-sol-h { font-style: italic; color: var(--text-dim); margin: 0 0 8px; }
-.cp-partial { border-left: 2px dashed var(--border); padding-left: 12px; margin: 0 0 12px; }
-.cp-statement .prob-statement { font-size: 15.5px; }
-.cp-statement { margin: 0 0 12px; }
-
-/* Chapter navigation */
-.cp-toc { list-style: none; padding: 0; margin: 0 0 22px; border: 1px solid var(--border); border-radius: var(--radius, 12px); overflow: hidden; }
-.cp-toc li + li { border-top: 1px solid var(--border); }
-.cp-toc a { display: flex; gap: 10px; align-items: baseline; padding: 9px 14px; text-decoration: none; color: var(--text); }
-.cp-toc a:hover { background: var(--space-soft, var(--accent-soft)); }
-.cp-toc a[aria-current="page"] { background: var(--space-soft, var(--accent-soft)); font-weight: 700; }
-.cp-toc .cp-n { color: var(--text-dim); min-width: 52px; font-variant-numeric: tabular-nums; }
-.cp-toc .cp-done { margin-left: auto; color: var(--space, var(--accent)); font-size: 13px; }
-details.cp-toc-wrap > summary { cursor: pointer; color: var(--text-dim); font-size: 14px; margin: 0 0 10px; }
-.cp-pager { display: flex; justify-content: space-between; gap: 12px; margin: 34px 0 0; }
-.cp-pager a { flex: 1 1 0; border: 1px solid var(--border); border-radius: var(--radius, 12px); padding: 10px 14px; text-decoration: none; color: var(--text); min-width: 0; }
-.cp-pager a:hover { border-color: var(--space, var(--accent)); }
-.cp-pager small { display: block; color: var(--text-dim); font-size: 12px; }
-.cp-pager .cp-next { text-align: right; }
-
-/* Shelf */
-.cp-shelf { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 10px 0 24px; }
-.cp-book { border: 1px solid var(--border); border-radius: var(--radius, 12px); padding: 12px 14px; background: var(--bg-card); }
-.cp-book h2 { font-size: 15px; margin: 0 0 4px; }
-.cp-book p { font-size: 13px; color: var(--text-dim); margin: 0 0 8px; }
-.cp-book ul { list-style: none; padding: 0; margin: 0; font-size: 13px; }
-.cp-book li { margin: 2px 0; }
-.cp-book a { color: var(--accent); text-decoration: none; font-weight: 600; }
-.cp-soon { color: var(--text-faint); }
-@media (max-width: 720px) {
-  .cp-shelf { grid-template-columns: 1fr; }
-  .cp-text { font-size: calc(16px * var(--tx, 1)); }
-  .cp-box { padding: 12px 12px 4px; }
-  .cp-pager { flex-direction: column; }
-  .cp-pager .cp-next { text-align: left; }
+/* The shelf and the chapter lists */
+.cp-shelf .bk-toc-part h4 { color: var(--text); }
+.cp-unwritten .bk-toc-t { color: var(--text-dim); }
+.cp-root .lb-soon { font-size: 12.5px; color: var(--text-faint); }
+.cp-read { margin-left: auto; color: var(--bk-ink); }
+@media (max-width: 600px) {
+  .cp-input { flex: 1 1 100%; }
+  .cp-btns { margin-left: auto; }
+  .cp-try { padding-left: 12px; }
+  .cp-stmt { padding: 8px 12px 1px; }
+  .cp-given { padding: 8px 12px 1px; }
 }
