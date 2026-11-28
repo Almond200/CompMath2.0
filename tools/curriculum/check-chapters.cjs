@@ -18,6 +18,12 @@ require(path.join(ROOT, "js/data/curriculum/shelf.js"));
 require(path.join(ROOT, "js/data/problems/problem-db.js"));
 const slugOf = p => p.ref.replace(/,?\s*Problem\s+/i, "-").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const DB = new Set(MATH_PROBLEM_DB.map(slugOf));
+// Statements, to find unrecorded twins: another archive problem with an identical statement.
+const walk = d => fs.readdirSync(d).flatMap(n => { const p = path.join(d, n); return fs.statSync(p).isDirectory() ? walk(p) : [p]; });
+for (const p of walk(path.join(ROOT, "js/data/problems/statements"))) if (p.endsWith(".js")) try { require(p); } catch (e) {}
+const norm = s => String(s || "").replace(/@@[^@]*@@/g, "").replace(/\s+/g, " ").trim();
+const SAME = {}; for (const [k, v] of Object.entries(window.MATH_STATEMENTS || {})) (SAME[norm(v.s)] ||= []).push(k);
+const ALIAS = JSON.parse(fs.readFileSync(path.join(ROOT, "js/data/problems/problem-aliases.json"), "utf8"));
 const errors = [];
 const KINDS = new Set(["checkpoint", "example", "practice"]);
 const BANNED = [[/Guided Practice|Try it|Finish this one|Worked example/, "a retired label"],
@@ -86,6 +92,10 @@ for (const key of MATH_CURRICULUM_SHELF.written) {
     if (it.slug) {
       if (!DB.has(it.slug)) err(`${id}: ${it.slug} is not in the problem database`);
       if (!packet.includes("`" + it.slug + "`")) err(`${id}: ${it.slug} is not placed in packets/${chId}.md`);
+      // Twins (recorded aliases, or identical statements) must be named in the packet, so none is placed twice.
+      const st = (window.MATH_STATEMENTS || {})[it.slug];
+      const twins = new Set([...(st ? SAME[norm(st.s)] : []), ...Object.entries(ALIAS).filter(([k, v]) => v === it.slug).map(([k]) => k), ALIAS[it.slug]].filter(x => x && x !== it.slug));
+      for (const t of twins) if (!packet.includes("`" + t + "`")) err(`${id}: twin ${t} of ${it.slug} is not named in packets/${chId}.md`);
     }
   }
   summary.push(`${chId}: ${Object.keys(items).length} items — ${["example", "checkpoint", "practice", "review", "challenge"].map(k => `${count[k] || 0} ${k}`).join(", ")}${count.proof ? `; ${count.proof} proofs` : ""}; ${Object.keys(figs).length} figures`);

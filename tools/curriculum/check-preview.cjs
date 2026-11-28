@@ -137,6 +137,19 @@ const fail = m => { fails.push(m); console.log("FAIL", m); };
   if (!/lc-wrong/.test(c.cls) || !c.sol || c.wrong.join() !== "A") fail("a wrong choice is not marked: " + JSON.stringify(c));
   await pick("ch-rotate", "B"); c = await cstate("ch-rotate");
   if (!/lc-right/.test(c.cls) || c.sol || c.right.join() !== "B" || c.wrong.length) fail("the right choice is not marked: " + JSON.stringify(c));
+  // A proof problem: Show Solution waits for a written attempt, and the text survives a reload.
+  if (SHELF.written.includes("geometry-2/G2.3")) {
+    await go("#/preview/geometry-2/g2.3/3");
+    const dis = await pg.evaluate(() => document.querySelector('[data-cp-show="pp-trapezoid"]').disabled);
+    if (!dis) fail("a proof's solution is available before anything is written");
+    await pg.fill('[data-cp-proof="pp-trapezoid"]', "The base angles are equal."); await pg.waitForTimeout(600);
+    await pg.click('[data-cp-show="pp-trapezoid"]'); await pg.waitForTimeout(200);
+    if (await pg.evaluate(() => document.querySelector('[data-cp-sol="pp-trapezoid"]').hidden)) fail("a proof's solution did not open after writing");
+    await go("#/preview/geometry-2/g2.3/3");
+    const kept = await pg.evaluate(() => document.querySelector('[data-cp-proof="pp-trapezoid"]').value);
+    if (kept !== "The base angles are equal.") fail("a written proof was not kept across reload: " + JSON.stringify(kept));
+    await go("#/preview/geometry-2/g2.2/2");
+  }
   // A cross-reference names its target and opens its page.
   // A statement is cited by its name, with its number as the link's title.
   const ref = await pg.evaluate(() => [...document.querySelectorAll(".cp-ref[title]")].map(a => [a.textContent, a.title]));

@@ -4215,6 +4215,7 @@ window.MATH_CURRICULUM_SHELF = {
   }
  ],
  "written": [
-  "geometry-2/G2.2"
+  "geometry-2/G2.2",
+  "geometry-2/G2.3"
  ]
 };

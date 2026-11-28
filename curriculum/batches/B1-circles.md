@@ -70,7 +70,7 @@ Chosen from `node tools/curriculum/candidates.cjs` (problems already placed anyw
 
 | Chapter | Stage | Notes |
 |---|---|---|
-| G2.3 | S1 planned | |
+| G2.3 | S4 written and verified | 45 items (6 Examples, 8 Checkpoints, 14 Practice incl. 4 proofs, 12 Review, 5 Challenge); 6 figures; `verify/g2_03.py` 33 values |
 | G2.4 | S1 planned | |
 | G2.5 | S1 planned | |
 | G2.6 | S1 planned | |
