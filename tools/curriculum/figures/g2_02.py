@@ -240,19 +240,8 @@ f.point(O, "O", at=-90); f.point(E_, "E", at=-60); f.point(M, "M", at=45)
 f.length(E_, B, "2√5", 1)
 keep(f)
 
-# 1995 AHSME 26 (in its solution): perpendicular diameters AB and CD; chord DF meets AB at E.
-r = math.sqrt(24); O = (0, 0); A, B, C, D = (-r, 0), (r, 0), (0, r), (0, -r)
-E_ = (math.sqrt(12), 0); F_ = pt(D, unit(sub(E_, D)), 8)
-assert on_circle(O, r, F_) and close(dist(D, E_), 6)
-f = Fig("perpendicular-diameters", "Perpendicular diameters AB and CD, and the chord DF crossing AB at E",
-        "Two facts about $E$: its power $DE\\cdot EF=r^2-OE^2$, and the right triangle $DOE$.",
-        (-5.6, 5.6, -5.6, 5.6))
-f.circle(O, r); f.seg(A, B); f.seg(C, D); f.seg(D, F_, "key"); f.right(O, B, D, 9)
-f.poly([D, O, E_], "ff")
-for X_, n in ((A, "A"), (B, "B"), (C, "C"), (D, "D"), (F_, "F")): f.point(X_, n, O)
-f.point(O, "O", at=135); f.point(E_, "E", at=110)
-f.length(D, E_, "6", -1); f.length(E_, F_, "2", -1)
-keep(f)
+# 1995 AHSME 26: its official diagram already shows the configuration, so no figure is drawn
+# (AUTHORING-STANDARD §9, reuse before redrawing).
 
 # ---------------------------------------------------------------- G2.2.6
 # Example 2006 HMMT February Geometry 3, to scale: X, P, Q, Y on a line; AB through P, CD through Q.
@@ -359,6 +348,126 @@ f.circle(c, R); f.seg(A, B); f.seg(B, C); f.seg(D, A); f.seg(H, G); f.seg(G, F_)
 f.seg(D, D2, "key"); f.seg(H, H2, "key2")
 f.point(A, "A", at=150); f.point(B, "B", at=60); f.point(C, "C", at=-60); f.point(D, "D", at=180); f.point(E_, "E", at=-40)
 f.point(F_, "F", at=-60); f.point(G, "G", at=-30); f.point(H, "H", at=-150); f.point(D2, "D′", at=0); f.point(H2, "H′", at=90)
+keep(f)
+
+# ---------------------------------------------------------------- practice and challenge solutions (2026-11-28)
+# 2015 HMMT November General 4: perpendicular chords AB and CD through P; OMPN is a rectangle.
+P = (0, 0); A, B = (-6, 0), (12, 0); C, D = (0, 4), (0, -18); M, N = (3, 0), (0, -7); O = (3, -7)
+assert all(close(dist(O, Z) ** 2, 130) for Z in (A, B, C, D))
+f = Fig("perpendicular-chords", "Perpendicular chords AB and CD meeting at P, with the perpendiculars from the center",
+        "Dashed: $OM$ and $ON$, perpendicular to the chords at their midpoints, so $OMPN$ is a rectangle.",
+        (-9.0, 15.2, -19.6, 5.2), width=440)
+f.circle(O, math.sqrt(130)); f.seg(A, B); f.seg(C, D); f.seg(O, M, "aux"); f.seg(O, N, "aux")
+f.right(P, B, C, 9); f.right(M, O, B, 8); f.right(N, O, C, 8); f.seg(O, A, "key")
+for Z, n, at in ((A, "A", 180), (B, "B", 0), (C, "C", 90), (D, "D", -90)): f.point(Z, n, at=at)
+f.point(P, "P", at=135); f.point(M, "M", at=60); f.point(N, "N", at=180); f.point(O, "O", at=-30)
+f.length(A, P, "6", 1); f.length(P, M, "3", 1); f.length(M, B, "9", 1); f.length(P, C, "4", -1); f.length(N, D, "11", 1)
+keep(f)
+
+# 1992 AHSME 27: secants PBA and PCD at 60 degrees; BD is perpendicular to PA, so AD is a diameter.
+P = (0, 0); B, A = (8, 0), (18, 0); u = deg(60); C, D = pt(P, u, 9), pt(P, u, 16)
+c = mul(add(A, D), 0.5); R = dist(c, A)
+assert close(R * R, 73) and on_circle(c, R, B) and on_circle(c, R, C) and close(dot(sub(D, B), sub(A, B)), 0)
+f = Fig("secants-60", "Secants PBA and PCD meeting at 60 degrees; BD is perpendicular to PA",
+        "$PB\\cdot PA=PC\\cdot PD$ gives $PC=9$ and $PD=16$. Dashed: $BD\\perp PA$, so $AD$ is a diameter.",
+        (-1.6, 22.4, -2.2, 16.4), width=440)
+f.circle(c, R); f.seg(P, A); f.seg(P, D); f.seg(B, D, "aux"); f.right(B, A, D, 9); f.seg(A, D, "key")
+f.angle(P, A, D, 1, 26); f.angle_label(P, A, D, "60°", 26)
+f.point(P, "P", at=200); f.point(A, "A", at=-20); f.point(B, "B", at=-90); f.point(C, "C", at=150); f.point(D, "D", at=100)
+f.length(P, B, "8", -1); f.length(B, A, "10", -1); f.length(C, D, "7", 1)
+keep(f)
+
+# 2008 HMMT February Geometry 6: angle A = 45 degrees, so angle BOC = 90 degrees; P on BC.
+R = 4 * math.sqrt(2); O = (0, 0); B, C = mul(deg(225), R), mul(deg(315), R); A = mul(deg(110), R); P = lerp(B, C, 3 / 8)
+assert close(dist(B, C), 8) and close(dist(O, P) ** 2, 17)
+f = Fig("circumcenter-power", "Triangle ABC in its circumcircle, with the central angle BOC and the point P on BC",
+        "$\\angle BOC=2\\angle BAC=90^\\circ$, so $R=4\\sqrt2$; then $PB\\cdot PC=R^2-OP^2$.",
+        (-6.6, 6.6, -6.6, 6.6), width=420)
+f.circle(O, R); f.seg(A, B); f.seg(A, C); f.seg(B, C); f.seg(O, B, "aux"); f.seg(O, C, "aux"); f.right(O, B, C, 9); f.seg(O, P, "key")
+f.angle(A, B, C, 1, 30); f.angle_label(A, B, C, "45°", 30)
+f.point(A, "A", O); f.point(B, "B", O); f.point(C, "C", O); f.point(O, "O", at=90); f.point(P, "P", at=-90)
+f.length(B, P, "3", -1); f.length(P, C, "5", -1)
+keep(f)
+
+# 2019 MBMT Upper Geometry 6: equilateral ABC; the circle through A tangent to BC at T.
+s = 7 + 2 * math.sqrt(111) / 3; u_ = (s + 1) / 2
+B, C, A = (0, 0), (s, 0), (s / 2, s * math.sqrt(3) / 2); T = (u_, 0)
+k = ((u_ - s / 2) ** 2 + (s * math.sqrt(3) / 2) ** 2) / (s * math.sqrt(3)); w = (u_, k)
+E_ = lerp(A, B, 10 / s); F_ = lerp(A, C, 11 / s)
+assert on_circle(w, k, A) and on_circle(w, k, E_) and on_circle(w, k, F_) and on_circle(w, k, T)
+f = Fig("equilateral-tangent", "Equilateral triangle ABC with a circle through A tangent to BC at T",
+        "From $B$: $BT^2=BE\\cdot BA$. From $C$: $CT^2=CF\\cdot CA$. And $BT+CT=BC$.",
+        (-1.4, s + 1.4, -1.6, s * math.sqrt(3) / 2 + 1.4), width=420)
+f.circle(w, k); f.seg(A, B); f.seg(B, C); f.seg(C, A)
+f.point(A, "A", at=90); f.point(B, "B", at=210); f.point(C, "C", at=-30); f.point(T, "T", at=-90)
+f.point(E_, "E", at=160); f.point(F_, "F", at=20)
+f.length(A, E_, "10", 1); f.length(F_, A, "11", 1)
+keep(f)
+
+# 2014 HMMT February Geometry 2: the circle through P tangent to the line at T; TT' is a diameter.
+T = (0, 0); P = (5, 12); r = 169 / 24; T2 = (0, 2 * r); H = (0, 12); w = (0, r)
+assert on_circle(w, r, P) and close(dist(P, T), 13)
+f = Fig("tangent-line-circle", "The circle through P tangent to the line at T, with the diameter TT' and the altitude PH",
+        "Dashed: the diameter $TT'$ and the altitude $PH$. $\\angle TPT'=90^\\circ$, so $PT^2=TH\\cdot TT'$.",
+        (-9.6, 9.6, -1.6, 15.0), width=400)
+f.circle(w, r); f.seg((-9.2, 0), (9.2, 0)); f.seg(T, T2, "aux"); f.seg(P, H, "aux"); f.seg(P, T, "key"); f.seg(P, T2)
+f.right(H, P, T, 8); f.right(P, T, T2, 8); f.right(T, (9, 0), T2, 8)
+f.point(T, "T", at=-120); f.point(T2, "T′", at=90); f.point(P, "P", at=0); f.point(H, "H", at=180)
+f.length(T, P, "13", -1); f.length(T, H, "12", 1); f.tag((-8.6, 0), "ℓ", at=90)
+keep(f)
+
+# 2026 HMMT February Geometry 4: the circle centered T through A, X and Y is tangent to AB at A.
+A, B, C = (0, 0), (6, 0), (0, 6 * math.sqrt(3)); l = 7 / math.sqrt(3); T = (0, l)
+X_, Y = lerp(B, C, 4 / 12), lerp(B, C, 9 / 12)
+assert all(close(dist(T, Z), l) for Z in (A, X_, Y))
+f = Fig("right-triangle-circle", "Right triangle ABC with the circle centered T on AC through A, X and Y",
+        "The circle centered $T$ through $A$ is tangent to $AB$ at $A$. Dashed: the radii $TX$ and $TY$.",
+        (-4.6, 7.8, -1.6, 11.4), width=400)
+f.circle(T, l); f.seg(A, B); f.seg(B, C); f.seg(C, A); f.seg(A, B, "key"); f.seg(T, X_, "aux"); f.seg(T, Y, "aux"); f.right(A, B, C, 9)
+f.point(A, "A", at=225); f.point(B, "B", at=-30); f.point(C, "C", at=90); f.point(T, "T", at=180); f.point(X_, "X", at=30); f.point(Y, "Y", at=30)
+f.length(B, X_, "4", 1); f.length(X_, Y, "5", 1); f.length(Y, C, "3", 1)
+keep(f)
+
+# 2019 Duke Math Meet Individual 8, as a schematic: to scale the circles are hundreds of times larger
+# than the heights 12 and 3. Exact configuration with PQ = 16 instead of 420 (heights kept).
+MP_ = 8; MB = MP_ / 2; B = (math.sqrt(MB * MB - 9), 3); A = mul(B, 4); M = (0, 0); P, Q = (-MP_, 0), (MP_, 0)
+k1 = (dot(sub(B, P), sub(B, P))) / 6; k2 = (dot(sub(B, Q), sub(B, Q))) / 6
+w1, w2 = (P[0], k1), (Q[0], k2)
+assert on_circle(w1, k1, A) and on_circle(w1, k1, B) and on_circle(w2, k2, A) and on_circle(w2, k2, B)
+f = Fig("two-tangent-circles", "Two circles through A and B tangent to the x-axis at P and Q; line AB meets the axis at M",
+        "Not to scale: here $PQ=16$, not $420$, so that both circles fit. $MP^2=MA\\cdot MB=MQ^2$, so $M$ is the midpoint of $PQ$.",
+        (-30, 30, -4, 42), width=440)
+f.circle(w1, k1); f.circle(w2, k2); f.seg((-29, 0), (29, 0)); f.seg(M, mul(A, 1.08), "key")
+f.point(A, "A", at=0); f.point(B, "B", at=-10); f.point(M, "M", at=-90); f.point(P, "P", at=-90); f.point(Q, "Q", at=-90)
+f.tag((-29, 0), "x", at=90)
+keep(f)
+
+# 2023 AIME II 9: two circles through P and Q, common tangent AB, and the parallel XY through P.
+h = math.sqrt(15); P, X_, Y = (0, 0), (-10, 0), (14, 0); A, B = (-5, h), (7, h); M = (1, h)
+c1 = (h * h - 25) / (2 * h); c2 = (h * h - 49) / (2 * h); w1, w2 = (-5, c1), (7, c2); r1, r2 = h - c1, h - c2
+Q = add(M, mul(unit(sub(P, M)), 9))
+assert all(on_circle(w1, r1, Z) for Z in (P, X_, A, Q)) and all(on_circle(w2, r2, Z) for Z in (P, Y, B, Q))
+f = Fig("two-circles-trapezoid", "Circles through P and Q with common tangent AB and the parallel line XY through P",
+        "Line $PQ$ meets $AB$ at its midpoint $M$. $A$ and $B$ lie above the midpoints of $PX$ and $PY$.",
+        (-12, 16.4, -13.6, 5.6), width=440)
+f.poly([X_, A, B, Y], "ff"); f.circle(w1, r1); f.circle(w2, r2); f.seg((-11, h), (15, h), "key"); f.seg(X_, Y)
+f.seg(Q, M, "aux"); f.seg(A, (-5, 0), "aux"); f.seg(B, (7, 0), "aux")
+f.point(A, "A", at=110); f.point(B, "B", at=70); f.point(M, "M", at=90); f.point(P, "P", at=-45); f.point(Q, "Q", at=-90)
+f.point(X_, "X", at=200); f.point(Y, "Y", at=-20)
+keep(f)
+
+# 2022 AIME I 11: the parallelogram, its circle tangent to DA, AB and BC, and the diagonal AC.
+r = 3 * math.sqrt(3); O = (0, 0); A, B, C = (-6, r), (-4.5, -r), (20, -r); D = add(A, sub(C, B))
+K, M = (0, r), (0, -r); L = pt(A, unit(sub(B, A)), 6)
+ts = line_circle(A, unit(sub(C, A)), O, r); P, Q = pt(A, unit(sub(C, A)), ts[0]), pt(A, unit(sub(C, A)), ts[1])
+assert on_circle(O, r, L) and close(dist(B, L), 4.5) and close(ts[0], 3) and close(ts[1], 12) and close(dist(A, C), 28)
+f = Fig("parallelogram-circle", "Parallelogram ABCD with the circle tangent to DA, AB and BC, cut by the diagonal AC at P and Q",
+        "The tangency points $K$, $L$, $M$; $KM$ is a diameter, so the height of the parallelogram is $2r$.",
+        (-8, 21.5, -7.6, 7.6), width=460)
+f.circle(O, r); f.seg(A, B); f.seg(B, C); f.seg(C, D); f.seg(D, A); f.seg(A, C, "key"); f.seg(K, M, "aux")
+f.point(A, "A", at=135); f.point(B, "B", at=225); f.point(C, "C", at=-30); f.point(D, "D", at=30)
+f.point(K, "K", at=90); f.point(L, "L", at=180); f.point(M, "M", at=-90); f.point(P, "P", at=45); f.point(Q, "Q", at=-110)
+f.length(A, P, "3", 1); f.length(P, Q, "9", -1); f.length(Q, C, "16", 1)
 keep(f)
 
 js = ("// Generated by tools/curriculum/figures/g2_02.py from exact coordinates; do not edit by hand.\n"

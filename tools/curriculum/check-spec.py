@@ -82,6 +82,12 @@ for f in scan:
         for m in ID.finditer(line):
             ref = m.group(0)
             ok = ref in sect if m.group(3) else ref in chap
+            # The close and the two problem sets are numbered on after a chapter's last section
+            # (AUTHORING-STANDARD §1): page numbers, not concept IDs, but valid to cite.
+            if not ok and m.group(3):
+                ch_id, k = ref.rsplit(".", 1)
+                nsec = sum(1 for x in sect if x.rsplit(".", 1)[0] == ch_id)
+                ok = ch_id in chap and nsec < int(k) <= nsec + 3
             if not ok: err(f"{f.relative_to(ROOT)}:{n}: unknown curriculum ID {ref}")
 
 # ---------- tracker ----------
@@ -116,7 +122,8 @@ for pk in sorted((CUR / "packets").glob("*.md")):
         if s not in db: err(f"{pk.name} {rid}: {s} is not in the problem database"); continue
         live = keys.get(s)
         if live is None: err(f"{pk.name} {rid}: {s} has no live answer key")
-        elif key not in live: err(f"{pk.name} {rid}: Key {key!r} does not match the live key {live}")
+        elif key not in live and "Live key disputed" not in check: err(f"{pk.name} {rid}: Key {key!r} does not match the live key {live}")
+        elif key not in live: print(f"NOTE: {pk.name} {rid}: {s} live key {live} disputed; packet key {key!r}")
         tw = re.findall(r"Twin `([a-z0-9-]+)`", check)
         for x in tw:
             if x not in db: err(f"{pk.name} {rid}: twin {x} is not in the problem database")

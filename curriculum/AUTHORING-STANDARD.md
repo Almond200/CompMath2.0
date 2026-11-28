@@ -26,7 +26,7 @@ A new-idea section usually moves through these stages. They are a progression, n
 1. **Ask.** Start from a concrete question or a small case the learner can try. Let a prediction or a first attempt happen before anything is revealed.
 2. **Develop.** Find the idea from the case: a table, a diagram, a construction or a computation that exposes the pattern. Give the reason the pattern must hold, then state the result with all of its conditions. Derive it; never assert a result the chapter uses without proof or a precise citation.
 3. **Show it working.** At least two worked examples with different structures. Each says *why* this approach was chosen and what in the problem signalled it, and at least one shows a natural alternative and why it is longer or fails.
-4. **Fade.** A Guided Practice problem (the setup is given, the learner finishes it), then a close Practice Problem. This replaces hints: the product has no hint buttons and no hint text (standing preference; D4).
+4. **Practise.** Fully worked Examples are followed by independent Practice Problems whose difficulty rises and whose structure is withdrawn step by step (§11). Independence comes from that progression, not from partial solutions: there are no partly worked problems (owner, 2026-11-28), no hint buttons and no hint text (standing preference; D4).
 5. **Contrast.** A nearby problem where the method fails or needs a new condition, and what changed.
 6. **Check.** Short checkpoints that test the definition, the hypotheses and the edge cases, answered before any worked solution is visible.
 
@@ -38,7 +38,7 @@ A new-idea section usually moves through these stages. They are a progression, n
 
 - **Placement (D6).** Each contest problem has one primary placement in the new shelf, recorded by its canonical identity (`js/data/problems/problem-aliases.json`; AMC 10/12 twins and the other recorded duplicates count once, and known unrecorded duplicates such as PUMaC A/B twins are named in the packet). A Volume III transfer placement of the same problem is allowed only with a written justification. Independent-transfer and delayed-revisit tasks prefer fresh problems.
 - **Cards (D6).** Each reference card has one primary teaching placement in the new shelf. Later chapters may revisit it only to teach a new capability, and say which.
-- **Roles.** Every problem in a packet has a role: motivating, direct check, worked, partly worked, independent, contrast, transfer, or delayed revisit, and a placement (section, Review, Challenge or Mixed). In the chapter, roles become the labels of §7: a worked problem is an Example, a partly worked one is Guided Practice, an independent, direct-check or transfer problem is a Practice Problem (or a Checkpoint when it is short and part of the narrative), and a motivating problem is usually a Checkpoint.
+- **Roles.** Every problem in a packet has a role: motivating, direct check, worked, independent, contrast, reverse, conceptual, hidden construction, combination, transfer, or delayed revisit, and a placement (section, Review, Challenge or Mixed). In the chapter, roles become the labels of §7: a worked problem is an Example; an independent, direct-check, contrast, reverse, conceptual, hidden-construction, combination or transfer problem is a Practice Problem (or a Checkpoint when it is short and part of the narrative); a motivating problem is usually a Checkpoint.
 - **Verification.** Every placed problem's answer is recomputed independently of its stored strategy before it is placed; the packet records the check. A problem whose statement is not shown in the app is placed only with its source link.
 - **Own problems.** Our own problems fill roles the archive cannot (motivating questions, checkpoints, contrasts). They are written fresh: never adapted from the Think Academy materials or any other copyrighted source.
 
@@ -56,7 +56,7 @@ The specification is the canonical plan. The Think Academy Year 2 lessons (suppl
 
 ## 6. Acceptance
 
-A chapter reaches S5 in TRACKER.md only when: every section's purpose in the packet is met; the prerequisite check passes (no later concept is required without a bridge or an optional label); every number and answer is verified; it reads sequentially as a student without opening a card; and the acceptance gates in `spec/teaching-pilots.md` §6 (prerequisite check, first-step diagnostic, faded guidance, misconception contrast, exact-answer verification, delayed transfer) are satisfied.
+A chapter reaches S5 in TRACKER.md only when: every section's purpose in the packet is met; the prerequisite check passes (no later concept is required without a bridge or an optional label); every number and answer is verified; it reads sequentially as a student without opening a card; and the acceptance gates in `spec/teaching-pilots.md` §6 (prerequisite check, first-step diagnostic, misconception contrast, exact-answer verification, delayed transfer) are satisfied, with the specification's "faded guidance" gate replaced by progressively less scaffolded independent practice (§11); and the chapter meets §11's practice ranges or records why it departs from them.
 
 ## 7. Naming and numbering (owner, 2026-11-28)
 
@@ -68,12 +68,11 @@ These rules are implemented once, in `js/curriculum-preview.js`, so every chapte
 |---|---|---|
 | Example | A problem solved in full in the text, ours or from a contest. It shows how the method is found, not only executed. | A subheading with its number and a short descriptive title, the problem on a soft tint, then the solution as running prose. |
 | Checkpoint | A short question inside the narrative, answered before reading on: computational or conceptual. | The question with a faint rule in the book's colour at its left, then the answer row or the choices. |
-| Guided Practice | A problem whose setup the text gives; the learner finishes it. (Replaces "partly worked example", "Finish this one".) | The books' problem box: the statement, the given setup, the step asked for, the answer row. |
 | Practice Problem | A problem the learner solves alone, placed in a section. (Replaces "Try it", "Problem".) | The books' problem box. |
 | Review Problem | One of the chapter's Review Problems set. | The problem box, on the Review Problems page. |
 | Challenge Problem | One of the chapter's Challenge Problems set. | The problem box, on the Challenge Problems page. |
 
-Never use "Try it", "Finish this one", "Worked example", "Exercise", "Exploration" or any other label for these roles. A worked contest problem is an Example; a contest problem the learner solves is a Practice Problem.
+These five are the only categories (owner, 2026-11-28). Never use "Guided Practice", "Try it", "Finish this one", "Worked example", "Exercise", "Exploration" or any other label for these roles, and never give a partial solution for the learner to finish. A worked contest problem is an Example; a contest problem the learner solves is a Practice Problem.
 
 **Numbering.** Each kind is numbered through the whole chapter, in reading order, as *chapter.n*: "Example 2.4" is the fourth example of chapter 2 (G2.2), wherever it falls. Figures are numbered the same way ("Figure 2.7"). Theorems, corollaries, lemmas and definitions share one counter ("Theorem 2.1", "Corollary 2.2", "Definition 2.5"), shown on the statement block, so a reader can find "2.5" by scanning in order. Review and Challenge Problems are numbered the same way ("Review Problem 2.3"). Numbers are assigned by the renderer; inserting an item renumbers the rest, and prose never hard-codes a number: it cites with `{{ref:id}}`.
 
@@ -108,9 +107,15 @@ Across chapters: a concept by its ID in parentheses, "(G1.7.4)", or a chapter as
 
 **Tables** present data the reader compares, with a header row; they are never used for layout.
 
-## 9. Figures (owner, 2026-11-28)
+## 9. Figures (owner, 2026-11-28; policy revised the same day)
 
-Figures are generated by a per-chapter script (`tools/curriculum/figures/<chapter>.py`) using the shared library `tools/curriculum/figures/figlib.py`. Its docstring is the technical reference; the rules are these.
+**When to draw.** Instructional value and development time come before visual uniformity.
+
+- **Reuse contest diagrams.** A competition problem's own diagram, already in CompMath with the statement, is reused whenever it is accurate, legible and permitted for use, with its attribution kept. It is not redrawn just to match our conventions.
+- **Draw a new figure only when it teaches something the original does not:** an auxiliary construction the solution adds (a diameter, a perpendicular, a hidden circle, tangency points), a relationship the reader must see (similar triangles, equal angles, a right angle), or a fix for a deficiency in the original (missing labels, wrong proportions, unreadable at phone width). Such a figure goes in the solution.
+- **Always draw** original figures for the textbook's explanations and proofs, for our own problems, and for contest problems that have no diagram but genuinely benefit from one.
+
+**How new figures are made.** They are generated by a per-chapter script (`tools/curriculum/figures/<chapter>.py`) using the shared library `tools/curriculum/figures/figlib.py`, whose docstring is the technical reference. The rules below apply to these new figures only; existing contest diagrams keep their own style.
 
 1. **Computed, not sketched.** Every point is computed from the problem's data, and the script asserts the relation the figure illustrates (equal products, tangency, concyclicity) before writing it. A figure whose true proportions make it unreadable may change the proportions while keeping the configuration exact; its caption then begins "Not to scale".
 2. **Roles.** *Given* elements (what the statement says) are solid, in the text's colour. *Auxiliary* constructions (a radius, a perpendicular, a diameter drawn for a proof) are dashed and muted. The *key* relationship the figure is about is in the book's colour and heavier; its partner (the second of two similar triangles, a second line) is in the second colour. Fills shade the two partners. A figure has at most these two accent colours.
@@ -118,7 +123,7 @@ Figures are generated by a per-chapter script (`tools/curriculum/figures/<chapte
 4. **Marks.** Equal angles carry the same number of arcs (and the same colour); a right angle is a small square; equal lengths carry the same number of ticks.
 5. **Readable on a phone.** At most 460 units wide, point labels at 24 units and lengths at 20, so on a 375 px phone a point label is about 17 px; `check-preview.cjs` fails a page whose smallest figure label renders below 11 px.
 6. **Captions and numbers.** Each figure is numbered ("Figure 2.7") and the text cites it by number. The caption says what is shown and what each style means when it matters ("Dashed: the radius $OT$"); it may state the relation, but never the answer to a problem that has not been solved yet.
-7. **Where figures go.** A figure accompanies every proof that uses a configuration, every Example whose solution names points or lengths not in the statement, and every Challenge solution that introduces auxiliary points. A figure that would reveal an answer goes inside the solution, not before the problem.
+7. **Where new figures go.** A new figure accompanies every proof that uses a configuration, every Example whose solution names points or lengths that neither the statement nor its diagram shows, and every Challenge solution that introduces auxiliary points. A figure that would reveal an answer goes inside the solution, never before the problem.
 
 ## 10. Instructional variety (owner, 2026-11-28)
 
@@ -127,4 +132,30 @@ The stages of §2 are a toolbox, not a template. A section uses those its purpos
 - **Discovery before statement.** Where the learner can find a relationship from data, give the data and a Checkpoint that asks for it before the text states it (G2.2's opening table asks for the product before revealing $21$; G2.2.3 asks for the tangent length before the proof).
 - **Conceptual checkpoints.** Each chapter mixes computational checkpoints with conceptual ones: which quantity is invariant, which hypothesis a proof step uses, what a sign means, whether the data determine the answer. Conceptual checkpoints use lettered choices whose wrong options are real misconceptions.
 - **Recognition.** Examples are chosen and written to teach when a method applies (the signal in the problem), not only how to run it; Practice Problems near the end of a chapter do not say which section they belong to.
+
+## 11. Practice (owner, 2026-11-28)
+
+Students become independent through the progression of problem difficulty and structure, not through partial solutions. Each chapter therefore has substantial independent practice, mostly from the contest archive, with our own problems where they serve a purpose the archive cannot (a reverse problem with chosen numbers, a conceptual contrast, a small first application).
+
+**How much.** For a substantial intermediate chapter, aim for about:
+- 15–20 Practice Problems, distributed across the concept sections;
+- 12–18 Review Problems;
+- 5–8 Challenge Problems.
+
+These are flexible ranges, not quotas. Scale them to the chapter's scope and difficulty: a short recall section may need one problem or none, and a central section several. A chapter that departs from the ranges says why in its packet.
+
+**Where.** A Practice Problem may follow the Example it extends ("the same structure in a different figure"). Otherwise a section's practice is gathered at its end under a plain "Practice" subheading, or within a subsection where it belongs. Short Checkpoints stay inside the narrative. Review and Challenge Problems keep their own pages.
+
+**What kinds.** A section's practice is not a list of numerical variations. Across the chapter it includes:
+- direct applications;
+- contrasting configurations (the point inside instead of outside, a second circle);
+- reverse problems (the usual unknown given, a given quantity asked for);
+- conceptual reasoning (counting, extremal or "which is always true" questions);
+- hidden constructions (a circle, a tangent or a right angle the student must supply);
+- combinations with earlier concepts;
+- unfamiliar applications.
+
+**Order.** Practice rises in difficulty and falls in structure within a section: the first problem is close to the Examples; the last asks the student to find the configuration. Review Problems are mixed, interleaving the sections, and never say which theorem or technique to use. Challenge Problems rise in difficulty and combine the chapter's ideas with earlier ones.
+
+**Selection and verification.** Each archive problem is placed once across the shelf (§3), with recorded twins and duplicates named in the packet; it must be solvable with the chapter and its prerequisites; and its answer is recomputed independently (coordinates, exact algebra or search), including uniqueness and the existence of the configuration. The complete solution route is checked step by step, not only the answer. A stored answer key that disagrees with the verified value is reported to the owner and not used.
 

@@ -2,7 +2,7 @@
 //   CHROME=/path/to/chromium COMPMATH_URL=http://localhost:8765 node tools/curriculum/check-preview.cjs [shotsDir]
 // 1. Every page of G2.2 at 1280 and 375 px, light and dark: no KaTeX errors, no raw "$", no
 //    horizontal overflow, no page or console errors, every figure and archive statement present.
-// 2. Checkpoints, problems and partly worked examples: wrong and right answers, the solution only
+// 2. Checkpoints and problems: wrong and right answers, the solution only
 //    after an attempt, persistence across reload, and no write to the live textbooks' "mq-learn".
 // 3. Export carries "mq-learn2" and Import restores it.
 // 4. Legacy regressions: the Learn page, a live lesson, search, Practice and the home page still
@@ -16,7 +16,7 @@ global.window = {}; require("../../js/data/curriculum/shelf.js");
 const G22 = window.MATH_CURRICULUM_SHELF.books.find(b => b.id === "geometry-2").chapters.find(c => c.id === "G2.2");
 const PAGES = ["", ...G22.sections.map((_, i) => "/" + (i + 1)), "/close", "/review", "/challenge"];
 // AUTHORING-STANDARD §7: the only instructional labels, numbered by chapter.
-const LABEL = /^(?:(?:Example|Checkpoint|Guided Practice|Practice Problem|Review Problem|Challenge Problem|Theorem|Corollary|Lemma|Definition|Figure) 2\.\d+\.?|Recall)$/;
+const LABEL = /^(?:(?:Example|Checkpoint|Practice Problem|Review Problem|Challenge Problem|Theorem|Corollary|Lemma|Definition|Figure) 2\.\d+\.?|Recall)$/;
 const fails = [];
 const fail = m => { fails.push(m); console.log("FAIL", m); };
 
@@ -62,7 +62,12 @@ const fail = m => { fails.push(m); console.log("FAIL", m); };
   }
   // Every label is used on one page only: numbering is unique through the chapter.
   for (const [l, pages] of Object.entries(seen)) if (pages.size > 1) fail(`label ${l} appears on ${[...pages].join(", ")}`);
-  console.log(`rendering checked: 2 widths x 2 themes x ${PAGES.length + 1} pages; ${Object.keys(seen).length} distinct labels`);
+  // AUTHORING-STANDARD §11: G2.2 meets the practice ranges (15-20, 12-18, 5-8).
+  const count = kind => Object.keys(seen).filter(l => l.startsWith(kind + " ")).length;
+  const ranges = { "Practice Problem": [15, 20], "Review Problem": [12, 18], "Challenge Problem": [5, 8] };
+  for (const [kind, [lo, hi]] of Object.entries(ranges)) if (count(kind) < lo || count(kind) > hi) fail(`${count(kind)} ${kind}s, outside ${lo}-${hi}`);
+  console.log(`rendering checked: 2 widths x 2 themes x ${PAGES.length + 1} pages; ${Object.keys(seen).length} distinct labels; ` +
+    Object.keys(ranges).map(k => `${count(k)} ${k}s`).join(", ") + `, ${count("Example")} Examples, ${count("Checkpoint")} Checkpoints`);
 
   // ---------- 2. interactions, persistence and isolation ----------
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, acceptDownloads: true });
@@ -87,8 +92,12 @@ const fail = m => { fails.push(m); console.log("FAIL", m); };
   await answer("p-hmmt07", "2"); s = await state("p-hmmt07");
   if (!/lc-right/.test(s.cls) || s.solHidden) fail("the archive problem's answer is not accepted: " + JSON.stringify(s));
   await go("#/preview/geometry-2/g2.2/3");
-  await answer("p-amc20b10", "√5/10"); s = await state("p-amc20b10");
-  if (!/lc-right/.test(s.cls)) fail("the partly worked example rejects √5/10");
+  await answer("p-smt24", "√7/14"); s = await state("p-smt24");
+  if (!/lc-right/.test(s.cls)) fail("the practice problem after the 2020 AMC 12B 10 example rejects √7/14");
+  await answer("p-ahsme59", "c"); s = await state("p-ahsme59");
+  if (!/lc-right/.test(s.cls)) fail("a multiple-choice letter answer (lower case) is not accepted");
+  await answer("p-ahsme59", "D"); s = await state("p-ahsme59");
+  if (!/lc-wrong/.test(s.cls)) fail("a wrong letter is accepted");
   await go("#/preview/geometry-2/g2.2/review");
   await answer("r6", "4sqrt(2)"); s = await state("r6");
   if (!/lc-right/.test(s.cls)) fail("review problem 6 rejects 4sqrt(2)");

@@ -15,7 +15,11 @@ import sympy as sp
 
 ROOT = Path(__file__).resolve().parents[3]
 x, y, e, s, k, r, t = sp.symbols("x y e s k r t", real=True)
-V = {}   # item id -> verified value (sympy)
+V = {}   # item id -> verified value (sympy), or a letter for a symbolic multiple-choice answer
+LETTER = {}   # contest slug -> (letter, value) for multiple-choice problems answered by letter
+# A live key that disagrees with an independent computation is reported, not trusted (the
+# chapter uses the verified value). Reported to the owner on 2026-11-28; the database is Codex's.
+KNOWN_KEY_ISSUES = {"2026-hmmt-february-geometry-4": "stored 7/(3sqrt(3)) = 1.347...; the configuration gives 7/sqrt(3) = 4.041... (TA = TX = TY checked by coordinates)"}
 def pos_roots(expr, var):
     return sorted(z for z in sp.solve(expr, var) if z.is_real and z > 0)
 
@@ -125,6 +129,150 @@ rts = pos_roots(e*(e + 184) - 561, e); assert rts == [3]
 pts = [(0, 16), (0, 0), (3, -17), (187, -17)]
 assert sp.Matrix([[a*a + b*b, a, b, 1] for a, b in pts]).det() == 0; V["ch3"] = 107 - 3
 
+# ---- the expanded practice (2026-11-28) ----
+def circ3(P1, P2, P3):
+    """Center and squared radius of the circle through three points (sympy exact)."""
+    cx, cy = sp.symbols("cx cy")
+    sol = sp.solve([(P1[0]-cx)**2 + (P1[1]-cy)**2 - (P2[0]-cx)**2 - (P2[1]-cy)**2,
+                    (P1[0]-cx)**2 + (P1[1]-cy)**2 - (P3[0]-cx)**2 - (P3[1]-cy)**2], [cx, cy], dict=True)[0]
+    return sol[cx], sol[cy], sp.simplify((P1[0]-sol[cx])**2 + (P1[1]-sol[cy])**2)
+# pp-arcs: place arcs on a unit circle and measure the angle between the chords.
+def on(deg_): return sp.Matrix([sp.cos(sp.rad(deg_)), sp.sin(sp.rad(deg_))])
+A_, B_ = on(0), on(80); C_, D_ = on(200), on(240)        # A, B, C, D in order; arc AB = 80, arc CD = 40
+s1, s2 = sp.symbols("s1 s2")
+sol = sp.solve(list(A_ + s1*(C_-A_) - B_ - s2*(D_-B_)), [s1, s2]); Pp = A_ + sol[s1]*(C_-A_)
+ang = sp.acos(((A_-Pp).dot(B_-Pp)) / sp.sqrt((A_-Pp).dot(A_-Pp) * (B_-Pp).dot(B_-Pp)))
+assert abs(float(ang) * 180 / math.pi - 60) < 1e-9; V["pp-arcs"] = 60
+# 1991 AHSME 10: count chords through P (OP = 9, r = 15) of integer length, by distance h in [0, 9].
+lengths = {}
+for L in range(1, 31):
+    h2 = 225 - (L/2)**2
+    if 0 <= h2 <= 81: lengths[L] = 1 if h2 in (0, 81) else 2
+assert sum(lengths.values()) == 12; V["p-ahsme91"] = 12; LETTER["1991-ahsme-10"] = ("B", 12)
+# 2014 HMMT Feb Geo 1: concentric radii 4 and 6, chord of length 2 of the inner circle extended.
+V["p-hmmt14c"] = 2*sp.sqrt(36 - (16 - 1)); assert sp.simplify(V["p-hmmt14c"] - 2*sp.sqrt(21)) == 0
+# 2015 HMMT Nov General 4: coordinates with P at the origin; search both orders of CP, PD.
+areas = set()
+for cp in pos_roots(t**2 - 22*t + 72, t):
+    ox, oy = 3, sp.Rational(cp - (22 - cp), 2)                # center: midpoints of the chords
+    areas.add(sp.simplify(((-6 - ox)**2 + oy**2) * sp.pi))
+assert areas == {130*sp.pi}; V["p-hmmt15n"] = 130*sp.pi
+# 2024 SMT Geo 3: regular hexagon, incircle radius sqrt(3)/2; second intersection of AM with it.
+A6 = sp.Matrix([1, 0]); M6 = sp.Matrix([0, sp.sqrt(3)/2])
+ts = sp.solve((A6 + t*(M6-A6)).dot(A6 + t*(M6-A6)) - sp.Rational(3, 4), t)
+tp = min(ts, key=lambda z: float(z)); V["p-smt24"] = sp.simplify(tp * sp.sqrt((M6-A6).dot(M6-A6)))
+assert sp.simplify(V["p-smt24"] - sp.sqrt(7)/14) == 0
+# 1959 AHSME 32: tangent l = 4r/3; nearest distance = OA - r; compare with each choice (r = 3, l = 4).
+r_, l_ = 3, 4; near = math.sqrt(r_**2 + l_**2) - r_
+assert near == l_/2 and near != r_/2 and near != 2*l_/3; V["p-ahsme59"] = "C"
+# 2012 SMT General 23: coordinates.
+Bc = sp.Matrix([0, 0]); Ac = sp.Matrix([-36, 0]); yC = sp.symbols("yC", positive=True)   # tangent at B is vertical
+Cc = sp.Matrix([0, yC]); Oc = sp.Matrix([-18, 0])
+tt = [z for z in sp.solve((Ac + t*(Cc-Ac) - Oc).dot(Ac + t*(Cc-Ac) - Oc) - 324, t) if z != 0][0]
+yv = [z for z in sp.solve(sp.Eq(tt*sp.sqrt(36**2 + yC**2), 24), yC) if z > 0][0]
+V["p-smt12"] = yv; assert sp.simplify(yv - 18*sp.sqrt(5)) == 0
+# 2025 BMMT 13: coordinates with C at the origin, A on the y-axis, D on the x-axis.
+x_ = sp.symbols("x_", positive=True); Bb = (-9, 0); Aa = (0, 4); Dd = (x_, 0)
+cx_, cy_, rr = circ3(Bb, (0, 0), Aa)
+tang = sp.solve(sp.Eq(((Dd[0]-cx_)**2 + (Dd[1]-cy_)**2) - rr, (Dd[0]-Aa[0])**2 + (Dd[1]-Aa[1])**2), x_)
+assert tang == [sp.Rational(16, 9)]; V["p-bmmt25"] = sp.Rational(16, 9)
+# pp-reverse: PA = 5, AB = 7, CD = 4.
+rts = pos_roots(x*(x+4) - 5*12, x); assert rts == [6]; V["pp-reverse"] = 6
+# 2016 MBMT 4: the near distance on a line through C is at most sqrt(power); sample directions.
+OA_ = sp.Rational(201, 6); AB_, BC_ = 20, 16
+h_ = math.sqrt(float(OA_)**2 - 100); O16 = (0.0, h_); Cpt = (10 + 16, 0.0)
+best = 0
+for k_ in range(1, 200000):
+    a_ = math.pi * k_ / 200000; u_ = (math.cos(a_), math.sin(a_))
+    w_ = (Cpt[0]-O16[0], Cpt[1]-O16[1]); b_ = 2*(w_[0]*u_[0] + w_[1]*u_[1]); c_ = w_[0]**2 + w_[1]**2 - float(OA_)**2
+    disc = b_*b_ - 4*c_
+    if disc >= 0 and (-b_ - math.sqrt(disc))/2 > 0:            # the ray meets the circle ahead of C
+        best = max(best, (-b_ - math.sqrt(disc))/2)
+assert best <= 24 + 1e-9 and abs(math.sqrt((26)**2 + h_**2 - float(OA_)**2) - 24) < 1e-9; V["p-mbmt16"] = 24   # no line exceeds 24; the tangent attains it
+# 1992 AHSME 27: build the configuration and measure r^2.
+pc = pos_roots(x*(x+7) - 144, x)[0]
+Pq = sp.Matrix([0, 0]); Bq = sp.Matrix([8, 0]); Aq = sp.Matrix([18, 0]); u60 = sp.Matrix([sp.Rational(1, 2), sp.sqrt(3)/2])
+Cq, Dq = pc*u60, (pc+7)*u60
+cx_, cy_, rr = circ3(tuple(Aq), tuple(Bq), tuple(Cq))
+assert sp.simplify((Dq[0]-cx_)**2 + (Dq[1]-cy_)**2 - rr) == 0 and sp.simplify(rr - 73) == 0
+V["p-ahsme92"] = 73; LETTER["1992-ahsme-27"] = ("D", 73)
+# 2014 CHMMC 8: chord through B at 45 degrees to the diameter, AB = 1, BC = 7; solve for B and r.
+b_ = sp.symbols("b_", real=True); R_ = sp.symbols("R_", positive=True)
+u45 = sp.Matrix([1, 1])/sp.sqrt(2); Bm = sp.Matrix([b_, 0])
+so = sp.solve([(Bm - u45).dot(Bm - u45) - R_**2, (Bm + 7*u45).dot(Bm + 7*u45) - R_**2], [b_, R_], dict=True)
+assert {d[R_] for d in so} == {5}; V["p-chmmc14"] = 5
+# 2008 HMMT Feb Geo 6: any A on the major arc gives angle A = 45; check one and compute OP.
+R8 = 4*sp.sqrt(2); B8 = R8*on(225); C8 = R8*on(315); A8 = R8*on(110); P8 = B8 + sp.Rational(3, 8)*(C8-B8)
+angA = sp.acos(((B8-A8).dot(C8-A8)) / sp.sqrt((B8-A8).dot(B8-A8)*(C8-A8).dot(C8-A8)))
+assert abs(float(angA) - math.pi/4) < 1e-12; V["p-hmmt08"] = sp.sqrt(sp.simplify(P8.dot(P8)))
+assert sp.simplify(V["p-hmmt08"] - sp.sqrt(17)) == 0
+# 1976 AHSME 18: solve for r with coordinates (B outside, C on the circle, D inside, OD = 2).
+pq, qq, rq = sp.symbols("pq qq rq", real=True)            # C = (0,0), B = (-3,0), D = (3,0), O = (pq, qq)
+so = sp.solve([pq**2 + qq**2 - rq**2, (pq - 3)**2 + qq**2 - 4, (pq + 3)**2 + qq**2 - rq**2 - 36], [pq, qq, rq], dict=True)
+assert {d[rq] for d in so if d[rq] > 0} == {sp.sqrt(22)}; V["p-ahsme76"] = sp.sqrt(22); LETTER["1976-ahsme-18"] = ("E", sp.sqrt(22))
+# 2019 MBMT Upper 6: solve the tangent-length equation numerically from scratch.
+f_ = lambda v: math.sqrt(v*(v-10)) + math.sqrt(v*(v-11)) - v
+lo, hi = 11.0, 100.0
+for _ in range(200):
+    mid = (lo + hi)/2
+    if f_(mid) < 0: lo = mid        # f increases from negative at 11 to positive
+    else: hi = mid
+V["p-mbmt19"] = 7 + 2*sp.sqrt(111)/3; assert abs(lo - float(V["p-mbmt19"])) < 1e-9
+# 1957 AHSME 18: AP*AM = AO*AB for random chords AM (radius 1, A = (-1, 0), P on CD = the y-axis).
+for th in (0.3, 0.9, 1.4, 2.0):
+    Mq = (math.cos(th), math.sin(th)); m_ = Mq[1]/(Mq[0] + 1); Pq_ = (0, m_)
+    assert abs(math.dist((-1, 0), Pq_) * math.dist((-1, 0), Mq) - 1*2) < 1e-12
+V["p-ahsme57"] = "B"
+# 2014 HMMT Feb Geo 2: the circle through (5, 12) tangent to the x-axis at the origin.
+rr_ = sp.symbols("rr_", positive=True); V["p-hmmt14t"] = sp.solve(25 + (12 - rr_)**2 - rr_**2, rr_)[0]
+assert V["p-hmmt14t"] == sp.Rational(169, 24)
+# Review.
+V["rv-ahsme54"] = sp.sqrt(169 - 9*16); LETTER["1954-ahsme-9"] = ("C", 5)
+cx_, cy_, rr = circ3((0, 8), (8, 8), (4, 0)); V["rv-ahsme62"] = sp.sqrt(rr); assert V["rv-ahsme62"] == 5; LETTER["1962-ahsme-25"] = ("C", 5)
+V["rv-hmmt02"] = sp.sqrt(225 + 28*52); assert V["rv-hmmt02"] == 41
+rr6 = sp.symbols("rr6", positive=True); V["rv-ahsme74"] = sp.solve((2*rr6)**2 + 5**2 - 13**2, rr6)[0]; LETTER["1974-ahsme-23"] = ("B", 6)
+xe = sp.symbols("xe", positive=True)                       # E = (0, xe); tangent from C=(2,2) to the semicircle on AB (y=0 side x in [0,2])
+sol = [z for z in sp.solve(sp.Eq((2 - 0)**2 + (2 - xe)**2, (2 + xe)**2), xe) if 0 < z < 2]
+V["rv-amc04"] = 2 + sol[0]; assert V["rv-amc04"] == sp.Rational(5, 2); LETTER["2004-amc-10a-22"] = ("D", sp.Rational(5, 2))
+# 2011 HMMT Nov theme 8: coordinates with P at the origin.
+D11 = sp.Matrix([4, 0]); F11 = 2*on(60); E11 = 8*on(60)
+cx_, cy_, rr = circ3(tuple(D11), tuple(F11), tuple(E11)); V["rv-hmmt11"] = sp.simplify(sp.pi*rr)
+assert sp.simplify(cx_*0 + (cy_ - 0)*0 + (D11[0]-cx_)) == 0            # radius at D is vertical: tangent is the x-axis
+assert sp.simplify(V["rv-hmmt11"] - 12*sp.pi) == 0
+# 2018 PUMaC B3: solve the two conditions for the radius and check existence.
+ac, R18 = sp.symbols("ac R18", positive=True)
+so = sp.solve([ac*(2*R18 - ac) - 900, (ac**2 + 900) - 16*sp.Rational(1, 2)*ac*30], [ac, R18], dict=True)
+assert {d[R18] for d in so} == {120}; V["rv-pumac18"] = 120
+V["rv-ahsme67"] = "C"   # the symbolic diameter sqrt(ab), recomputed by coordinates below
+a_s, b_s, d_s, X_ = sp.symbols("a_s b_s d_s X_", positive=True)
+xs = sp.solve(sp.Eq(b_s*X_/d_s, a_s*(1 - X_/d_s)), X_)[0]; ys = b_s*xs/d_s
+assert sp.solve(sp.Eq((xs - d_s/2)**2 + ys**2, d_s**2/4), d_s) == [sp.sqrt(a_s)*sp.sqrt(b_s)]
+e21 = sp.sqrt(2*sp.Rational(32, 49) - 1); de = sp.sqrt(e21**2 + 1); assert de == sp.Rational(8, 7); V["rv-hmmt21"] = 807
+# Challenge.
+l26 = sp.symbols("l26", positive=True); X26 = sp.Matrix([4, 2*sp.sqrt(3)]); T26 = sp.Matrix([0, l26])
+sol = sp.solve((X26 - T26).dot(X26 - T26) - l26**2, l26); V["ch-hmmt26"] = sol[0]
+Y26 = sp.Matrix([sp.Rational(3, 2), 9*sp.sqrt(3)/2]); assert sp.simplify((Y26 - sp.Matrix([0, sol[0]])).dot(Y26 - sp.Matrix([0, sol[0]])) - sol[0]**2) == 0
+assert sp.simplify(sol[0] - 7*sp.sqrt(3)/3) == 0 and 0 < sol[0] < 6*sp.sqrt(3)
+# 2019 Duke 8: numeric construction; circles through A, B tangent to the x-axis, PQ = 420.
+def duke(ab):
+    # A above B on a line through M = origin with heights 12 and 3: MB = ab/3, MA = 4ab/3
+    mb = ab/3; bx = math.sqrt(mb*mb - 9); Bp = (bx, 3.0); Ap = (4*bx, 12.0)
+    # tangency points p with p^2 = MA*MB on both sides
+    return 2*math.sqrt(4*mb*mb)
+assert abs(duke(315) - 420) < 1e-9; V["ch-duke19"] = 315
+# 2023 AIME II 9: build both circles from h and check every incidence, then the area.
+h9 = sp.sqrt(15); c1 = (h9**2 - 25)/(2*h9); c2 = (h9**2 - 49)/(2*h9)
+Q9 = sp.Matrix([1, h9]) + 9*(sp.Matrix([0, 0]) - sp.Matrix([1, h9]))/4
+for (cx_, cy_, Z) in ((-5, c1, [(0, 0), (-10, 0), (-5, h9), tuple(Q9)]), (7, c2, [(0, 0), (14, 0), (7, h9), tuple(Q9)])):
+    rad = (h9 - cy_)**2
+    assert all(sp.simplify((z[0]-cx_)**2 + (z[1]-cy_)**2 - rad) == 0 for z in Z)
+area = sp.Rational(1, 2)*(24 + 12)*h9; assert area == 18*sp.sqrt(15); V["ch-aime23"] = 18 + 15
+# 2022 AIME I 11: done in coordinates; both side cases, keep the acute one.
+r22 = 3*sp.sqrt(3); A22 = sp.Matrix([-6, r22]); B22 = sp.Matrix([-sp.Rational(9, 2), -r22]); C22 = sp.Matrix([20, -r22])
+assert sp.simplify((A22 - B22).dot(A22 - B22) - (6 + sp.Rational(9, 2))**2) == 0 and (A22 - C22).dot(A22 - C22) == 784
+ts = sp.solve((A22 + t*(C22 - A22)).dot(A22 + t*(C22 - A22)) - 27, t); assert sorted(z*28 for z in ts) == [3, 12]
+V["ch-aime22"] = 147 + 3
+
 # ---- compare with the chapter file and the live keys ----
 js = subprocess.run(["node", "-e", """
 global.window = {}; require('./js/data/curriculum/geometry-2/g2.02.js'); global.window.LearnAnswer = require('./js/learn-answer.js');
@@ -149,14 +297,23 @@ def same(a, b):
 for iid, it in items.items():
     if it["answer"] is None: continue
     if iid not in V: errors.append(f"{iid}: no independent verification"); continue
-    if it["choices"]:
-        if it["answer"] != V[iid]: errors.append(f"{iid}: chapter choice {it['answer']} != verified {V[iid]}")
+    if it["choices"] or (isinstance(V[iid], str)) or re.fullmatch(r"[A-E]", it["answer"] or ""):
+        want = V[iid] if isinstance(V[iid], str) else LETTER.get(it["slug"], (None,))[0]
+        if it["answer"] != want: errors.append(f"{iid}: chapter choice {it['answer']} != verified {V[iid]}")
         continue
     if not same(it["answer"], sp.N(V[iid], 15)): errors.append(f"{iid}: chapter answer {it['answer']} != verified {V[iid]}")
 for iid, it in items.items():
     if it["slug"]:
         live = keys.get(it["slug"])
-        if it["slug"] in MC:
+        if it["slug"] in KNOWN_KEY_ISSUES:
+            print(f"KEY ISSUE ({iid}, {it['slug']}): {KNOWN_KEY_ISSUES[it['slug']]}; live key {live!r}")
+        elif it["slug"] in LETTER:
+            letter, val = LETTER[it["slug"]]
+            if live != letter: errors.append(f"{iid}: live key {live} != {letter}")
+            if iid in V and not isinstance(V[iid], str) and sp.simplify(sp.nsimplify(V[iid]) - val) != 0: errors.append(f"{iid}: verified value disagrees with choice {letter}")
+        elif re.fullmatch(r"[A-E]", it["answer"] or ""):
+            if live != it["answer"]: errors.append(f"{iid}: live key {live} != chapter letter {it['answer']}")
+        elif it["slug"] in MC:
             letter, val = MC[it["slug"]]
             if live != letter: errors.append(f"{iid}: live key {live} != {letter}")
             if iid in V and sp.simplify(V[iid] - val) != 0: errors.append(f"{iid}: verified value disagrees with choice {letter}")

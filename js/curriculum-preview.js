@@ -6,8 +6,9 @@
 // textbooks' progress is untouched. From the app it uses only the read-only services in `kit`.
 //
 // The editorial conventions it implements are in curriculum/AUTHORING-STANDARD.md §7–§9:
-// - One vocabulary for every chapter: Example, Checkpoint, Guided Practice, Practice Problem,
-//   Review Problem, Challenge Problem. Each is numbered through the chapter, by kind, in reading
+// - One vocabulary for every chapter: Example, Checkpoint, Practice Problem, Review Problem,
+//   Challenge Problem. (There is no partly worked category: worked Examples are followed by
+//   independent problems of rising difficulty; owner, 2026-11-28.) Each is numbered through the chapter, by kind, in reading
 //   order ("Example 2.3" is the chapter's third example), and a contest source is shown apart
 //   from the label.
 // - Theorem, Corollary and Definition statements share one counter ("Theorem 2.1",
@@ -59,7 +60,7 @@
   }
 
   // ---------- labels: every item, statement and figure numbered in reading order ----------
-  const KIND = { checkpoint: "Checkpoint", example: "Example", guided: "Guided Practice", practice: "Practice Problem", review: "Review Problem", challenge: "Challenge Problem" };
+  const KIND = { checkpoint: "Checkpoint", example: "Example", practice: "Practice Problem", review: "Review Problem", challenge: "Challenge Problem" };
   const STATEMENT = { theorem: "Theorem", corollary: "Corollary", definition: "Definition", lemma: "Lemma" };
   function buildLabels(b, ch, data) {
     labels = {}; pageOfRef = {}; names = {};
@@ -82,7 +83,7 @@
       if (!it || labels[id]) return;
       const kind = set || it.kind;
       labels[id] = `${KIND[kind] || "Problem"} ${n}.${next(kind)}`; pageOfRef[id] = page;
-      ["q", "problem", "setup", "solution"].forEach(f => visit(it[f], page));
+      ["q", "problem", "solution"].forEach(f => visit(it[f], page));
     };
     pagesOf(ch).forEach(page => {
       const info = pageInfo(data, ch, page);
@@ -187,8 +188,8 @@
 
   // ---------- checkpoints, examples and problems ----------
   // A checkpoint sits in the running text with a faint rule at its left; an example is a
-  // subheading over its problem and solution; Guided Practice, Practice, Review and Challenge
-  // Problems use the books' problem box. Every answer is checked the same way, and every solution
+  // subheading over its problem and solution; Practice, Review and Challenge Problems use the
+  // books' problem box. Every answer is checked the same way, and every solution
   // opens under a hairline and can be hidden again.
   const answerKey = id => chapterKey + "#" + id;
   const solveLabel = open => open ? "Hide Solution" : "Show Solution";
@@ -240,9 +241,8 @@
         <p class="lp-sol-title">Solution:</p>${text(it.solution)}</div>`;
     }
     const head = `<div class="lp-prob-head cp-prob-head"><span class="lp-prob-n">${label}</span>${sourceHtml(it)}</div>`;
-    const setup = it.setup ? `<div class="cp-setup">${text(it.setup)}</div>` : "";
     const prompt = it.prompt ? `<p class="cp-prompt">${inline(it.prompt)}</p>` : "";
-    return `<div class="lp-prob cp-prob" id="cp-${id}">${head}${givenHtml(it)}${setup}${prompt}${answerBlock(id, it)}</div>`;
+    return `<div class="lp-prob cp-prob" id="cp-${id}">${head}${givenHtml(it)}${prompt}${answerBlock(id, it)}</div>`;
   }
 
   // ---------- the book view, as the live books draw it ----------
@@ -343,7 +343,8 @@
         <ol class="lb-lessons lb-chapter-page">${rows}</ol>`;
     }
     if (info.items) {
-      const lead = page === "review" ? "Problems that check the ideas of the whole chapter, mostly direct uses of them." : "Harder problems that combine the chapter's ideas, in rising order of difficulty.";
+      // Review Problems are mixed: nothing says which section or method a problem needs (owner, 2026-11-28).
+      const lead = page === "review" ? "Problems from the whole chapter." : "Harder problems that combine the chapter's ideas, in rising order of difficulty.";
       return `${note}<h1 class="learn-h">${esc(info.title)}</h1><p class="learn-note">${lead}</p>
         <div class="detail-body lp-body">${info.items.map(itemHtml).join("")}</div>`;
     }
@@ -400,7 +401,11 @@
   // ---------- events: delegated listeners, acting only inside .cp-root ----------
   function record(id, a, art) {
     const it = chapter && chapter.items[id]; if (!it) return;
-    const ok = it.choices ? a === it.answer : !!(root.LearnAnswer && root.LearnAnswer.same(a, it.answer));
+    // A contest multiple-choice answer given as a letter is compared as a letter; any other answer
+    // through the shared exact comparison.
+    const ok = it.choices ? a === it.answer
+      : /^[A-E]$/.test(it.answer) ? a.trim().replace(/^\(|\)$/g, "").toUpperCase() === it.answer
+      : !!(root.LearnAnswer && root.LearnAnswer.same(a, it.answer));
     const key = answerKey(id);
     progress().checks[key] = Object.assign({}, progress().checks[key], { a, ok });
     const res = art.querySelector(`[data-cp-result="${id}"]`);

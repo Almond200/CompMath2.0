@@ -81,7 +81,11 @@ Two consequences are what this chapter uses.
 
 {{item:c-other-arc}}
 
-The habit to build now is to look at a chord and ask which points see it under the same angle. In the next section two crossing chords will produce two pairs of such angles, and those pairs will be exactly what makes two triangles similar.`
+The habit to build now is to look at a chord and ask which points see it under the same angle. In the next section two crossing chords will produce two pairs of such angles, and those pairs will be exactly what makes two triangles similar.
+
+### Practice
+
+{{item:pp-arcs}}`
     },
     "G2.2.2": {
       body: String.raw`Return to two chords through a point $P$ inside the circle: chord $AB$ and chord $CD$, crossing at $P$. The opening suggests that
@@ -128,7 +132,17 @@ Indeed, the diameter through $P$ is a chord through $P$, cut into $r-d$ and $r+d
 
 {{item:c-shortest}}
 
-{{item:p-hmmt07}}`
+### Practice
+
+The first problem is a direct use of the theorem. The others ask you to recognise it: in a count of chords, with a second circle, and alongside the perpendicular from the center.
+
+{{item:p-hmmt07}}
+
+{{item:p-ahsme91}}
+
+{{item:p-hmmt14c}}
+
+{{item:p-hmmt15n}}`
     },
     "G2.2.3": {
       body: String.raw`Now move $P$ outside the circle. A line through $P$ that meets the circle at two points is a __secant__; a line that meets it at exactly one point is a __tangent__. If a secant meets the circle at $A$ and $B$, with $A$ the nearer point, then both $PA$ and $PB$ are measured in the same direction from $P$. Is there still a constant product?
@@ -164,13 +178,27 @@ Let $P$ be a point outside a circle with center $O$ and radius $r$. If a secant 
 $$PA\cdot PB=PT^2=OP^2-r^2.$$
 :::
 
+One consequence is used constantly. The two tangents from an outside point $P$ have equal lengths, since the square of each is $OP^2-r^2$.
+
 {{item:ch-outside}}
 
 The same computation works when $P$ is inside the circle. There $P$ lies between $A$ and $B$, the pieces are $MA-PM$ and $MA+PM$, and the product is $MA^2-PM^2=r^2-OP^2$. This is a second proof of the {{ref:cor-inside}}. (Chapter G2.4 gives a proof of the tangent–secant theorem by similar triangles, using the tangent–chord angle.)
 
 {{item:p-ahsme56}}
 
-{{item:p-amc20b10}}`
+{{item:p-amc20b10}}
+
+The next problem has the same structure in a different figure. Find the tangent and the secant yourself.
+
+{{item:p-smt24}}
+
+### Practice
+
+{{item:p-ahsme59}}
+
+{{item:p-smt12}}
+
+{{item:p-bmmt25}}`
     },
     "G2.2.4": {
       body: String.raw`Two secants from the same outside point need no new work: each has product $PT^2$ by the {{ref:thm-tangent}}, so if one meets the circle at $A$ and $B$ and the other at $C$ and $D$,
@@ -195,7 +223,15 @@ In every case so far the rule reads the same way: along a line through $P$, mult
 
 {{item:ex-error}}
 
-{{item:c-secants}}`
+{{item:c-secants}}
+
+### Practice
+
+{{item:pp-reverse}}
+
+{{item:p-mbmt16}}
+
+{{item:p-ahsme92}}`
     },
     "G2.2.5": {
       body: String.raw`Collect what the last three sections found. For a line through $P$ that meets the circle with center $O$ and radius $r$ at $A$ and $B$:
@@ -249,7 +285,15 @@ The power depends only on the distance $OP$ and the radius. It needs no line at 
 
 {{item:p-amc20b12}}
 
-{{item:p-ahsme95}}`
+The next problem runs the same configuration backwards: now the radius is unknown.
+
+{{item:p-chmmc14}}
+
+### Practice
+
+{{item:p-ahsme95}}
+
+{{item:p-hmmt08}}`
     },
     "G2.2.6": {
       body: String.raw`Knowing the theorem is the easy part. In a contest problem nobody labels the point whose power you should use, and the circle or the second intersection is often not drawn. This section is about finding them. Four habits do most of the work.
@@ -260,17 +304,25 @@ Power of a point is a statement about one point. So the first question is always
 
 {{item:p-hmmt06}}
 
+{{item:p-ahsme76}}
+
+{{item:p-mbmt19}}
+
 ### Look for the circle you are not shown
 
 A problem that says "the circle with center $A$ through $B$" has handed you a circle and a radius, $AB$. Any point whose distance from $A$ you know then has a known power, and any line through that point that meets the circle twice gives an equation. Ask: which points have known distances to the center? Which lines through them meet the circle twice?
 
 {{item:p-amc13}}
 
+{{item:p-ahsme57}}
+
 ### Notice a tangent hiding as a right angle
 
 A radius is perpendicular to the tangent at its endpoint, and conversely a line perpendicular to a radius at its endpoint on the circle is a tangent (G1.7.2). So a right angle at a point of the circle, with one side through the center, announces a tangent, and therefore a power.
 
 {{item:ex-hidden-tangent}}
+
+{{item:p-hmmt14t}}
 
 ### Know when power is not enough
 
@@ -379,7 +431,7 @@ __A check by another route.__ Half of $GH$ is a leg of the right triangle with h
       kind: "checkpoint",
       q: String.raw`Test the conjecture before it is proved. From an outside point $P$, a secant meets a circle at $A$ and $B$ with $PA=4$ and $PB=9$. If the conjecture is true, how long is a tangent from $P$ to the circle?`,
       answer: "6",
-      solution: String.raw`$PT^2=PA\cdot PB=36$, so $PT=6$. The proof below shows the conjecture is true, so this is the tangent length.`
+      solution: String.raw`$PT^2=PA\cdot PB=36$, so $PT=6$. The proof that follows shows the conjecture is true, so this is the tangent length.`
     },
     "ch-outside": {
       kind: "checkpoint",
@@ -404,17 +456,23 @@ $$\begin{gathered}300=x(x+20),\\ x^2+20x-300=0,\\ (x-10)(x+30)=0.\end{gathered}$
 A length is positive, so $x=10$: $PB=10$, choice (B). The rejected root $-30$ is not a second configuration; it does not describe a length.`
     },
     "p-amc20b10": {
-      kind: "guided", slug: "2020-amc-12b-10",
-      setup: String.raw`__The idea.__ $A$ lies outside the circle $\omega$, and line $AM$ is a secant through $A$: it meets $\omega$ at $P$ and at $M$. So the {{ref:thm-tangent}} gives $AP\cdot AM=AN^2$, where $AN$ is the tangent from $A$.
+      kind: "example", slug: "2020-amc-12b-10",
+      title: "A secant through an inscribed circle",
+      solution: String.raw`__What signals the method.__ $P$ and $M$ are the two points where line $AM$ meets $\omega$, and $A$ is outside $\omega$. A point outside a circle, with a secant through it and a tangent from it that is easy to measure: this is the tangent–secant theorem.
 
 {{fig:square-incircle}}
 
-__Two lengths you need.__ The inscribed circle of a unit square touches each side at its midpoint, so it touches $AB$ at its midpoint $N$, and $AN=\tfrac12$. The point $M$ is the midpoint of $CD$, so $AM=\sqrt{AD^2+DM^2}=\sqrt{1+\tfrac14}=\tfrac{\sqrt5}{2}$.
+__The tangent from $A$.__ The inscribed circle of a square touches each side at its midpoint, so it touches $AB$ at its midpoint $N$. Then $AN$ is tangent to $\omega$, and $AN=\tfrac12$.
 
-__Your step.__ Finish the computation of $AP$.`,
-      prompt: String.raw`Enter $AP$.`,
-      answer: "sqrt(5)/10",
-      solution: String.raw`$AP\cdot\dfrac{\sqrt5}{2}=\left(\dfrac12\right)^2=\dfrac14$, so $AP=\dfrac14\cdot\dfrac{2}{\sqrt5}=\dfrac{1}{2\sqrt5}=\dfrac{\sqrt5}{10}$, choice (B).`
+__The secant.__ $M$ is the midpoint of $CD$, so in the right triangle $ADM$, $AM=\sqrt{AD^2+DM^2}=\sqrt{1+\tfrac14}=\tfrac{\sqrt5}{2}$. The secant from $A$ meets $\omega$ first at $P$, then at $M$.
+
+__The equation.__ By the {{ref:thm-tangent}}, $AP\cdot AM=AN^2$:
+
+$$AP\cdot\frac{\sqrt5}{2}=\frac14,\qquad AP=\frac{1}{2\sqrt5}=\frac{\sqrt5}{10},$$
+
+choice (B).
+
+__A check by coordinates.__ With $A=(0,0)$ and $\omega$ centered at $(\tfrac12,\tfrac12)$ with radius $\tfrac12$, the point $P=(\tfrac1{10},\tfrac15)$ lies on line $AM$ (the line $y=2x$) and on $\omega$, since $(\tfrac25)^2+(\tfrac3{10})^2=\tfrac14$. Its distance from $A$ is $\sqrt{\tfrac1{100}+\tfrac4{100}}=\tfrac{\sqrt5}{10}$.`
     },
     "ex-error": {
       kind: "example",
@@ -472,8 +530,6 @@ __What to notice.__ $OE$ cancelled. The value $BE=2\sqrt5$ in the problem never 
       kind: "practice", slug: "1995-ahsme-26",
       answer: "24pi", prompt: String.raw`Enter the area of the circle (type pi for $\pi$).`,
       solution: String.raw`Let the radius be $r$ and $OE=x$. Two facts are available.
-
-{{fig:perpendicular-diameters}}
 
 __The power of $E$.__ $E$ is inside the circle on chord $DF$, so $DE\cdot EF=r^2-x^2$ by the {{ref:cor-inside}}, that is, $r^2-x^2=6\cdot2=12$.
 
@@ -613,8 +669,250 @@ __Two lines through $E$.__ The $x$-axis meets the circle at $D$ and at $D'$, the
 $$\begin{gathered}e(e+184)=17\cdot33=561,\\ e^2+184e-561=(e-3)(e+187)=0.\end{gathered}$$
 
 So $e=3$ and $CE=DC-DE=107-3=104$. The configuration is valid: $D$, $E$, $C$, $F$ are in this order, since $0<3<107<187$.`
+    },
+    "pp-arcs": {
+      kind: "practice",
+      problem: String.raw`Chords $AC$ and $BD$ of a circle cross at a point $P$ inside the circle. The arc $AB$ that does not contain $C$ or $D$ measures $80^\circ$, and the arc $CD$ that does not contain $A$ or $B$ measures $40^\circ$. Find $\angle APB$ in degrees.`,
+      answer: "60",
+      solution: String.raw`Since $P$ lies between $A$ and $C$, the angle $\angle APB$ is an exterior angle of triangle $PBC$, so it equals the sum of the two opposite interior angles: $\angle APB=\angle PBC+\angle PCB=\angle DBC+\angle ACB$. Each of these is an inscribed angle. $\angle DBC$ stands on arc $CD$ (not containing $B$), so it is $\tfrac12\cdot 40^\circ=20^\circ$; $\angle ACB$ stands on arc $AB$ (not containing $C$), so it is $\tfrac12\cdot80^\circ=40^\circ$. Hence $\angle APB=60^\circ$, the average of the two arcs. The same argument shows that two chords always cross at an angle equal to half the sum of the arcs they cut off.`
+    },
+    "p-ahsme91": {
+      kind: "practice", slug: "1991-ahsme-10",
+      answer: "B", prompt: "Enter the letter of your choice.",
+      solution: String.raw`Every chord through $P$ has product $15^2-9^2=144$ (the {{ref:cor-inside}}). The longest chord through $P$ is the diameter, of length $30$. The shortest has equal pieces, $12$ and $12$, so it has length $24$; it is the chord perpendicular to $OP$.
+
+Every length in between occurs, and each exactly twice. A chord at distance $h$ from the center has length $2\sqrt{15^2-h^2}$. As a line through $P$ turns from perpendicular to $OP$ to along $OP$, its distance $h$ from the center changes continuously from $9$ to $0$, and each value of $h$ strictly between $0$ and $9$ is taken by exactly two lines through $P$, mirror images of each other in the line $OP$.
+
+So the integer lengths are $24$ (one chord), $25$ to $29$ (two chords each, $10$ chords) and $30$ (one chord): $12$ chords, choice (B).`
+    },
+    "p-hmmt14c": {
+      kind: "practice", slug: "2014-hmmt-february-geometry-1",
+      answer: "2sqrt(21)", prompt: String.raw`Enter $CD$.`,
+      solution: String.raw`__Which point, which circle.__ $A$ lies on the small circle, so it is inside the large one, at distance $4$ from the common center $O$. The line $AB$ is a chord of the large circle through $A$, so the {{ref:cor-inside}} gives $AC\cdot AD=6^2-4^2=20$, where $C$, $A$, $B$, $D$ lie in that order.
+
+__Symmetry.__ The perpendicular from $O$ to the line bisects both $AB$ and $CD$, so $CA=BD$. Call it $x$. Then $AD=AB+BD=x+2$, and $x(x+2)=20$, so $x^2+2x-20=0$ and $x=-1+\sqrt{21}$ (the positive root).
+
+__The answer.__ $CD=2x+2=2\sqrt{21}$. As a check, the line is at distance $\sqrt{4^2-1^2}=\sqrt{15}$ from $O$, so $CD=2\sqrt{6^2-15}=2\sqrt{21}$.`
+    },
+    "p-hmmt15n": {
+      kind: "practice", slug: "2015-hmmt-november-general-4",
+      answer: "130pi", prompt: "Enter the area (type pi for π).",
+      solution: String.raw`__The pieces of $CD$.__ By the {{ref:thm-chords}}, $CP\cdot PD=AP\cdot PB=72$, and $CP+PD=22$. So $CP$ and $PD$ are the roots of $t^2-22t+72=0$, namely $4$ and $18$.
+
+{{fig:perpendicular-chords}}
+
+__The center.__ Let $M$ and $N$ be the midpoints of $AB$ and $CD$. The perpendiculars from the center $O$ to the chords land at $M$ and $N$ (G1.7.2), and the chords are perpendicular, so $OMPN$ is a rectangle: $OM=PN$. Now $AB=18$, so $AM=9$; and $CD=22$, so $N$ is $11$ from $C$ and $PN=\lvert 11-CP\rvert=7$ (whichever of $4$ and $18$ is $CP$).
+
+__The radius.__ $r^2=AM^2+OM^2=81+49=130$, so the area is $130\pi$.`
+    },
+    "p-smt24": {
+      kind: "practice", slug: "2024-smt-geometry-3",
+      answer: "sqrt(7)/14", prompt: String.raw`Enter $AP$.`,
+      solution: String.raw`__The tangent.__ The inscribed circle of a regular hexagon touches each side at its midpoint (its radius is the apothem). So from $A$ the tangent to $\omega$ along $AB$ touches at the midpoint of $AB$, and its length is $\tfrac12$.
+
+__The secant.__ $M$, the midpoint of $BC$, is also a point of tangency, so it is on $\omega$, and line $AM$ is a secant from $A$ meeting $\omega$ at $P$ and $M$. With the center at the origin, $A=(1,0)$, $B=(\tfrac12,\tfrac{\sqrt3}2)$ and $C=(-\tfrac12,\tfrac{\sqrt3}2)$, so $M=(0,\tfrac{\sqrt3}2)$ and $AM^2=1+\tfrac34=\tfrac74$.
+
+__The equation.__ $AP\cdot AM=\left(\tfrac12\right)^2$, so $AP=\dfrac{1/4}{\sqrt7/2}=\dfrac{1}{2\sqrt7}=\dfrac{\sqrt7}{14}$.`
+    },
+    "p-ahsme59": {
+      kind: "practice", slug: "1959-ahsme-32",
+      answer: "C", prompt: "Enter the letter of your choice.",
+      solution: String.raw`Let $O$ be the center. The radius to the point of tangency is perpendicular to the tangent, so $OA^2=r^2+l^2=r^2+\tfrac{16}{9}r^2=\tfrac{25}{9}r^2$ and $OA=\tfrac53r$. The nearest point of the circle to $A$ is on segment $OA$, at distance $OA-r=\tfrac23r$ from $A$. Since $r=\tfrac34l$, this is $\tfrac12l$: choice (C). (Choice (D), $\tfrac23l$, is the tempting slip of writing $\tfrac23r$ with $l$ in place of $r$.)`
+    },
+    "p-smt12": {
+      kind: "practice", slug: "2012-smt-general-23",
+      answer: "18sqrt(5)", prompt: String.raw`Enter $BC$.`,
+      solution: String.raw`__The secant from $C$.__ $BC$ is tangent at $B$, and line $CA$ meets the circle at $D$ and $A$, so the {{ref:thm-tangent}} gives $CB^2=CD\cdot CA$. We need $CA$.
+
+__Finding $CA$.__ $AB$ is a diameter, so $\angle ADB=90^\circ$; and $\angle ABC=90^\circ$ because $BC$ is tangent at $B$. In the right triangle $ABC$, $BD$ is the altitude to the hypotenuse, so $AB^2=AD\cdot AC$ (G1.4.3): $36^2=24\cdot AC$ and $AC=54$.
+
+__The answer.__ $CD=54-24=30$, so $CB^2=30\cdot54=1620$ and $CB=18\sqrt5$. Check: $AC^2-AB^2=2916-1296=1620$.`
+    },
+    "p-bmmt25": {
+      kind: "practice", slug: "2025-bmmt-individual-13",
+      answer: "16/9", prompt: String.raw`Enter $CD$.`,
+      solution: String.raw`Let $CD=x$. From $D$, $DA$ is a tangent and $DCB$ is a secant, so the {{ref:thm-tangent}} gives $DA^2=DC\cdot DB=x(x+9)$. The right angle at $C$ gives a second expression: $DA^2=AC^2+CD^2=16+x^2$. Equating, $x^2+9x=16+x^2$, so $x=\tfrac{16}{9}$. Power gave one equation and the right triangle the other, as in Section G2.2.6.`
+    },
+    "pp-reverse": {
+      kind: "practice",
+      problem: String.raw`Two secants are drawn from a point $P$ outside a circle. One meets the circle at $A$ and $B$, with $PA=5$ and $AB=7$. The other meets it at $C$ and $D$, with $C$ nearer to $P$, and $CD=4$. Find $PC$.`,
+      answer: "6",
+      solution: String.raw`This reverses {{ref:c-secants}}: now a chord is known and a distance from $P$ is not. The distances from $P$ on the first secant are $5$ and $12$, so the common product is $60$. With $PC=x$, $PD=x+4$ and $x(x+4)=60$, so $x^2+4x-60=(x-6)(x+10)=0$ and $PC=6$. Check: $6\cdot10=60$.`
+    },
+    "p-mbmt16": {
+      kind: "practice", slug: "2016-mbmt-upper-geometry-4",
+      answer: "24", prompt: String.raw`Enter the longest possible $CD$.`,
+      solution: String.raw`Every line through $C$ that meets the circle, at $D$ and $E$ with $D$ the nearer point, has $CD\cdot CE=CB\cdot CA=16\cdot36=576$ (the {{ref:thm-secants}}, or the {{ref:thm-tangent}} when $D=E$). Since $CD\le CE$, $CD^2\le CD\cdot CE=576$, so $CD\le 24$, with equality exactly when $D=E$: when the ray is tangent. $C$ is outside the circle, so a tangent ray exists, and the longest possible $CD$ is $24$. The radius $\tfrac{201}{6}$ is not needed: the answer depends only on the power of $C$.`
+    },
+    "p-ahsme92": {
+      kind: "practice", slug: "1992-ahsme-27",
+      answer: "73", prompt: String.raw`Enter $r^2$.`,
+      solution: String.raw`__The other distances from $P$.__ By the {{ref:thm-secants}}, $PC\cdot PD=PB\cdot PA=8\cdot18=144$. With $PC=x$, $x(x+7)=144$, so $x^2+7x-144=(x-9)(x+16)=0$, $PC=9$ and $PD=16$.
+
+{{fig:secants-60}}
+
+__A right angle.__ In triangle $PBD$, $PD=2\,PB$ and $\angle P=60^\circ$. Let $N$ be the midpoint of $PD$. Then $PN=8=PB$ with a $60^\circ$ angle between them, so triangle $PBN$ is equilateral and $NB=8=ND$. So $N$ is equidistant from $P$, $B$ and $D$, and $\angle PBD=90^\circ$, an angle in a semicircle on diameter $PD$.
+
+__The diameter.__ $A$, $B$, $P$ are collinear, so $\angle ABD=90^\circ$ as well, and $AD$ is a diameter of the circle (an inscribed right angle stands on a diameter). Then $BD^2=PD^2-PB^2=256-64=192$ and $AD^2=AB^2+BD^2=100+192=292$, so $4r^2=292$ and $r^2=73$, choice (D).`
+    },
+    "p-chmmc14": {
+      kind: "practice", slug: "2014-chmmc-individual-8",
+      answer: "5", prompt: "Enter the radius.",
+      solution: String.raw`$B$ is on a diameter and between $A$ and $C$, so it is inside the circle. Let $M$ be the midpoint of $AC$ and $O$ the center, so $OM\perp AC$. Then $AM=4$ and $BM=AM-AB=3$. In the right triangle $OMB$, the angle at $B$ is $45^\circ$ (the angle between the secant and the diameter), so $OM=BM=3$. Hence $r^2=OM^2+AM^2=9+16=25$ and $r=5$.
+
+Check with power: $OB^2=OM^2+BM^2=18$, and the {{ref:cor-inside}} requires $AB\cdot BC=r^2-OB^2$: indeed $1\cdot7=25-18$.`
+    },
+    "p-hmmt08": {
+      kind: "practice", slug: "2008-hmmt-february-geometry-6",
+      answer: "sqrt(17)", prompt: String.raw`Enter $OP$.`,
+      solution: String.raw`__The radius.__ $\angle BAC=45^\circ$ is an inscribed angle, so the central angle $\angle BOC$ on the same arc is $90^\circ$ (Section G2.2.1). Triangle $BOC$ is an isosceles right triangle with hypotenuse $BC=8$, so $R=OB=4\sqrt2$.
+
+{{fig:circumcenter-power}}
+
+__The power of $P$.__ $P$ lies on the chord $BC$, so it is inside the circle and $PB\cdot PC=R^2-OP^2$: $15=32-OP^2$. Hence $OP=\sqrt{17}$.`
+    },
+    "p-ahsme76": {
+      kind: "practice", slug: "1976-ahsme-18",
+      answer: "E", prompt: "Enter the letter of your choice.",
+      solution: String.raw`__The outside point $B$.__ The tangent $BA$ and the secant through $B$, $C$ and $D$ give $BA^2=BC\cdot BE$, where $E$ is the second point where line $BD$ meets the circle (beyond $D$, since $D$ is inside). So $36=3\cdot BE$, $BE=12$, $CE=9$ and $DE=CE-CD=6$.
+
+__The inside point $D$.__ $D$ is on chord $CE$, so $DC\cdot DE=r^2-OD^2$: $3\cdot6=r^2-4$, $r^2=22$ and $r=\sqrt{22}$, choice (E). Two points, two equations.`
+    },
+    "p-mbmt19": {
+      kind: "practice", slug: "2019-mbmt-upper-geometry-6",
+      answer: "7+2sqrt(111)/3", prompt: String.raw`Enter $AB$.`,
+      solution: String.raw`__Two points with known secants.__ Let $s=AB$ and let $T$ be the point where the circle touches $BC$. From $B$, the tangent $BT$ and the secant $BEA$ give $BT^2=BE\cdot BA=s(s-10)$. From $C$, $CT^2=CF\cdot CA=s(s-11)$. And $BT+CT=BC=s$.
+
+{{fig:equilateral-tangent}}
+
+__Solving without squaring twice.__ Let $u=BT$ and $v=CT$. Then $u^2-v^2=s(s-10)-s(s-11)=s$ and $u+v=s$, so $u-v=1$ and $u=\tfrac{s+1}{2}$. Substituting into $u^2=s(s-10)$: $(s+1)^2=4s^2-40s$, that is, $3s^2-42s-1=0$, so
+$$s=\frac{42+\sqrt{1776}}{6}=7+\frac{2\sqrt{111}}{3}$$
+(the other root is negative).
+
+__Check.__ $s\approx 14.02>11$, so $E$ and $F$ are on the sides, and $u\approx7.51$, $v\approx6.51$ are positive with $u+v=s$.`
+    },
+    "p-ahsme57": {
+      kind: "practice", slug: "1957-ahsme-18",
+      answer: "B", prompt: "Enter the letter of your choice.",
+      solution: String.raw`__Two right angles see the same segment.__ $\angle AOP=90^\circ$, because the diameters are perpendicular and $P$ is on $CD$. $\angle AMB=90^\circ$, because $AB$ is a diameter. So $\angle POB=90^\circ$ and $\angle PMB=90^\circ$: both $O$ and $M$ see segment $PB$ at a right angle.
+
+__The hidden circle.__ A point $X$ with $\angle PXB=90^\circ$ is at distance $\tfrac12PB$ from the midpoint of $PB$ (the median to the hypotenuse of a right triangle is half the hypotenuse), so $O$ and $M$ lie on the circle with diameter $PB$.
+
+__The power of $A$.__ $A$ is outside this circle. Line $AB$ meets it at $O$ and $B$, and line $AM$ meets it at $P$ and $M$, so $AP\cdot AM=AO\cdot AB$: choice (B). The product is the same for every chord $AM$, although nothing in the figure shows the circle that explains it.`
+    },
+    "p-hmmt14t": {
+      kind: "practice", slug: "2014-hmmt-february-geometry-2",
+      answer: "169/24", prompt: "Enter the radius.",
+      solution: String.raw`__The hidden right triangle.__ Let $T'$ be the point of the circle diametrically opposite $T$. The radius at $T$ is perpendicular to $\ell$, so $TT'\perp\ell$, and $\angle TPT'=90^\circ$ because $TT'$ is a diameter.
+
+{{fig:tangent-line-circle}}
+
+__The altitude.__ Let $H$ be the foot of the perpendicular from $P$ to $TT'$. Since $TT'\perp\ell$, the distance $TH$ is the distance from $P$ to $\ell$, namely $12$. In the right triangle $TPT'$ with altitude $PH$, $PT^2=TH\cdot TT'$ (G1.4.3, the relation behind {{ref:ex-hidden-tangent}}). So $169=12\cdot2r$ and $r=\tfrac{169}{24}$.
+
+__Check.__ With $T=(0,0)$, $\ell$ the $x$-axis and $P=(5,12)$, the center is $(0,r)$ and $25+(12-r)^2=r^2$ gives $r=\tfrac{169}{24}$.`
+    },
+    "rv-ahsme54": {
+      kind: "practice", slug: "1954-ahsme-9",
+      answer: "C", prompt: "Enter the letter of your choice.",
+      solution: String.raw`$PQ\cdot PR=9\cdot16=144$, and this is $OP^2-r^2=169-r^2$. So $r^2=25$ and $r=5$, choice (C).`
+    },
+    "rv-ahsme62": {
+      kind: "practice", slug: "1962-ahsme-25",
+      answer: "C", prompt: "Enter the letter of your choice.",
+      solution: String.raw`Let the circle touch $BC$ at $T$, with center $O$. The center is on the perpendicular bisector of the chord $AD$, which is also the perpendicular bisector of $BC$; and $OT\perp BC$, so $T$ is on that line too: $T$ is the midpoint of $BC$. The chord $AD$ is parallel to $BC$ at distance $8$, so its distance from $O$ is $8-r$, and its half-length is $4$. Hence $r^2=4^2+(8-r)^2$, so $16r=80$ and $r=5$, choice (C). (Check with power: from $B$, $BT^2=16$, and line $BA$ meets the circle at $A$ and a second point $A'$ with $BA\cdot BA'=16$, so $BA'=2$ and the chord $AA'=6$.)`
+    },
+    "rv-hmmt02": {
+      kind: "practice", slug: "2002-hmmt-february-geometry-9",
+      answer: "41", prompt: String.raw`Enter $OC$.`,
+      solution: String.raw`$C$ is outside the circle on line $AB$, so $CB\cdot CA=OC^2-OA^2$: $28\cdot52=1456=OC^2-225$, so $OC^2=1681$ and $OC=41$.`
+    },
+    "rv-ahsme74": {
+      kind: "practice", slug: "1974-ahsme-23",
+      answer: "B", prompt: "Enter the letter of your choice.",
+      solution: String.raw`The radii to $T$ and $T'$ are perpendicular to the two parallel tangents, so they lie on one line and $TT'=2r$. Tangents from one point have equal lengths, so $PT''=PT=4$ and $QT''=QT'=9$, and $PQ=13$. Drop the perpendicular from $P$ to line $T'Q$: it has length $TT'=2r$, and its foot is $9-4=5$ from $Q$. So $(2r)^2+5^2=13^2$, $2r=12$ and $r=6$, choice (B).`
+    },
+    "rv-amc04": {
+      kind: "practice", slug: "2004-amc-10a-22",
+      answer: "D", prompt: "Enter the letter of your choice.",
+      solution: String.raw`$BC\perp AB$ at $B$, an endpoint of the diameter, so $BC$ is tangent to the semicircle; likewise $AD$ is tangent at $A$. Let the tangent from $C$ touch at $F$. Tangents from one point are equal, so $CF=CB=2$ and $EF=EA$; call it $x$. Then $CE=2+x$ and $ED=2-x$, and the right triangle $CDE$ gives $(2+x)^2=(2-x)^2+2^2$, so $8x=4$, $x=\tfrac12$ and $CE=\tfrac52$, choice (D).`
+    },
+    "rv-hmmt11": {
+      kind: "practice", slug: "2011-hmmt-november-theme-8",
+      answer: "12pi", prompt: "Enter the area (type pi for π).",
+      solution: String.raw`The tangent $PD$ and the secant $PFE$ give $PD^2=PF\cdot PE$, so $PE=8$ and $FE=6$. In triangle $PDF$, $PD=2\,PF$ and $\angle P=60^\circ$; as in 1992 AHSME 27, the midpoint $N$ of $PD$ makes triangle $PFN$ equilateral, so $NF=ND$ and $\angle PFD=90^\circ$. Hence $\angle DFE=90^\circ$, so $DE$ is a diameter. $DF^2=PD^2-PF^2=12$, so $DE^2=DF^2+FE^2=48$, $r^2=12$ and the area is $12\pi$.`
+    },
+    "rv-pumac18": {
+      kind: "practice", slug: "2018-pumac-division-b-geometry-3",
+      answer: "120", prompt: "Enter the radius.",
+      solution: String.raw`The hypotenuse of triangle $ABC$ is $AB$, so $AB^2=16\cdot[ABC]=16\cdot\tfrac12\cdot AC\cdot30=240\,AC$. Since $AD$ is a diameter, $\angle ABD=90^\circ$, and $BC$ is the altitude of the right triangle $ABD$, so $AB^2=AC\cdot AD$ (G1.4.3). Hence $AD=240$ and the radius is $120$. Such a configuration exists: $BC^2=AC\cdot CD$ (the {{ref:cor-inside}} at $C$, with $BC$ half of the chord through $C$ perpendicular to $AD$) gives $AC(240-AC)=900$, which has a positive root.`
+    },
+    "rv-ahsme67": {
+      kind: "practice", slug: "1967-ahsme-29",
+      answer: "C", prompt: "Enter the letter of your choice.",
+      solution: String.raw`Let the lines meet at $X$ on the circle. From $D$, the tangent $DA$ and the secant $DXB$ give $a^2=DX\cdot DB$; from $C$, $b^2=CX\cdot CA$. Both tangents are perpendicular to $AB$, so $AD\parallel BC$ and triangles $XAD$ and $XCB$ are similar: $\dfrac{DX}{XB}=\dfrac{AD}{CB}=\dfrac ab$. Write $DX=ak$ and $XB=bk$. Then $a^2=ak(a+b)k$, so $k^2=\dfrac{a}{a+b}$, and in the right triangle $DAB$, $AB^2=DB^2-a^2=(a+b)^2k^2-a^2=a(a+b)-a^2=ab$. The diameter is $\sqrt{ab}$, choice (C).`
+    },
+    "rv-hmmt21": {
+      kind: "practice", slug: "2021-hmmt-november-general-3",
+      answer: "807", prompt: String.raw`Enter $100m+n$.`,
+      solution: String.raw`Put $A=(0,0)$, $B=(1,0)$ and $D=(0,1)$. The circle is tangent to $AB$ at $E=(e,0)$, so its center is $(e,r)$ with $r=\tfrac{32}{49}$, and it passes through $D$: $e^2+(1-r)^2=r^2$, so $e^2=2r-1=\tfrac{15}{49}$. Then $DE^2=e^2+1=\tfrac{64}{49}$ and $DE=\tfrac87$, so $100m+n=807$.
+
+The same answer comes without coordinates: $DE^2=2r\cdot 1$, where $1$ is the distance from $D$ to the tangent line $AB$, by the right-triangle argument of 2014 HMMT February Geometry 2.`
+    },
+    "ch-hmmt26": {
+      kind: "practice", slug: "2026-hmmt-february-geometry-4",
+      answer: "7sqrt(3)/3", prompt: String.raw`Enter $\ell$.`,
+      solution: String.raw`__The hidden circle and its tangent.__ The circle $\Gamma$ with center $T$ and radius $\ell$ passes through $A$, $X$ and $Y$. $T$ lies on $AC$ and $AC\perp AB$, so $AB$ is perpendicular to the radius $TA$ at $A$: $AB$ is tangent to $\Gamma$.
+
+{{fig:right-triangle-circle}}
+
+__The power of $B$.__ Line $BC$ meets $\Gamma$ at $X$ and $Y$, so $BA^2=BX\cdot BY=4\cdot9=36$ and $AB=6$. Then $BC=12$ and $AC=\sqrt{144-36}=6\sqrt3$.
+
+__The power of $C$.__ $C$ is outside $\Gamma$, at distance $CT=6\sqrt3-\ell$ from its center, and $CY\cdot CX=3\cdot8=24$. So $(6\sqrt3-\ell)^2-\ell^2=24$, that is, $108-12\sqrt3\,\ell=24$, and $\ell=\dfrac{7}{\sqrt3}=\dfrac{7\sqrt3}{3}$.
+
+__Check.__ With $A=(0,0)$, $B=(6,0)$ and $C=(0,6\sqrt3)$: $X=(4,2\sqrt3)$, $Y=(\tfrac32,\tfrac{9\sqrt3}{2})$ and $T=(0,\tfrac{7}{\sqrt3})$, and $TA=TX=TY=\tfrac{7}{\sqrt3}$.`
+    },
+    "ch-duke19": {
+      kind: "practice", slug: "2019-duke-math-meet-individual-8",
+      answer: "315", prompt: String.raw`Enter $AB$.`,
+      solution: String.raw`__The point that sees both circles.__ $A$ and $B$ are at different heights, so line $AB$ meets the $x$-axis at a point $M$, outside segment $AB$ (both points are above the axis). $M$ is on line $AB$, which meets each circle at $A$ and $B$, and on the $x$-axis, which is tangent to $C_1$ at $P$ and to $C_2$ at $Q$. So $MP^2=MA\cdot MB=MQ^2$: $MP=MQ$.
+
+{{fig:two-tangent-circles}}
+
+__The midpoint.__ The circles are distinct, so $P\ne Q$, and $M$ is the midpoint of $PQ$: $MP=210$. Hence $MA\cdot MB=210^2$.
+
+__The ratio.__ The heights of $A$ and $B$ above the axis are $12$ and $3$, and $M$ is on the axis, so by similar triangles $MA=4\,MB$. Then $4\,MB^2=44100$, $MB=105$, $MA=420$ and $AB=MA-MB=315$.`
+    },
+    "ch-aime23": {
+      kind: "practice", slug: "2023-aime-ii-9",
+      answer: "33", prompt: String.raw`Enter $m+n$.`,
+      solution: String.raw`__The midpoint of $AB$.__ Line $PQ$ meets $AB$ at a point $M$. Its power with respect to $\omega_1$ is $MA^2=MP\cdot MQ$ (tangent $MA$), and with respect to $\omega_2$ it is $MB^2=MP\cdot MQ$. So $MA=MB$: $M$ is the midpoint of $AB$.
+
+{{fig:two-circles-trapezoid}}
+
+__Where $A$ and $B$ sit over $XY$.__ The radius of $\omega_1$ to $A$ is perpendicular to $AB$, so it is perpendicular to the parallel chord $PX$, and the perpendicular from the center bisects that chord. So the foot of the perpendicular from $A$ to line $XY$ is the midpoint of $PX$; likewise the foot from $B$ is the midpoint of $PY$. Put line $XY$ on the $x$-axis with $P=(0,0)$, $X=(-10,0)$ and $Y=(14,0)$, and let $h$ be the height of the trapezoid. Then $A=(-5,h)$, $B=(7,h)$, $AB=12$ and $M=(1,h)$.
+
+__The power of $M$ again.__ $MA=6$, so $MP\cdot MQ=MP(MP+5)=36$ and $MP=4$. But $MP^2=1+h^2$, so $h^2=15$.
+
+__The area.__ $\tfrac12(XY+AB)\cdot h=\tfrac12(24+12)\sqrt{15}=18\sqrt{15}$, so $m+n=33$.`
+    },
+    "ch-aime22": {
+      kind: "practice", slug: "2022-aime-i-11",
+      answer: "150", prompt: String.raw`Enter $m+n$.`,
+      solution: String.raw`__Two tangent lengths from power.__ From $A$, the secant $APQ$ gives the square of the tangent length: $3\cdot12=36$, so the tangents from $A$ have length $6$. From $C$, $CQ\cdot CP=16\cdot25=400$, so the tangent from $C$ has length $20$.
+
+__The tangency points.__ Let the circle touch $AD$ at $K$, $AB$ at $L$ and $BC$ at $M$. $AD\parallel BC$ and both are tangent, so $KM$ is a diameter, perpendicular to both, and the height of the parallelogram is $2r$. $AK=AL=6$, $CM=20$, and $BL=BM=b$ for some $b$.
+
+{{fig:parallelogram-circle}}
+
+__Coordinates.__ Put the center at the origin with $K=(0,r)$ and $M=(0,-r)$, so $AD$ is the line $y=r$ and $BC$ the line $y=-r$. Then $A$ is $6$ from $K$ and $C$ is $20$ from $M$. Because $M$ lies on side $BC$, $B$ and $C$ are on opposite sides of $M$, so $B=(\mp b,-r)$ when $C=(\pm20,-r)$.
+
+__Which side $A$ is on.__ If $A$ were on the same side of the line $KM$ as $C$, it would be on the opposite side from $B$: the horizontal distance from $A$ to $B$ would be $6+b$, and $AB=\sqrt{(6+b)^2+4r^2}$ would be longer than $AL+LB=6+b$, which is impossible. So $A=(-6,r)$, $C=(20,-r)$ and $B=(-b,-r)$. Then $AC=28$ gives $26^2+4r^2=784$, so $r^2=27$ and $r=3\sqrt3$.
+
+__The side $BC$.__ $AB^2=(6-b)^2+4r^2$, and also $AB=6+b$. Hence $(6+b)^2-(6-b)^2=4r^2$, that is, $24b=108$ and $b=\tfrac92$. Then $BC=b+20=\tfrac{49}{2}$ and the area is $BC\cdot 2r=\tfrac{49}{2}\cdot6\sqrt3=147\sqrt3$, so $m+n=150$.
+
+__Check.__ $B=(-\tfrac92,-r)$ lies to the right of $A=(-6,r)$, on the same side as $D$, so $\angle BAD$ is acute, as required; and line $AC$ meets the circle $x^2+y^2=27$ at distances $3$ and $12$ from $A$.`
     }
   },
-  review: { title: "Review Problems", items: ["r1", "r2", "r3", "r4", "r5", "r6"] },
-  challenge: { title: "Challenge Problems", items: ["ch1", "ch2", "ch3"] }
+  review: { title: "Review Problems", items: ["rv-ahsme54", "r1", "r3", "rv-ahsme62", "r2", "rv-hmmt02", "r4", "rv-ahsme74", "r5", "rv-amc04", "rv-hmmt11", "r6", "rv-pumac18", "rv-ahsme67", "rv-hmmt21"] },
+  challenge: { title: "Challenge Problems", items: ["ch-hmmt26", "ch1", "ch-duke19", "ch2", "ch3", "ch-aime23", "ch-aime22"] }
 };

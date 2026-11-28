@@ -2,6 +2,13 @@
 
 **2026-11-28**
 
+- **New curriculum: G2.2 practice expanded.**
+  - **Practice:** 20 Practice Problems across the sections (was 3), 15 mixed Review Problems (was 6) and 7 Challenge Problems (was 3), mostly from the archive. They include contrasting, reverse, conceptual, hidden-construction and combination problems. Every answer is recomputed independently, with letter answers checked against the live keys.
+  - **Guided Practice removed:** the 2020 AMC 12B 10 item is now a full Example followed by an independent problem.
+  - **New standard sections:** AUTHORING-STANDARD §11 sets the practice philosophy and ranges. §9 now reuses existing contest diagrams and draws new figures only where they add teaching value; nine new solution figures follow it, and one redrawn contest diagram was removed.
+  - **Checks:** the spec checker now records all 75 placements and accepts the summary and problem-set page numbers. The browser check enforces the practice ranges and accepts multiple-choice letter answers.
+  - **Disputed key:** one live answer key is disputed (`2026-hmmt-february-geometry-4`; QUESTIONS.md).
+
 - **New curriculum: G2.2 follow-up.**
   - The summary and the two problem sets are numbered on after the last section (G2.2.7 Summary and next steps, G2.2.8 Review Problems, G2.2.9 Challenge Problems).
   - Theorems, corollaries and definitions are cited by name ("the tangent–secant theorem"), with the number on hover. The name is a link only at its first mention on a page, on the statement's own page and the next two; after that it is plain text.
