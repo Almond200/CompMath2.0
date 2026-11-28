@@ -10,6 +10,9 @@ Every figure is computed from exact coordinates, never sketched, and follows one
   by hand: `point`, `length` and `angle_label` give a preferred side, and the layout tries nearby
   positions until the label's box is clear of every other label, dot, line and arc, and inside the
   drawing. A figure whose labels cannot all be placed fails to build.
+- Trimming. After the labels are placed, the viewBox shrinks to the drawn extent plus a 6-unit
+  margin (never beyond the canvas), and the figure's width is capped at that natural size, so a
+  generous hand-set box leaves no empty band.
 - Size. Figures are at most 460 units wide, with point labels at 24 units and lengths at 20, so on
   a 375 px phone (about 330 px of figure) a point label is about 17 px and a length about 14 px.
 - Marks. Equal angles carry the same number of arcs; a right angle is a square; equal lengths carry
@@ -57,8 +60,11 @@ def text_width(t, size):
     return w * size
 
 class Fig:
-    def __init__(self, name, title, caption, box, width=W, pad=24):
-        """box = (xmin, xmax, ymin, ymax) in the figure's own coordinates."""
+    def __init__(self, name, title, caption, box, width=W, pad=24, crop=False):
+        """box = (xmin, xmax, ymin, ymax) in the figure's own coordinates. Make it generous: the
+        canvas is trimmed to the drawing. A circle that leaves the canvas fails the build unless
+        crop=True says the figure shows only part of it on purpose."""
+        self.crop = crop
         self.name, self.title, self.caption = name, title, caption
         xmin, xmax, ymin, ymax = box
         self.s = (width - 2 * pad) / (xmax - xmin)
@@ -207,7 +213,25 @@ class Fig:
             cx = (b[0] + b[2]) / 2; base = b[3] - size * 0.2
             style = ' font-style="italic"' if italic else ''
             lab.append(f'<text x="{self.f(cx)}" y="{self.f(base)}" font-size="{size}"{style} text-anchor="middle">{text}</text>')
-        svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {self.w} {self.h}" role="img" aria-label="{self.title}">'
+        # Trim the canvas to what is drawn (owner, 2026-11-28): a hand-set box can leave empty bands,
+        # which show as gaps above or below the figure. The drawing's own extent (segments, circles,
+        # dots, labels), plus a margin, becomes the viewBox, never larger than the canvas, so a circle
+        # deliberately cut by the box stays cut. The width cap keeps the figure at its natural scale.
+        xs, ys = [], []
+        for (p_, q_) in self.segs: xs += [p_[0], q_[0]]; ys += [p_[1], q_[1]]
+        for (c_, r_, t1, d) in self.arcs:
+            n = max(24, int(r_ * d / 4))
+            for i in range(n + 1):
+                a_ = t1 + d * i / n; xs.append(c_[0] + r_ * math.cos(a_)); ys.append(c_[1] - r_ * math.sin(a_))
+        for (x_, y_, r_) in self.dots: xs += [x_ - r_, x_ + r_]; ys += [y_ - r_, y_ + r_]
+        for b_ in self.boxes: xs += [b_[0], b_[2]]; ys += [b_[1], b_[3]]
+        m = 6
+        # 3 units of clearance, so that no stroke is shaved at the edge
+        if not self.crop and (min(xs) < 3 or min(ys) < 3 or max(xs) > self.w - 3 or max(ys) > self.h - 3):
+            raise AssertionError(f"{self.name}: the drawing leaves the canvas (enlarge the box, or pass crop=True)")
+        x0 = max(0, min(xs) - m); y0 = max(0, min(ys) - m); x1 = min(self.w, max(xs) + m); y1 = min(self.h, max(ys) + m)
+        vw, vh = x1 - x0, y1 - y0
+        svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{self.f(x0)} {self.f(y0)} {self.f(vw)} {self.f(vh)}" style="max-width:{self.f(vw)}px" role="img" aria-label="{self.title}">'
                f'<title>{self.title}</title>{"".join(self.fills)}{"".join(self.parts)}'
                f'<g fill="currentColor" font-family="inherit" class="fl">{"".join(lab + self.labels)}</g></svg>')
         return {"svg": svg, "caption": self.caption}
