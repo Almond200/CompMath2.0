@@ -16266,7 +16266,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2012 PUMaC Division B Number Theory, Problem 8", formulas: ["lte", "p-adic-valuation"], strategy: "", tree: ["nt.prime.val.lte"] },
   // ---- 2011 PUMaC Division A Algebra. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2011 PUMaC Division A Algebra, Problem 1", formulas: ["vietas-general", "comparing-coefficients"], strategy: "", tree: ["alg.poly.introot"] },
-  { ref: "2011 PUMaC Division A Algebra, Problem 2", formulas: ["p-adic-valuation", "recursive-counting", "pascals-identity"], strategy: "", tree: ["nt.prime.val", "alg.seq.rec.linear"] },
+  { ref: "2011 PUMaC Division A Algebra, Problem 2", formulas: ["p-adic-valuation", "pascals-identity"], strategy: "", tree: ["nt.prime.val", "cp.struct.paths.lattice"] },
   { ref: "2011 PUMaC Division A Algebra, Problem 3", formulas: ["simulate-the-process", "working-backwards"], strategy: "", tree: ["alg.fn.basic.iterate"] },
   { ref: "2011 PUMaC Division A Algebra, Problem 4", formulas: ["vietas-general", "trivial-inequality"], strategy: "", tree: ["alg.poly.vieta.basic", "alg.ineq.optimize.constraint"] },
   { ref: "2011 PUMaC Division A Algebra, Problem 5", formulas: ["mobius-transformations", "cycle-hunting"], strategy: "", tree: ["alg.fn.basic.iterate", "alg.fn.basic.compose"] },
@@ -16306,9 +16306,9 @@ window.MATH_PROBLEM_DB = [
   { ref: "2011 PUMaC Division A Geometry, Problem 3", formulas: ["inscribed-angle-theorem", "tangent-facts", "isosceles-triangle"], strategy: "", tree: ["geo.circ.inscribed.chords"] },
   { ref: "2011 PUMaC Division A Geometry, Problem 4", formulas: ["triangle-center-angles", "triangle-congruence", "cyclic-equal-angles"], strategy: "", tree: ["geo.tri.radii.in"] },
   { ref: "2011 PUMaC Division A Geometry, Problem 5", formulas: ["triangle-inequality", "triangle-area-standard"], strategy: "", tree: ["geo.comb.extreme.path"] },
-  { ref: "2011 PUMaC Division A Geometry, Problem 6", formulas: ["inscribed-angle-theorem", "triangle-similarity", "common-chord-length"], strategy: "", tree: ["geo.circ.power.chord", "geo.comb.extreme.maxmin"] },
+  { ref: "2011 PUMaC Division A Geometry, Problem 6", formulas: ["inscribed-angle-theorem", "complex-basics"], strategy: "", tree: ["geo.circ.inscribed.chords", "geo.comb.extreme.maxmin"] },
   { ref: "2011 PUMaC Division A Geometry, Problem 7", formulas: ["exradii", "half-angle", "law-of-cosines", "triangle-similarity"], strategy: "", tree: ["geo.tri.radii.ex", "geo.tri.ratio.area"] },
-  { ref: "2011 PUMaC Division A Geometry, Problem 8", formulas: ["law-cosines-60-120", "homothety-monge", "isosceles-trapezoid", "triangle-area-standard"], strategy: "", tree: ["geo.circ.tangent.inscribed"] },
+  { ref: "2011 PUMaC Division A Geometry, Problem 8", formulas: ["angle-bisector-theorem", "coordinate-bash", "distance-midpoint"], strategy: "", tree: ["geo.tri.cevian.bisector", "geo.coord.line.dist"] },
   // ---- 2011 PUMaC Division B Geometry. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2011 PUMaC Division B Geometry, Problem 1", formulas: ["isosceles-triangle"], strategy: "", tree: ["geo.basic.angle.polygon"] },
   { ref: "2011 PUMaC Division B Geometry, Problem 2", formulas: ["circle-basics", "prism-pyramid-volumes"], strategy: "", tree: ["geo.circ.arc.rolling", "geo.solid.prism.cyl"] },
@@ -16317,7 +16317,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2011 PUMaC Division B Geometry, Problem 5", formulas: ["tangent-circles"], strategy: "", tree: ["geo.circ.tangent.mutual"] },
   { ref: "2011 PUMaC Division B Geometry, Problem 6", formulas: ["distance-3d", "pythagorean-theorem"], strategy: "", tree: ["geo.basic.pyth.fold", "geo.solid.coord.dist"] },
   { ref: "2011 PUMaC Division B Geometry, Problem 7", formulas: ["triangle-inequality", "triangle-area-standard"], strategy: "", tree: ["geo.comb.extreme.path"] },
-  { ref: "2011 PUMaC Division B Geometry, Problem 8", formulas: ["inscribed-angle-theorem", "triangle-similarity", "common-chord-length"], strategy: "", tree: ["geo.circ.power.chord", "geo.comb.extreme.maxmin"] },
+  { ref: "2011 PUMaC Division B Geometry, Problem 8", formulas: ["inscribed-angle-theorem", "complex-basics"], strategy: "", tree: ["geo.circ.inscribed.chords", "geo.comb.extreme.maxmin"] },
   // ---- 2011 PUMaC Division A Number Theory. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2011 PUMaC Division A Number Theory, Problem 1", formulas: ["sum-of-divisors", "geometric-series"], strategy: "", tree: ["nt.divisor.count.sigma"] },
   { ref: "2011 PUMaC Division A Number Theory, Problem 2", formulas: ["gcd-lcm-product"], strategy: "", tree: ["nt.div.gcd.basic"] },
@@ -16325,7 +16325,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2011 PUMaC Division A Number Theory, Problem 4", formulas: ["sfft", "bounding-diophantine", "permutations-combinations"], strategy: "", tree: ["nt.dio.bound.size"] },
   { ref: "2011 PUMaC Division A Number Theory, Problem 5", formulas: ["dirichlet-convolution", "double-summation"], strategy: "", tree: ["nt.divisor.phi.mult", "alg.seq.sum.other"] },
   { ref: "2011 PUMaC Division A Number Theory, Problem 6", formulas: ["modular-basics", "crt"], strategy: "", tree: ["nt.mod.basic.arith"] },
-  { ref: "2011 PUMaC Division A Number Theory, Problem 7", formulas: ["binets-formula", "pisano-periods", "modular-basics"], strategy: "", tree: ["nt.seq.special.fib", "alg.seq.rec.nonlinear"] },
+  { ref: "2011 PUMaC Division A Number Theory, Problem 7", formulas: ["fibonacci-doubling", "pisano-periods", "modular-basics"], strategy: "", tree: ["nt.seq.special.fib", "alg.seq.rec.nonlinear"] },
   { ref: "2011 PUMaC Division A Number Theory, Problem 8", formulas: ["power-sums", "pell-equation", "difference-of-squares"], strategy: "", tree: ["nt.dio.squares.sums"] },
   // ---- 2011 PUMaC Division B Number Theory. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2011 PUMaC Division B Number Theory, Problem 1", formulas: ["difference-of-squares", "fundamental-theorem-arithmetic"], strategy: "", tree: ["nt.div.prime.factor"] },
