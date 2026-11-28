@@ -10,11 +10,11 @@ The aim is genuine teaching resources, not explanatory encyclopedias (spec/overv
 
 ## Current state (updated 2026-11-28)
 
-- **Done:** Phase 1 planning (PR #474, merged). **G2.2 Power of a Point is written and implemented** in the preview: opening, six sections, close, six Review and three Challenge Problems, 21 figures, every answer independently verified. On 2026-11-28 it was revised to the series conventions in AUTHORING-STANDARD §7–§10 (labels and numbering, statements and notation, figures, instructional variety), and the preview now uses the live textbook interface. Its practice was then expanded (20 Practice, 15 Review, 7 Challenge Problems; §11), and Guided Practice was removed from the series. The preview route is live on this branch and kept out of normal navigation, search and recommendations.
-- **How to read it:** open `#/preview/geometry-2/g2.2` on the branch's deployment or a local server (`python3 -m http.server 8765`, then `http://localhost:8765/#/preview/geometry-2/g2.2`).
-- **Checks:** `tools/curriculum/check-spec.py`, `build-curriculum.py --check --allow-edits`, `build-shelf.py --check`, `figures/g2_02.py --check`, `verify/g2_02.py` and the browser checks `check-preview.cjs`; the repository gates pass.
-- **Branch:** `claude/textbook-redesign`; the G2.2 pull request is open and not merged.
-- **Next action:** wait for the owner's review of G2.2 in the app. **No other chapter is written until then** (owner, 2026-11-28). After the review: apply any further feedback to the standard and to G2.2, then the other four pilots (A2.8, C2.5, N2.1, A3.3), written to §7–§10 from the start.
+- **Prototype stage concluded.** The owner approved G2.2 Power of a Point as the completed textbook prototype (2026-11-28; PRs #476 and #482 merged): its instructional structure, practice quantity, UI, mathematical presentation and editorial standards are the benchmark for production. G2.2 is frozen: it changes only for a genuine mathematical error or technical defect.
+- **Production, batch 1 (in progress):** the connected circle sequence G2.3 Cyclic Quadrilaterals I, G2.4 Cyclic Quadrilaterals II, G2.5 Ptolemy's and Stewart's Theorems, G2.6 Equations of Straight Lines and Circles, planned together in [`batches/B1-circles.md`](batches/B1-circles.md) and written to AUTHORING-STANDARD.md. One PR for the owner's review; the next batch waits for that review.
+- **How to read the new books:** `#/preview` on a deployment of the branch or a local server (`python3 -m http.server 8765`, then `http://localhost:8765/#/preview`).
+- **Checks:** `tools/gates.sh` runs the curriculum checks (specification, shelf, figures, chapter data, verification); `tools/curriculum/check-preview.cjs` is the browser check (see `tools/curriculum/README.md`).
+- **Branch:** `claude/textbook-redesign`, restarted from `main` after each merge.
 
 ## Layout
 

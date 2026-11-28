@@ -3451,3 +3451,926 @@ Independently reviewed all 30 Algebra, Discrete Math and Geometry questions and 
 **Discrete Math #10 exponent check.** For $p+q=1$ the expression has odd 3-adic valuation. For $p=q=0$, even $r$ gives one above a square, and odd $r$ gives $(d-1)(d+1)=9\cdot2^r$. One factor is a pure power of 2, the other is 9 times such a power, and the smaller 2-adic valuation is 1. Their difference 2 forces the pair 16 and 18, hence $r=5$. Otherwise set $a=p+q-2,b=q$. At $r=0$ and $r=2$, factor $d^2-1$ and $d^2-4$ into coprime positive factors. The resulting equations are $3^a-7^b=2$ and $3^a-7^b=-4$. The nontrivial cases beyond $b=1$ would yield $3^j(3^m-1)=7(7^n-1)$ with $j=2$ or 1 and $m,n>0$. The orders of 3 modulo 7, 7 modulo 13, and 3 modulo 43 are 6, 12, and 42. They imply in succession $6\mid m$, $12\mid n$, $42\mid m$, and thus $49\mid3^m-1$, impossible. This leaves $(a,b)=(1,0),(2,1)$ for $r=0$ and $(1,1)$ for $r=2$. At $r=1$, modulo 3 forces $a=0$, so $b\le2$ and only $b=1$ works. At $r\ge3$, modulo 8 forces even $a,b$. Two odd squares differ by $2^r$ and factoring shows $3^{a/2}7^{b/2}=2^{r-2}-1$. With $w=r-2$, LTE gives $v_3(2^w-1)\le1+v_3(w)$ and $v_7(2^w-1)\le1+v_7(w)$, also when either exponent is zero. Thus $2^w-1\le21w$, excluding $w\ge8$. The surviving $w$ are $1,2,3,6$. In the original variables the solutions are $(0,0,5),(3,0,0),(3,1,0),(1,1,1),(2,1,2),(2,0,3),(4,0,4),(0,2,5),(4,2,8)$.
 
 **Geometry #10 sagitta check.** Write $x=BD,y=DC,c=AB,b=AC,d=AD$. The height of the arc midpoint above its chord, measured toward the side opposite $A$, is the circumradius times $1-\cos$ of the angle at $A$. Since the two circumradii are proportional to $c,b$ by the sine rule, equal heights give $x^2-y^2=(c-d)^2-(b-d)^2$ after applying the cosine rule. Stewart also gives $xy(x+y)=(b^2-d^2)x+(c^2-d^2)y$. Eliminating $x+y$ yields $((b-d)x+(c-d)y)((b+d)x-(c+d)y)=0$. The first factor is positive. Writing $x=z(c+d)$ and $y=z(b+d)$ then gives $z^2=((c-d)^2-(b-d)^2)/((c+d)^2-(b+d)^2)=1/\sqrt2$.
+
+## PUMaC problem audit, 2008 papers (2026-11-27)
+
+- Review all 80 indexed Division A and B appearances, covering 54 distinct problems. Cross-check the eight official papers and four joint solutions. Independently solve the problems, verify the displayed statements and topic/card assignments, and revise 74 appearance-level Elo estimates with shared questions kept equal.
+- Correct Number Theory A #6 and B #8 to 2,022,058 for the printed positive coefficients. The published 2,016,031 is for nonnegative coefficients.
+- Accept defensible alternative readings for the trapezoid slope and the angle between planes. Clarify the integer-exponent domain and replace the false seven-term bound in the odd-reciprocal proof.
+- Show the discrepancies alongside the official links in Practice and Arena review.
+
+Codex PR #472. Shared Division A and B questions appear once, with both numbers.
+
+### Algebra
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2008_AlgebraA.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2008_AlgebraB.pdf) · [Joint official solutions](https://pumac.princeton.edu/s/PUMaC2008_AlgebraSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 3 | Block $j$ contains one 1 followed by $j$ twos. After 43 complete blocks there are 989 terms with sum 1,935. Add the next 1 and 36 twos to reach 2,008 at term 1,026. The next total is 2,010, skipping 2,009. | 1,430 → 1,260 |
+| 2 | | Pair the samples at each opposite pair of inputs. The even part is $x^4-3x^2+2$, the odd part is $x^3-2x$, and the unique degree-at-most-four interpolant actually has degree four. | 1,650 → 1,480 |
+| 3 | 6 | Factor $f(n)=n(n^2-1)(9n^2+4)$. Three consecutive integers give the factor 3. Residues modulo 5 and 8 give factors 5 and 8. The gcd of the four values at 17 through 20 is exactly 120. | 2,050 → 1,860 |
+| 4 | 7 | $x=29/20$ satisfies all first four inequalities. The third and fifth would require $x^{15}>3^5=243$ and $x^{15}<6^3=216$. Therefore the maximum is 4. | 1,620 → 1,460 |
+| 5 | 8 | Reverse the finite sums to obtain $\sum_{j=1}^n(n+1-j)/j=(n+1)H_n-n$. | 1,780 → 1,370 |
+| 6 | | The defining equation gives $1/(x^3-2009)=-x$. The polynomial changes sign between 12.5 and 13 and is positive for all $x\ge13$, so the requested nearest integer is $-13$. | 1,620 → 1,420 |
+| 7 | | $(1-\Phi_9(x))/(1+x)=-x^5+x^4-x^3$. Agreement at all six primitive ninth roots makes this the unique degree-at-most-five representative, hence minimal. | 2,250 → 1,980 |
+| 8 | 9 | Write the polynomial in the monic falling-factorial basis. The integer-value divisibility criterion is $72\mid j!c_j$ for every basis coefficient. The least possible degree is 6 since $72\nmid5!$. Starting at the top and taking the least nonnegative monomial coefficient allowed by the next congruence gives falling coefficients $c_6,\ldots,c_0=(1,15,66,96,72,72,0)$, hence $x^6+x^4+34x^2+36x$. | 3,270 → 2,890 |
+| 9 | 10 | On the common domain $x\ne0,1$, the substitution cycles $0,1,\infty$, implying the pole at infinity is at most simple and $\deg p\le3$. Comparing coefficients, or taking the cyclic orbit sum of $x$, gives $p=A x(1-x)+B(-x^3+3x-1)$. The supplied values give $A=5,B=-1$, hence $p(10)=521$. The published domain omits the exclusion $x=1$. | 2,600 → 2,420 |
+| 10 | | Order $x\le y\le z$. Clearing denominators gives $z^2\mid x^3+y^3$, so $n\le3z/(x^2y^2)\le3\sqrt2/(x^2\sqrt y)$. Thus $x=1$ and $y\le18$. Checking $y\le z\le \lfloor\sqrt{1+y^3}\rfloor$ leaves $(1,1,1)$ and $(1,2,3)$, giving $n=3,1$ and sum 4. | 3,360 → 2,910 |
+| | 1 | $2+4(2^6)/8=34$. | 950 → 800 |
+| | 2 | The base-three log is 2. The remaining expression is $6\log_4 8=9$. | 1,210 → 1,010 |
+| | 4 | Take $u=3x+1$. The function is $u/(u^2+1)$ with extrema $\pm1/2$ attained at $u=\pm1$, so their product is $-1/4$. | 1,410 → 1,210 |
+| | 5 | The two polynomials factor as $(x^3-3x+1)(x^2+3x-1)$ and $(x^3-3x+1)(x^2-3x+1)$. The quadratic factors share no roots. The cubic changes sign across each consecutive pair of $-2,-1,1,2$, giving three common real roots. | 1,820 |
+
+### Combinatorics
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2008_CombinatoricsA.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2008_CombinatoricsB.pdf) · [Joint official solutions](https://pumac.princeton.edu/s/PUMaC2008_CombinatoricsSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 2 | For a leading 7 there are $9^2$ choices. For a nonleading 7 there are two positions and $8\cdot9$ choices per position. The total is 225. | 1,300 → 1,100 |
+| 2 | 3 | The uniform continuation has one triangle and two squares at each vertex. Dividing the respective incidences by 3 and 4 gives the limiting triangle-to-square ratio $2/3$. | 1,600 |
+| 3 | 5 | The nested subsets give three membership states for each of the 2,009 elements, so the sum is $3^{2009}$. | 1,490 → 1,260 |
+| 4 | 6 | Pascal cancellation gives the alternating sum as $\binom{x-1}{2008}$. Its roots are $1,\ldots,2008$, with sum 2,017,036. | 2,150 → 1,880 |
+| 5 | | Sort the five nonnegative counts. Subtract $0,1,2,3,4$ to leave a partition of 8 into at most five parts, with 18 choices. Order the original counts in $5!$ ways for 2,160. The weighted gap equation in the official listing should read $5A+4B+3C+2D+E=8$. | 1,780 |
+| 6 | 8 | The row and column orders form the Young diagram $(4,2,1,1)$. Its hook product is $7\cdot4\cdot2\cdot4\cdot2=448$, giving $8!/448=90$. | 2,020 → 1,850 |
+| 7 | | A fixed face is exposed with probability $p=181/1729$ for paint and $q=145/1729$ for removal. The after-removal paint probability evolves by $s\mapsto (1-q)(s+(1-s)p)$, a contraction. Its fixed point times $6\cdot1729$ is $2974267296/537409$. | 2,900 → 2,480 |
+| 8 | 9 | Translate the image of zero back to zero. The three-card SET condition then implies $f(-u)=-f(u)$ and $f(u+v)=f(u)+f(v)$ for distinct $u,v$. Oddness gives the repeated-input case. The affine bijections number $81(81-1)(81-3)(81-9)(81-27)=1965150720$. | 3,500 → 2,870 |
+| 9 | 10 | In the triangular prism, there are two cycles of length 3, three of length 4, and six of length 5. No five-edge subgraph contains two cycles. The count is $\binom95-2\binom62-3\binom51-6=75$. | 2,300 → 2,080 |
+| 10 | | A legal command word is a Dyck path of semilength 2,009. A desired next output forces a pop if it is at the stack top and otherwise forces the required pushes, so the output determines the command word. The number is $\binom{4018}{2009}/2010$. | 2,250 → 2,090 |
+| | 1 | Multiply $(10/25)(15/24)(9/23)=9/92$. | 1,210 → 1,000 |
+| | 4 | Chessboard coloring requires one hole of each color. A Hamiltonian cycle is obtained by snaking across successive rows and returning along the reserved first column, using the even number of rows. Opposite-color holes leave two even-length paths, each tileable along the cycle. This gives $(2008\cdot2009/2)^2$. | 2,250 → 1,910 |
+| | 7 | The same staircase subtraction leaves a partition of 6 into at most five parts, with 10 choices, giving $10\cdot5!=1200$. The weighted gap equation has right-hand side 6. | 1,720 → 1,590 |
+
+### Geometry
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2008_GeometryA.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2008_GeometryB.pdf) · [Joint official solutions](https://pumac.princeton.edu/s/PUMaC2008_GeometrySol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 2 | Circumference 8 gives radius $4/\pi$ and area $16/\pi$. | 900 → 770 |
+| 2 | 3 | At signed height $z$, use the planar parallel body of radius $\sqrt{1-z^2}$, with area $30+20\sqrt{1-z^2}+\pi(1-z^2)$. Integrating from $-1$ to 1 gives $60+34\pi/3$. | 2,100 → 1,930 |
+| 3 | | The central polygon's apothem is $R\cos75^\circ$ and the original's is $R\cos15^\circ$. Squaring the ratio $\tan15^\circ$ gives $7-4\sqrt3$. | 1,880 → 1,690 |
+| 4 | 7 | For $s=x+y$ the squared distance sum is $500+2\sqrt{62500-100s^2}$ and $|s|\le20$. The integers in the distance-sum range $[\sqrt{800},\sqrt{1000}]$ are 29, 30, and 31. Each gives two interior $s$ values and two intersections per $s$, hence 12. | 2,050 → 1,770 |
+| 5 | 8 | Under regular pentagon symmetry the radial component of unit speed is $\sin36^\circ$. Dividing the circumradius $1/(2\sin36^\circ)$ by it gives $1+\sqrt5/5$. The published computation assumes the pentagon is regular. | 2,350 → 2,150 |
+| 6 | | At $(5/13,3\sqrt3/13)$ the unit vectors to the three vertices sum to zero by direct normalization. The sum of distances is convex and the anchors are noncollinear, so this critical point is the unique global minimizer. | 2,520 → 2,310 |
+| 7 | 9 | The leg bound gives $y^2<3x^2+2|x|-1$. With both signs of $x$, an avoiding positive-slope line must pass above the right branch and below the left, so at $x=\pm1$ its ordinate difference is at least 4. The line $y=2x$ attains this. If the printed vertex order is cyclic, $x>0$ and the single branch's minimum avoiding slope is $\sqrt3$, attained by $y=\sqrt3x+1/\sqrt3$. Accept both readings. | 2,750 → 2,370 |
+| 8 | | In each orthant the hull is $0\le |x_i|\le1$ with $\sum|x_i|\le2$. Its vertices have at most two entries of magnitude one and belong to the full hull, including the smaller-support points by averaging. The map $t_i\mapsto1-t_i$ halves the unit orthant cube by the sum threshold. The volume is $16/2=8$. | 3,360 → 2,710 |
+| 9 | | Place $AB$ along a coordinate axis. Both perpendicular cross-sections of the circumsphere are radius-$\sqrt3$ circles with the same transverse center. Projecting $C,D$ into one section gives a chord of length $\sqrt{7-4}=\sqrt3$. The possible subtended dihedral angles are $\pi/6,5\pi/6$; the smaller angle between the planes is always $\pi/6$. Accept both conventions. | 2,900 → 2,560 |
+| 10 | 10 | The unit vectors to the face vertices have pairwise dot product $1/2$. The resulting equilateral spherical triangle has angle cosine $1/3$. The cosine of its excess is $-\cos(3\arccos(1/3))=23/27$. | 3,500 → 2,790 |
+| | 1 | The scale factor $(1.3)(0.7)=0.91$ gives a 9% decrease. | 1,100 → 850 |
+| | 4 | The eight centers form a side-two cube. From any candidate center the mean squared distance to the corner centers is at least 3, giving radius at least $\sqrt3-1/2$. The cube center attains it. | 1,430 → 1,220 |
+| | 5 | The angle of the external tangent with the center line has sine $1/5$. The parallel tangency chords have lengths $4\cos\theta,6\cos\theta$ and separation $24/5$, giving area $48\sqrt6/5$. | 1,920 → 1,760 |
+| | 6 | The internal tangent across the two oppositely placed centers makes angle $\arcsin(1/3)$ with their line. The line tangent to the other equal-radius pair is parallel to its center line at $60^\circ$. The requested sine is $(2\sqrt6-1)/6$. | 1,980 → 1,840 |
+
+### Number Theory
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2008_NumberTheoryA.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2008_NumberTheoryB.pdf) · [Joint official solutions](https://pumac.princeton.edu/s/PUMaC2008_NumberTheorySol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 2 | Legendre gives $158+31+6+1=196$ factors of 5, with more factors of 2. | 1,240 → 1,050 |
+| 2 | 3 | Checking signs, zero and $\pm1$ eliminates the nonpositive cases except $(x,0)$ for positive $x$. For $a\ge3$, $a^b-b^a$ is positive and grows for $b\ge a+1$, since $(1+1/b)^a<a$. Its starting value exceeds 1. The positive pairs involving 1 or 2 are $(2,1),(3,2)$. The organizers credit both printed versions, with the zero-exponent family optional. | 2,150 → 2,320 |
+| 3 | 4 | Put $m=2009$. The binomial expansion for exponent $m^k$ gives $(1\pm m)^{m^k}\equiv1\pm m^{k+1}\pmod {m^{k+2}}$. For $j\ge2$, use $j\binom{m^k}j=m^k\binom{m^k-1}{j-1}$ and $v_p(j)\le(j-2)v_p(m)$ for $p\mid m$. The exponents in the question are odd, and cancellation leaves $m^{2009}\bmod m^{2010}$. | 2,600 → 2,290 |
+| 4 | 6 | The printed sum over all integers below $n$ diverges. For the intended sum over positive reduced residues, $f(n^k)=n^{2k-1}\varphi(n)/2$. Possible $\varphi$ values are 1 or 2, giving $2,3,4,6$. Keep the scoring exclusion. | 1,920 |
+| 5 | | The residues modulo 100 of the four towers are $77,76,79,0$. For the odd bases reduce the upper two exponents modulo 4 and 20. For 18 use its order 4 modulo 25 and divisibility by 4; the power of 20 vanishes modulo 100. The total ends in 32. | 2,200 → 1,950 |
+| 6 | 8 | With nonnegative coefficients summing to $t$, the three consecutive generators represent every integer in $[2008t,2010t]$. Adjacent intervals meet or touch once $t\ge1004$, and the last missing value is $2008\cdot1004-1=2016031$. The printed positive-coefficient requirement shifts the representable set by $2008+2009+2010=6027$. Thus the corrected largest missing value is 2,022,058. | 2,450 → 2,060 |
+| 7 | | The residue 2 is $13^2$ modulo 167, so its order divides the prime 83 and equals 83. Solve $5n\equiv1\pmod{83}$ to obtain 50. | 1,850 → 1,620 |
+| 8 | 9 | The radicand requires $q>p$, and parity forces $p=2$. Then $(q-1-s)(q-1+s)=55$. The factor pairs give $q=9,29$, and only the latter gives the prime triple $\{2,29,31\}$. | 2,020 → 1,690 |
+| 9 | | The product inequality gives $xyz<60$. Enumerate $x=1,\ldots,59$, $y\le\lfloor59/x\rfloor$, and $z\le\lfloor59/(xy)\rfloor$ in the original equation. Precisely the eight choices in $\{1,2\}\times\{1,3\}\times\{1,4\}$ work. | 2,300 → 2,110 |
+| 10 | 10 | An odd common denominator forces an odd number of terms. Six positive reciprocals already have maximal sum below 1, so a seven-term solution would require all seven positive. Successive bounds force the first five denominators $3,5,7,9,11$, with remainder $422/3465$. The sixth is 13 or 15, and the respective final denominators $45045/2021,3465/191$ are nonintegral. Nine works using $3,5,7,9,11,15,35,45,231$. The published inequality for the first seven itself has the wrong direction. | 2,400 → 2,570 |
+| | 1 | Modulo 6 the base 7 is 1, so add all the digits to get $33\equiv3$. | 1,100 → 860 |
+| | 5 | From $720=16\cdot9\cdot5$, combine four roots modulo 16 with two each modulo 9 and 5. Neither endpoint is a root, leaving 16 integers. | 1,720 → 1,510 |
+| | 7 | The monic product $\prod_{j=0}^5(x-(2j+1))$ vanishes on all odd inputs modulo $2^{10}$ because $v_2(2^6\cdot6!)=10$. Thus every degree at least six can be reduced. The fifth step-two difference of a monic quintic is $2^5\cdot5!$, of valuation 8, so no lower-degree representative exists. The maximum is 5. | 2,820 → 2,460 |
+
+**Verification.**
+
+- All repository gates and the short-answer grading suite passed. Regression checks accept the corrected positive-coefficient result and the alternative geometry readings.
+- Chromium verified that the grading notes sit to the right of the links in Practice and Arena review.
+
+## PUMaC problem audit, 2009 papers (2026-11-27)
+
+- Review all 64 indexed Division A and B appearances, covering 39 distinct problems. Independently solve the problems and check the eight original papers and eight solution PDFs. Revise 60 appearance-level Elo estimates, keeping those for shared problems equal.
+- Correct the fourth-largest order statistic to 303 and the sum of integer solutions to 1 in both divisions. Accept counting the identity rotation among the symmetries of the concave polygon.
+- Display the explanations beside the corresponding official links in Practice and Arena review.
+
+Codex PR #473. Shared Division A and B questions appear once, with both numbers.
+
+### Algebra
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2009_AlgebraA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2009_AlgebraASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2009_AlgebraB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2009_AlgebraBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 3 | The first two polynomials are $(x+41)(x^2-49)$ and $(x+5)(x^2-49)$, so their only common roots are $\pm7$. Substituting in the third selects 7. | 1,570 → 1,300 |
+| 2 | 4 | Let $t=\sqrt2+\sqrt3$, so $t^{-1}=\sqrt3-\sqrt2$. The field of $t$ contains both square roots and has degree four. The identity $t^4-10t^2+1=0$ gives $\sqrt2=(t^3-9t)/2$, the unique representative of degree at most three. Thus $P(10)=455$. | 2,150 → 1,860 |
+| 3 | 5 | Write $u_i=x_i/i\ge0$. Then $\sum i u_i^2\le10(\sum u_i)^2\le810$, attained at $u_{10}=9$ with all others zero. | 2,050 → 1,420 |
+| 4 | 6 | A negative cosine and a negative doubled-angle cosine place the residue of $\alpha$ in $(90,135)$ or $(225,270)$. These intervals alternate along any surviving orbit. On the lower interval, the two-step map is $x\mapsto4x-360$, so its only bounded orbit there is the fixed point 120. The upper orbit starts at 240. The minimum is $120^\circ$. | 3,180 → 2,360 |
+| 5 | 7 | Odd powers fail at $x=\pi$. For $n=2k$, convexity gives the minimum of $(\sin^2x)^k+(\cos^2x)^k$ as $2^{1-k}$. The condition $2k\ge2^{k-1}$ holds through $k=4$ and fails thereafter, so $n=8$. | 2,520 → 1,940 |
+| 6 | 8 | Setting both inputs to zero gives $f(0)=1$. Setting one to 1 gives $f(h+1)=r f(h)+1$, with $r=f(1)-1$. If $r\ne0$, then $f(-1)=0$ and $r f(-2)=-1$, so $r=\pm1$. The three resulting functions are 1, $h+1$, and the even-integer indicator. Each satisfies the original equation. | 2,820 → 1,990 |
+| 7 | | If $a,b,c$ count the minus ones, ones, and twos, then $a=1001-127c$, $b=1008-129c$, and $0\le c\le7$. The ninth-power sum is $7+510c$. Both endpoints are attained and their quotient is 511. | 3,080 → 1,720 |
+| 8 | | Put $u=y+z$ and $s=\sqrt{u-t}$. For fixed $u$, completing squares gives a minimum of $1+u^2/3$ on the left. Thus $u-s^2+s\ge1+u^2/3$, or $(u-3/2)^2/3+(s-1/2)^2\le0$. Equality is attained by $(x,y,z,t)=(0,1/2,1,5/4)$, giving 125. | 3,550 → 2,550 |
+| | 1 | The positive root is $(2009+\sqrt{2009^2+4})/2$. The rational part is reduced, so $a+b+c=2009+4036085+2=4038096$. | 1,430 → 1,130 |
+| | 2 | The positive nested radical is a fixed point of $t\mapsto\sqrt{3+t}$. Its monic irreducible polynomial is $x^2-x-3$, giving $p(5)=17$. | 1,680 → 1,380 |
+
+### Combinatorics
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2009_CombinatoricsA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2009_CombinatoricsASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2009_CombinatoricsB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2009_CombinatoricsBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 2 | Split subsets by whether they contain their last available integer. The recurrence is $T_n=T_{n-1}+T_{n-2}$ with $T_0=1,T_1=2$, giving $T_7=34$. | 1,460 → 1,170 |
+| 2 | 3 | There are $3^k$ signed placements, with at most $(3^k-1)/2$ positive totals by negation symmetry. Seven weights are insufficient. The eight weights $1,3,\ldots,3^7$ give every required mass by balanced ternary. | 1,950 → 1,710 |
+| 3 | 4 | The zero count is even and at most five, so it is 0, 2, or 4. Choose distinct gaps around the ones for $\binom{11}0+\binom92+\binom74=72$. | 1,850 → 1,490 |
+| 4 | 5 | Circle–rectangle, circle–triangle, and rectangle–triangle intersections number at most 8, 6, and 6. All can occur with a unit circle, centered square of half-side $0.98$, and concentric equilateral triangle of inradius $0.9$ at a generic orientation. Each side's nearest point is inside the other relevant shapes and the endpoints are outside. Adding the curves gives $2+8+6+6=22$ regions. | 2,200 → 1,950 |
+| 5 | 6 | Write $E-d_i-d_j+a_{ij}=3^k$ after deleting $i,j$. Compare deletions $(i,j)$ and $(i,l)$ and sum over $i\ne j,l$ to get $(n-3)(d_j-d_l)=0$. Since $n\ge4$, the graph is regular, and the same equations make every adjacency equal. The graph must be complete. The consecutive factors of $(n-2)(n-3)=2\cdot3^k$ give $n=4,5$, summing to 9. | 3,270 → 2,510 |
+| 6 | 7 | Every diagonal uses an endpoint in one of the three odd-numbered coordinate rows of the $7$ by $7$ vertex grid, so at most 21 can be drawn. The coordinate witness below attains 21. | 2,820 → 2,420 |
+| 7 | 8 | The fourth largest of five is the second smallest. The six unselected gaps are exchangeable with sum 85, so the second order statistic has mean $2+2(85/6)=91/3$. The corrected floor is 303. The published 606 uses the fourth smallest. | 2,820 → 1,590 |
+| 8 | | The seven positions have three available colors. Burnside on the 14 symmetries gives $(3^7+6\cdot3+7\cdot3^4)/14=198$. | 3,180 → 2,170 |
+| | 1 | The number returning to Macky in $n$ passes follows $A_{n+1}=2^n-A_n$, with $A_0=1$. Thus $A_7=(2^7-2)/3=42$. | 1,650 → 1,470 |
+
+**Combinatorics A #6 / B #7 witness.** From a lower endpoint $(x,y)$ take the diagonal to $(x+d,y+1)$. The pairs $(x,d)$ for each row are given below. The endpoints are all distinct and the diagonals are in distinct unit squares.
+
+| $y$ | $(x,d)$ |
+|---:|---|
+| 0 | $(1,-1),(2,-1),(3,-1),(5,1)$ |
+| 1 | $(3,-1),(4,-1),(5,1)$ |
+| 2 | $(1,1),(4,-1),(5,1)$ |
+| 3 | $(0,1),(1,1),(4,-1),(5,1)$ |
+| 4 | $(0,1),(4,-1),(5,1)$ |
+| 5 | $(0,1),(2,1),(4,1),(5,1)$ |
+
+### Geometry
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2009_GeometryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2009_GeometryASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2009_GeometryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2009_GeometryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 3 | The reflected corner $A'$ on $EF$ is at distance 1 from $B$ and projects to the midpoint of $AB$. Thus $\angle ABA'=60^\circ$ and the fold bisects it to give $30^\circ$. | 1,490 → 1,220 |
+| 2 | 4 | Each face through $AB=41$ needs two sides summing to more than 41. Among disjoint pairs one must be $(18,27)$ and the other contains 36 with 7 or 13. If 7 remained for $CD$, the difference bound in the other two faces could not hold in either pairing. Thus the remaining edge is 13. A coordinate check confirms a nondegenerate tetrahedron with this assignment. | 1,620 |
+| 3 | 5 | A nonidentity rotation of a simple polygon cannot fix a vertex, so its group order divides 11. Order 11 would make the polygon regular and convex. Two distinct reflections would produce a rotation, leaving at most one reflection. Indenting one vertex of a regular 11-gon along its symmetry axis realizes one reflection. The conventional count including the identity is 2, and the published convention gives 1. | 1,920 → 1,760 |
+| 4 | 6 | Put $O$ at the origin and $B$ at unit coordinate $(1,0)$. Then $P=(\cos20^\circ,0)$ and $Q=(\cos40^\circ,\sin40^\circ)/2$. Since $2\cos20^\circ-\cos40^\circ=\sqrt3\sin40^\circ$, the angle's tangent is $1/\sqrt3$, giving $30^\circ$. | 1,720 → 1,540 |
+| 5 | 7 | Let $w(x)$ be the parallel slice width on the projection interval $[0,L]$. It is concave, so $w(x)/x$ is nonincreasing. This puts at least a fraction $(a/L)^2$ of the area below $a$, by comparing the two integrals with weights $x$ on either side. Equal areas force $a/L\le1/\sqrt2$, and a triangle with line parallel to its base attains equality. The floor is 2414. | 2,450 → 2,140 |
+| 6 | 8 | The faces give the convex regular truncated tetrahedron. Contract its four triangular faces to vertices to obtain the tetrahedral adjacency. Its volume by removing four unit corners from an edge-three tetrahedron is $23\sqrt2/12$. The square is $529/72$, giving 52972. | 1,980 → 2,150 |
+| 7 | | Set $B=(0,0),C=(b,0)$, let $d=CD=DE$, and use directions $150^\circ,15^\circ,165^\circ$ for $BA,CD,DE$. The shoelace sum for twice the area is $b^2/2+(2+\sqrt3)bd\sin15^\circ+d^2/2$. Since $(2+\sqrt3)\sin15^\circ=\cos15^\circ$, the area is $BD^2/4=9$. | 2,400 → 2,060 |
+| 8 | | Put $x=\angle MBC$. Trigonometric Ceva gives $\sin x/\sin(80^\circ-x)=2\sin20^\circ\sin40^\circ/\sin10^\circ$. The ratio strictly increases for $0<x<80^\circ$. At $60^\circ$, the required identity follows from $2\sin^2 20^\circ\sin40^\circ=(\sin40^\circ-\sin20^\circ)/2=\sin60^\circ\sin10^\circ$. Thus $x=60^\circ$. | 2,900 → 2,390 |
+| | 1 | Twelve triangles of area $\frac12\sin30^\circ$ give area 3, so the requested scaled area is 300. | 1,040 → 840 |
+| | 2 | Heron gives area $6\sqrt6$ and semiperimeter 9. The squared inradius is $8/3$, giving 160. | 1,330 → 1,100 |
+
+**Geometry A #2 / B #4 feasibility.** Set $AB=41$, $AC=7$, $BC=36$, $AD=18$, and $BD=27$. Along $AB$ the transverse-circle centers for $C,D$ lie at $217/41$ and $638/41$. The squared transverse radii, with common denominator $41^2$, have numerators 35280 and 137600. The squared lateral separation needed for $CD=13$ has numerator 106848, and lies strictly between the squared difference and the squared sum of the lateral radii.
+
+### Number Theory
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2009_NumberTheoryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2009_NumberTheoryASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2009_NumberTheoryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2009_NumberTheoryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 3 | Since $99\mid17!$, write the printed integer as $355687008096000+10^7 d$. Modulo 99, $10^7\equiv10$ and 10 is its own inverse, yielding $d\equiv42\bmod99$. The missing digits are 42. | 1,490 → 1,160 |
+| 2 | 4 | Divide by $ab$ to obtain $a/b+b/a=a+b$. Both terms on the left are at most their respective terms on the right, with equality in both only at $a=b=1$. There is one ordered pair. | 1,300 → 1,000 |
+| 3 | 5 | A prime output is greater than 16. If none of the inputs is 2, the output is divisible by 16. Likewise it is divisible by 3 if no input is 3, and by 5 if no input is 5. Thus the inputs are $2,3,5$ in some order. Their output is 719, prime by trial division below 27. | 1,850 → 1,610 |
+| 4 | 6 | Set $d=x-y$. Then $(3d-1)xy=61-d^3$, so $3d-1\mid27(61-d^3)\equiv1646\pmod{3d-1}$. Taking signed divisors of $1646=2\cdot823$ with residue 2 modulo 3 gives $d=-274,0,1,549$. The squared sum $(x+y)^2=d^2+4xy$ is negative except at $d=1$, where it is 121. This gives $(6,5)$ and $(-5,-6)$, with corrected sum 1. | 2,020 |
+| 5 | 7 | If the common prefix is $d$, multiply both leading-digit intervals. The resulting normalized power of ten lies between $d^2$ and $(d+1)^2$. Equality at 100 would require both leading-digit lower bounds to be attained, which is impossible for powers of 2 and 5. The only remaining power is 1000, giving $d=31$. Exponent 98 is a witness. | 2,100 → 1,840 |
+| 6 | 8 | Put $s=s(n)$. No zero digits gives at most $s$ digits in $n$, so $2^s=s(n^2)\le18s$ and $s\le6$. The necessary congruence $2^s\equiv s^2\bmod9$ leaves 2 and 4. With digit sum at most 4 the largest possible zero-free number is 1111. Its square 1234321 has digit sum 16, so it works. | 2,250 → 1,800 |
+| 7 | | The Euclidean algorithm gives $1257\cdot366-2009\cdot229=1$. A fraction strictly between $229/366$ and $1257/2009$ has denominator at least $366+2009$, by the determinant-one relation. Thus $p_0+q_0=229+366=595$. | 1,950 → 1,780 |
+| 8 | | The totient of $2^{k+1}-1$ being a power of two forces a product of distinct Fermat primes. If their exponents are $e_i$, then they are distinct powers of two with $\sum e_i=k$. The binary expansion of $\prod(1+2^{e_i})$ has one bit for each distinct subset sum. For all bits 0 through $k$ to occur, the exponents must be $1,2,4,\ldots,2^{r-1}$, yielding $k=2^r-1$. The first five Fermat numbers are prime and the sixth has factor 641, so the maximum is 31. | 3,180 → 2,730 |
+| | 1 | Completing the square gives $(2x+y)^2=112-3y^2$, with $|y|\le6$. Exactly $y=\pm2,\pm4,\pm6$ give positive squares with the required parity, producing 12 pairs. | 1,430 → 1,300 |
+| | 2 | From $n=4$ onward the sum is $33\bmod10$, since all later factorials are divisible by 10. Only $n=1,3$ work among the first three, with sum 4. | 1,300 → 1,040 |
+
+**Verification.**
+
+- All repository gates and the short-answer grading suite passed. Regression checks exercise the corrected keys in both divisions and both symmetry conventions.
+- Chromium confirmed that the order-statistic and integer-solution notes appear beside the official PDF links in Practice and Arena review.
+
+## PUMaC problem audit, 2010 papers (2026-11-27)
+
+- Review all 64 indexed Division A and B appearances, covering 49 distinct problems. Independently solve the problems, compare the statements and keys with the eight original papers and solution PDFs, and revise 63 Elo estimates. Shared questions keep equal ratings.
+- Use self-check for Algebra A #8. The official solution adds an existence assumption, and the printed conditions allow a counterexample.
+- Accept the alternate values supported by the printed geometry questions about the rectangular walk and the point source. Explain the existing two-answer grading for the nested radical, and clarify the index in the polynomial-function prime factor sum.
+- Display these explanations beside the corresponding official links in Practice and Arena review.
+
+Codex PR #475. Shared Division A and B questions appear once, with both numbers.
+
+### Algebra
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2010_AlgebraA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2010_AlgebraASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2010_AlgebraB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2010_AlgebraBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | | Evaluate the polynomial at 1 to get $(63-61)^4=16$. | 1,070 → 770 |
+| 2 | | The nonzero contributions are for $n=1,\ldots,10$ since $2^{10}\le2010<2^{11}$. The floors are $2010,44,12,6,4,3,2,2,2,2$, giving sum 2077 after subtracting ten. | 1,850 → 1,360 |
+| 3 | 4 | Rewrite the equation as $2^{x/2}=\lvert x\rvert$. Strict convexity gives exactly the positive intersections 2 and 4. For $x=-t<0$, $t=2^{-t/2}$ has a unique root in $(1/2,1)$ by monotonicity. Thus the root sum lies in $(5,5.5)$ and rounds to 5. | 2,100 → 1,640 |
+| 4 | 6 | $x=0$ satisfies the printed inequality. For $x\ge1$, the radical is $u=(1+\sqrt{1+4x})/2$ with $f(x)=u^2$. The ratio $f(x)^2/x=u^3/(u-1)$ increases for $u>3/2$. At $x=2399,2400$, the threshold is equivalent to $u\ge T=x(2499-x)/(2x+1)$. The sign of $T^2-T-x$ changes from positive to negative between those values, so 2400 is the least positive solution. Keep both accepted values. | 2,200 → 2,010 |
+| 5 | | The logarithmic derivative of $P$ and its derivative give $\sum(\alpha-2)^{-2}=(P'(2)/P(2))^2-P''(2)/P(2)$. The three evaluations $18,2,26$ give 68. | 2,450 → 1,940 |
+| 6 | | $g(t)=f(t)-t^2/2$ is additive. The given difference gives $g(24)=-282$. Consequently $g(100)=-1175$ and $f(100)=3825$. | 2,400 → 1,760 |
+| 7 | 8 | The full product $\prod_{j=1}^{89}\sin(j\pi/90)=90/2^{89}$ follows by evaluating $(x^{90}-1)/(x-1)$ at 1. Pairing symmetric factors and using the middle factor 1 gives $3\sqrt5/2^{44}$, hence $p=192$. | 2,820 → 2,260 |
+| 8 | | Set $q(x)=p(x)-x-82=-91+(x-15)(x-35)r(x)$, with $r(22)=-13$. A root $n$ would make $(n-25)^2-100$ a signed divisor of 91. The only square among 100 plus those divisors is 9. The candidate 22 fails, leaving 28 if a root exists. The constant $r=-13$ meets all given values and has no root, while $r(x)=2x-57$ gives a root at 28. The official solution's existence hypothesis is absent from the printed problem, so use self-check. | 3,080 → 2,660 |
+| | 1 | The identical $3\cdot4$ terms cancel. The result is $4^3-3^4=-17$. | 1,180 → 870 |
+| | 2 | Apart from 3, a prime dividing $n^2+n+1$ must admit a nontrivial cube root of unity and hence be 1 modulo 3. Conversely all such primes work. The first four are $3,7,13,19$. | 1,680 → 1,490 |
+| | 3 | For $u=\sqrt[5]2$, $(u-1)(1+u+u^2+u^3+u^4)=1$. The representation is unique by Eisenstein at 2. The coefficient squares sum to 5. | 1,820 → 1,220 |
+| | 5 | The organizer withdrew this problem because the printed polynomial gives no integer answer. Direct reduction gives $x^9+81x^2=162x-108$ for $x^3-3x+3=0$. The cubic has no rational root, so this expression is irrational. Retain the organizer ruling. | 1,880 |
+| | 7 | Solve the recurrence to get $f(n)=2^n/3+(2010-1/3)(-1)^n$. For even $n=2010$, reduce $2^n$ modulo 300 using moduli 25, 4, and 3 to get 124. Thus $f(2010)\equiv2010+41\equiv51\bmod100$. | 2,350 → 1,860 |
+
+### Combinatorics
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 2 | Condition on the fourth item. The other three avoid it with probability $(4/5)^3=64/125$, giving 189. | 1,680 → 1,190 |
+| 2 | 3 | The pairwise lexicographic conditions are equivalent to $a\ge b>c$. Strictly descending digits give $\binom93$ and $a=b>c$ gives $\binom92$, for 120. | 1,820 → 1,450 |
+| 3 | 4 | The first circle adds one region. The next five add at most $2,4,6,8,10$ respectively. Six equal circles with distinct nearby centers at generic positions attain every upper bound. Including the original region gives 32. | 1,880 → 1,490 |
+| 4 | | Subtract 3 from the expected payout. Reflection gives zero on both middle lines, and diagonal symmetry identifies the two noncorner edge cells in the upper-left quadrant. Let their expected values be $A$ and Erick's be $B$. Then $3A=B-2$ and $4B=2A$, so the expectation is $3-2/5=13/5$ and the answer is 18. | 2,450 → 1,940 |
+| 5 | 7 | Each row or column has at most two rooks, and a rook cannot occupy both a doubled row and a doubled column. With $m$ rooks there are at least $m-6$ doubled rows and columns each, giving $4(m-6)\le m$ and maximum 8. At equality choose two doubled rows and columns, then independently partition four singleton rows or columns into the two labeled pairs. This gives $\binom62^2\binom42^2=8100$. | 2,750 → 2,170 |
+| 6 | | There are $\binom{10}4=210$ crossing pairs. The five diameters share the center, subtracting $\binom52-1=9$ duplicate counts. Each diameter contains four further triple intersections, so subtract another $5\cdot4\cdot2$ for 161. The intercept check is below. | 3,080 → 2,720 |
+| 7 | 8 | One local minimum with 1 and 10 at the ends means one nonempty decreasing run among the eight interior entries. Assign each entry one of three ordered sections, sorted increasing, decreasing, increasing. Each eligible permutation has four assignments according to inclusion of its peak and valley in the middle. The increasing arrangement has 17 assignments with a middle of length zero or one. Thus $(3^8-17)/4=1636$. | 2,820 → 2,280 |
+| 8 | | The sum on the shallow Pascal diagonal $a+b=2j$ is $F_{2j+1}$. The odd indices through 99 sum to $F_{100}$. Since $F_{12}=144$ and $F_{11}=89$, the 12-step shift multiplies by 89 modulo 144. Its square is 1, so $F_{100}\equiv F_4=3$. | 3,500 → 2,690 |
+| | 1 | Order the five untiring songs. Choose three of their six gaps and order the three tiring songs in them. The count is $5!\binom63 3!=14400$. | 1,620 → 1,310 |
+| | 5 | The number of boys' wins is at least $\binom{2n}2$ and equals $(5/12)\binom{3n}2$, forcing $n\le3$. The total number of games must be divisible by 12, leaving only $n=3$. The girls can win every mixed game while their internal games contribute three more wins, obtaining 21 to 15. The player count is 9. | 2,200 → 1,770 |
+| | 6 | The arrangement has the central pentagon and three orbits of five bounded triangles. A triangle adjacent to the center has one central neighbor and two of the next type. The next type has two neighbors of the first and one outer triangle. Each outer triangle has one neighbor of the middle type and two unbounded neighbors. These give expected further returns $u=(1+u+2v)/3$, $v=(2u+w)/3$, $w=v/3$. Solving yields $u=2$, giving 200 after the first exit. Verified the adjacency and result independently by clipping the ten-line arrangement and solving its rational transition system. | 2,990 → 2,730 |
+
+**Decagon intercept check.** Put a chosen diameter on the horizontal axis. A chord from angle $36^\circ i$ on one side to angle $-36^\circ j$ on the other has intercept $\cos(18^\circ(i+j))/\cos(18^\circ(i-j))$ for $1\le i,j\le4$. It is unchanged by swapping $i,j$. The positive unordered types $(1,1),(1,2),(1,3),(2,2)$ have distinct intercepts in descending order $(1+\sqrt5)/4$, $(\sqrt5-1)/2$, $(3-\sqrt5)/2$, $(\sqrt5-1)/4$. The negative types are their reflections, and $i+j=5$ is the center. Only the types with unequal indices have two chords at a noncentral intercept. The stated concurrence property ensures that no further correction is needed.
+
+### Geometry
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2010_GeometryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2010_GeometryASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2010_GeometryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2010_GeometryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 3 | Put $A=(0,s),E=(s+14,0),G=(s,14)$ for $s>14$. The determinant of $E-A,G-A$ is $(s+14)(14-s)+s^2=196$. Thus the area is constantly 98. | 1,820 → 1,490 |
+| 2 | 5 | The successive two-leg blocks are halved in scale, starting with lengths 13 and $\sqrt{5^2+6^2}=\sqrt{61}$. The sum is $26+2\sqrt{61}$. The official 793 uses squarefree $c$. The printed question also allows $b=1,c=244$, giving 1586. | 1,980 → 1,710 |
+| 3 | | The bisector theorem gives $BM=8/3$ and $CM=10/3$. Then $AM^2=AB\cdot AC-BM\cdot CM=100/9$, so the ratio is 1 and the result is 100. | 1,850 → 1,410 |
+| 4 | 6 | Put $A=(-1,0),C=(1,0),E=(0,\sqrt3),B=(0,-1/\sqrt3)$. For $t=1/r$, the coordinates of $M,N$ are $(2t-1,0),(1-t,\sqrt3\,t)$. Collinearity gives $1-t=(2t-1)(1+3t)$, hence $t^2=1/3$ and $100r^2=300$. | 2,300 → 1,790 |
+| 5 | 7 | A cuboctahedron of edge $\sqrt2$ is the side-two cube with eight unit-leg corner tetrahedra removed, volume $8-8/6=20/3$. The octahedron with vertices at the signed coordinate unit vectors has the same edge length and volume $4/3$. Thus $100(1/5)^2=4$. | 2,350 → 1,910 |
+| 6 | | Take $N=(0,0),M=(10,0),B=(6,0)$. The reflected circle center lies 5 units from $N$ and $B$, so it is $(3,\pm4)$. The crease makes half its direction angle with the diameter. Thus $AN^2=100\cos^2\theta=100(1+3/5)/2=80$. | 2,900 → 2,300 |
+| 7 | | In unit-square coordinates $A=(0,0),F=(1,f),H=(h,1)$. The area relation is $(1-f)(1-h)=2fh$, so the tangent of the difference of their direction angles is $(1-fh)/(h+f)=1$. The angle is $45^\circ$. | 2,680 → 2,020 |
+| 8 | | A single ball containing the source meets every ray under the printed wording. If the source must lie strictly outside all balls, at most three center directions lie in a closed hemisphere, so their open-hemisphere caps cannot cover the sphere. Four tetrahedral directions cover it with caps of angular radius $\arccos(1/3)<90^\circ$, realized by exterior balls. Accept 1 and 4. | 3,360 → 2,860 |
+| | 1 | An exterior angle is one seventh of $180^\circ$. The total exterior turn is $360^\circ$, so there are 14 sides. | 1,180 → 880 |
+| | 2 | Reflect $B$ to $(3,-4)$ and intersect the straight segment from $A$ with the axis to get $a=5/3$, so $60a=100$. | 1,620 → 1,150 |
+| | 4 | With $F=(1,f)$ and $H=(h,1)$, squaring $f+h=FH$ gives $f+h=1-fh$. Consequently the tangent of $\angle FAH$ is 1 and the angle is $45^\circ$. | 2,300 → 1,820 |
+| | 8 | If $d_i$ are the three distances and $a_i$ the corresponding side lengths, $\sum a_i d_i=2\Delta$. Cauchy gives $\sum a_i/d_i\ge24^2/(2\Delta)$ with equality at the incenter. Heron gives $\Delta=12\sqrt5$, so the minimum is $24\sqrt5/5$ and the answer is 600. | 2,820 → 1,990 |
+
+### Number Theory
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 3 | The first four values $17,97,337,881$ are prime by trial division. At $n=5$ the value is $1921=17\cdot113$. | 1,600 → 1,230 |
+| 2 | | Since $n<28$, check the prime powers below 28 directly. With two distinct prime factors, multiplicativity forces their prime-power divisor sums to be 4 and 7. They come from 3 and 4, so $n=12$. Three distinct primes give a larger divisor sum. | 1,880 → 1,480 |
+| 3 | 4 | Odd $n$ give a factor of 8 in $n^2-1$. For even $n$, the two odd neighbors are coprime. Checking them through $n=32$ leaves $14,16,20,22,32$, with sum 104. | 1,820 → 1,480 |
+| 4 | | The square condition is equivalent to $\prod_{p\mid n}(p-1)/p$ being a rational square. The largest prime divisor of $n>1$ has valuation $-1$ in this ratio, so only $n=1$ works. | 2,400 → 1,640 |
+| 5 | 6 | Because consecutive integers are coprime, a prime-power member of $x,x+1$ would divide one of $y,y+1$. The first allowable $x$ is 14. The witness $(14,20)$ gives 596. Any improvement would have $14\le x\le y$ and $x\le17$. The next three $x$ values contain a prime-power member. For $x=14$, the possible multiples of 210 up through $y=20$ are 210 and 420. The first has $y=14$ and fails the indivisibility condition. | 2,520 → 2,110 |
+| 6 | 7 | Let $T=10^{2011}$. Express the run of ones as $(T-1)/9$. The two long decimal integers, multiplied by 9, are $9091(10^4T-1)$ and $9901(10^4T-1)$. The remaining coefficients are coprime, giving numerator 9091. | 2,750 → 2,040 |
+| 7 | | CRT for $2010=2\cdot3\cdot5\cdot67$ separates the polynomial maps into maps over the four fields. Every map on a field of size $p$ is polynomial by interpolation, and coefficients lift jointly. Hence the factorization is $\prod p^p$ with prime-factor sum $2^2+3^2+5^2+67^2=4527$. The printed sum's last subscript should be $k$. | 3,450 → 2,320 |
+| 8 | | With $u=2a+1$, solve $u^2-2b^2=-1$. Multiplication by $3-2\sqrt2$ strictly decreases the positive solutions with $b\ge3$, keeping both coordinates positive. The base is $(1,1)$ and the next pairs are $(7,5),(41,29),(239,169)$. Thus the third positive $a$ is 119. | 2,900 → 2,300 |
+| | 1 | A number with six or more divisors uses at least the structure $p^2q$, $p^5$, or $pqr$. Below 18 only $12=2^2\cdot3$ qualifies, with six divisors. | 1,240 → 950 |
+| | 2 | Among 00 through 99, each digit occurs ten times in each of the two positions. The total is $2\cdot10(0+\cdots+9)=900$. | 1,410 → 970 |
+| | 5 | The three positive ratios have product 1, so their sum is at least 3 by AM–GM. No $x$ occurs, giving the empty sum 0. | 2,020 → 990 |
+| | 8 | A divisor ending in 2 has no factor 5 and a positive exponent on 2. The exponents of $2,3,67$ must satisfy $a-b+c\equiv1\bmod4$. Their residue count vectors are $(502,503,503,502)$, $(503,503,503,502)$ and $(503,503,503,502)$. The three-way residue count is 2,032,170,803, with remainder 503. | 3,180 → 2,330 |
+
+**Verification.**
+
+- All repository gates and the short-answer grading suite passed. The key tests cover the self-check and the alternate geometry answers.
+- Chromium verified that the printed discrepancies appear next to their official solution links in Practice and Arena review.
+
+## PUMaC problem audit, 2011 papers (2026-11-28)
+
+- Independently review all 64 indexed Division A and B appearances, covering 45 distinct problems. Check the eight official papers and eight solution PDFs. Revise 62 Elo estimates and keep ratings equal for shared questions.
+- Exclude Algebra B #4 from scoring because the equation forces incompatible values for $f(0)$. Exclude Geometry B #5 because the fourth radius is unbounded under the printed conditions, as the official booklet already acknowledges.
+- Add the grading explanations beside the official PDF links, including the valid minimizer for the rotating-chord problem.
+
+Codex PR #478. Shared Division A and B questions appear once, with both numbers.
+
+### Algebra
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2011_AlgebraA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2011_AlgebraASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2011_AlgebraB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2011_AlgebraBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 5 | Vieta gives root sum $-3$ and squared-root sum 15. The multiplicities of the two integer roots are odd. The $5+1$ case would require $5u^2+(-3-5u)^2=15$, impossible because the left side is 4 modulo 5. For $3+3$, the two roots have sum $-1$ and product $-2$, so $p(2)=(2+2)^3(2-1)^3=64$. The quadratic in both solution PDFs should read $x^2+x-2$. | 2,100 → 1,690 |
+| 2 | | Apply $v_2$ to get an additive grid. Boundary columns 2, 4, and 6 have values 1, 2, and 1. Their path counts to $(7,7)$ give $\binom{10}5+2\binom85+\binom65=370$. | 2,100 → 1,740 |
+| 3 | 6 | An odd input at least 5 falls below itself after adding 3 and then halving, and an even input drops immediately. The small states lead into the cycles $1,4,2$ and $3,6$. Iterate each start 1 through 100 until its first repeated entry. The maximum distinct length is 15, attained only at 67. The runner-ups 70, 73, 79, and 91 have length 14. Excluding the initial input subtracts one from each length. | 2,200 → 1,930 |
+| 4 | | Vieta gives $abc=-c$. If $c\ne0$ then $ab=-1$ and $b=-c^2+c-1$. The relation $a=1-b-c$ gives $a=(c-1)^2+1$. For $c>1$, $a>1$ and $-b>1$ would contradict $ab=-1$. The triple $(1,-1,1)$ attains $c=1$, so the minimum product is $-1$ and its square is 1. | 2,600 → 2,000 |
+| 5 | | The two Möbius involutions permute $\{0,1,\infty\}$ faithfully, forming $S_3$. An element has order at most three. A 3-cycle has no real fixed point, so it produces three distinct iterates of $\pi$ and $N=2$. | 2,750 → 2,080 |
+| 6 | 7 | For $d_n=a_n-a_{n-1}$, $6d_n-5d_{n-1}=20$ and $d_2=1$, so $d_n=20-19(5/6)^{n-2}$. Summing gives $a_{2011}=40086+114(5/6)^{2010}$, which rounds to 40086. | 2,250 → 1,680 |
+| 7 | 8 | A primitive sixth root must map to a root of $x^2-x+1$. All six roots are powers of it, so its image determines the permutation. Identity and complex conjugation both preserve every rational polynomial relation, yielding 2. | 3,450 → 2,350 |
+| 8 | | Let $\chi$ be the quadratic character modulo 11. The polynomial $f(x)=-\sum_{j=1}^{10}\chi(j)x^j$ is monic and vanishes at 0 and 1. For a primitive eleventh root $\zeta$, the character sum $G(\zeta)=\sum\chi(j)\zeta^j$ satisfies $\overline G=-G$ and $\lvert G\rvert^2=11$, as shown below. Thus this is the stipulated unique polynomial. Its coefficient $c_1$ is $-1$ and each product $c_jc_{11-j}$ is $-1$, giving 15. | 4,000 → 3,150 |
+| | 1 | The inner operations are 2 and $-2$. The outer one is $(2-(-2))/1=4$. | 1,300 → 880 |
+| | 2 | The roots are $1\pm2i$. Squaring three times gives $a^8=-527+336i$ and its conjugate, so the absolute sum is 1054. | 1,680 → 1,290 |
+| | 3 | $f(x)=(x-1)((x-3)^2+1)$. An integer input with positive prime value must have one factor equal to 1, which occurs at $x=2$ or 3. Both give 2, and the distinct-value sum is 2. | 1,850 → 1,260 |
+| | 4 | The tail beginning with $iz$ is the same expression at $iz$, so it has value $(iz)^2=-z^2$. The condition therefore forces $f(z-z^2)=z^2$ for all $z$. Taking $z=0$ and $z=1$ gives incompatible values of $f(0)$. The published 4 is a necessary condition under an impossible hypothesis. Exclude from scoring. | 2,300 |
+
+**Quadratic character check.** Multiplication by $-1$ negates the character since $-1$ is a nonsquare modulo 11. This gives $\overline G=-G$. In the sum for $G\overline G$, substitute $x=ty$ for its two nonzero indices. It becomes $\sum_{t\ne0}\chi(t)\sum_{y\ne0}\zeta^{(t-1)y}$. The inner sum is 10 at $t=1$ and $-1$ otherwise, while $\sum_{t\ne0}\chi(t)=0$. Thus $G\overline G=11$ and $G^2=-11$.
+
+### Combinatorics
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2011_CombinatoricsA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2011_CombinatoricsASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2011_CombinatoricsB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2011_CombinatoricsBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 2 | Writing $t=a+d$, the sum is $99c+9t+15$. The ranges for distinct $c$ are disjoint. The distinct pair-sum counts for $c=1,2,3,4,5$ are $5,6,5,6,5$, totaling 27. | 1,780 → 1,350 |
+| 2 | 3 | A complementary first column can be removed as a vertical domino. If the first column is monochromatic, the first two must be opposite monochromatic columns. Thus the color patterns parse uniquely with recurrence $T_n=2T_{n-1}+2T_{n-2}$ and $T_0=1,T_1=2$, giving $T_6=328$. | 2,300 → 1,840 |
+| 3 | 5 | The sides coincide, oppose, or meet with probabilities $1/4,1/4,1/2$. The conditional success probabilities are 0, 1, and $1-\pi/4$, the latter by a quarter-disk area. Thus $p=3/4-\pi/8$ and the floor is 35. | 2,050 → 1,610 |
+| 4 | 6 | For a diagonal of length $d$, there are $\binom d3(25-d)+\binom d4$ bad sets. Two different diagonals cannot each contain three of the four bishops. The multiplicities for $d=3,4,5$ are $4,4,2$, so subtract $88+340+410$ from $\binom{25}4$ to get 11,812, with remainder 12. | 2,200 → 1,800 |
+| 5 | | The chance of length at least 1 is $6/7$. For $2\le k\le6$, the first $k$ entries must be one of $2(7-k)$ ordered runs with unit steps. Divide by $7\cdot6\cdots(8-k)$ and sum the tail probabilities to get $2879/2520$, hence 5399. | 2,900 → 2,130 |
+| 6 | 7 | Split each weight multiplicity into two binary bits. The total is $X+2Y$, where $0\le X,Y\le127$. The requirement $X+2Y=263$ gives $68\le Y\le127$, so there are 60 choices. | 2,520 → 1,740 |
+| 7 | 8 | Reflect at the first hit of barriers 10 and 11 above the initial audience to get $\binom{200}{110}-\binom{200}{111}=\binom{200}{110}21/111$. Paths attaining 10 cannot reach below $-90$ in 200 steps, since visiting both that upper barrier and $-91$ would need at least 202 steps. The odd ratio leaves the binomial's valuation $5+4-3=6$ by binary digit sums. | 3,270 → 2,490 |
+| 8 | | The unique-trip rule gives a tree. Move leaves between attachment classes in an extremal tree as described below, reducing to a center with $r$ branches and $p_i$ leaves at branch $i$. The ordered paths number $(20-r)^2-\sum p_i^2$. Balanced $p_i$ maximize this for fixed $r$. Both $r=3$ with $6,6,5$ and $r=4$ with $4,4,4,4$ give 192. For $r=2$ the count is 162, and for $r\ge5$ Cauchy gives $(1-1/r)(20-r)^2\le180$. | 3,800 → 3,220 |
+| | 1 | There are $5!$ unrestricted arrangements. Binding the vowels in either order gives $2\cdot4!$ adjacent arrangements, leaving 72. | 1,350 → 990 |
+| | 4 | The images of 1 through 9 other than 5 and 7 are $1,a,b,a^2,ab,a^3,b^2$ with $a=f(2),b=f(3)$. The bounds are $a=2,3,4$ and $2\le b\le9$. Checking collisions leaves respectively $5,6,5$ options. Then the images of 5 and 7 are any ordered pair of unused values, so $N=16\cdot81\cdot80=2^8 3^4 5$, with prime-factor sum 33. | 2,750 → 2,070 |
+
+**Extremal tree reduction.** Among trees maximizing the four-edge path count, choose one with the most leaves, then the fewest leaf attachment classes. A class is the set of leaves adjacent to the same vertex. If two leaves have distance other than 2 or 4, they have different parents and no four-edge path uses both. Move all leaves in the class with the smaller per-leaf path count to the parent of the other class. Paths between retained vertices are unchanged. No four-edge path uses two moved leaves before or after the transfer, since siblings have distance 2. Also, the old target leaf had no four-edge path to any moved leaf before the transfer. Consequently the change in path count is the number of moved leaves times the difference in the two per-leaf counts, and is nonnegative. If the old parent becomes a leaf, the overall leaf count increases, contradicting the second extremal choice. Otherwise the number of attachment classes decreases, contradicting the third. Hence all leaf-pair distances are 2 or 4. The diameter is 4 since an optimum has a four-edge path. Around the diameter midpoint, every branch must have depth two and no depth-one leaf, which would be at distance 3 from a diameter endpoint. This yields the two-step star used in the count.
+
+### Geometry
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2011_GeometryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2011_GeometryASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2011_GeometryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2011_GeometryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 2 | In cross-section the large center runs along an arc of radius 4 between heights 2 above the small center, with angle $120^\circ$. The union is the annular sector from radii 1 to 7 and two semicircular caps of radius 3. Its area is $\pi(49-1)/3+9\pi=25\pi$. Extruding length 10 gives $250\pi$. | 1,780 → 1,660 |
+| 2 | 6 | Set $M=(0,0,0)$, $D=(-60,80,0)$, $C=(60,80,0)$. The fold preserves $SM=60$ and $SC=SD=80$. Equal corner distances give the first coordinate of $S$ as zero. Subtracting $SM^2$ from $SD^2$ gives $10000-160y=2800$, so $HM=45$. | 2,200 → 1,710 |
+| 3 | | With the diameter horizontal on a unit circle, the radii to $Q,R$ have arguments $150^\circ,20^\circ$. Thus lines $BQ$ and $AR$ have slopes $-\tan15^\circ$ and $\tan10^\circ$. Their intersection has horizontal coordinate $(\tan15^\circ-\tan10^\circ)/(\tan15^\circ+\tan10^\circ)=\sin5^\circ/\sin25^\circ$. The tangent-angle bisector gives exactly this horizontal coordinate for $P$, so the intersection is $S$. The requested angle is $15^\circ+10^\circ=25^\circ$. | 2,400 → 2,040 |
+| 4 | | The $A$-excenter $I_A$ is on the circle $IBC$ by supplementary angles. The half-angle and area formulas give $AI\cdot AI_A=AB\cdot AC$. Equating powers along $AC$ gives $AP=AB=15$, so $CP=6$. | 2,520 → 1,860 |
+| 5 | 7 | Use $A=(0,0),B=(t,0),C=(15\sqrt3,15),D=(t-5\sqrt3,15)$. The two distances are $\sqrt{(t-5\sqrt3)^2+225}$ and $\sqrt{(t-15\sqrt3)^2+225}$. Their sum is strictly convex and symmetric about $t=10\sqrt3$, where it equals $20\sqrt3$. Thus the answer is 23. | 2,200 → 1,610 |
+| 6 | 8 | Put the larger circle center at 0 and the smaller at 5. Write $A=6e^{i\phi},B=6e^{-i\phi}$ with $\cos\phi=3/5$. The smaller-circle arguments of $A,B$ are $\pm2\phi$. For $P=5+5e^{i\theta}$ on the major arc, the chord-direction formula gives $M=Ae^{i\theta}$ and $N=Be^{i\theta}$. Hence $S=(18/5)e^{i\theta}$. The minimum $12/5$ is attained at $\theta=\phi$, with distinct second intersections, giving 17. At $\theta=0$ the intersections are tangencies, as noted beside the key. | 2,820 → 2,300 |
+| 7 | | Use $B=(0,0),C=(5,0),A=(13/10,\sqrt{231}/10)$. Projecting on the external bisectors gives $M=(7/8,-\sqrt{231}/8)$ and $N=(77/16,-\sqrt{231}/16)$. The shoelace area is $55\sqrt{231}/128$ compared with triangle area $\sqrt{231}/4$, giving ratio $55/32$ and answer 87. | 3,270 → 2,210 |
+| 8 | | Place $A=(0,0),B=(1,\sqrt3),C=(3,0)$. The bisector and perpendicular bisector give $P=(3/2,\sqrt3/2)$. The two distances to $B,C$ put the interior point at $M=(8/7,3\sqrt3/7)$. The equidistant center on $BC$ divides it by $BM:MC=1:2$, giving $O=(5/3,2\sqrt3/3)$. Thus $OP=1/3$ and $MO=2/3$, yielding 3. | 3,500 → 2,360 |
+| | 1 | Take $BH$ as the positive axis and normalize $BD=BC=1$. The other side of the angle is at $40^\circ$, so $AC$ is the vertical line at $\cos40^\circ$. The ray $BA$ is at $-20^\circ$. The tangent of the angle at $D$ is $\cos40^\circ\tan20^\circ/(1-\cos40^\circ)=\cot40^\circ$, giving $50^\circ$. | 1,410 → 1,290 |
+| | 3 | An affine model is $A=(0,0),D=(2,0),B=(0,1),C=(1,1)$. Then $P=(1,1/2)$ and $Q=(4/3,2/3)$, so $CQ/QD=1/2$ and the answer is 3. | 1,680 → 1,430 |
+| | 4 | Center the circle at the origin. The difference $PA^2-PB^2=2(B-A)\cdot P$ has a unique maximum on the circle in the chord direction, of value $2\cdot5\cdot6=60$. | 1,880 → 1,300 |
+| | 5 | Take the radius-five circles centered at $(0,0)$ and $(10,0)$ and the radius-eight circle at $(-3,0)$. They are pairwise tangent at $(5,0)$. For every $R>8$, the circle centered at $(5-R,0)$ of radius $R$ is tangent to all three there. No largest radius exists. With the additional requirement that the original three are externally tangent, Descartes gives outer bend $-3/40$ and ratio $40/3$, yielding the published conditional 43. Exclude from scoring, consistent with the booklet's stated flaw. | 2,050 |
+
+### Number Theory
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2011_NumberTheoryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2011_NumberTheoryASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2011_NumberTheoryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2011_NumberTheoryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 3 | Factor $1815=3\cdot5\cdot11^2$. Of the numbers $2^{a+1}-1\le1815$, only 1, 3, and 15 divide 1815. The corresponding other divisor sums are 1815, 605, and 121. Only the last is $(3^{b+1}-1)/2$, with $b=4$. Hence $n=2^3 3^4=648$. | 1,880 → 1,400 |
+| 2 | 4 | Let $g=\gcd(m,n)$. Multiplying by $g$ gives $mn=3mg^2$, so $n=3g^2$. Conversely $m=g$ works for each such $n$. The largest below 1000 is $3\cdot18^2=972$. | 1,750 → 1,300 |
+| 3 | 5 | Since $7^2\equiv6$ and $7^3\equiv-1\bmod43$, put $t=7^p$ to get $(t-2)(t+1)=0$. The order-six powers omit 2. The value $-1$ requires $p\equiv3\bmod6$, so the only prime is 3. | 2,020 → 1,520 |
+| 4 | 6 | Order $x\le y\le z$. The equation is $z(xy-2)=2x+2y+4$. If $x\ge3$, then $x(y^2-2)\le4y+4$ by $z\ge y$, impossible for $y\ge3$. For $x=1$, $(y-2)(z-2)=10$ gives $(1,3,12),(1,4,7)$. For $x=2$, $(y-1)(z-1)=5$ gives $(2,2,6)$. Permuting gives $6+6+3=15$. | 2,300 → 1,790 |
+| 5 | 8 | Expand the product of two positive zeta sums. Each divisor pair for $n$ contributes $1/n^2$, giving $\sum d(n)/n^2=(\pi^2/6)^2$. The polynomial is $x^4/36$, so $p(6)=36$. | 2,750 → 1,890 |
+| 6 | | For each $1\le b\le13$, take all residues $0\le x,y<b$ and record $(x^3+y^4)\bmod b$. The cardinalities are $1,2,3,4,5,6,7,8,9,10,11,12,12$ respectively. At 13 only residue 7 is absent, giving $7\cdot13=91$. | 2,990 → 2,090 |
+| 7 | | In the ring where $\phi^2=1-\phi$, squaring $a+b\phi$ gives coefficients $(a^2+b^2,2ab-b^2)$ as in the recurrence. The initial element is $1+\phi$ and its powers have constant coefficient $F_{m+1}$. Thus $g_{2011}=F_{2^{1005}+1}$. The pair $(F_{72},F_{73})$ is $(0,1)\bmod216$. Since $2^{1005}\equiv8\bmod72$, the remainder is $F_9=34$. | 3,360 → 2,510 |
+| 8 | | Write $T_j=j(j+1)/2$. The sum-of-cubes identity becomes $(T_n/48)^2-3(k(k+1))^2=1$, with $48\mid T_n$. Positive Pell solutions are powers of $2+\sqrt3$. Modulo 4, the second coordinate cycles $0,1,0,3$, and the $k$ constraint forces it to be 0. Thus the Pell unit is a square of a solution $(u,v)$ and its first coordinate is $1+6v^2$. Consequently $(2n+1-48v)(2n+1+48v)=385$. Among its factor pairs only $(1,385)$ has a positive difference divisible by 96, giving $n=96,v=4$. Then $u=7$ and $k(k+1)=2uv=56$, so the sum is 103. | 3,750 → 2,840 |
+| | 1 | $7999488=200^3-8^3=8^3(25-1)(25^2+25+1)=2^{12}3^2\cdot7\cdot31$, so 31 is largest. | 1,300 → 1,050 |
+| | 2 | In the first robot's base $b$, the numerals 10 and 16 encode $b$ and $b+6$. Their sum $2b+6$ is $n!$ with $b$ a square. If $n\ge5$, then $b\equiv2\bmod5$, impossible. The only positive feasible case is $n=4,b=9$, and $b+6=15$ is nonsquare. | 1,720 → 1,480 |
+| | 7 | The triangular-square identity gives $n(n+1)=2k(k+1)$, or $(2n+1)^2-2(2k+1)^2=-1$. The positive Pell solutions start at $(1,1)$ and are generated by multiplying by $3+2\sqrt2$, or certified by the reverse descent. The positive $k\le1000$ are $2,14,84,492$. The sum is 592. | 2,680 → 2,220 |
+
+**Verification.**
+
+- All repository gates and short-answer checks passed. The latter verify that a voided question cannot be graded by a saved or self-checked answer.
+- Chromium verified the two void rulings in Practice and the rotating-chord grading note in Practice and Arena beside their official PDF links.
+
+## PUMaC problem audit, 2012 papers (2026-11-28)
+
+- Independently review 64 indexed appearances across eight papers and eight solution PDFs. Revise 63 Elo estimates and keep each shared question at one rating.
+- Correct Geometry B #8 from 16 to 13. Accept 35 as well as 169 on Number Theory B #1, and use self-check on Combinatorics B #1 because the stated equal marginal chances leave the conditional score undetermined.
+- Add 12 notes beside the official solution links, including a proof gap on the shared circle-enclosure problem. The published rectangle is attainable and was recovered by an independent numerical search over the four supporting lines. Its global optimality remains unproved in this audit.
+
+Codex PR #478. Shared Division A and B questions appear once, with both numbers.
+
+### Algebra
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2012_AlgebraA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2012_AlgebraASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2012_AlgebraB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2012_AlgebraBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 |  | The positive nested values satisfy $u^2-u=a$ and $v(a+v)=1$. For $a\le42$, $u\le7$. At $a=43$, $u-7=1/(u+6)>1/14>v$, so the first value is 43. | 1,950 → 1,550 |
+| 2 | 4 | Clearing $xyz$ from the sum produces $-(x-y)(y-z)(z-x)$. The corresponding product is therefore $-36$ and the requested sum is 1976. | 1,780 → 1,360 |
+| 3 | 6 | The summand is $(1/n^2-1/(n+2)^2)/4$. The series telescopes to $5/16$, giving 21. | 1,850 → 1,470 |
+| 4 | 7 | For every integer $x$, $f(x)$ is congruent to either $f(0)$ or $f(1)$ modulo 2. Both are odd, so no such polynomial has even one integer root. Answer 0. | 1,950 → 1,300 |
+| 5 |  | Set $y=x^2$ modulo the divisor. Then $y^2+y+1=0$ and $y^3=1$, so the dividend reduces to $(-1)^ny^n-y^{2n}-1$. Checking the six residues of $n$ shows this vanishes exactly when $n$ is odd and $3\nmid n$. The first allowed value is 2015. | 2,750 → 1,790 |
+| 6 |  | Applying the recurrence at zero gives the sum of ternary digits of $n$. With $2012=(2202112)_3$, partition by the first digit below the limit to count 379 strings of digit sum 7. If $\mathbb N$ starts at 1, $a_1$ and $a_2$ can vary. For example setting both to zero changes the count to 282. The app keeps 379 under the convention used by the PDF and labels that convention. | 2,520 → 2,140 |
+| 7 | 8 | Induct on $m$ using $a_{2m-1}=m^2-m+1$ and $a_{2m}=m^2+1$. In both cases $\lfloor\sqrt{a_j}+1/2\rfloor=m$. Thus $a_{2012}=1{,}012{,}037$, with last four digits 2037. | 2,400 → 1,840 |
+| 8 |  | The $j$th floor is $\lfloor n/2^j\rfloor-1+b_{j-1}$, where $b_{j-1}$ is the bit in that position. The ordinary floors sum to $n-s_2(n)$ and the low bits sum to $s_2(n)-1$. The answer is $k+1=1001$. | 3,180 → 2,040 |
+|  | 1 | For $n\ge2$, Legendre's formula gives $v_2(n!)>v_5(n!)$, so cancelling all trailing zeros leaves an even number. Largest $n$ is 1. | 1,270 → 1,150 |
+|  | 2 | The sequence repeats $6,5,-1,-6,-5,1$ with block sum zero. The first four terms sum to 4, which is the answer since $1000\equiv4\pmod6$. | 1,380 → 920 |
+|  | 3 | Cubing $2\pm\sqrt3$ yields $26\pm15\sqrt3$. The desired sum is 4. | 1,720 → 1,280 |
+|  | 5 | The increments $3k^2+3k+1$ of $k^3$ are below 2012 through $k=25$ and above it from 26. The floors from $k=1$ through 26 hit all of $0,\ldots,8$, and each of the remaining 1986 floors is new. Answer 1995. | 2,150 → 1,640 |
+
+### Combinatorics
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2012_CombinatoricsA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2012_CombinatoricsASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2012_CombinatoricsB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2012_CombinatoricsBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 2 | An even sum has zero or two odd terms. The count is $\binom83+8\binom72$, giving probability $32/65$ and answer 97. | 1,490 → 1,250 |
+| 2 | 3 | Sharing a position means the relative permutation is a transposition. The adjacency graph is $K_{3,3}$ on the parity classes. Alternate the classes in $2(3!)^2=72$ orders. | 1,920 → 1,580 |
+| 3 | 5 | The four ordered dice choices are equally likely. Their numbers of outcomes summing to 9 are $4,6,6,4$ and the same-die choices contribute the two 4s. The probability is $2/5$, giving 7. | 1,820 → 1,460 |
+| 4 | 6 | Sorting by $x$ forces the $y$ coordinates to be strictly increasing, so a set of size $j$ is determined by two coordinate subsets. Summing $\binom7j^2$ gives $\binom{14}7=3432$. | 2,300 → 1,660 |
+| 5 | 7 | At position $j$, the target moves one step forward with probability $(6-j)/5$ and otherwise stays. Summing the waiting times gives $5(1+1/2+1/3+1/4)=125/12$, so 137. | 2,350 → 1,800 |
+| 6 |  | The pentagonal bipyramid has ten rotations. The identity, four nonidentity rotations about the apex axis, and five half-turns fix $2^{10}$, $2^2$, and $2^5$ colorings each. Burnside gives 120. | 2,450 → 2,020 |
+| 7 | 8 | In $P_{40}\mathbin{\square}K_3$, every column cut has 1 or 3 used edges by parity. Add single-edge dummy boundaries at the two terminal vertices. A block between successive single cuts has one or more columns. For one column the unique traversal uses the third row between the two endpoint rows. For a longer block, all three strands are used and each end joins the other two rows. Equal entering and leaving rows would create a disjoint cycle. Distinct rows give one traversal per block. With $T=J-I$ on three rows, sum over the possible block boundaries to get $T(I+T)^{39}=2\cdot3^{38}J$, where $J$ is the all-ones matrix. The answer is 78 for the two different rows in the question. This also explains why the endpoint slip in the PDF does not change its answer. | 3,450 → 2,810 |
+| 8 |  | Write $p$ for the initial position-to-student permutation and $t(i)=3i+1\pmod8$. The final permutation is $p^{-1}t^{-1}p$. The cycle type is two 4-cycles, yielding $8!/(4^2\cdot2!)=1260$ distinct orders. | 3,360 → 2,240 |
+|  | 1 | Independent equal-probability guesses yield 10 because every pair is equally likely conditional on exactly two correct. Equal marginal probabilities alone do not imply that. For a counterexample, choose the pair worth 7 and 8 or its complement with equal probabilities. Every problem has the same chance of correctness, and the conditional score is 15. Mixing those events with an all-wrong outcome can make the marginal probability as small as desired. Use self-check. | 1,520 |
+|  | 4 | For set sizes $1\le k\le8$, choose $k$ of the first $k+2$ entries. Add $\binom{10}9+\binom{10}{10}$ for the last two sizes. The total is 175. | 1,780 → 1,450 |
+
+### Geometry
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2012_GeometryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2012_GeometryASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2012_GeometryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2012_GeometryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 4 | Use centers $(-1,0),(1,0),(0,2\sqrt2)$ and supporting lines $x=\pm2$, $y=-1$, $y=2+2\sqrt2$. The rectangle yields $12+8\sqrt2$ and the published 22. The booklet does not prove its assertion that three sides can be fixed there. Independently search over all four support angles using the support value $h(u)=\max_i(c_i\cdot u+r_i)$. The rectangle was recovered and no smaller feasible quadrilateral was found. This search is numerical. Retain the key with an explicit proof-gap note. Division B also omits the exclusion of the perfect square 1. | 2,350 → 2,650 |
+| 2 | 5 | The distance from $P$ to the common chord is $(6^2+5^2-5^2)/(2\cdot5)=18/5$ and its half-length is $24/5$. Thus $[MNP]=432/25$ and the answer is 457. Both PDFs mislabel the final triangle. | 2,020 → 1,400 |
+| 3 |  | Rotational symmetry preserves a regular hexagon. Each ant has radial velocity $-s/200$ and the radius is $s$. The area is $12e^{-t/100}$, so $T=100\ln3$ and the requested sum is 103. | 2,600 → 1,930 |
+| 4 | 6 | In square-aligned coordinates, equal quadratic-form values at all four vertices imply the square is centered and the mixed term vanishes. With semiaxes $A,B$, the foci lie on opposite sides at distance 2 from the center. Then $A^2-B^2=4$ and $4/A^2+4/B^2=1$. Hence $4B^2=8+8\sqrt5$, yielding 21. | 2,250 → 1,820 |
+| 5 |  | For the second choice $D\ne A$, the two triangles share chord $BC$ and the opposite inscribed angles have supplementary measures. Their circumradii are both 1, and the chord $BC$ subtends a right angle at both centers. The centers lie on opposite sides of $BC$ at distance $1/\sqrt2$, so the external tangent has squared length 2. | 2,680 → 1,670 |
+| 6 |  | Use lattice coordinates with base triangle $(0,0),(1,0),(0,1)$ and start $(1/3,1/3)$. The possible edge midpoints have fractional parts $(1/2,0),(0,1/2),(1/2,1/2)$. Fold a candidate path midpoint by assigning each lattice vertex $(i,j)$ the color $i-j\bmod3$ and preserving its barycentric weight at the corresponding vertex of the base triangle. Translations by 3 in either coordinate preserve the folding, so checking the 36 vertex translations of each midpoint class suffices. The results are permutations of the weight triples $(1,1,10),(1,4,7),(2,5,5)$ divided by 12, a total of 12 points. Unfolded endpoints attained before any other midpoint or vertex, in half-lattice units, are $(0,3),(1,2),(2,1),(3,0),(1,1),(-1,2),(2,-1),(0,1),(1,0),(-1,1),(1,-1),(-1,0)$. They give all twelve points. | 3,450 → 2,720 |
+| 7 |  | Brahmagupta gives $[ABCD]=234$. The cyclic circumradius formula gives $R=25/2$. Each pyramid has height $20/3$ from the volume, so the eight lateral edges are $\sqrt{(25/2)^2+(20/3)^2}=85/6$. All edges sum to $538/3$, yielding 541. | 3,080 → 2,200 |
+| 8 |  | Pair supplementary half-angles to get $2/\sin A+2/\sin B$. Splitting the area by the two diagonals gives $\sin A/\sin B=26/23$. Substitution gives $4(26+23)^2/(26\cdot23)=4802/299$, yielding 5101. | 3,270 → 1,840 |
+|  | 1 | The cone opening has arc length $\pi r$ and thus radius $r/2$, while the slant length is $r$. The half-angle is $30^\circ$ so the requested angle is $60^\circ$. | 1,490 → 1,210 |
+|  | 2 | At each radius up to the rectangle's diagonal, the directions originally covered form an interval. Rotation adds $\pi/2$ to its angular measure. Thus the newly swept area is $\pi(36+L^2)/4=45\pi$, giving length 12. | 1,780 → 1,530 |
+|  | 3 | The midpoint dodecagon has circumradius equal to the original apothem. The area ratio is $\cos^2(15^\circ)=(2+\sqrt3)/4$, giving 9. | 1,820 → 1,360 |
+|  | 7 | Measure time as distance traveled. For a fixed pair of tracks each antipodal crossing gives the same relative front-arrival gap modulo 60. Direct the three comparisons cyclically around the three trains and take each gap in $[L,60-L]$. Their sum is congruent to the sum of three travel offsets $\pm15$, hence is an odd multiple of 15. If $L>25$, the sum lies strictly between 75 and 105, which is impossible. At $L=25$, all three directed gaps can be 25. For example, take meridian pole arrivals at 25 and 0 and their equator arrivals at 40 and 15. The equatorial train visits the second and first crossings at 50 and 5, respectively. The trains occupy disjoint interiors at every crossing. | 3,650 → 2,540 |
+|  | 8 | The isosceles trapezoid has base lengths 3 and 8, leg 5, and base angle $60^\circ$. A diagonal has length 7, so the circumradius is $7\sqrt3/3$. The booklet's last addition is incorrect: $7+3+3=13$. Grade 13. | 2,250 → 1,570 |
+
+### Number Theory
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2012_NumberTheoryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2012_NumberTheoryASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2012_NumberTheoryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2012_NumberTheoryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 4 | The two congruences are $N\equiv5\pmod{21}$ and $N\equiv3\pmod{22}$. The joint residue is $47\pmod{462}$. The first value above 500 is 509. | 1,490 → 1,280 |
+| 2 | 5 | When the sum of four squares is divisible by 8, modulo 4 permits either zero or four odd bases, and modulo 8 forbids four. Divide by 4 repeatedly until four positive squares sum to 4. Only $1,1,1,1$ works, giving one representation. | 2,050 → 1,510 |
+| 3 |  | An odd power of 5 with exponent greater than 1 ends in 25. The powers of 7 have period 4 modulo 100, and their tower exponents are 1 or 3 modulo 4 according to the next lowest base. Both occur, giving final values 7, 25, and 43 and sum 75. | 2,300 → 1,560 |
+| 4 | 7 | Modulo 4 forces $a\ge1,b\ge2$ after checking $b=0,1$ and $a=0$. At $b=2$, the square differs from $(2^a)^2$ by 9, giving $a=2$. At $b\ge3$, modulo 8 forces $a=1$, leaving $(x-3)(x+3)=2^b$ and hence $x=5,b=4$. The sum of the two $a+b$ values is 9. | 2,820 → 1,860 |
+| 5 |  | The leading digits correspond to the fractional part of $n\log_{10}x$ lying in $[\log_{10}2.012,\log_{10}2.013)$. Multiples of an irrational are dense modulo 1. Prime factorization shows only powers of 10 have rational $\log_{10}x$ for integer $x$. Excluding 1, 10, 100, and 1000 leaves 2008 leaders. | 3,450 → 2,300 |
+| 6 | 8 | Because $2011$ is prime and $2012-1=2011$, lifting the exponent yields $v_{2011}(p_2-p_1)=1+v_{2011}(2011)=2$ and increases the valuation by one per subsequent step. Thus $p_{2012}-p_{2011}$ has valuation 2012. | 3,500 → 2,060 |
+| 7 |  | The first equation factors as $(a^2+ab+b^2)(a^2-ab+b^2)=9633$. Both variables are at most 9. Checking the divisor pairs leaves $\{a,b\}=\{7,8\}$, and the second equation gives $c^5=243$. Answer 18. | 2,900 → 1,830 |
+| 8 |  | For $n=1$ there is no solution. For $n=2$ the difference is $m+1$, so it must be a prime power. Of the candidates above 83, the values $87,91,95,99$ each have two distinct prime factors, and 83 works, giving $82+2=84$. For $n\ge3$ let $n+1=2^kq$ with $q$ odd and $k<n$. Factoring the geometric sum of $2^n$ terms shows $m^{2^k}+1$ divides both that sum and $m^{n+1}+1$, hence divides $d_n=p^a$. If $k>0$ then the order of $m$ modulo $p$ is $2^{k+1}$, so $p\equiv1\pmod4$, contradicting $d_n\equiv1+m\equiv3\pmod4$. If $k=0$, $m+1=p^b$ and both $a,b$ are odd as both powers are 3 modulo 4. Their residues modulo 8 must match, but $d_n\equiv1+m+m^2\pmod8$ differs from $m+1$ by 4. The booklet assumes primality where only a prime power is guaranteed, and this argument repairs the gap. | 3,800 → 2,810 |
+|  | 1 | The base expression gives $a=b+2$ with $5\le b\le17$. If the third side may be nonintegral, take $a,b$ as legs and sum $7$ through $19$ to get 169. If all sides are integral, check $a^2+b^2$ and $a^2-b^2$ for squares. The triples are $(6,8,10),(6,8,10),(8,15,17)$ with $a=8,10,17$ respectively, summing to 35. Both readings earn credit. | 1,650 → 1,220 |
+|  | 2 | Since $2012=4\cdot503$ with 503 prime, the divisor-count factors partition as $(2012),(1006,2),(503,4),(503,2,2)$. The one-factor case misses a required prime. In each other case put the largest exponent on 2. The smallest candidate is $2^{502}\cdot3\cdot503$, giving 1012. | 2,250 → 1,590 |
+|  | 3 | The square has $(48+1)(24+1)=1225$ divisors, so 612 are below its square root. The square root has $(24+1)(12+1)-1=324$ proper divisors. Difference 288. | 1,880 → 1,420 |
+|  | 6 | The argument difference is $2n+3$. Reducing four times the first value modulo $2n+3$ gives $-5$. Each required gcd equals $\gcd(2n+3,5)=5$, giving 125. | 2,020 → 1,520 |
+
+**Verification.**
+
+- Full repository gates passed.
+- Short-answer tests and Chromium checks passed for the corrected key, accepted alternatives, and self-check. Practice and Arena review display the notes beside the official PDF links.
+
+---
+
+## PUMaC problem audit, 2013 papers (2026-11-28)
+
+- Independently review all 64 indexed appearances across eight papers and eight solution PDFs. Revise 62 Elo estimates and match shared questions.
+- Accept 12032 as well as 6006 for the cycle-count problem. Use self-check for the series-length problem, where the answer depends on the joint distribution. Keep self-check on the sphere projection and replace its explanation with a family of counterexamples.
+- Put scoring and source notes beside the official PDF links in Practice and Arena.
+
+Codex PR #479. Shared Division A and B questions appear once, with both numbers.
+
+### Algebra
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2013_AlgebraA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2013_AlgebraASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2013_AlgebraB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2013_AlgebraBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 1 | The equation is $(a-1)(b-1)(c-1)=2012=2^2\cdot503$. Distribute the two exponents of 2 in six ways and the exponent of 503 in three ways. Answer 18. | 1,620 → 1,290 |
+| 2 | 5 | Write the square root as $n+k$ with $k\ge1$. Then $C=k^2+(2k-1)n$. Summing $\lfloor(100-k^2)/(2k-1)\rfloor$ for $1\le k\le9$ gives 180. | 1,880 → 1,420 |
+| 3 |  | Set $u_n=x_n^2-3y_n^2$. The cross terms cancel and the recurrence gives $u_n=2u_{n-1}$, with $u_1=1$. The requested expression is $u_5^3+2u_5^2=16^3+2\cdot16^2=4608$. The 3 in the booklet's final coefficient should be 2. | 2,100 → 1,590 |
+| 4 | 6 | For roots $r,r,s$, Vieta gives $s(r^2-9)=18r$ and $s\ne0$. Its discriminant forces $s^2+9$ to be a square, so $(d-s)(d+s)=9$ gives $s=\pm4$. The only integer repeated roots are $r=\pm6$ with the matching sign. Then $\lvert ab\rvert =16(36+48)=1344$. | 2,300 → 1,680 |
+| 5 |  | The transformed variables $(w,x,y+2,z+2)$ sum to 29 and have square sum 247. Hence $w^2+(29-w)^2/3\le247$. The larger root is $25/2$, attained when the other three transformed variables are equal, yielding 27. | 2,400 → 1,640 |
+| 6 |  | The triple-angle formula gives $\psi(3^n)=2\cos(3^n\pi/16)$ from $\psi(1)=2\cos(\pi/16)$. Since $3^4\equiv17\bmod32$, successive four-factor blocks differ by negating every factor. Each block product is $4\sin(\pi/8)\cos(\pi/8)=\sqrt2$. Hence the product is $4096\sqrt2$ and its floor is 5792. | 3,270 → 2,260 |
+| 7 | 7 | For the tail at index $k$ starting at zero, the candidate $t_k=285+2k$ satisfies $t_k^2=2013+14k+(276+2k)t_{k+1}$. A depth-$N$ truncation instead starts with tail zero and stays below $t_k$. Rationalizing the difference bounds the error multiplier at step $k$ by $(276+2k)/t_k\le(k+138)/(k+140)$. Their product is $138\cdot139/[(N+138)(N+139)]$. The initial error is $t_N=O(N)$, so the outer error tends to zero. This supplies the convergence missing in both PDFs. | 2,680 → 2,100 |
+| 8 |  | The permutations exchanging 1 and 2 form the coset $(12)H$, with $H=S_{\{3,4,5,6\}}$. Their pairwise products recover $H$. Since $H$ contains transpositions but no triple transpositions, a coset-preserving automorphism cannot exchange the two size-15 involution classes. The graph on transpositions with adjacency given by a product of order 3 has the five-transposition stars as its only size-five cliques. Permuting the six stars gives a relabeling of the underlying symbols. Exactly $2\cdot4!=48$ relabelings preserve the distinguished pair. The booklet's 144 proposed outer automorphisms do not preserve the coset. | 4,000 → 2,940 |
+|  | 2 | Write $R,C$ for the numbers of rows and columns flipped an odd number of times. Both are odd. The number of on switches is $100R+100C-2RC$, maximized at opposing endpoints 1 and 99, giving 9802. It is attainable with 99 turns each, repeating one row flip all 99 times. | 1,880 → 1,540 |
+|  | 3 | With $u_n=1/x_n$, each summand is $(u_n+u_{n+1}-2u_{n+2})/2$. Also $u_{n+2}=(u_n^2+u_{n+1}^2)/(2(u_n+u_{n+1}))\le\max(u_n,u_{n+1})/2$, so the tail vanishes. The telescoping sum is $(20+2\cdot13)/2=23$. | 2,450 → 1,790 |
+|  | 4 | By evenness take $x\ge0$. For $x\ge n$, $f_n(x)=n-x$ cancels $g_n(x)$. On $[0,n]$, $g_n(x)=n-x$ and $f_n(x)$ is linear on each unit interval between 0 and 1, in alternating directions. Hence twice the integral of the $n$th pair is $n+n^2$. Sum over $n=1,\ldots,10$ to obtain 440. | 2,250 → 1,800 |
+|  | 8 | For every exponent $j$ the monic polynomial whose roots are the $j$th powers of the original roots is integral, with bounded coefficients. Thus it is one of finitely many such polynomials, implying each nonzero root is a root of unity. The allowed irreducibles consist of three linear factors including $t$, three quadratic cyclotomic factors, and four quartic ones. The count is $\binom64+3\binom42+\binom42+4=43$. In the no-real-roots case, the booklet's quadratic list is incorrect. For example $(b,c)=(3,-3)$ has a root outside $(-2,2)$, and it omits $(0,-1)$. | 3,650 → 2,540 |
+
+### Combinatorics
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2013_CombinatoricsA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2013_CombinatoricsASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2013_CombinatoricsB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2013_CombinatoricsBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 |  | Label the five extended sides and represent each intersection by its pair of side labels. Any collinear triple beyond the five sides would require three disjoint label pairs, impossible with five labels. Five chosen pairs have total degree ten, and each degree is at most two. They therefore form a five-cycle, of which there are $4!/2=12$. | 2,200 → 1,520 |
+| 2 |  | The identity fixes 64 colorings. The rotations by one or five steps fix 2 each, by two or four fix 4 each, and by three fix 8. Burnside gives $84/6=14$. | 1,720 → 1,370 |
+| 3 |  | For $a_2=j$, choices on either side total $\sum_{p=j+1}^5(p-1)$. The sum of their squares is $10^2+9^2+7^2+4^2=246$. | 1,980 → 1,400 |
+| 4 | 8 | The 125 outcomes whose maximum is at most five have mean sum 9. Subtract the 64 with maximum at most four and mean sum $15/2$. The conditional mean is $(125\cdot9-64\cdot15/2)/61=645/61$, giving 706. | 1,980 → 1,440 |
+| 5 | 4 | For a row with $k$ occupied boxes there are $2^k$ colorings. Its maximal runs of lengths $j$ support independent configurations counted by $F_j$. Summing over occupied subsets for successive base lengths gives $F_1=1,F_2=3,F_3=17,F_4=171$ and $F_5=1+8+48+320+2736=3113$. | 2,350 → 1,790 |
+| 6 | 5 | A spanning forest in a graph with $c$ components leaves $1000+c$ nonforest edges, each yielding a different fundamental simple cycle. Counting starting point and orientation gives at least $6\cdot1001=6006$. Attach 1001 triangles at one common vertex and ten leaves to attain it with 2013 vertices and 3013 edges. The printed definition also admits the sequences $(u,v)$ and $(v,u)$ for every edge, adding $2\cdot3013=6026$ and yielding 12032. Practice accepts both conventions. | 2,680 → 2,040 |
+| 7 |  | Under independent games, $f(x)=3+(1-x^3-(1-x)^3)+6x^2(1-x)^2$ by summing the two survival probabilities. This gives $f(-1)=21$. Equal marginal probabilities allow one shared Bernoulli result for all games, with length three. Mixing that model with independent games also preserves each played game's marginal win probability and makes every stage possible for $0<x<1$, with a different polynomial. Use self-check. | 2,250 |
+| 8 |  | In a labeled seating there are $8!$ arrangements. A bad displacement occurs in 771 permutations, using the count with at least four fixed points. For two bad displacements each occurs four times. The four chosen positions are invariant under the displacement difference. Difference 4 allows six subsets for each of four unordered pairs of displacements, and differences 2 or 6 allow two subsets for each of eight pairs. So the pair correction is $24+16=40$. There are no triple overlaps. The valid count up to rotation is $(8!-8\cdot771+40)/8=4274$. | 3,080 → 2,540 |
+|  | 1 | The six consonants occupy four gaps around the three vowels, at most two per gap and at least one in each inner gap. Relative to two per gap, choose two one-box deficits in six ways or one outer two-box deficit in two ways. Count $8\cdot 3!\cdot 6!/2=17280$. | 1,650 → 1,530 |
+|  | 2 | Each prime contributes $\binom{2016}{2}\equiv3\pmod{2013}$ choices of exponent pair. Cubing gives residue 27. | 1,720 → 1,280 |
+|  | 3 | All paths number $\binom{13}3$. Through Frist there are $\binom62\cdot\binom71$. Subtracting gives 181. | 1,540 → 1,240 |
+|  | 6 | Choose the positive terms as a nonadjacent subset of $\{2,\ldots,10\}$, in increasing order. The count on nine positions is $F_{11}=89$ by conditioning on the last position. | 1,780 → 1,370 |
+|  | 7 | There are $4^5$ meals, $2^5$ without spicy and $2^5$ without meat, with one overlap. Inclusion-exclusion gives 961. | 1,620 → 1,000 |
+
+### Geometry
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2013_GeometryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2013_GeometryASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2013_GeometryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2013_GeometryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 |  | With fixed rays from $O$, the triangle area is $\sqrt3(ab+bc+ca)/4$. Independent choices of radial lengths have mean 4, so the average is $12\sqrt3$, yielding 15. | 1,650 → 1,200 |
+| 2 | 4 | Let the inradius be $r$. The distances $1,4,3r-5$ are $r$ plus three projections of a radius vector onto directions spaced by $120^\circ$. Therefore their squares sum to $9r^2/2$. Solving gives $r=2$ or $14/3$. The first makes the third distance 1, inconsistent with the two smallest being 1 and 4. The side is $28\sqrt3/3$, giving 34. | 2,300 → 1,780 |
+| 3 |  | During arc rolling, the center's displacement is $6\theta$ and its height is 6. The downward radius sweeps the rectangle of width $2\pi$. At angle $\theta$ the sector's horizontal coordinates lie between $6\theta-6\sin\theta\ge0$ and $6\theta+6\sin(\pi/3-\theta)\le2\pi$. During the pivot about $C$ the side $CA$ sweeps the quarter-disk to the right. All remaining points stay within distance 6 of $C$ and above the ground. Total $12\pi+9\pi=21\pi$, giving 21. | 2,350 → 1,650 |
+| 4 | 6 | The archived paper points to a diagram that is absent. With inradius 1 the twelve side normals are spaced by $30^\circ$. Along each side, its intersections in order have signed offsets $\tan(j\pi/12)$ for $j=-4,-3,-2,-1,1,2,3,4$. Three consecutive side lines bound a triangular cell. To check these are the only triangular cells, their intersection pairs must be neighbors in these lists. For three indices taken cyclically, all three angular gaps must be at most four intervals or exactly one must be at least eight. The former forces $(4,4,4)$, which has intervening intersections. In the latter case, the two smaller gaps must both equal one for the middle side to have adjacent intersections. Each smallest cell has base $2\tan15^\circ$ and height $\sec30^\circ-1$. Divide the original triangle's area $3\sqrt3$ by the cell's area to get $63+36\sqrt3$, yielding 102. | 2,750 → 2,120 |
+| 5 |  | For any $a>0$, choose sphere center $C=(0,1/4,a/2)$, radius $a/2$, and $P=(0,b,a)$ with $b=1/4-a^2$. For the ray $d=(x,y-b,-a)$ the tangency equation is $((C-P)\cdot d)^2=(\lVert C-P\rVert^2-a^2/4)\lVert d\rVert^2$. Substituting and cancelling $a^4$ gives $(y-b+1/2)^2=x^2+(y-b)^2+a^2$, equivalent to $y=x^2$. The dot product is positive on this parabola, so these are forward rays. The printed conditions therefore admit arbitrary positive $a$, even if the rational expression is required to be reduced. The booklet uses the wrong angle in the distance-to-line formula. Keep self-check and correct the public explanation. | 3,450 |
+| 6 |  | In circumcenter coordinates $H=A+B+C$, and similarly for the other triangle orthocenters. Subtracting gives $AD=2,AB=3,BC=4,CD=5$. Cyclic area decompositions give $BD/AC=\sin A/\sin B=22/26$, and Ptolemy gives $BD\cdot AC=23$. Thus $13BD^2=253$. | 2,990 → 1,920 |
+| 7 |  | Use the sine law first in $APC$ and then in $ABC$ to get $\sin B=\sin102^\circ=\sin78^\circ$. The obtuse option $B=102^\circ$ leaves $C=30^\circ$, which cannot contain $\angle ACP=48^\circ$. Hence $C=54^\circ$ and $x=6$. | 2,750 → 1,610 |
+| 8 |  | If $P=R^2-OC^2$ is the interior power magnitude, the three center coordinates along chord axes have squares $25/4-P,36/4-P,49/4-P$. Thus $R^2=110/4-2P$. The largest allowed $P$ is $25/4$, attained by the indicated real coordinates, giving 15. | 3,450 → 1,860 |
+|  | 1 | By Thales, $AB^2=AC^2+BC^2$. The diametric circle areas are proportional to these squares, so $12+2x=(24+x)+(108-x)$ and $x=60$. | 1,350 → 960 |
+|  | 2 | Angle sums show $BC=CD=CE$. Thus $B,D,E$ lie on a circle about $C$, and $\angle BED$ is half of $\angle BCD=24^\circ$, giving 12. | 1,880 → 1,260 |
+|  | 3 | A central section is centrally symmetric and has at most six sides. For a regular square, choose two pairs of active opposite cube faces. Their projected normals must be orthogonal and equal in norm, which forces both components of the section normal along those directions to be zero. There are three sections of area 4. For a regular hexagon all three pairs of faces contribute, and equal projected normal lengths require equal absolute components of the plane normal. Four body-diagonal normal directions each give area $3\sqrt3$. The product from $12\sqrt3+12$ is 432. | 2,100 → 1,910 |
+|  | 5 | Let the angular offsets of $X,Y$ from $O$ be $\pm2t$ on their common circle, and the offset of $Z$ be $2s$. Since $Z$ is outside $w$ we take $s>t$ with $s\le90^\circ$. Adding the two chord lengths yields $24=30\cos t$, so $\sin t=3/5$. Subtracting them gives $2=4R\cos s\sin t$, while $2R\sin s=15$. Then $r^2=(2R\sin t)^2=82$. | 2,450 → 1,740 |
+|  | 7 | Write $A=-3u,B=3u,C=w-4v,D=w+4v$ with unit $u,v$. The cross edges imply $w\perp(3u+4v)$ and $\lvert w\rvert ^2=-24u\cdot v$. For a fixed $t=-u\cdot v$, volume is maximized by $w$ perpendicular to both vectors, giving $V^2=64\cdot24\,t(1-t^2)$. The maximum on $[0,1]$ is at $t=1/\sqrt3$, yielding $V^4=2^{20}/3$ and $mn=-20$. | 3,500 → 2,390 |
+|  | 8 | At step $n$, the side-scale squared is $1-3(n-1)/n^2$ by the cosine law at the shared vertex. The four area factors multiply to $(1/4)(1/3)(7/16)(13/25)=91/4800$, giving 4891. | 2,200 → 1,350 |
+
+### Number Theory
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2013_NumberTheoryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2013_NumberTheoryASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2013_NumberTheoryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2013_NumberTheoryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 1 | One prime is 7. For the other two, $(p-1)(q-1)=8$, and only $(p,q)=(3,5)$ works up to order. The sum is 15. | 1,620 → 1,250 |
+| 2 | 2 | Modulo 8 the order of 13 is 2. Modulo 5 it is 4 and $v_5(13^4-1)=1$, so lifting to 125 gives order 100. The lcm is 100. | 1,950 → 1,610 |
+| 3 | 5 | A part of 1 can be absorbed and parts at least 5 can be split for larger product. Split each 4 into two 2s, then replace three 2s by two 3s. The optimum is $2^2\cdot3^{670}$, so the required sum is 677. | 2,050 → 1,270 |
+| 4 | 6 | The geometric gcd identity first gives $2(2^{\gcd(30^{10}-1,30^{45}-1)}-1)$ and then $2^{30^5}-2$. Fermat modulo 3, 11, and 61 gives residue $-1$ modulo each, hence remainder 2012. | 2,750 → 1,880 |
+| 5 | 7 | Let $k=10-a_0$ be the number of nonzero positions. The other $k-1$ positive digits sum to $k$, so they consist of one 2 and otherwise 1s. If $a_0=1$ or 2, the many 1s force $a_1>2$, impossible. For $a_0\ge3$, the 2 and $a_0$ each occur once. If $k=2$ this already gives three nonzero count entries, impossible. Otherwise the only nonzero count indices are $0,1,2,a_0$, forcing $k=4$ and $a_0=6$. The unique answer is 6210001000. | 2,520 → 1,690 |
+| 6 | 8 | The least values of $17a+23b$ in residues 0 through 12 modulo 13 are $0,40,80,68,17,57,97,46,34,74,23,63,51$. It suffices to enumerate combinations up to 97 after finding a representative for each class. Subtracting 13 from the largest minimum gives 84. | 2,750 → 1,770 |
+| 7 |  | The numbers of roots mod 3, 11, and 61 multiply to 1000 and individually do not exceed the degree. The first two cannot exceed 2 and 10, forcing at least 50 roots in the third field. Choose monic degree-50 polynomials in the three fields with respectively 2, 10 and 50 roots, and combine coefficients by CRT. The minimum is 50. | 3,500 → 2,010 |
+| 8 |  | Eleventh powers are surjective modulo every prime in range except 199. For 199, $x=0,y=95$ gives $95^{16}\equiv23\equiv2013\pmod{199}$. Thus all 21 primes work. | 2,820 → 1,630 |
+|  | 3 | The first four conditions give $x\equiv-2\pmod{1155}$. Writing $x=1155k-2$, the last condition yields $k\equiv11\pmod{13}$. The least positive solution is 12703. | 1,780 → 1,140 |
+|  | 4 | The four consecutive factors in the numerator must contain a multiple of 625 and a multiple of 64, since the second even factor contributes one additional factor of 2 and the denominator removes three. So $n=625k+j$ for $0\le j\le3$, with $n\bmod64$ in $\{0,1,2,3\}$. The first valid block is $k=13,j=3$, giving 8128. | 2,600 → 1,580 |
+
+**Verification.**
+
+- Full repository gates passed.
+- Short-answer tests and Chromium checks passed for both cycle answers and self-check. Practice and Arena review display the notes beside the official PDF links.
+
+## PUMaC problem audit, 2014 papers (2026-11-28)
+
+- Independently review all 64 indexed appearances across eight papers and eight solution PDFs. Revise 63 Elo estimates and match shared questions.
+- Replace the invalid Egyptian-fraction example beside both official solution links. Retain the minimum of eight with an exact witness.
+- Use self-check where the arrival-time problem specifies only marginal distributions. Accept both readings of whether the first permutation is visible.
+
+Codex PR #480. Shared Division A and B questions appear once, with both numbers.
+
+### Algebra
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2014_AlgebraA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2014_AlgebraASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2014_AlgebraB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2014_AlgebraBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 3 | A reflected pair has coordinates $10\pm d$. Its contribution is $2\max(1,\lvert 10-d\rvert )+2(10+d)$, nondecreasing in positive integer $d$. The twelve least distances give $9\cdot40+42+44+48=494$. | 1,720 → 1,240 |
+| 2 | 4 | Let $A,B,C$ denote the first-day counts and $t=p'/(p-p')$. Equal spending gives $A-B=28t$ and $A-C=40t$, so $4t$ is a positive integer. Since $A\le11$ and $C\ge1$, $40t\le10$. Therefore $4t=1$ and $A=11$, with $B=4,C=1$ and prices satisfying the total. | 1,880 → 1,420 |
+| 3 |  | Take $\theta=\arctan f(1)$. The addition law gives $f(j)=\tan(j\theta)$ wherever defined. The first multiple to reach $\pi/2$ would give an undefined or negative tangent, so $11\theta<\pi/2$. Now $f(6)=1$ gives $\theta=\pi/24$. The two function values are $2-\sqrt3$ and $2+\sqrt3$, whose squares sum to 14. | 2,050 → 1,600 |
+| 4 | 6 | After nine levels of halving, the 512 parts are as equal as possible, with sizes 3 and 4. Since $2014=4\cdot512-34$, there are 34 threes. The remaining fours contribute zero because $a(4)=2a(2)=0$. The answer is 34. | 2,020 → 1,540 |
+| 5 | 7 | With $s=x+y+z$, the constraint describes the sphere centered at $(2,2,2)$ with radius $2\sqrt3$, giving $0\le s\le12$. The objective is $(s^2-4s)/2$ and has minimum $-2$ and maximum 48. Thus $M+10m=28$. | 2,100 → 1,510 |
+| 6 | 8 | Write $c=10/7$. The recurrence gives $x_{n+3}=c^2/x_n$, so the sampled terms alternate 25 and $4/49$. The geometric sum is $(25+2/49)/(1-1/4)=1636/49$, giving 1685. | 2,400 → 1,490 |
+| 7 |  | Hölder with exponents 3 and $3/2$ gives the attainable maximum $k=(\sqrt8+1/\sqrt2+\sqrt{27/6})^{2/3}=2^{5/3}$. Thus $n=3$, $k^n=32$, and the requested result is 35. | 2,520 → 1,600 |
+| 8 |  | In block $m$, index $\binom m2+i$ with $1\le i\le m$ gives $f(i)-f(m-i)$. Before a first occurrence of either sign of a new magnitude, the two inputs have smaller magnitude. The first $+1,-1$ are at indices $1,5$. The first $+2,-2$ use block 6 at indices $16,20$. Magnitude 3 first occurs in block 21 and the first $+3,-3$ are $211,215$. A difference of 4 first uses $+2$ and $-2$, hence block 36 and index $\binom{36}2+16=646$. All possible input pairs using a 3 require a later block. | 3,450 → 2,390 |
+|  | 1 | The summand is $\sqrt{k+1}-\sqrt k$. The sum is $\sqrt{1369}-1=36$. | 1,100 → 850 |
+|  | 2 | Define $\delta(n)=f(n)-n-1$. The equation implies $\delta(f(n))=-2\delta(n)$. The $k$th iterate equals $n+k+\delta(n)(1-(-2)^k)/3$. If $\delta(n)\ne0$, one parity eventually makes the iterate negative. Therefore $f(n)=n+1$, yielding 2015. | 1,820 → 1,680 |
+|  | 5 | Factor the recurrence as $(a_n-n)(a_{n-2}+1)=(a_{n-1}-n+1)(a_{n-1}+n-1)$. Starting at $a_0=1,a_1=3$, induction gives $a_n=2^n+n$ because the second numerator factor is twice the nonzero denominator. Thus $a_{20}=1048596$. | 2,050 → 1,590 |
+
+### Combinatorics
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2014_CombinatoricsA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2014_CombinatoricsASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2014_CombinatoricsB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2014_CombinatoricsBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 3 | Tilings of sizes 6, 7, and 8 come from a $3\times3$ grid with a $2\times2$ block merged, a quadrant subdivision of a four-tile square, and a $4\times4$ grid with a $3\times3$ block merged. Splitting any square adds three. In a five-tile tiling four proper squares own the four corners and a fifth can fill a gap along at most one outer side. Three sides therefore have adjacent corner side lengths summing to 1, forcing the fourth too and opposite sizes equal. If a size exceeds $1/2$ the opposite large tiles overlap, while four half-size tiles leave no room for a fifth. The largest impossible count is 5. | 1,880 → 1,600 |
+| 2 |  | A new line cut at $k$ distinct intersection points has at most $k-1$ bounded intervals and adds at most that many bounded regions. In general position every such interval adds one. Hence the maximum is $1+2+\cdots+12=78$. | 1,750 → 1,250 |
+| 3 |  | The face adjacency graph is the cube, or $K_{4,4}$ minus an antipodal matching. Rotations identify the two parity sides and act transitively on subsets of each size on one side. There are three two-color orbits. With three colors each confined to one side, one side is monochromatic. The other uses two colors in multiplicities $(1,3),(2,2),(3,1)$ with names fixed, yielding nine orbits. A color used on both sides must appear exactly on one antipodal pair. There cannot be two such colors because the leftover four vertices contain an adjacency. For one such color the remaining six form a cycle, with the two alternating colorings equivalent by a rotation that swaps antipodes. This gives three additional orbits, totaling 15. | 2,200 → 1,860 |
+| 4 | 5 | Tiling each row independently gives the recurrence $a_n=a_{n-1}+a_{n-2}$ from the last tile. Thus $a_{10}=89$ and the two rows give 7921. | 1,620 → 1,120 |
+| 5 |  | For integer exponents, divisibility is coordinatewise order on $[0,4]^3$. A product of symmetric chains decomposes into symmetric chains by peeling a bottom edge and right edge in each chain rectangle, then repeating on its remainder. Thus the largest antichain is the middle rank. Its size is $\binom82-3\binom32=19$. The PDF's middle antichain for two fixed coordinates is labeled with sum 5 where it should read 4. | 2,600 → 1,950 |
+| 6 |  | At an interior intersection, both diagonals vary in exactly the coordinates strictly between zero and one. Distinct diagonals on that same face must give their varying parameters both equal and complementary, hence equal to $1/2$. Conversely every face of dimension at least two gives its center. There are $3^5-2^5-5\cdot2^4=131$. | 2,820 → 1,640 |
+| 7 |  | For hidden information, in the bipartite graph of positions and values remove all edges guessed on the papers. If Hall fails for $r$ positions, every one of the at least $2015-r$ values outside their remaining neighborhood must have been guessed in every one of those positions. Covering that rectangle with permutation matchings takes at least $\max(r,2015-r)\ge1008$ papers. Conversely 1008 cyclic shifts among the first 1008 positions and values cover a rectangle that no permutation can avoid. If Ding's paper is visible, a single copy is sufficient. Accept 1008 and 1. | 3,450 → 2,290 |
+| 8 | 8 | The sets of stay-home days for any two friends must be incomparable because each needs a day to visit the other. Seven days allow at most $\binom73=35$ such schedules. Eight allow $\binom84=70$, enough to assign 60 different schedules. Answer 8. | 2,820 → 1,800 |
+|  | 1 | Under independent uniform arrivals, take minutes relative to 8 AM. The favorable area of $[0,60]\times[-60,30]$ is $20\cdot20+20\cdot20/2=600$ out of 5400, giving probability $1/9$ and answer 10. For uniform $U$ on $[0,1]$, the pair $(60U,90U-60)$ has the same marginals and always differs by at least 30 minutes. Use self-check for the missing dependence assumption. | 1,410 |
+|  | 2 | The grid entry is $100(i-1)+j$. Each row term and each column term appears twice. Their sum is $2\sum_{i=1}^{100}(100(i-1)+i)=1000100$. | 1,570 → 1,090 |
+|  | 4 | Let $F(n)$ be the largest matching on $n$ consecutive vertices. A chord from the first vertex to the vertex at distance $8m$ splits the other vertices into intervals of lengths $8m-1$ and $n-8m-1$. Induct in this recurrence together with the option to leave the first vertex unused. For $n\ge1$ the upper bound is $\lfloor(n-1)/8\rfloor$. If the second interval is nonempty, the resulting bound is $\lfloor(n-2)/8\rfloor$. Otherwise it is $m$. Nested chords of successive endpoint distances $8m,8m-8,\ldots,8$ inside the first $8m+1$ vertices attain the bound. Answer 39. | 2,200 → 1,810 |
+|  | 6 | Choose the first 19 rows and 13 columns freely. The last entries in each row and column follow from parity, and the shared corner is consistent because the totals agree. So $\log_2n=19\cdot13=247$. | 2,020 → 1,300 |
+|  | 7 | In every block of eleven consecutive integers, the two forbidden differences describe the cycle generated by adding 4 modulo 11. Each block allows at most five choices, and the last singleton gives at most one more. Repeat five independent residue classes containing 1 to attain $183\cdot5+1=916$. | 2,750 → 1,640 |
+
+### Geometry
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2014_GeometryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2014_GeometryASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2014_GeometryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2014_GeometryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 |  | From the figure split $x$ along $AF$ into $y=[ADF]$ and $z=[AEF]$. Ratios of triangles with common heights give $z/2=(x+3)/8$ and $y/3=(x+2)/9$. With $x=y+z$, this gives $x=17/5$ and answer 22. | 1,780 → 1,460 |
+| 2 | 1 | In normalized barycentric coordinates, $M=(1/2,0,1/2)$, $N=(11/18,7/18,0)$ and $P=(11,7,11)/29$ by the angle-bisector theorem and median. Areas of $AMP$ and $APN$ relative to $ABC$ add to $7/58+77/522=70/261$, giving 331. | 1,780 → 1,630 |
+| 3 | 4 | The midpoint distance is $OM=\sqrt{15^2-9^2}=12$. Vertex $A$ is $15\sin150^\circ=15/2$ from line $OM$. The centroid's distance is one third of this, so the area is $12(5/2)/2=15$. | 1,920 → 1,350 |
+| 4 | 5 | Brahmagupta gives area 18. For consecutive sides $a,b,c,d$, the circumdiameter is $\sqrt{(ab+cd)(ac+bd)(ad+bc)}/(2[ABCD])$. Substitution gives $\sqrt{60\cdot36\cdot39}/36=\sqrt{65}$ and sum 66. | 2,300 → 1,580 |
+| 5 | 6 | Put $A=(0,0),K=(8,0),M=(14,0)$ and write $B=(u,v)$. The relation $BK=8$ implies $u^2+v^2=16u$. Since $C=(28-u,-v)$, the point $I=(i,0)$ satisfies $(I-C)\cdot B=0$, giving $i=28-(u^2+v^2)/u=12$. | 2,450 → 1,630 |
+| 6 |  | Use $A=(0,0),B=(15,0),C=(49/5,168/5)$ and $O=(15/2,385/24)$. With $D=(49/5,0)$, projection gives $R=(49/625)C$ and $W=B+(169/7225)(C-B)$. The oriented shoelace sum for $C,R,O,W$ has magnitude 252, yielding 126. | 2,900 → 1,950 |
+| 7 |  | Since $\angle ACB=90^\circ$, $CM^2=AM^2=26^2-OM^2$. Apollonius gives $CM^2+OM^2=2MN^2+OC^2/2$. Therefore $MN^2=(676-578)/2=49$ and $MN=7$. | 2,600 → 1,580 |
+| 8 | 8 | Use vectors from $O$ and write the chords through $F$ as $A=F+a u,D=F+d u,B=F+b v,C=F+c v$ for unit directions $u,v$. The signed products satisfy $ad=bc=P=\lvert F\rvert ^2-49$. Write $E-F=xu+yv$. Then $x/a+y/b=1$ and $ax+by=P$ from the two lines through $E$. The sums $a+d=-2F\cdot u$ and $b+c=-2F\cdot v$ now give $2F\cdot(E-F)=-2P$. Thus $F\cdot E=49$, yielding cosine $7/26$ and answer 33. | 3,270 → 2,130 |
+|  | 2 | Let $H$ be the base centroid. Then $CM=3\sqrt3$, $CH=2\sqrt3$, and $OH=\sqrt{69}$. In the triangle $MCO$, equate twice the area to $CM\cdot OH$ and to $OC$ times the requested distance. Its square is 23. | 1,820 → 1,320 |
+|  | 3 | The archived PDF has no referenced figure. Let the barycentric coordinates of $P$ be $(a,b,c)$, and set $S=[ABC]=12+3x$, so $aS=12$. The two equal corner areas are $abS/(a+c)$ and $acS/(a+b)$, forcing $b=c$. Therefore $x=12(S-12)/(S+12)$ and the positive solution is $x=4$. The solution PDF calls $P$ by the name $F$. | 1,880 → 1,640 |
+|  | 7 | Set $x=\angle BPC$. The four triangles give the angle data, and the sine law equates two expressions for $BP/DP$. Rearranging, $\sin(110-x)\sin(x-20)/(\sin(145-x)\sin(x-40))=\sin20\sin70/(\sin35\sin40)$ in degrees. For $40<x<110$, both factors $\sin(110-x)/\sin(145-x)$ and $\sin(x-20)/\sin(x-40)$ are positive and strictly decreasing, by differentiating each sine ratio. At $x=75$ equality follows from the double-angle formulas for $\sin40$ and $\sin70$. Thus 75 is unique. | 2,680 → 1,880 |
+
+### Number Theory
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 1 | For roots $-r,-s,-t$, evaluate at 1 to get $(1+r)(1+s)(1+t)=2015=5\cdot13\cdot31$. All factors exceed one and must be these three primes. The constant term is $4\cdot12\cdot30=1440$. | 1,620 → 1,160 |
+| 2 | 2 | Powers of 17 repeat their last digit with period four. The exponent is a power of 17, hence 1 modulo four. The last digit is 7. | 1,430 → 950 |
+| 3 |  | Legendre's formula gives $v_3(2014!)=671+223+74+24+8+2=1002$. Thus it has 501 base-nine trailing zeros, and $501=(616)_9$. | 1,780 → 1,200 |
+| 4 | 5 | The integer $n$ is odd. Dividing $(n-1)(n+1)=3\cdot2^x$ by 4 gives a pair of consecutive positive integers with product $3\cdot2^{x-2}$. The odd member must be 3, since 1 paired with 2 lacks the factor 3. Pairing 3 with 2 or 4 gives $x=3$ or 4. Sum 7. | 2,150 → 1,430 |
+| 5 |  | Shift $u=x-2,v=y-2$. Then $(2v-u)^2+3u^2=16$, so $u=-2,-1,0,1,2$. The allowable values $-2,0,2$ each give two values of $v$, totaling 6. | 2,250 → 1,370 |
+| 6 | 6 | Even the largest five eligible reciprocals sum to less than one. Clearing denominators modulo 3 gives $2^n\equiv n2^{n-1}$ and $n\equiv2\pmod3$, forcing at least eight. The reciprocals for $2,5,8,14,20,44,56,77$ sum to exactly 1. The official witness $2,5,8,11,20,44,89,792$ sums to $8821/8811$ instead. | 2,680 → 2,260 |
+| 7 | 8 | If the ratio is $k^2$ for odd $k$, then $k^2\ne1$ and $2n=(x-n)(k^2-1)$. Since $8\mid k^2-1$, $4\mid n$. Conversely $k=3$ and $x=n+n/4$ works whenever $4\mid n$. There are 503 such $n$. | 2,680 → 1,330 |
+| 8 |  | Let $S=a+b+c+d$. Each variable $u$ satisfies $(2k_u+1)u+k_u^2=S$ for an integer increment $k_u\ge1$. From $S\le4d$ we get $k_d=1$ and $S=3d+1$. Since $c\ge(2d+1)/3$, $k_c=1$ and $c=d$. Then $a+b=d+1$. The bound $b\ge(d+1)/2$ forces $k_b\le2$, and $k_b=1$ would force $a=1$. So $k_b=2$, $b=(3d-3)/5$, and $a=(2d+8)/5$. Then $2\le k_a\le3$, giving $(6,6,11,11)$ and $(40,57,96,96)$. Both work and the sum of $d$ values is 107. | 3,650 → 2,460 |
+|  | 3 | Count paired divisors for each $100\le n\le999$, adding one for a square-root divisor. Only $840=2^3\cdot3\cdot5\cdot7$ reaches 32 divisors, and all others have at most 30. | 1,980 → 1,530 |
+|  | 4 | The gcd of numerator $i$ and denominator $2015-i$ equals $\gcd(i,2015)$. Symmetry pairs all reduced residues across the halfway point. Half of $\varphi(2015)=4\cdot12\cdot30$ gives 720. | 2,020 → 1,290 |
+|  | 7 | A permutation preserving divisibility is an order automorphism by finiteness. The prime-power chain lengths fix $2,3,5$. Products with these primes distinguish $7$ and $11$, leave $13$ and $17$ interchangeable, and leave the four primes at least 19 interchangeable. The induced prime map determines each composite via its prime-power divisors. Each of the $2!4!=48$ choices extends. | 3,080 → 2,070 |
+
+**Verification.**
+
+- Full repository gates passed.
+- Short-answer tests and Chromium checks passed for the two permitted permutation answers, the arrival-time self-check, and the Egyptian-fraction correction. Practice and Arena review display the notes beside the official PDF links.
+
+## PUMaC problem audit, 2015 papers (2026-11-28)
+
+- Independently review all 64 indexed appearances across eight papers and eight solution PDFs. Revise 60 Elo estimates and match shared questions.
+- Correct the tournament answer from 22,125 to 16,092. The five-team strong component has six types, confirmed by Burnside and exhaustive enumeration.
+- Use self-check for the two questions missing an independence or integer-domain assumption. Accept both denominator signs on the recursive-gap problem. Preserve the organizers' void ruling on the coordinate transformation.
+
+Codex PR #481. Shared Division A and B questions appear once, with both numbers.
+
+### Algebra
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2015_AlgebraA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2015_AlgebraASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2015_AlgebraB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2015_AlgebraBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 |  | Write $b=a^k$. For $k=1$ through 10, the allowable base counts are $2014,43,11,5,3,2,1,1,1,1$. Their sum is 2082. | 1,460 → 1,120 |
+| 2 | 4 | The organizers withdrew the question. Even with nonconstant scaling, coefficient comparison gives $a=12,b=6,d=0$ and either $c=72$ or $c=-72$, yielding 90 and $-54$. Constant maps such as $a=b=c=d=0$ also satisfy the conditions. Keep the organizer's void ruling. | 2,020 |
+| 3 | 5 | Factoring gives $(x^2+x+1)^2(x^2-7x+7)$. The two simple roots therefore sum to 7. The solution's use of distinct roots is imprecise because all four distinct root values sum to 6. | 1,880 → 1,570 |
+| 4 | 6 | For $r_n=a_{n-1}/a_n$, division gives $r_n=r_{n-1}+1/n$ and $r_2=1/2015$. The first value above one occurs at $n=7$, which is the first decrease. | 2,020 → 1,380 |
+| 5 |  | Under $T(z)=2z-1$, the operation becomes $T(a)T(b)$. Thus every order yields the same transformed product $\prod_{k=0}^{14}(2\zeta^k-1)=2^{15}-1$, from the factorization of $x^{15}-1$. Inverting $T$ gives 16384. | 2,350 → 1,610 |
+| 6 | 7 | The symmetric cubic has $f(a,b)-f(b,c)=(a-c)(a^2+b^2+c^2+ab+bc+ca-4(a+b+c)+4)$. With $u=a-1,v=b-1,w=c-1$, the equality condition becomes $u^2+v^2+w^2+(u+v+w)^2=4$. The objective is the least of $(u^2-1)^2,(v^2-1)^2,(w^2-1)^2$. If all exceeded one, each square $u^2,v^2,w^2$ would exceed two, impossible. The distinct triple $(\sqrt2,0,-\sqrt2)$ attains one. | 2,990 → 1,830 |
+| 7 | 8 | On $[1,L]$ with $L=(3+\sqrt5)/2$, the two maps have Lipschitz constant at most $1/2$ and images $[1,\sqrt L]$ and $[2,L]$. The closure of the finite orbit consists of nested images of this interval because their diameters tend to zero and each contains an orbit point. Hence all gaps are the first gap $(\sqrt L,2)$ or its smaller images. Its length $(3-\sqrt5)/2$ is the threshold because the closed interval of exactly that span includes 2, an orbit point. Smaller subintervals are bounded by orbit points below and above. The positive denominator gives 9, while reversing the signs of the numerator and denominator gives 1 under the printed conditions. | 3,450 → 2,230 |
+| 8 |  | The root of unity must be primitive because 73 is prime and $\omega=1$ would make the sum positive. Reduce the polynomial sum modulo $x^{73}-1$. It vanishes at $\omega$, so its 73 coefficients must all equal the same constant by divisibility by $\Phi_{73}$. Their sum $72P(1)$ is therefore divisible by 73. Since all 2016 coefficients of $P$ are positive, $P(1)\ge2044$. Build a polynomial with exponent residues each contributing 28 units by increasing one coefficient in each deficient class. Evaluating it at any primitive root gives zero, and $2015$ is coprime to 73, so 2044 works. | 3,500 → 2,350 |
+|  | 1 | The price equation is $(n+20)(n+15)=1050$, or $(n+50)(n-15)=0$. The order is 15 cupcakes and takes 90 minutes. | 1,100 → 860 |
+|  | 2 | Check $(f(0),f(1),f(2))\in\{0,1,2\}^3$. The only triples with the required sum of iterates are $(1,2,1)$ and $(2,1,2)$, giving 2. | 1,330 → 1,090 |
+|  | 3 | The geometric term exceeds the arithmetic term by $(b-a)^2/a$. For integer inputs, a positive integer square requires $a=t^2$ and $t\mid b$, with $b\ne a$. Summing $\lfloor100/t\rfloor-1$ for $1\le t\le10$ gives 281. The printed bounds do not specify integer inputs, and $b=a+\sqrt a$ gives infinitely many allowed real pairs with difference one. Use self-check. | 1,820 |
+
+### Combinatorics
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 |  | Counts by length are $4,13,33,60,60$. For each length add arrangements of distinct letters and arrangements using both copies of o, dividing by $2!$ in the second case. Total 170. | 1,430 → 1,050 |
+| 2 | 4 | A particular color is seen with probability $1-(9/10)^4$. Summing the ten indicators gives $3439/1000$, so 4439. | 1,520 → 1,110 |
+| 3 | 5 | There are $\binom{1860}{2}$ eligible ordered position pairs. For each, the images form a uniform ordered pair of distinct values, with $\binom{1749}{2}$ meeting the difference bound. Thus the expectation is $\binom{1860}{2}\binom{1749}{2}/(2015\cdot2014)=651222$. | 2,020 → 1,460 |
+| 4 | 6 | A uniform sorted 3-subset of 1 through 9 has mean order statistics $(5/2,5,15/2)$ by symmetry of its four gaps. Encode the sorted last-three multiset $a\le b\le c$ as the subset $a<b+1<c+2$ of 1 through 11. Its means are $(3,6,9)$ before unshifting, so the last three descending means are $(7,5,3)$. Place values give 308253. | 2,350 → 1,730 |
+| 5 | 7 | Every layer needs at least three occupied cubes, leaving layer sizes $3,3,4$. The two layers of three are permutation matrices and all nine vertical stacks must be hit. If the two permutations are disjoint, there are $6\cdot2$ pairs and six choices for the extra position in the four-cell layer beyond the three missing stacks. If their overlap has size one, there are $6\cdot3$ pairs and the four missing stacks force the third layer. Each remaining row and column is hit in both cases. Choose the four-cell layer in three ways, giving $3(72+18)=270$. | 3,080 → 1,980 |
+| 6 |  | For independent days, the standard run recurrence from a failure gives $T(p)=p^{-1}+p^{-2}+p^{-3}+p^{-4}$. This equals 2800 at $p=1/7$, so the official answer is 8. For a counterexample, choose a latent success probability $1/2$ with probability $188/465$, or $1/8$ otherwise, then run independent days conditional on that choice. The two mean waits are 30 and 4680, whose weighted average is 2800. Each day has the same marginal $343/1240$, which yields a different sum. Use self-check. | 2,450 |
+| 7 |  | Two rows may share at most one orange column and one black column. No row is monochromatic, and at most one row each has 1 or 3 orange entries. Four weight-2 rows give $\binom64=15$ unordered choices. Weights $3,2,2,1$ give $4\binom32=12$ because the two pairs use the triple's missing column and force the singleton. Weights $3,2,2,2$ give 4, and complementing gives four more. Multiply the 35 row sets by $4!=24$ to get 840. | 3,270 → 1,910 |
+| 8 |  | The strongly connected components form a linear order. Two nontrivial components would supply two directed triangles and a forbidden six-team set. One component of size at least six would also supply a directed six-cycle. To extend a directed cycle of length $k$ in a larger strong tournament, insert any outside vertex with both an incoming and an outgoing edge on it. If none exists, choose a vertex dominated by the cycle that beats a vertex dominating the cycle. Such an edge exists by strong connectivity. Use the latter vertex, then $k-1$ consecutive cycle vertices, then the former. This gives length $k+1$, so a directed triangle extends to length six. Conversely, with at most one nontrivial component of size at most five, every six-team subset has a singleton extreme component and therefore a winner or loser. Burnside gives 2, 4, and 12 unlabeled tournaments on three, four, and five vertices. Only odd permutation cycles can fix a tournament. For five vertices the count is $(2^{10}+20\cdot2^4+24\cdot2^2)/120=12$. Removing the transitive type and placements of smaller strong types leaves 1, 1, and 6 strong types respectively. Independent enumeration of all orientations up to permutations agrees. The corrected total is $1+2013+2012+6\cdot2011=16092$. | 3,850 → 2,800 |
+|  | 1 | There are $4\cdot3\cdot2=24$ words with distinct letters and $3\cdot3=9$ with two os. Total 33. | 1,120 → 950 |
+|  | 2 | If the counts of 7-, 8-, and 9-coin entries are $a,b,c$ and there are $k$ moves, then $7b-c=4k-11$. There is no nonnegative solution with $a+b+c=k$ for $k=1,2,3$. The input sequence $9,8,9,7$ changes the holdings $15\to10\to13\to8\to4$ and follows the restriction, so four moves suffice. | 1,430 → 1,220 |
+|  | 3 | Ten up steps and three down steps give $\binom{13}3=286$ unrestricted paths. Reflect the paths hitting zero through the first hit to get paths from $-2$ to 9, of which there are 13. Subtract to get 273. | 1,650 → 1,340 |
+|  | 8 | Let $F_j(a,k)$ count the first $j$ rows whose last row has mask $a$ and total count $k$. A valid next mask $b$ has no consecutive 1s and satisfies $b\mathbin{\&}(a\mathbin{\lor}(a\ll1)\mathbin{\lor}(a\gg1))=0$. Update $F_{j+1}(b,k+\lvert b\rvert )$ from $F_j(a,k)$ starting with $F_0(0,0)=1$. Summing the states with $j=6,k=9$ yields 3600. | 3,360 → 1,930 |
+
+### Geometry
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2015_GeometryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2015_GeometryASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2015_GeometryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2015_GeometryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 3 | The maximal regular dodecagon is inscribed. Its area is $12\cdot(4^2/2)\sin30^\circ=48$, so the area trimmed is $16\pi-48$. Answer 64. | 1,350 → 1,020 |
+| 2 | 4 | For each adjacent face, unfold it directly against the starting face. A point with depth $d$ and edge coordinate $y$ has shortest length $\sqrt{(1+d)^2+y^2}$. Routing through the side at $y=1$ replaces $y$ by $2-y$ and cannot shorten it, and the opposite neighboring side is symmetric. A path via the face opposite the starting face exceeds length 2, as does a path starting on the laterally opposite side. The exposed area per adjacent face is $\int_{-1}^{1}(\sqrt{4-y^2}-1)\,dy=\sqrt3+2\pi/3-2$. Adding the central square and all four faces gives $8\pi/3+4\sqrt3-4$. The requested sum is 14. | 2,200 → 1,740 |
+| 3 | 5 | Place $C,B,D,A$ on the unit circle at angles $0,40,-40,160$ degrees respectively, using the given arcs. The bisector is the horizontal axis and the chord $AD$ meets it at $x=-2\sin10^\circ$. The angle from the axis to $PB$ has tangent $\sin40/(\cos40+2\sin10)=1/\sqrt3$ since $2\sin10=\sqrt3\sin40-\cos40$. By symmetry the full angle is $60^\circ$. | 1,820 → 1,500 |
+| 4 | 6 | The centers must lie in the tetrahedron inset by $r$, with side $1-r/\rho$ where $\rho=\sqrt6/12$ is the original inradius. Its diameter equals its side length, so $2r\le1-r/\rho$. The four inset vertices attain equality. Thus $r=(\sqrt6-1)/10$, giving 15. | 2,300 → 1,610 |
+| 5 | 7 | The cosine law gives $BC=49$, so the common circumdiameter is $98/\sqrt3$. The cosine of angle C is 1/7, so the arc from P to B excluding C is the minor arc. Along it let $u,v,w$ be the half-angles corresponding to chords $PA=21,BD=39,PB=56$. The half-angle between $A$ and $D$ is $w-u-v$. The cosines of $u,v,w$ are $91/98,71/98,14/98$ respectively, and their sines are the chord lengths divided by the diameter. The sine subtraction gives $(98/\sqrt3)\sin(w-u-v)=16$. | 2,400 → 1,830 |
+| 6 | 8 | Use $A=(0,2h),H=(0,h),D=(0,0),B=(-u,0),C=(v,0)$. The altitude from B gives $uv=2h^2$. Comparing circumcenter distances puts its height at $h/2$, yielding $(u+v)^2+h^2=4$. The tangent segments from the three vertices of the outer triangle have lengths $\tan A,\tan B,\tan C$. Their pairwise sums are in arithmetic progression exactly when the segments are. Since $\tan B\tan C=2$ and $\tan A=\tan B+\tan C$, the three lengths are $1,2,3$. Thus $(u+v)/h=3$ and the area $h(u+v)=6/5$. Answer 11. | 3,500 → 2,100 |
+| 7 |  | Set $D=0$, $B=bu$, $C=cv$ with unit $u,v$, and $t=AD$. The similarity gives $b=3t/4,c=9t/16$. If $g=u\cdot v$, the angle at D gives $A=t(2gu-v)$, and $AB=AC$ forces $g=-3/8$. Write $A=a_1u+a_2v$, $P=pu$, $Q=qv$, and $X=su+rv$. Then $a_1/p+a_2/q=1$ and the two circle equations are $\lvert X\rvert ^2=bs+qr=ps+cr$. Eliminating $p,q$ gives $\lvert X\rvert ^4-\lvert X\rvert ^2[(b+a_1)s+(c+a_2)r]+a_1b s^2+bc sr+a_2c r^2=0$. Because $a_1b=a_2c=-9t^2/16$ and $bc=2g a_1b$, the last quadratic equals $(-9t^2/16)\lvert X\rvert ^2$. Dividing out the fixed solution $D$ gives a circle through $A,B,C$. The equations can be inverted for $p,q$ off finitely many degenerate points, so it is the whole circle up to those points. Its radius is $80/\sqrt{55}$ by the area formula for $ABC$. Thus the enclosed area is $(1280/11)\pi$, giving 1291. | 3,800 → 2,790 |
+| 8 |  | Take affine axis coordinates along $AB,AC$ with $A=(0,0)$. Let the two tangent lengths from A be $t$, so the polar of A is $x+y=t$. In homogeneous coordinates the involution $(x,y,z)\mapsto(x,y,2(x+y)/t-z)$ exchanges the two circle points on each line through A. This follows by writing the conic with constant homogeneous term $z^2$ and polar cross term $-2(x+y)z/t$, whose two roots in $z$ have sum $2(x+y)/t$. Therefore it maps tangent $BC$ to tangent $MN$, changing its intercept equation $x/8+y/10=z$ to $(2/t-1/8)x+(2/t-1/10)y=z$. With $AN=4$, $2/t=1/4+1/10=7/20$, and $AM=40/9$. Answer 49. The solution PDF's intermediate claim that $P$ is on $EF$ is false for the distinct second intersection. | 3,800 → 2,430 |
+|  | 1 | Each corner right triangle has hypotenuse $17$, the side of the square. With $A=(0,0),E=(0,17)$, one obtains $F=(-120/17,225/17)$ from its two distances. The square's central half-turn sends $F$ to $C$. Their separation is $23\sqrt2$, yielding 25. | 1,380 → 1,250 |
+|  | 2 | The volume scale of $1/8$ corresponds to a length scale of $1/2$. The unit tetrahedron's height squared is $1-1/3=2/3$, so the smaller height squared is $1/6$ and the answer is 7. | 1,300 → 1,000 |
+
+### Number Theory
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryASol-wes5.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 2 | The units digit of powers of 22 is 2, 4, 8, 6 periodically. The 22nd exponent congruent to one modulo four is 85. | 1,210 → 900 |
+| 2 | 3 | For even $n$ the lcm is $n^2$, giving 2 and 12. For odd $n$ it is $2n^2$, and the corresponding quadratic has roots 3 and 4, only the first odd. Sum 17. | 1,490 → 1,220 |
+| 3 | 6 | For $4096\le n<10000$, the digit lengths in bases 4, 8, 16 are 7, 5, 4. The simultaneous upper bounds from the multiples are $\lfloor(4^7-1)/3\rfloor=5461$, $\lfloor(8^5-1)/7\rfloor=4681$, and $(16^4-1)/15=4369$. The smallest bound is in range and satisfies all three. | 2,050 → 1,530 |
+| 4 | 7 | The exponent 15 is invertible modulo 28 with inverse 15. Raising both sides to 15 gives the unique residue $n\equiv20^{15}\equiv20\pmod{29}$. Thus the smallest positive value is 20. | 2,200 → 1,400 |
+| 5 |  | At $a=1$, Wilson gives $(p-2)!\equiv1\pmod p$. For $p\ge7$, the distinct factors 2 and $(p-1)/2$ of $p-1$ occur in $(p-2)!$, so for $a\ne1$ the geometric series vanishes. For $p=3$ its length is one and both $a$ work. For $p=5$ its length is six and $a=1,2,3$ work. There are 22 larger primes, giving 27 pairs. | 2,400 → 1,720 |
+| 6 |  | For $p^e\Vert n$ the corresponding factor of the multiplicative divisor sum is $\sum_{j=1}^{e+1}j^3=((e+1)(e+2)/2)^2$. To use separate primes, the least exponents for factors of 5 and 7 are 3 and 5, giving $2^5\cdot3^3=864$. If one exponent provides both, it must be at least 13 since the first consecutive integers contributing both divisors are 14 and 15. This is larger, so 864 is minimal. | 2,820 → 1,880 |
+| 7 | 8 | For a generator $g$ modulo 73 the primitive roots are powers with exponents $6j+1,6j+5$ for $0\le j<12$. Their $k$th-power sum equals $(g^k+g^{5k})\sum_{j=0}^{11}(g^{6k})^j$. This is zero unless $12\mid k$. When $12\mid k$, the geometric factor is 12 and $g^{4k}$ has order at most three, so it cannot equal $-1$. Thus 1847 of the positive integers below 2015 give zero. | 3,180 → 1,950 |
+| 8 |  | Legendre identifies $f_n(x)$ with $\sum_p(p-1)v_p\binom nx$. All these binomial coefficients are odd because $n=2^{2015}-1$. Thus divisibility by 4 is equivalent to $\binom nx\equiv1\pmod4$. In $\prod_{j=1}^x(2^{2015}-j)/j$, cancel each denominator's power of two. Every factor is $-1$ modulo 4 except at $j=2^{2014}$, where it is 1. Hence among $1\le x<n$, the valid values are even before that midpoint and odd at and after it. There are $2^{2014}-2$ such values and their count modulo 1000 is 382. | 3,850 → 2,580 |
+|  | 1 | Each of the 101 powers is 1 modulo nine, so the remainder is 2. | 1,010 → 800 |
+|  | 4 | Reflection preserves the angle to the normal. The first chord leaves the bottom point at $55^\circ$ to the inward radius, so its central angle is $180^\circ-2\cdot55^\circ=70^\circ$. The first return takes $360/\gcd(360,70)=36$ increments. | 1,620 → 1,240 |
+|  | 5 | By Fermat $a^{p-2}=a^{-1}$ modulo $p$, so the condition is $a^2\equiv1\pmod p$. Exactly two residues work per prime, giving 48. | 1,680 → 1,060 |
+
+**Verification.**
+
+- Full repository gates passed.
+- Short-answer tests and Chromium checks passed for the corrected tournament key, self-check, alternate answers, and organizer rulings. Practice and Arena review display the notes beside the official PDF links.
+
+## PUMaC problem audit, 2016 papers (2026-11-28)
+
+- Independently review 64 indexed appearances across eight papers and eight solution PDFs. Revise 61 Elo estimates and match shared questions.
+- Use self-check for the first-occurrence and train-schedule questions because their marginal distributions do not determine their expected values.
+- Add explanations beside the official solution links for those questions and for the root, reciprocal-series, and undefined-domain corrections.
+
+Codex PR #481. Shared Division A and B questions appear once, with both numbers.
+
+### Algebra
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2016_AlgebraA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2016_AlgebraASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2016_AlgebraB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2016_AlgebraBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 2 | The triple of cubes ending at index $k$ sums to $k$. Group indices 2 through 10 into triples ending at 4, 7, and 10. Together with $20^3$ this gives 8021. | 1,380 → 1,040 |
+| 2 | 4 | The fixed point of $f$ is 144 and $f(x)-144=15(x-144)$. Thus $(15^5-15)(x-144)=0$, giving 144. | 1,430 → 1,060 |
+| 3 | 5 | Put $t=\log_2x$. The equation becomes $t^3-13t+12=(t-1)(t-3)(t+4)=0$. The three $x$ values sum to $2+8+1/16=161/16$. Answer 177. | 1,780 → 1,470 |
+| 4 | 6 | One polynomial is $2+(x-1)+1006(x-1)(x-2)$. Every other eligible polynomial differs by an integer polynomial multiple of $(x-1)(x-2)(x-3)$. At $x=2016$, the displayed polynomial is positive and smaller than the positive modulus $2015\cdot2014\cdot2013$, so it gives the first positive value. Modulo 2016 its value is $1+2\cdot1006=2013$. | 2,400 → 1,740 |
+| 5 | 7 | After squaring 181 and subtracting one, three halvings reach $4095=2^{12}-1$ at index 5. Starting at $2^k-1$ for $k\ge2$, one squaring-minus-one and $k+1$ halvings yield $2^{k-1}-1$. The number of steps to reach 1 is therefore $\sum_{k=2}^{12}(k+2)=99$. One more step makes 0 at index 105. | 2,300 → 1,590 |
+| 6 |  | Subtract one from all board values, so the merge is $xy-2$ on leaves $1,\ldots,100$. Branches excluding 1 stay at least as large as their smallest leaf. If combining 1 makes a nonpositive branch, it remains nonpositive and cannot maximize the final answer. Within a positive tree, lift its smallest leaf $m$ toward the root. Replacing $X(Ym-2)-2$ by $(XY-2)m-2$ increases the value by $2(X-m)\ge0$. Repeat after removing this last leaf to get the descending fold. The final original value is $100!+1-2\sum_{j=0}^{98}j!$. It is nearest to $100!$, and the exact scaled relative difference rounds to 204. | 3,550 → 2,580 |
+| 7 | 8 | Any root $\alpha$ forces roots $\alpha^2$ and $(\alpha+1)^2$. Squaring repeatedly forces each root to be zero or on the unit circle, and zero would force one and then four. Thus $\lvert \alpha\rvert =\lvert \alpha+1\rvert =1$, selecting the two conjugate primitive cube roots. Squaring interchanges them and cannot decrease multiplicity in either direction. A nonzero solution is therefore $P(x)=(x^2+x+1)^k$, which directly satisfies the equation. The largest $k$ with $3^k\mid2016$ is 2, giving $111^2=12321$. The solution PDF's sign belongs within the numerator. | 3,270 → 2,100 |
+| 8 |  | For $0<\lvert x\rvert <1$, write $m=2^a3^b$. The summand in the difference at reciprocal arguments is $(x^m+x^{5m})/(1-x^{6m})$. Its expansion counts each positive exponent once because stripping powers of 2 and 3 leaves a number congruent to 1 or 5 modulo 6. Hence the difference is $x/(1-x)$. For $\lvert x\rvert >1$, take the negative of the reciprocal value to obtain $1/(1-x)$, which cannot reach 2016. The solution is $2016/2017$, giving 4033. The booklet's latter formula is for the difference. | 3,650 → 2,240 |
+|  | 1 | We get $(x^2-1)^2=99^2$. The only positive real solution comes from $x^2-1=99$, giving 10. | 950 → 800 |
+|  | 3 | The new $x$-axis is the old line $y=16$. The roots of $x^3-13x^2+40x+9=0$ sum to 13. The translation adds 20 to each root, so the new sum is 73. | 1,520 → 1,080 |
+
+### Combinatorics
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 3 | At any vertex one face from each opposite pair meets. Avoiding all black requires an all-white opposite pair, and avoiding all white requires an all-black pair. The remaining pair can be white, mixed, or black. Each gives one rotation class, so 3. | 1,650 → 1,220 |
+| 2 | 4 | Uniform re-pairing gives the same distribution as a uniformly labeled fixed bracket. The third seed reaches the last four if both higher seeds lie outside the other seven slots of its group. Probability $\binom{29}7/\binom{31}7=92/155$, so 247. | 1,880 → 1,480 |
+| 3 | 5 | Each prediction is 14 plus an adjacent-pair sum. Since no pair can be selected twice, everyone must look the same way. The four given sums are $5,8,7,9$ in order along the circle. Writing the five involved dice as $a,5-a,3+a,4-a,5+a$, the bounds force $a=1$. The remaining die must be 5 so its two sums differ from all four known values. The product is 1440. | 2,050 → 1,720 |
+| 4 | 6 | A uniformly chosen knight move has zero conditional mean and squared length 5. Expanding the squared distance therefore increases its expectation by 5 every turn. The answer is 10080. | 2,150 → 1,370 |
+| 5 | 7 | For independent draws, after the $k$th first occurrence the chance of another first occurrence on the next draw is $(2016-k)/2016$. Summing over $k$ gives $2015/2$ and answer 4030. If a single uniformly chosen value is repeated forever, every draw has the same required marginal distribution, but there are zero adjacent first occurrences. Use self-check for both appearances. | 2,750 |
+| 6 |  | The expected time $E(x)$ satisfies $E(x)=1+[E(x-1)+E(x+1)]/2$ and vanishes at 0 and 2016. The unique quadratic solution is $x(2016-x)$. At $x=1010$ this gives 1016060. | 2,350 → 1,600 |
+| 7 |  | Use units of hours. Let $T$ be Emilia's offset and $U,V$ the two train offsets. For independent uniforms the expected wait is $1/6+\int_0^1 t(3/2-t)\,dt=7/12$ hours. Conditional on $U<T<V$, the remaining wait averages $1/4$ hour by symmetry of the weight $t(1-t)$. Thus the official result is $35\cdot15=525$. For a correlated schedule, alternate $U$ and $1-U$ across hours. The initial wait becomes $1/6+\int_0^1\int_0^t(2-u-t)\,du\,dt=2/3$ hour. The long-wait event has area $1/4$ and remaining-wait integral $1/12$, so the remaining expectation is $1/3$ hour. This gives $40\cdot20=800$ with the same per-hour uniform marginals. Use self-check. | 3,270 |
+| 8 | 8 | Rewriting weights by successive positive differences gives the cumulative totals $(g,g+s,g+s+b)$. Each Ledecky total must be at least the corresponding Phelps total and one must be larger. There are $\binom{10}3=120$ possible rows. Enumerating the pairs gives 4950 weakly dominated pairs, also the MacMahon product for a $2\times3\times7$ box. Removing 120 ties leaves 4830. | 3,600 → 2,090 |
+|  | 1 | Four ordered pairs differ by four and two differ by five. The probability is $6/36=1/6$, giving 7. | 950 → 880 |
+|  | 2 | Under independent fair coin flips, the probability is $(\binom75+\binom76+\binom77)/2^7=29/128$. The requested sum is 157. | 1,070 → 930 |
+
+### Geometry
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2016_GeometryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2016_GeometryASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2016_GeometryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2016_GeometryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 2 | Let the smaller equilateral side length be $t$. The two centers lie on the angle bisector, at distances $2/\sqrt3$ and $t/\sqrt3$ from A, with radii $1/\sqrt3$ and $t/\sqrt3$. Internal tangency is impossible for $0<t\le1$, and external tangency gives $2-t=1+t$. Thus $t=1/2$ and the area is $\sqrt3/16$, yielding 19. | 1,720 → 1,350 |
+| 2 | 3 | Use vertices $A=(0,0),B=(8,0),C=(8,8),D=(0,8)$. Equidistance gives $O=(3,4)$ and radius 5, so $X=(6,0)$. Intersect $O+t(3,-4)$ with $y=x/2$ to get $t=5/11$. Thus $OY=25/11$ and the answer is 36. | 1,880 → 1,390 |
+| 3 | 4 | With slant height $\ell$, unroll the cone to a sector of angle $2\pi r/\ell$. The shorter arc from $P_1$ to $P_3$ passes $P_2$ symmetrically, and the chord midpoint is at radius $\ell\cos(2\pi r/(5\ell))$. Its prescribed radius $\ell/2$ gives $r/\ell=5/6$, hence $h^2/r^2=11/25$ and answer 36. | 2,200 → 1,610 |
+| 4 |  | If the altitude to $BC$ is $h$, the centroid height is $h/3$. Equal areas force the inradius to be $h/3$. Since $r=2016h/(2s)$, the semiperimeter is 3024. Every side is strictly smaller than that, and $3023,2016,1009$ form a valid triangle. Answer 3023. | 2,300 → 1,260 |
+| 5 | 6 | Put $A=(0,0),B=(63,0),C=(28,c)$. Projection of $BA$ onto $BC$ gives $45=63\cdot35/BC$, so $BC=49$ and $AC^2=1960$. The projection onto $AC$ gives $E=(9/10)C$. Hence $CP^2=CE^2+EP^2=CE^2+AP^2-AE^2=196$, yielding 14. | 2,520 → 1,740 |
+| 6 | 7 | Scale to $B=(-1,0),C=(1,0),M=(0,0),A=(0,h)$. Write $P=(x,y)$, so $x^2+y^2=-2x$. The angle constraint gives $-2x-1=-\sqrt{(1-4x)/2}$, whose valid root is $x=(-3+\sqrt7)/4$. The circle with diameter $AC$ gives $hy=-3x$. Substituting into the squared distances yields $CP^2/AP^2=-(x+2)/x=11+4\sqrt7$. Thus the ratio is $2+\sqrt7$ and the answer is 9. | 2,900 → 2,070 |
+| 7 | 8 | Put $X=(0,0),B=(-21,0),D=(d,0)$. The lengths to A give $A=(-15,8)$ after reflecting if needed. Write $C=-(c/17)A$ with $c=XC$. Power of X gives $17c=21d$. The horizontal line through A meets the circle again at $Y_x=d-6$ by symmetry about the perpendicular bisector of $BD$. Extending $DC$ to height 8 gives $E_x=d-15+17d/c=d-26/21$. Their difference is $100/21$, and the area equals $400/21$, giving 421. | 3,180 → 2,030 |
+| 8 |  | Use $B=(0,0),C=(6,0),A=(9/4,5\sqrt7/4)$. The circle with diameter $AM$ and the circumcircle share A. Subtract their coordinate equations and take the other intersection $P=(45/22,27\sqrt7/22)$. The projections are $D=(21/8,9\sqrt7/8)$ and $E=(243/128,135\sqrt7/128)$. The two lines from P meet $BC$ at abscissas 9 and 1. The squared area is $(8\cdot5\sqrt7/8)^2=175$. | 3,600 → 2,370 |
+|  | 1 | As drawn, the four smaller centers make a square. For their common radius $u$, the square side is $2u$ and its circumradius is $1-u$, so $2u=\sqrt2(1-u)$. Thus $u=\sqrt2-1$, and the radius of the central tangent circle is $1-2u=3-\sqrt8$. Answer 11. | 1,380 → 1,140 |
+|  | 5 | Use the three segments joining opposite pairs. Equal cross distances between the endpoints of two such segments force those segments perpendicular, and their midpoint difference perpendicular to both. The three midpoint differences are then along three mutually perpendicular axes and sum to zero, so the midpoints coincide. If the half-lengths are $a,b,c$, their squared sums are $169,196,225$. Thus $a^2,b^2,c^2=99,70,126$. The volume is eight coordinate tetrahedra, or $4abc/3=168\sqrt{55}$. Answer 223. | 2,520 → 1,870 |
+
+### Number Theory
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2016_NumberTheoryA.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2016_NumberTheoryASol.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2016_NumberTheoryB.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2016_NumberTheoryBSol.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 1 | Since $2016=2^5\cdot3^2\cdot7$, the least correcting multiplier is $2\cdot3\cdot7^2=294$. | 1,100 → 820 |
+| 2 | 3 | The second row grows by two, giving $d_{2,j}=2j-1$. The third grows by $4j-4$, giving $d_{3,j}=1+2j(j-1)$. At $j=2016$ the remainder is 481. | 1,620 → 1,120 |
+| 3 | 5 | For odd $n>1$, $f(n)=n+2p$ where $p$ is its least prime divisor. Multiples of 3 and primes cannot qualify. If $p=5$, the three successive numbers form all residues modulo 3 until one hits zero. If $p=7$, qualification requires $f(n)$ to be divisible by 5 and not by 3, since otherwise the next increment is again 14 or a multiple of 3. The first qualifying multiple of seven is 161, with $f(161)=175$ and $f(175)=185$. Indeed $n=7m$ requires $m\equiv3\pmod5$ and excludes $m$ with prime factors below seven or with $m+2$ divisible by three. Below 161 the only composite cases with least prime at least 11 are 121 and 143, which lead to 165 by at most two steps. The printed definition is undefined at $n=1$. | 2,400 → 1,570 |
+| 4 | 6 | The condition is $n^2\equiv n\pmod b$. Each prime power dividing b gives exactly the options 0 and 1 by coprimality of $n,n-1$. Hence at least ten solutions require four distinct primes. The first two bases are 210 and 330, giving 540. | 2,520 → 1,440 |
+| 5 | 7 | For each $p^e\Vert k$, distribute exponent $i$ to one factor and $e-i$ to the other. The gcd/lcm ratio contributes $p^{-\lvert 2i-e\rvert }$. Summing and multiplying the five factors gives $13/882$, so 895. | 2,820 → 1,570 |
+| 6 |  | The factor $2016-1=2015$ contributes $5,13,31$. Other primes have order 239 for base 2016, so are at least $2\cdot239+1=479$. The number 479 is prime and $2016\equiv100$ is a square modulo 479, hence $2016^{239}\equiv1\pmod{479}$. The sum is 528. | 3,180 → 1,810 |
+| 7 | 8 | The interval is one full period of length $2017\cdot2016$, with both endpoints excluded or included contributing nothing. For an element of order $d$ in the nonzero residue group, $2016/d$ exponent classes work. Thus the count is $\sum_{d\mid2016}\varphi(d)\,2016/d$. A prime power $p^e$ contributes $p^e+e(p^e-p^{e-1})$, giving $112\cdot21\cdot13=30576$. | 3,360 → 2,200 |
+| 8 |  | For $p^e\Vert n$ and $v=v_p(k)$, a saturated square with $2v\ge e$ gives $p^{\lfloor e/2\rfloor}$ roots. Otherwise the odd-prime count is $2p^v$. Hence admissible odd exponents obey $v_3\le4,v_5\le5,v_7\le5$. The three odd prime powers supply a combined factor $2^3$ if $v_5<5$ and $2^2$ if $v_5=5$. For $2^8$, the local root count has two-adic valuation $v_2+2$ when $v_2\le2$ and 4 for $v_2\ge3$, using four odd roots modulo $2^j$ for $j\ge3$ and two modulo 4. Thus the allowable $v_2$ range has eight or seven values in those cases. No other prime may divide k. Total $5\cdot6(5\cdot8+7)=1410$. | 3,800 → 2,590 |
+|  | 2 | For $n=10a+b$, the ratio $n/(a+b)$ can only be the multiple of three $3,6,$ or $9$. The equation $(10-k)a=(k-1)b$ yields $27,54,81$ respectively. Their sum is 162. | 1,350 → 970 |
+|  | 4 | Pairing divisors gives $P(n)=n^{\tau(n)/2}$. The desired exponent is odd exactly when $\tau(n)\equiv2\pmod4$. For $n=2^a3^b7^c\mid2016$, that means one of $a+1,b+1,c+1$ has valuation one, with the others odd. The three counts are 4, 3, and 6, totaling 13. | 1,850 → 1,240 |
+
+**Verification.**
+
+- Full repository gates passed.
+- Short-answer tests and Chromium checks passed for the self-check cases and the errors noted beside the official links. Practice and Arena review display the notes beside the official PDF links.
+
+---
+
+## PUMaC problem audit, 2017 papers (2026-11-28)
+
+- Independently review 64 indexed appearances across eight papers and eight solution PDFs. Revise 62 Elo estimates and match shared questions.
+- Correct Number Theory A #7 to 112. The official parity count omits the cubic with a triple root.
+- Accept both readings of the black-ball problem. Explain the conflicting geometry wording beside the official link and grade the printed configuration. Use self-check for the two appearances of the adjacency-gcd problem.
+- Verify the covering-number minimum of 556 by certifying a prime witness for every smaller coefficient. The published method establishes existence through a specific covering system.
+
+Codex PR #481. Shared Division A and B questions appear once, with both numbers.
+
+### Algebra
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2017_Algebra_A.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2017_Algebra_A_Solutions.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2017_Algebra_B.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2017_Algebra_B_Solutions.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 3 | Rewrite $a\diamond b=4+(a-4)(b-4)$. Since 4 appears in the fold, it absorbs all terms and the result is 4. | 1,350 → 950 |
+| 2 | 4 | Write $z=\sqrt2 e^{i(\pi/12+2k\pi/3)}$. The product of the three cosines is $\cos(\pi/4)/4$, so the three real parts multiply to $1/2$. Answer 3. | 1,650 → 1,380 |
+| 3 | 5 | Let the common logarithm be $t$. Then $8^t+27^t+125^t=3\cdot30^t$. The bases have geometric mean 30, so equality in AM–GM forces $t=0$. Thus $a=b=c=1/3$, and the only objective value is $13/3$, giving 16. | 1,850 → 1,360 |
+| 4 | 6 | After division by $11^{n-1}$, positivity requires $a_1>\sum_{k=2}^n k/11^{k-1}$ for every finite $n$. The positive series converges to $21/100$, which exceeds each finite partial sum and is the minimum. Answer 121. | 1,980 → 1,490 |
+| 5 | 7 | The cubic $g(x)=x^2(3-2x)$ obeys $g(1-x)=1-g(x)$. Each iterate preserves this property. Pairing the sums leaves 2018 ones, so the least bound is 2018. | 1,980 → 1,250 |
+| 6 | 8 | The logarithmic derivative of $x^{1000}-1$ gives Kenneth's sum $-1000a^{999}/(a^{1000}-1)$ for $a\ne\pm1$. Ellen's sum is $-1000a$. Zero works, and nonzero solutions satisfy $a^{998}(a^2-1)=1$, which has one positive root above 1 and its negative. The exact count is 3. The organizers also accepted 2 for the reading that the stated surprise excludes zero. | 2,520 → 1,720 |
+| 7 |  | The $k$th summand equals $2^k/(5^{2^k}-1)-2^{k+1}/(5^{2^{k+1}}-1)$. Telescoping gives $1/4$, so 5. | 2,600 → 1,580 |
+| 8 |  | One block acts on its input $t$ as $(7t-6)/(5t-4)$. Its fixed points are 1 and $6/5$. The possible finite end types are $2,5/3,3/2,7/5$ before iterating full blocks. For all values above $6/5$ the map stays above $6/5$ and decreases the input, so all truncation types converge to $6/5$. Thus the fraction is $10085/6$, giving 10091. | 3,650 → 2,320 |
+|  | 1 | At $x=1$, both sides and the requested expression are 1. For any other positive $x$, equality of exponents gives $x^{x^x}=x^3$ and hence $x^x=3$. Such $x$ exists above 1. The requested value is $3^3=27$. Both values were accepted. | 1,180 → 990 |
+|  | 2 | Factor into $(x+3)^8(y+1)^8$. The product of the requested coefficients is $(8\cdot3)\binom86=672$. | 1,300 → 940 |
+
+### Combinatorics
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2017_Combo_A.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2017_Combo_A_Solutions.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2017_Combo_B.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2017_Combo_B_Solutions.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 3 | For a fixed original turtle, surviving each reduction from $k$ to $k-1$ without selection has probability $(k-2)/k$. Telescoping over $k=3,\ldots,2017$ gives $2/(2017\cdot2016)$. At most one original turtle can remain untouched at the two-turtle stage, so multiply by 2017. Probability $1/1008$ gives 1009. | 1,880 → 1,450 |
+| 2 | 4 | Each hundreds digit occurs 81 times. Each nonzero tens digit occurs 72 times, and each nonzero units digit occurs 73 times. Zero contributes nothing at either place. The sum is $45(8100+720+73)=400185$. | 1,850 → 1,290 |
+| 3 | 5 | Under an observed uniform first draw, the posterior weight of a box with $k$ black balls is proportional to $k$. The second-ball probability is $\sum k(k-1)/(99\sum k)=2/3$, giving 5. If the first ball is deliberately selected from the black balls, the box is instead uniform over $k=1,\ldots,100$. That gives $(50.5-1)/99=1/2$ and answer 3. Accept both readings. | 1,950 → 1,460 |
+| 4 | 6 | The extinction probability is the limit of iteration from zero of $F(p)=(1+p+p^2+p^3)/4$, hence the least nonnegative fixed point. The roots follow from $(p-1)(p^2+2p-1)=0$, so $p=\sqrt2-1$ and the requested floor is 24. | 2,300 → 1,730 |
+| 5 | 7 | Fix any target order. The shortest adjacent-swap distance is the inversion count relative to that order. As all permutations are submitted, the sum of $2^{\mathrm{inv}}$ is independent of the target. Insert letters successively to get $1\cdot3\cdot7\cdot15\cdot31=9765$. | 2,450 → 1,660 |
+| 6 | 8 | With $X\sim\operatorname{Bin}(n,3/20)$, integrate $(17/20+3t/20)^n$ from zero to one to get $E_n=[1-(17/20)^{n+1}]/[(n+1)3/20]$. At $n=13446$ the inverse is already above 2017. At the preceding index its numerator is 2016.9 and the exponentially small denominator correction is below 0.1 in the inverse. Monotonicity proves 13446 is first. | 2,900 → 1,840 |
+| 7 |  | Treat each occupied square as a row–column edge. For every edge the endpoint degrees sum to 4. Each component is a three-edge star or a cycle, because the degree pair propagates. A star uses one more vertex than edge while a cycle uses equally many, and there are 16 edges but at most 16 vertices. Thus all components are cycles. For cycle half-length multiplicities $m_k$ with $k\ge2,\sum km_k=8$, the labeled count is $(8!)^2/\prod (2k)^{m_k}m_k!$. Evaluate the seven partitions of 8 with no ones to get remainder 840. | 3,180 → 2,330 |
+| 8 |  | For a fixed length-four string, start a fair bettor at each bit who doubles their stake for each consecutive correct character from the target. At the first hit the surviving payouts sum to $\sum_{j\text{ a border}}2^j$, where the full string is a border. The expected wait equals this fixed payout by the fair-game identity, with finite expectation from disjoint four-bit blocks. For a uniform target each shorter border of length $j$ occurs with probability $2^{-j}$ because it specifies period $4-j$. Average to get $16+3=19$. | 3,450 → 2,190 |
+|  | 1 | Of the $5!$ orders, one sixth have the required order of the three specified characters. Answer 20. | 950 → 850 |
+|  | 2 | The rotations preserving the subdivided face form a group of order three. Each nonidentity rotation has one fixed central triangle and two three-cycles, yielding $2^3$ fixed colorings. Burnside gives $(2^7+2\cdot2^3)/3=48$. | 1,650 → 1,250 |
+
+### Geometry
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2017_Geo_A.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC2017_Geo_A_Solutions.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2017_Geo_B.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2017_Geo_B_Solutions.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 3 | Thales gives $BD\perp AC$. Since $AB=BC$, $D$ is the midpoint of $AC$, so $AD=8$ and $BD=6$. The area is 24. | 1,410 → 1,030 |
+| 2 | 4 | Let $a=AD$ and $b=AB$. The right angle gives $AC^2=b^2-a^2$, and the area is $a\cdot AC$. Thus $a^2(b^2-a^2)=51^2\cdot55$. So $a$ is one of $1,3,17,51$, and only $a=17$ gives a square $b^2=784$. The perimeter is 90. | 1,920 → 1,420 |
+| 3 | 5 | Project orthogonally onto the base hexagon with coordinate $x$ directed toward C. The plane is $z=5(x+3)/9$. Its projection is the hexagon minus the triangle beyond $AE$, with area $54\sqrt3-9\sqrt3=45\sqrt3$. The tilt factor is $\sqrt{106}/9$. The area is $5\sqrt{318}$, giving 323. | 2,200 → 1,750 |
+| 4 | 6 | Place $B=(0,0),C=(7,0)$. The interior point is $P=(33/14,15\sqrt3/14)$ from its distances to B and C. Both centers have abscissa $7/2$. Their ordinates are $7\sqrt3/6$ and $-7\sqrt3/6$ from equidistance. Their separation is $7\sqrt3/3$, giving 13. | 2,200 → 1,510 |
+| 5 | 7 | Use $O=(0,0),H=(11,0),M=(0,5)$. In circumcenter coordinates $H=A+B+C$ and $B+C=2M$, so $A=(11,-10)$ and the circumradius squared is 221. Hence $BC=2\sqrt{221-25}=28$. | 2,450 → 1,590 |
+| 6 | 8 | With $A=(0,0),B=(2,0),C=(0,4)$, the two circle equations give $E=(16/5,8/5)$. The parallel radius puts $M=(2/5,6/5)$. Intersecting the two secants with the first circle gives $K=(-12/5,4/5)$ and $Z=(12/5,36/5)$. The shoelace area of $ZEBK$ is 20. | 2,820 → 1,880 |
+| 7 |  | Let $L=AB$. Comparing triangle areas along a projection through P gives $AP_1/P_1B=(PA/PB)(AC/BC)$ and $AP_2/P_2B=(PA/PB)(AD/BD)$. Their ratio is $35/(35+6L)$ by Ptolemy. With $AP_1=3,P_2B=4$, solve $12(35+6L)=35(L-3)(L-4)$ to get $L=317/35$. The relation is increasing, so $Q_1$ closer to B implies $Q_2B=2$. Substitution yields $P_1Q_1=106/47$, giving 153. | 3,360 → 2,240 |
+| 8 |  | Use $B=(0,0),C=(5,0),A=(1/2,3\sqrt7/2)$, incenter $I=(3/2,\sqrt7/2)$, and circumcenter $O=(5/2,9\sqrt7/14)$. Find the intouch orthocenter as $H=D+E+F-2I$. The hint's midpoint is for the contact opposite the vertex whose sides are tangent. For the printed vertex B use $(E+H)/2$ then invert to get $X=(13/4,7\sqrt7/4)$. The tangent lines have slopes $\sqrt7/3$ and $3\sqrt7$, so their other circumcircle intersections are $(-1/2,\sqrt7/2)$ and $(5/2,-\sqrt7/2)$, giving 16. For the intended vertex A use $(D+H)/2$ then invert to get $X=(19/22,-7\sqrt7/22)$. The other intersections are $(5/2\pm\sqrt{33}/2,\sqrt7)$, giving 33. The organizers accepted 16 for the printed text. The app grades that configuration and explains the different result from the supplied hint. | 3,700 → 2,830 |
+|  | 1 | The inner base has one fourth the length of $BC$ and lies one fourth of the original height above it. The trapezoid area relative to the original triangle is $(1+1/4)/4=5/16$. Answer 21. | 1,300 → 900 |
+|  | 2 | The symmetry diagonal is a diameter of length 120. The perpendicular chord through $P$ has length $2\sqrt{3600-OP^2}$. The largest possible integral offset is 59, giving area $120\sqrt{119}$ and answer 239. | 1,650 → 1,210 |
+
+### Number Theory
+
+[Division A paper](https://pumac.princeton.edu/s/PUMaC2017_NT_A.pdf) · [A solutions](https://pumac.princeton.edu/s/PUMaC_2017_NT_A_SolRevised.pdf) · [Division B paper](https://pumac.princeton.edu/s/PUMaC2017_NT_B.pdf) · [B solutions](https://pumac.princeton.edu/s/PUMaC2017_NT_B_Solutions.pdf)
+
+| A # | B # | Independent result and disposition | Elo |
+|---:|---:|---|---:|
+| 1 | 3 | The count of values at least $t$ is initially at most $2018-t$ for $1\le t\le2018$. A merge can increase the count only if at least two of the used values are exactly $t-1$. The bound at $t-1$ then implies the count at $t$ was below its bound. Thus no value exceeds 2017. Reserve 2016 and 2017 until the last merge to attain 2017. No merge can produce 1 or 2 because there is at most one 1, so the minimum final value is at least 3. Reserve 1 and 2 to attain 3. Difference 2014. | 1,980 → 1,560 |
+| 2 | 4 | The literal condition at $m=n$ forces all $a_n=1$, which contradicts adjacency. With distinct indices, $a_2$ needs two distinct prime factors because $a_1$ and $a_3$ are coprime. The four smallest are $6,10,12,14$. Each is realizable by assigning a different prime to each adjacent pair, with extra factors in $a_2$ confined to its two primes. The intended sum is 42. Use self-check. | 2,050 |
+| 3 | 5 | The bigness is $(a+2)(b+2)(c+2)-8$. With ordered factors at least 3, the attainable products up to 64 are $27,36,45,48,54,60,63,64$. The first consecutive pair is 63 and 64, so the requested bigness is 55. | 1,950 → 1,260 |
+| 4 | 6 | For each modulus $m$, choose two base-$b$ numbers with $m$ digits equal to one, differing only in whether one of them is at place zero or one. Their difference is $b-1$, so $b\equiv1\pmod m$ is necessary. It is also sufficient by substituting $b\equiv1$ in the digit expansion. Hence $b_n=1+\operatorname{lcm}(1,\ldots,n)$. The lcm ratio is $2\cdot3\cdot29\cdot31=5394$ and the added ones change its value by less than $1/2$. The rounded answer stays 5394. | 2,750 → 1,570 |
+| 5 | 7 | Factor $p(x)=(x^2-16)(x^2+10)$. For $3\nmid n$, the least odd prime is 3. For multiples of 3, the least is 5 unless $n\equiv\pm2\pmod5$. Over residues mod 7, either $(n-30)^2$ or $(n+30)^2$ belongs to $\{2,4\}$, so the remaining cases have least prime 7. There are 1345, 403, and 269 terms, respectively, including the stated zero convention. The weighted sum is 7933. | 2,900 → 1,730 |
+| 6 | 8 | For $N=556$, odd exponents are covered by 3, exponents 2 modulo 4 by 5, exponents 4 modulo 12 by 7, and exponents 8 modulo 12 by 13. Each indicated divisor is proper. The official construction proves existence but its choice of primes does not exclude other mechanisms for smaller coefficients. The deterministic primality checks below exhibit a nonmultiple-of-12 prime exponent for every $N<556$, proving minimality. | 3,500 → 3,650 |
+| 7 |  | Pairs $(x,y)$ with $y\ne0$ cancel in pairs for parity, leaving the number of distinct roots of $x^3+ax+b$. There are $17^2$ root incidences and $\binom{17}2=136$ two-root incidences since any prescribed pair determines $a,b$. There are $(17^2-3\cdot17+2)/6=40$ distinct triples summing to zero. These imply 16 cubics with two roots, 137 with one, and 96 with none. The requested count is $96+16=112$. The omitted cubic in the published one-root count is $x^3$. | 3,550 → 1,990 |
+| 8 |  | Use $\gcd(k,400)=\sum_{d\mid400,\ d\mid k}\varphi(d)$. There are at least $\lfloor100/d\rfloor$ multiples of every d in a 100-term window. Their weighted sum is 680. For $M=1749$, the window $1649,\ldots,1748$ attains all these lower bounds, giving 680. | 3,360 → 1,730 |
+|  | 1 | The smallest number with a prescribed digit sum has the fewest possible digits and then packs the largest digits at the right. The first twenty terms are 1 through 9, then $19,29,\ldots,99$, then 199 and 299. Sum 1074. | 1,180 → 970 |
+|  | 2 | Write the number with $m$ repeated digits as $mR_m$ with $R_m=(10^m-1)/9$. Since $\gcd(R_m,R_n)=R_{\gcd(m,n)}$, if $m\nmid n$ then $R_m/R_{\gcd(m,n)}>9\ge n$, so divisibility is impossible. If $m\mid n$ both factors divide. Count $8+3+2+1=14$ pairs. | 1,540 → 1,310 |
+
+### Covering-number minimality check
+
+For a candidate $v=1+N2^n$ with $2^n>N$, a congruence $a^{(v-1)/2}\equiv-1\pmod v$ proves primality. For each prime factor $p$ of $v$, the order of $a$ modulo $p$ must contain a factor of $2^n$, so $p\ge2^n+1>\sqrt v$. A composite $v$ cannot have that property. The search uses trial division for smaller candidates. The longer witness $N=346,n=23312$ was identified from the exponent table for $173\cdot2^k+1$ and then certified by the same congruence. [OEIS exponent table](https://oeis.org/A032463/b032463.txt)
+
+```python
+from math import isqrt
+
+large_exponents = {
+    47: 583, 94: 582, 136: 344, 188: 581, 241: 5528, 257: 279,
+    346: 23312, 367: 306, 376: 580, 383: 6393, 451: 6740, 514: 278,
+}
+
+def certifies_prime(coefficient, exponent):
+    candidate = (coefficient << exponent) + 1
+    if exponent < 10:
+        return all(candidate % d for d in range(2, isqrt(candidate) + 1))
+    assert (1 << exponent) > coefficient
+    return any(pow(a, (candidate - 1) // 2, candidate) == candidate - 1
+               for a in range(2, 100))
+
+for coefficient in range(1, 556):
+    if coefficient in large_exponents:
+        exponent = large_exponents[coefficient]
+        candidate = (coefficient << exponent) + 1
+        assert exponent % 12 and (1 << exponent) > coefficient
+        assert pow(3, (candidate - 1) // 2, candidate) == candidate - 1
+    else:
+        assert any(exponent % 12 and certifies_prime(coefficient, exponent)
+                   for exponent in range(1, 67)), coefficient
+print("Verified a prime witness for each of the 555 smaller coefficients.")
+```
+
+**Verification.**
+
+- Full repository gates and short-answer tests passed.
+- Chromium verified the corrected key, alternatives, self-check, and grading notes beside the official PDFs.
+- Deterministic certificates rule out all 555 smaller coefficients.
+
+---

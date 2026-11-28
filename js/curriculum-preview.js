@@ -200,6 +200,15 @@
     const saved = progress().checks[answerKey(id)] || {};
     const open = isOpen(saved), res = saved.ok === true ? "right" : saved.a && saved.ok === false ? "wrong" : "";
     const show = `<button type="button" class="hp-btn hp-btn-soft cp-show${open ? " is-open" : ""}" data-cp-show="${id}" aria-expanded="${open}"${saved.a || open ? "" : " disabled"}>${solveLabel(open)}</button>`;
+    // A proof problem has no answer to check: the student writes the argument, and the solution
+    // becomes available once something is written (as in the live books' problems).
+    if (it.proof) {
+      return `<div class="cp-work cp-work-proof">
+          <textarea class="cp-proof" rows="3" data-cp-proof="${id}" aria-label="Your proof for ${esc(labels[id] || "this problem")}" placeholder="Write your proof here.">${esc(saved.a || "")}</textarea>
+          <span class="cp-btns">${show}</span>
+        </div>
+      <div class="lp-sol cp-sol" data-cp-sol="${id}"${open ? "" : " hidden"}><p class="lp-sol-title">Solution:</p>${text(it.solution)}</div>`;
+    }
     const work = it.choices
       ? `<div class="cp-choices" role="group" aria-label="${esc(labels[id] || "Choices")}">${it.choices.map((c, i) => {
           const L = String.fromCharCode(65 + i), picked = saved.a === L;
@@ -457,6 +466,20 @@
       const inp = e.target.closest && e.target.closest("[data-cp-input]"); if (!inp) return;
       const art = inp.closest(".cp-root"); if (!art) return;
       e.preventDefault(); check(inp.dataset.cpInput, art);
+    });
+    // A proof's text is kept as it is typed; Show Solution is available once it is not empty.
+    let proofTimer = 0;
+    document.addEventListener("input", e => {
+      const box = e.target.closest && e.target.closest(".cp-root [data-cp-proof]"); if (!box) return;
+      const id = box.dataset.cpProof, art = box.closest(".cp-root"), btn = art.querySelector(`[data-cp-show="${id}"]`);
+      if (btn && !btn.classList.contains("is-open")) btn.disabled = !box.value.trim();
+      box.style.height = "auto"; box.style.height = box.scrollHeight + "px";
+      clearTimeout(proofTimer);
+      proofTimer = setTimeout(() => {
+        const key = answerKey(id);
+        progress().checks[key] = Object.assign({}, progress().checks[key], { a: box.value });
+        save();
+      }, 300);
     });
     document.addEventListener("change", e => {
       const sel = e.target.closest && e.target.closest(".cp-root [data-cp-go]");

@@ -78,6 +78,11 @@
 .cp-root .cp-btns .hp-btn, .cp-root .cp-work-choice .hp-btn { padding: 8px 14px; }
 :root[data-theme] .cp-root .cp-go { background: color-mix(in srgb, var(--bk-a) 72%, var(--bk-b)); color: #fff; }
 .cp-show:disabled { cursor: not-allowed; opacity: 0.45; }
+.cp-work-proof { align-items: flex-start; }
+.cp-proof { flex: 1 1 100%; min-width: 0; box-sizing: border-box; font: inherit; font-size: 14.5px; line-height: 1.5; padding: 8px 10px; resize: vertical;
+  border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); }
+.cp-proof:focus { outline: none; border-color: var(--bk-ink); }
+.cp-work-proof .cp-btns { margin-left: auto; }
 .cp-choices { display: grid; gap: 6px; margin: 10px 0 4px; }
 .cp-choice { display: flex; align-items: baseline; gap: 10px; width: 100%; text-align: left; font: inherit; font-size: calc(15px * var(--tx));
   line-height: 1.5; padding: 8px 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); color: var(--text); cursor: pointer; }
